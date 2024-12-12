@@ -20,7 +20,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Noto Serif JP", "serif"',
+    fontFamily: '"Hina Mincho", "serif"',
     h1: {
       fontSize: '2rem',
       fontWeight: 'bold',

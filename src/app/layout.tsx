@@ -4,8 +4,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme';
 
 export const metadata = {
-  title: '和風 UI サンプル',
-  description: 'Material UIを使った和風デザイン',
+  title: 'west-Potfolio',
+  description: 'westのポートフォリオサイト',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="ja">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Noto+Sans+JP:wght@100..900&display=swap"
           rel="stylesheet"
         />
       </head>
