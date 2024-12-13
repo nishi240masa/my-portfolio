@@ -1,7 +1,9 @@
+import MaintenancePage from '@/app/_components/View/Maintenance';
+
 export default function Page() {
   return (
     <main>
-      <h1>skill</h1>
+      <MaintenancePage />
     </main>
   );
 }

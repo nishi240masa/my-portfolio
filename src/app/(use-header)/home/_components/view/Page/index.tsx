@@ -14,6 +14,21 @@ export default function Page() {
           pr: 5,
           //   背景を透過
           bgcolor: 'rgba(255, 255, 255, 0)',
+
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            zIndex: -1,
+            top: '9%',
+            right: 0,
+            width: '600px',
+            height: '100%',
+            clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)',
+            backgroundImage: 'url(red_wasi.jpg)', //
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+          },
         }}
       >
         {/* 画像 */}
@@ -46,7 +61,7 @@ export default function Page() {
             flexWrap: 'wrap',
             padding: 2,
             // 背景を透過
-            bgcolor: 'rgba(255, 255, 255, 0.5)',
+            // bgcolor: 'rgba(255, 255, 255, 0.5)',
           }}
         >
           <Typography
@@ -55,8 +70,9 @@ export default function Page() {
               textIndent: '4em',
               fontWeight: 'bold',
               lineHeight: 1.2,
+              textShadow: '#FC0 1px 0 10px',
             }}
-            variant="h2"
+            variant="h4"
           >
             未来のある開発を
           </Typography>
@@ -65,28 +81,14 @@ export default function Page() {
               writingMode: 'vertical-lr',
               fontWeight: 'bold',
               lineHeight: 1.2,
+              textShadow: '#FC0 1px 0 10px',
             }}
-            variant="h2"
+            variant="h4"
           >
             意味のある 人生を
           </Typography>
         </Box>
       </Box>
-      <Box
-        sx={{
-          width: '600px', // 三角形の幅
-          height: '100%', // 三角形の高さ
-          clipPath: 'polygon(100% 0%, 0% 100%, 100% 100%)', // 三角形を作成
-          backgroundImage: 'url(red_origami.jpg)', // 背景画像を設定
-          backgroundSize: 'cover', // 画像を全体にフィット
-          backgroundPosition: 'center', // 画像を中央配置
-          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // 影を追加（オプション）
-          position: 'absolute', // 位置を絶対値に
-          top: '9%', // 上から50%の位置に
-          right: '0px',
-          zIndex: -1, // 他の要素よりも背面に配置
-        }}
-      />
     </main>
   );
 }

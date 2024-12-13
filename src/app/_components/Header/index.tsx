@@ -8,9 +8,9 @@ export default function Header() {
     <AppBar position="static" sx={{ bgcolor: 'primary.main' }}>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         {/* ロゴ部分 */}
-        <Typography component="div" variant="h6">
-          My Portfolio
-        </Typography>
+        <Link href="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Typography variant="h6">My Portfolio</Typography>
+        </Link>
 
         {/* ナビゲーションリンク */}
         <Box sx={{ display: 'flex', gap: 2 }}>
@@ -27,6 +27,8 @@ export default function Header() {
               sx={{
                 color: 'white',
                 textTransform: 'none',
+                fontSize: '1.2rem',
+                fontWeight: 'bold',
                 '&:hover': {
                   bgcolor: 'rgba(255, 255, 255, 0.2)',
                 },
