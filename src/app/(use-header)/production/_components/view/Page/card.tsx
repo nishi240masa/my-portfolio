@@ -1,4 +1,5 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography, Box } from '@mui/material';
+import Link from 'next/link';
 import { type Post } from '@/types/post';
 
 interface Props {
@@ -24,11 +25,16 @@ export default function CardPage({ data }: Props) {
         },
       }}
     >
-      <CardActionArea sx={{ flexGrow: 1 }}>
+      <CardActionArea
+        component={Link} // Linkを直接CardActionAreaに埋め込む
+        href={`/production/${data.id}`}
+        sx={{ flexGrow: 1 }}
+      >
         {/* 画像 */}
         <CardMedia alt={data.title} component="img" height="180" image={data.image} />
         {/* コンテンツ */}
         <CardContent>
+          {/* タイトル */}
           <Typography
             component="div"
             sx={{
@@ -42,18 +48,28 @@ export default function CardPage({ data }: Props) {
           >
             {data.title}
           </Typography>
-          <Typography
+          {/* tag */}
+          <Box
             sx={{
-              color: 'text.secondary',
-              display: '-webkit-box',
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: 'vertical',
-              overflow: 'hidden',
+              display: 'flex',
+              gap: 1,
+              flexWrap: 'wrap',
+              mb: 1,
             }}
-            variant="body2"
           >
-            {data.description}
-          </Typography>
+            {data.tags.map((tag) => (
+              <Typography
+                key={tag}
+                sx={{
+                  fontSize: '0.75rem',
+                  color: 'text.secondary',
+                }}
+                variant="caption"
+              >
+                {tag}
+              </Typography>
+            ))}
+          </Box>
         </CardContent>
       </CardActionArea>
       {/* 日付 */}
