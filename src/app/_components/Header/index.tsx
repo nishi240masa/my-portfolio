@@ -3,6 +3,8 @@
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import Link from 'next/link';
 
+export const runtime = 'edge';
+
 export default function Header() {
   return (
     <AppBar position="static" sx={{ bgcolor: 'primary.main' }}>
