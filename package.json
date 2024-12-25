@@ -25,6 +25,7 @@
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.7",
     "@types/node": "^20",
     "@types/pg": "^8.11.10",
     "@types/react": "^19",
