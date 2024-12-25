@@ -8,6 +8,8 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { postAtomLoadable } from '@/store/postAtom';
 
+export const runtime = 'edge';
+
 export default function ArticlePage() {
   const { id } = useParams();
   const number = typeof id === 'string' ? parseInt(id, 10) : 0;
