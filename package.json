@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.2.0",
     "@mui/material": "^6.2.0",
+    "false": "^0.0.4",
     "framer-motion": "^11.13.5",
     "jotai": "2.9.2",
     "next": "14.2.4",
