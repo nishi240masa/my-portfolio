@@ -3,5 +3,4 @@ compatibility_date = "2024-12-26"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-[build]
 command = "yarn install --immutable && yarn build:cf"
