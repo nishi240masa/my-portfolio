@@ -11,10 +11,10 @@ export async function getAllPosts() {
 }
 
 export async function getPostById(id: string) {
-  const posts = await getAllPosts();
+  const posts = getAllPosts();
 
   if (Array.isArray(posts)) {
     return posts.find((post) => post.id.toString() === id);
   }
-  return posts;
+  return await posts;
 }

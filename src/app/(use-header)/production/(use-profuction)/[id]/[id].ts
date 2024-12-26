@@ -1,31 +1,21 @@
-import { type GetStaticPropsContext, type GetStaticPropsResult } from 'next';
-import { getAllPosts, getPostById } from '@/utils/article';
+// import { getAllPosts, getPostById } from '@/utils/article';
 
-export async function getStaticProps(
-  context: GetStaticPropsContext
-): Promise<GetStaticPropsResult<{ postId: string; post: any }>> {
-  if (context.params?.id == null) {
-    return { notFound: true };
-  }
+// export async function getStaticPaths() {
+//   // Call an external API endpoint to get posts
+//   const res = await getAllPosts();
+//   const posts = res;
 
-  const postId = context.params.id as string; // context.params.id を明示的に型変換
-  const post = await getPostById(postId); // 非同期処理を忘れずに追加
+//   // Get the paths we want to pre-render based on posts
+//   const paths = posts.map((post) => ({
+//     params: { id: post.id },
+//   }));
 
-  if (post === null || post === undefined) {
-    return { notFound: true }; // ポストが見つからない場合に404ページを表示
-  }
+//   return { paths, fallback: false };
+// }
 
-  return {
-    props: { postId, post },
-  };
-}
+// export async function getStaticProps({ params }: { params: { id: string } }) {
+//   const res = await getPostById(params.id);
+//   const post = res;
 
-export async function getStaticPaths() {
-  const posts = await getAllPosts();
-  return {
-    paths: posts.map((post) => ({
-      params: { id: post.id.toString() },
-    })),
-    fallback: false,
-  };
-}
+//   return { props: { post } };
+// }
