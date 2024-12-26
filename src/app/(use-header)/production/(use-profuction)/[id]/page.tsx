@@ -5,56 +5,30 @@ import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
-import { getAllPosts, getPostById } from '@/utils/article';
+import { getPostById } from '@/utils/article'; // 記事データを取得する関数
 
-export async function getStaticPaths() {
-  // 記事のIDリストを取得
-  const posts = await getAllPosts();
-  const paths = posts.map((post) => ({
-    params: { id: post.id.toString() },
-  }));
-
-  return {
-    paths,
-    fallback: false, // 記事が見つからない場合は404エラーを返す
+interface PageProps {
+  params: {
+    id: string;
   };
 }
 
-export async function getStaticProps({ params }: { params: { id: string } }) {
+
+
+
+// params.idに基づいて記事データを取得する
+export default async function ArticlePage({ params }: PageProps) {
+  // 記事データをIDを使って取得
   const article = await getPostById(params.id);
 
-  return {
-    props: {
-      article,
-    },
-  };
-}
-
-interface Article {
-  id: number;
-  title: string;
-  date: string;
-  tags: string[];
-  image: string;
-  description: string;
-  peopleNum: number;
-  role: string;
-  period: string;
-  technologys: string[];
-  content: string;
-}
-
-export default function ArticlePage({ article }: { article: Article }) {
-  const router = useRouter();
-
-  // 記事が見つからない場合
+  // 記事が存在しない場合はエラーメッセージを表示
   if (!article) {
     return (
       <Box sx={{ textAlign: 'center', mt: 5 }}>
         <Typography variant="h5">記事が見つかりません。</Typography>
         <Button
           onClick={() => {
-            router.back();
+            useRouter().back();
           }}
           sx={{ mt: 2 }}
           variant="contained"
@@ -65,7 +39,7 @@ export default function ArticlePage({ article }: { article: Article }) {
     );
   }
 
-  // 記事表示
+  // 記事データが存在する場合は記事ページを表示
   return (
     <Box
       sx={{
@@ -151,7 +125,7 @@ export default function ArticlePage({ article }: { article: Article }) {
       <Box sx={{ textAlign: 'start', mt: 4 }}>
         <Button
           onClick={() => {
-            router.back();
+            useRouter().back();
           }}
           sx={{
             fontSize: '1rem',
