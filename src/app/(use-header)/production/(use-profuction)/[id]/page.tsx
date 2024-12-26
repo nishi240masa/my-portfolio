@@ -1,30 +1,54 @@
 'use client';
 
 import { Box, Button, Divider, Typography, Chip, Grid2 } from '@mui/material';
-import { useAtom } from 'jotai';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
-import { postAtomLoadable } from '@/store/postAtom';
+import { getAllPosts, getPostById } from '@/utils/article';
 
+export async function getStaticPaths() {
+  // 記事のIDリストを取得
+  const posts = await getAllPosts();
+  const paths = posts.map((post) => ({
+    params: { id: post.id.toString() },
+  }));
 
-export default function ArticlePage() {
-  const { id } = useParams();
-  const number = typeof id === 'string' ? parseInt(id, 10) : 0;
+  return {
+    paths,
+    fallback: false, // 記事が見つからない場合は404エラーを返す
+  };
+}
 
+export async function getStaticProps({ params }: { params: { id: string } }) {
+  const article = await getPostById(params.id);
+
+  return {
+    props: {
+      article,
+    },
+  };
+}
+
+interface Article {
+  id: number;
+  title: string;
+  date: string;
+  tags: string[];
+  image: string;
+  description: string;
+  peopleNum: number;
+  role: string;
+  period: string;
+  technologys: string[];
+  content: string;
+}
+
+export default function ArticlePage({ article }: { article: Article }) {
   const router = useRouter();
-  const [articles] = useAtom(postAtomLoadable);
-
-  // エラー処理およびローディング
-  if (articles.state === 'hasError') return <div>エラーが発生しました</div>;
-  if (articles.state === 'loading') return <div>ローディング中...</div>;
-
-  // 記事データの取得
-  const article = articles.state === 'hasData' ? articles.data.find((a) => a.id === number) : undefined;
 
   // 記事が見つからない場合
-  if (article === null || article === undefined) {
+  if (!article) {
     return (
       <Box sx={{ textAlign: 'center', mt: 5 }}>
         <Typography variant="h5">記事が見つかりません。</Typography>
