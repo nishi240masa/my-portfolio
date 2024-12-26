@@ -1,5 +1,9 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export',
-  // trailingSlash: true,
+  output: 'standalone', // 必須
+  experimental: {
+    runtime: 'edge', // Edge Runtime を使用
+  },
 };
+
 module.exports = nextConfig;
