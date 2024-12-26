@@ -8,6 +8,7 @@
     "start": "next start",
     "build:cf": "npx @cloudflare/next-on-pages",
     "start:cf": "npx wrangler pages dev ./.vercel/output/static --compatibility-flags nodejs_compat",
+    "preview": "yarn build:cf && wrangler pages dev",
     "fmt": "prettier --write ./src/",
     "lint": "eslint --ext .ts,.tsx ./src"
   },
