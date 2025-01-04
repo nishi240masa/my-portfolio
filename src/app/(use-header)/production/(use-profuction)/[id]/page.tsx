@@ -5,8 +5,8 @@ import { useAtom } from 'jotai';
 import { useRouter, useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
 import { postAtomLoadable } from '@/store/postAtom';
+import remarkMath from 'remark-math';
 
 export const runtime = 'edge';
 
