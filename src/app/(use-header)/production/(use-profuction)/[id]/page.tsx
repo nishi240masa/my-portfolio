@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Button, Divider, Typography, Chip, Grid2 } from '@mui/material';
+import { Box, Button, Chip, Divider, Grid2, Typography } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useRouter, useParams } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
