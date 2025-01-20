@@ -3,3 +3,9 @@ node_compat = true
 
 [build]
 command = "yarn build:cf"
+cwd = "."
+[build.environment]
+NODE_VERSION = "18"
+
+[pages]
+pages_build_output_dir = "out" # ビルド結果の出力先（Next.js の場合 "out" を指定）
