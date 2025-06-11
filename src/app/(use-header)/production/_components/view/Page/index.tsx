@@ -1,11 +1,13 @@
 import Maintenance from './maintenance';
+import { Box, Typography } from '@mui/material';
+import ProductionPageLogic from '../../logic/Page';
 
 export default function Page() {
   return (
     <main>
-      <Maintenance />
+      {/* <Maintenance /> */}
 
-      {/* <Box
+      <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
@@ -27,7 +29,7 @@ export default function Page() {
           Production
         </Typography>
         <ProductionPageLogic />
-      </Box> */}
+      </Box>
     </main>
   );
 }
