@@ -1,4 +1,5 @@
 import { Box, Typography, Paper } from '@mui/material';
+import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -34,19 +35,20 @@ export default function Page() {
         {/* 画像 */}
         <Paper
           sx={{
+            position: 'relative',
             width: { xs: '100%', sm: '750px' },
             height: { xs: 'auto', sm: '550px' },
             overflow: 'hidden',
             boxShadow: '15px 15px 0px 0 #e9c895',
           }}
         >
-          <img
+          <Image
             alt="home"
-            src="my_home.jpg"
+            src="/my_home.jpg"
+            fill
+            priority
             style={{
               objectFit: 'cover',
-              width: '100%',
-              height: '100%',
             }}
           />
         </Paper>
