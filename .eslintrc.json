@@ -1,71 +1,7 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:react/recommended",
-    "prettier"
-  ],
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module",
-    "project": ["./tsconfig.json"]
-  },
-  "plugins": ["react", "unused-imports"],
+  "extends": ["next/core-web-vitals", "prettier"],
   "rules": {
-    "@typescript-eslint/lines-between-class-members": "off",
-    "@typescript-eslint/no-throw-literal": "off",
-    "@typescript-eslint/ban-types": "off",
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/consistent-type-definitions": "error",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_",
-        "destructuredArrayIgnorePattern": "^_"
-      }
-    ],
-    "no-underscore-dangle": "off",
-    "no-console": [
-      "error",
-      {
-        "allow": ["warn", "error"]
-      }
-    ],
-    "react/react-in-jsx-scope": "off",
     "react/no-unescaped-entities": "off",
-    "react/jsx-no-bind": "off",
-    "react/jsx-filename-extension": "off",
-    "react/jsx-uses-react": "off",
-    "react/jsx-props-no-spreading": "off",
-    "import/no-extraneous-dependencies": ["off"],
-    "import/prefer-default-export": "off",
-    "react/no-unstable-nested-components": "off",
-    "react/jsx-sort-props": "warn",
-    "react/require-default-props": "off",
-    "react/destructuring-assignment": ["error", "always"],
-    "import/extensions": "off",
-    "import/no-unresolved": "off",
-    "import/order": [
-      "error",
-      {
-        "alphabetize": {
-          "order": "asc"
-        }
-      }
-    ],
-    "unused-imports/no-unused-imports": "error",
-    "lines-between-class-members": [
-      "error",
-      "always",
-      {
-        "exceptAfterSingleLine": true
-      }
-    ],
-    "no-alert": "off"
+    "@next/next/no-page-custom-font": "off"
   }
 }
