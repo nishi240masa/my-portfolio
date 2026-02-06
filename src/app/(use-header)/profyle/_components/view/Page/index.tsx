@@ -76,7 +76,8 @@ export default function Page() {
                   pb: 1,
                 }}
               >
-                西 健太郎 (Kentaro Nishi)
+                西尾 匡生 (Masaki Nishio)
+                にっしー
               </Typography>
               <Typography
                 variant="h6"
@@ -111,7 +112,7 @@ export default function Page() {
                   whiteSpace: 'pre-line',
                 }}
               >
-                {`琉球大学工学部工学科知能情報コースに在籍しているソフトウェアエンジニアです。
+                {`愛知工業大学情報科学部コンピュータシステム専攻に在学中のソフトウェアエンジニアです。
 バックエンド開発を中心に、フロントエンド、インフラまで幅広く携わっています。
 
 特にGolangを用いたマイクロサービスアーキテクチャやREST API設計、
@@ -142,13 +143,10 @@ export default function Page() {
                     variant="subtitle1"
                     sx={{ fontWeight: 'bold', color: 'primary.main' }}
                   >
-                    琉球大学 工学部 工学科 知能情報コース
+                    愛知工業大学 情報科学部 コンピュータシステム専攻
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    2022年4月 - 現在
-                  </Typography>
-                  <Typography variant="body2" sx={{ mt: 1 }}>
-                    ソフトウェア工学、アルゴリズム、データ構造、データベース、ネットワークなどを学習
+                    2023年4月 - 2026年2月 在学中
                   </Typography>
                 </Box>
               </Stack>
