@@ -4,9 +4,21 @@ import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: 'standalone', 
+  output: 'standalone',
   experimental: {
-    appDir: true, 
+    appDir: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'production.w3st.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'west-m.net',
+      },
+    ],
   },
 };
 

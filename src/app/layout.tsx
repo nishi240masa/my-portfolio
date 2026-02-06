@@ -1,7 +1,6 @@
 // app/layout.tsx
-import './globals.css'; // グローバルCSSが必要なら
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from './theme';
+import './globals.css';
+import ClientLayout from './_components/ClientLayout';
 
 export const metadata = {
   title: 'west-Potfolio',
@@ -18,10 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          {children}
-        </ThemeProvider>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

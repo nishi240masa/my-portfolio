@@ -1,5 +1,6 @@
-import { Card, CardActionArea, CardContent, CardMedia, Typography, Box } from '@mui/material';
+import { Card, CardActionArea, CardContent, Typography, Box } from '@mui/material';
 import Link from 'next/link';
+import Image from 'next/image';
 import { type Post } from '@/types/post';
 
 interface Props {
@@ -31,7 +32,15 @@ export default function CardPage({ data }: Props) {
         sx={{ flexGrow: 1 }}
       >
         {/* 画像 */}
-        <CardMedia alt={data.title} component="img" height="180" image={data.image} />
+        <Box sx={{ position: 'relative', width: '100%', height: 180 }}>
+          <Image
+            alt={data.title}
+            src={data.image}
+            fill
+            style={{ objectFit: 'cover' }}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        </Box>
         {/* コンテンツ */}
         <CardContent>
           {/* タイトル */}

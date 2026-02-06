@@ -3,6 +3,7 @@
 import { Box, Button, Chip, Divider, Grid2, Typography } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useRouter, useParams } from 'next/navigation';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
@@ -77,12 +78,9 @@ export default function ArticlePage() {
       <Divider />
 
       {/* 画像 */}
-      <Box
-        alt={article.title}
-        component="img"
-        src={article.image}
-        sx={{ width: '100%', borderRadius: 4, objectFit: 'cover' }}
-      />
+      <Box sx={{ position: 'relative', width: '100%', height: 400, borderRadius: 4, overflow: 'hidden' }}>
+        <Image alt={article.title} src={article.image} fill style={{ objectFit: 'cover' }} />
+      </Box>
 
       <Divider />
 
