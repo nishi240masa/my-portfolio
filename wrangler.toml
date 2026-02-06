@@ -1,11 +1,9 @@
+name = "my-portfolio"
 compatibility_date = "2025-01-20"
-node_compat = true
+pages_build_output_dir = ".vercel/output/static"
 
 [build]
 command = "yarn build:cf"
-cwd = "."
+
 [build.environment]
 NODE_VERSION = "18"
-
-[pages]
-pages_build_output_dir = "out" # ビルド結果の出力先（Next.js の場合 "out" を指定）
