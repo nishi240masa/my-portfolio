@@ -91,8 +91,8 @@ export default function Page() {
 
   const certifications = [
     {
-      name: '基本情報技術者試験',
-      date: '2023年',
+      name: 'none',
+      date: 'none',
     },
   ];
 
