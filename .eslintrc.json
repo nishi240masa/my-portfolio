@@ -4,9 +4,7 @@
     "es2021": true
   },
   "extends": [
-    "airbnb",
-    "airbnb-typescript",
-    "standard-with-typescript",
+    "next/core-web-vitals",
     "plugin:react/recommended",
     "prettier"
   ],
