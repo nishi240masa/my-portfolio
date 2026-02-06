@@ -212,7 +212,7 @@ export default function Page() {
               </Typography>
               <Stack direction="row" spacing={2} flexWrap="wrap">
                 <Link
-                  href="https://github.com/west-23"
+                  href="https://github.com/nishi240masa"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
@@ -228,7 +228,7 @@ export default function Page() {
                   <Typography variant="body1">GitHub</Typography>
                 </Link>
                 <Link
-                  href="https://twitter.com/west_dev"
+                  href="https://x.com/westM27"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
@@ -244,23 +244,7 @@ export default function Page() {
                   <Typography variant="body1">Twitter</Typography>
                 </Link>
                 <Link
-                  href="https://www.linkedin.com/in/kentaro-nishi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 1,
-                    color: 'text.primary',
-                    textDecoration: 'none',
-                    '&:hover': { color: 'primary.main' },
-                  }}
-                >
-                  <LinkedInIcon />
-                  <Typography variant="body1">LinkedIn</Typography>
-                </Link>
-                <Link
-                  href="mailto:contact@w3st.net"
+                  href="mailto:nishi240masa@gmail.com"
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
