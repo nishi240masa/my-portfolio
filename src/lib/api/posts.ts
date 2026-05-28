@@ -52,6 +52,28 @@ function mapApiPostDetailToPostPage(apiPostDetail: ApiPostDetail): PostPage {
 }
 
 // ===========================
+// クエリパラメータ構築ユーティリティ
+// ===========================
+
+/**
+ * 共通クエリパラメータを URLSearchParams に変換
+ */
+function buildPostsQueryString(params: SearchPostsParams): string {
+  const searchParams = new URLSearchParams();
+
+  if (params.q) searchParams.append('q', params.q);
+  if (params.page) searchParams.append('page', String(params.page));
+  if (params.limit) searchParams.append('limit', String(params.limit));
+  if (params.tags && params.tags.length > 0) {
+    params.tags.forEach((tag) => searchParams.append('tags', tag));
+  }
+  if (params.sortBy) searchParams.append('sortBy', params.sortBy);
+  if (params.order) searchParams.append('order', params.order);
+
+  return searchParams.toString();
+}
+
+// ===========================
 // API関数
 // ===========================
 
@@ -59,20 +81,10 @@ function mapApiPostDetailToPostPage(apiPostDetail: ApiPostDetail): PostPage {
  * プロダクション一覧を取得
  */
 export async function fetchPosts(params?: GetPostsParams): Promise<Post[]> {
-  // クエリパラメータの構築
-  const searchParams = new URLSearchParams();
-  if (params) {
-    if (params.page) searchParams.append('page', String(params.page));
-    if (params.limit) searchParams.append('limit', String(params.limit));
-    if (params.tags && params.tags.length > 0) {
-      params.tags.forEach((tag) => searchParams.append('tags', tag));
-    }
-    if (params.sortBy) searchParams.append('sortBy', params.sortBy);
-    if (params.order) searchParams.append('order', params.order);
-  }
-
-  const queryString = searchParams.toString();
-  const endpoint = queryString ? `${API_ENDPOINTS.posts.list}?${queryString}` : API_ENDPOINTS.posts.list;
+  const queryString = params ? buildPostsQueryString(params) : '';
+  const endpoint = queryString
+    ? `${API_ENDPOINTS.posts.list}?${queryString}`
+    : API_ENDPOINTS.posts.list;
 
   const response = await apiClient.get<GetPostsResponse>(endpoint);
   return response.posts.map(mapApiPostToPost);
@@ -91,18 +103,10 @@ export async function fetchPostById(id: number | string): Promise<PostPage> {
  * プロダクションを検索
  */
 export async function searchPosts(params: SearchPostsParams): Promise<Post[]> {
-  const searchParams = new URLSearchParams();
-  if (params.q) searchParams.append('q', params.q);
-  if (params.page) searchParams.append('page', String(params.page));
-  if (params.limit) searchParams.append('limit', String(params.limit));
-  if (params.tags && params.tags.length > 0) {
-    params.tags.forEach((tag) => searchParams.append('tags', tag));
-  }
-  if (params.sortBy) searchParams.append('sortBy', params.sortBy);
-  if (params.order) searchParams.append('order', params.order);
-
-  const queryString = searchParams.toString();
-  const endpoint = queryString ? `${API_ENDPOINTS.posts.search}?${queryString}` : API_ENDPOINTS.posts.search;
+  const queryString = buildPostsQueryString(params);
+  const endpoint = queryString
+    ? `${API_ENDPOINTS.posts.search}?${queryString}`
+    : API_ENDPOINTS.posts.search;
 
   const response = await apiClient.get<GetPostsResponse>(endpoint);
   return response.posts.map(mapApiPostToPost);
@@ -116,7 +120,6 @@ export async function fetchAllPosts(): Promise<PostPage[]> {
   const response = await apiClient.get<GetPostsResponse>(endpoint);
 
   // 簡易的に Post を PostPage に変換（詳細情報は各詳細APIで取得する想定）
-  // または、バックエンドAPIが全詳細を返す場合はそのまま使用
   return response.posts.map((post) => ({
     ...post,
     peopleNum: 0, // デフォルト値

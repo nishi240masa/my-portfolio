@@ -1,22 +1,22 @@
-import { render, screen } from '@testing-library/react'
-import Home from '../page'
+/**
+ * ルートページのテスト
+ * "/" へのアクセスが "/home" にリダイレクトされることを確認する
+ */
+import { redirect } from 'next/navigation';
 
-// Mock the TopPage component
-jest.mock('../_components/View/Page', () => {
-  return function MockTopPage() {
-    return <div data-testid="top-page">Top Page</div>
-  }
-})
+jest.mock('next/navigation', () => ({
+  redirect: jest.fn(),
+}));
 
-describe('Home Page', () => {
-  it('should render the home page', () => {
-    render(<Home />)
-    const topPage = screen.getByTestId('top-page')
-    expect(topPage).toBeInTheDocument()
-  })
-
-  it('should render TopPage component', () => {
-    const { container } = render(<Home />)
-    expect(container.querySelector('[data-testid="top-page"]')).toBeInTheDocument()
-  })
-})
+describe('Root Page', () => {
+  it('should redirect to /home', () => {
+    // RootPage を実行するとリダイレクトが呼ばれる
+    const { default: RootPage } = jest.requireActual('../page');
+    try {
+      RootPage();
+    } catch {
+      // redirect() はエラーをスローするため catch で無視
+    }
+    expect(redirect).toHaveBeenCalledWith('/home');
+  });
+});

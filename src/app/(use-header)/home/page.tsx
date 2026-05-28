@@ -1,7 +1,8 @@
-import TopPage from './_components/view/Page';
+import HomePage from './_components/HomePage';
 
 export const runtime = 'edge';
 
 export default function Page() {
-  return <TopPage />;
+  return <HomePage />;
 }
+

@@ -7,15 +7,15 @@ interface Props {
   data: Post;
 }
 
-export default function CardPage({ data }: Props) {
+export default function ProductionCard({ data }: Props) {
   return (
     <Card
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between', // 内容を上下に分ける
-        height: '100%', // 親要素に合わせる
-        width: '100%', // グリッド幅に合わせる
+        justifyContent: 'space-between',
+        height: '100%',
+        width: '100%',
         borderRadius: 4,
         boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
         overflow: 'hidden',
@@ -27,7 +27,7 @@ export default function CardPage({ data }: Props) {
       }}
     >
       <CardActionArea
-        component={Link} // Linkを直接CardActionAreaに埋め込む
+        component={Link}
         href={`/production/${data.id}`}
         sx={{ flexGrow: 1 }}
       >
@@ -41,6 +41,7 @@ export default function CardPage({ data }: Props) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </Box>
+
         {/* コンテンツ */}
         <CardContent>
           {/* タイトル */}
@@ -57,7 +58,8 @@ export default function CardPage({ data }: Props) {
           >
             {data.title}
           </Typography>
-          {/* tag */}
+
+          {/* タグ */}
           <Box
             sx={{
               display: 'flex',
@@ -81,6 +83,7 @@ export default function CardPage({ data }: Props) {
           </Box>
         </CardContent>
       </CardActionArea>
+
       {/* 日付 */}
       <Box
         sx={{

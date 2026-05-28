@@ -19,7 +19,7 @@ export default function Header() {
           {[
             { label: 'Home', href: '/home' },
             { label: 'Production', href: '/production' },
-            { label: 'Profyle', href: '/profyle' },
+            { label: 'Profile', href: '/profile' },
             { label: 'Skill', href: '/skill' },
           ].map((link) => (
             <Button

@@ -1,7 +1,8 @@
-import TopPage from './_components/view/Page';
+import SkillPage from './_components/SkillPage';
 
 export const runtime = 'edge';
 
 export default function Page() {
-  return <TopPage />;
+  return <SkillPage />;
 }
+

@@ -5,7 +5,7 @@
 /.pnp
 .pnp.*
 
-# yarn (using Zero-Installs)
+# yarn
 .yarn/*
 !.yarn/cache
 !.yarn/patches
@@ -13,6 +13,9 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+pnp.*
+package-lock.json
+pnpm-lock.yaml
 
 # testing
 /coverage
@@ -42,18 +45,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-
-pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.yarn
-
-package-lock.json
-pnpm-lock.yaml
-
-zzz*

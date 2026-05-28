@@ -1,8 +1,12 @@
 'use client';
 
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
+/**
+ * 和風スタイルのボタンコンポーネント
+ * MUI の Button を拡張し、和のカラーパレットを適用したもの
+ */
 const WafuuButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main,
   color: '#fff',
@@ -13,6 +17,6 @@ const WafuuButton = styled(Button)(({ theme }) => ({
   },
 }));
 
-export default function Example() {
-  return <WafuuButton>和風ボタン</WafuuButton>;
-}
+export type WafuuButtonProps = ButtonProps;
+
+export default WafuuButton;

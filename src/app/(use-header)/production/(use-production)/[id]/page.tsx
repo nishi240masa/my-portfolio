@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Box, Button, Chip, Divider, Grid2, Typography } from '@mui/material';
 import { useAtom } from 'jotai';
 import { useRouter, useParams } from 'next/navigation';
@@ -7,23 +8,45 @@ import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
-import { postAtomLoadable } from '@/store/postAtom';
+import { useMemo } from 'react';
+import { loadable } from 'jotai/utils';
+import { createPostDetailAtom } from '@/store/postAtom';
 
 export const runtime = 'edge';
 
 export default function ArticlePage() {
   const { id } = useParams();
-  const number = typeof id === 'string' ? parseInt(id, 10) : 0;
-
   const router = useRouter();
-  const [articles] = useAtom(postAtomLoadable);
 
-  // エラー処理およびローディング
-  if (articles.state === 'hasError') return <div>エラーが発生しました</div>;
-  if (articles.state === 'loading') return <div>ローディング中...</div>;
+  // id ごとに atom を生成（useMemo でメモ化して再生成を防ぐ）
+  const postDetailAtom = useMemo(
+    () => loadable(createPostDetailAtom(typeof id === 'string' ? id : String(id))),
+    [id],
+  );
+  const [articleState] = useAtom(postDetailAtom);
 
-  // 記事データの取得
-  const article = articles.state === 'hasData' ? articles.data.find((a) => a.id === number) : undefined;
+  // ローディング中
+  if (articleState.state === 'loading') {
+    return (
+      <Box sx={{ textAlign: 'center', mt: 10 }}>
+        <Typography variant="h6">読み込み中...</Typography>
+      </Box>
+    );
+  }
+
+  // エラー発生
+  if (articleState.state === 'hasError') {
+    return (
+      <Box sx={{ textAlign: 'center', mt: 5 }}>
+        <Typography variant="h5">エラーが発生しました。</Typography>
+        <Button onClick={() => router.back()} sx={{ mt: 2 }} variant="contained">
+          戻る
+        </Button>
+      </Box>
+    );
+  }
+
+  const article = articleState.data;
 
   // 記事が見つからない場合
   if (article === null || article === undefined) {

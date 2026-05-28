@@ -3,8 +3,6 @@
  * バックエンドAPIとの通信を担当
  */
 
-'use client';
-
 import { API_CONFIG, HTTP_METHODS, type HttpMethod } from '@/config/api';
 import {
   NetworkError,

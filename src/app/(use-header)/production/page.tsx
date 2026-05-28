@@ -1,8 +1,7 @@
-// import TopPage from './_components/view/Page';
-import TopPage from './_components/view/Page';
+import ProductionPage from './_components/ProductionPage';
 
 export const runtime = 'edge';
 
 export default function Page() {
-  return <TopPage />;
+  return <ProductionPage />;
 }
