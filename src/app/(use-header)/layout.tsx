@@ -1,14 +1,16 @@
 import Header from '../_components/Header';
+import Footer from '../_components/design/Footer';
 
-export default function RootLayout({
+export default function UseHeaderLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="shell">
       <Header />
-      <main>{children}</main>
-    </>
+      <main style={{ flex: 1 }}>{children}</main>
+      <Footer />
+    </div>
   );
 }

@@ -1,16 +1,21 @@
 'use client';
 
-import React from 'react';
-import { Box, Button, Chip, Divider, Grid2, Typography } from '@mui/material';
-import { useAtom } from 'jotai';
-import { useRouter, useParams } from 'next/navigation';
-import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
-import rehypeKatex from 'rehype-katex';
-import remarkMath from 'remark-math';
 import { useMemo } from 'react';
+import { useAtom } from 'jotai';
 import { loadable } from 'jotai/utils';
+import { useRouter, useParams } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import { createPostDetailAtom } from '@/store/postAtom';
+import { ImagePlaceholder } from '@/app/_components/design/Placeholders';
+import TagList from '@/app/_components/design/Tags';
+import { LoadingDots, ErrorState } from '@/app/_components/design/States';
+
+// KaTeX を含む Markdown レンダラはブラウザ API 依存のため、edge SSR を避けて
+// クライアント側でのみ読み込む。
+const MarkdownContent = dynamic(() => import('./MarkdownContent'), {
+  ssr: false,
+  loading: () => <LoadingDots />,
+});
 
 export const runtime = 'edge';
 
@@ -18,151 +23,105 @@ export default function ArticlePage() {
   const { id } = useParams();
   const router = useRouter();
 
-  // id ごとに atom を生成（useMemo でメモ化して再生成を防ぐ）
   const postDetailAtom = useMemo(
     () => loadable(createPostDetailAtom(typeof id === 'string' ? id : String(id))),
     [id],
   );
   const [articleState] = useAtom(postDetailAtom);
 
-  // ローディング中
   if (articleState.state === 'loading') {
     return (
-      <Box sx={{ textAlign: 'center', mt: 10 }}>
-        <Typography variant="h6">読み込み中...</Typography>
-      </Box>
+      <div className="container" style={{ paddingTop: 80 }}>
+        <LoadingDots />
+      </div>
     );
   }
 
-  // エラー発生
-  if (articleState.state === 'hasError') {
+  const article = articleState.state === 'hasData' ? articleState.data : null;
+  if (article == null) {
     return (
-      <Box sx={{ textAlign: 'center', mt: 5 }}>
-        <Typography variant="h5">エラーが発生しました。</Typography>
-        <Button onClick={() => router.back()} sx={{ mt: 2 }} variant="contained">
-          戻る
-        </Button>
-      </Box>
+      <div className="container" style={{ paddingTop: 80, paddingBottom: 80 }}>
+        <ErrorState message="該当の作品が見つかりませんでした。" />
+        <div style={{ marginTop: 24 }}>
+          <button type="button" className="btn" onClick={() => router.push('/production')}>
+            ← Production 一覧に戻る
+          </button>
+        </div>
+      </div>
     );
   }
 
-  const article = articleState.data;
+  const meta = [
+    { label: 'ROLE · 役割', value: article.role },
+    { label: 'TEAM · 人数', value: `${article.peopleNum}名` },
+    { label: 'PERIOD · 期間', value: article.period },
+    { label: 'STACK · 使用技術', value: article.technologys.join(' / ') },
+  ];
 
-  // 記事が見つからない場合
-  if (article === null || article === undefined) {
-    return (
-      <Box sx={{ textAlign: 'center', mt: 5 }}>
-        <Typography variant="h5">記事が見つかりません。</Typography>
-        <Button
-          onClick={() => {
-            router.back();
-          }}
-          sx={{ mt: 2 }}
-          variant="contained"
-        >
-          戻る
-        </Button>
-      </Box>
-    );
-  }
-
-  // 記事表示
   return (
-    <Box
-      sx={{
-        maxWidth: '900px',
-        mx: 'auto',
-        p: 4,
-        backgroundColor: '#f9f9f9',
-        borderRadius: 4,
-        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 4,
-      }}
-    >
-      {/* タイトル */}
-      <Typography sx={{ fontWeight: 'bold', color: '#333', textAlign: 'center' }} variant="h3">
-        {article.title}
-      </Typography>
+    <article className="page-enter container" style={{ paddingTop: 64, paddingBottom: 80, maxWidth: 1080 }}>
+      {/* 戻る */}
+      <div style={{ marginBottom: 32 }}>
+        <button
+          type="button"
+          className="btn"
+          onClick={() => router.push('/production')}
+          style={{ fontSize: 12, padding: '8px 16px' }}
+        >
+          <span style={{ opacity: 0.5 }}>←</span> Production 一覧
+        </button>
+      </div>
 
-      {/* 作成日とタグ */}
-      <Box sx={{ mb: 3 }}>
-        <Typography sx={{ color: 'text.secondary', mb: 2 }} variant="subtitle1">
-          作成日: {article.date}
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-          {article.tags.map((tag) => (
-            <Chip key={tag} label={tag} sx={{ fontSize: '0.875rem', fontWeight: 'medium' }} variant="outlined" />
-          ))}
-        </Box>
-      </Box>
+      <header style={{ marginBottom: 48 }}>
+        <div className="t-eyebrow" style={{ marginBottom: 16 }}>
+          {article.date} · WORK
+        </div>
+        <h1 className="t-h1" style={{ fontSize: 'clamp(40px, 5vw, 64px)', marginBottom: 16 }}>
+          {article.title}
+        </h1>
+        <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 22, color: 'var(--fg-muted)', marginBottom: 24 }}>
+          {article.description}
+        </div>
+        <TagList tags={article.tags} solid />
+      </header>
 
-      <Divider />
+      <ImagePlaceholder label={`MAIN VISUAL · ${article.title}`} ratio="21/9" src={article.image} style={{ marginBottom: 48 }} />
 
-      {/* 画像 */}
-      <Box sx={{ position: 'relative', width: '100%', height: 400, borderRadius: 4, overflow: 'hidden' }}>
-        <Image alt={article.title} src={article.image} fill style={{ objectFit: 'cover' }} />
-      </Box>
-
-      <Divider />
-
-      {/* 記事の概要 */}
-      <Typography sx={{ lineHeight: 1.8, fontSize: '1rem', color: '#555' }} variant="body1">
-        {article.description}
-      </Typography>
-
-      {/* 詳細情報 */}
-      <Grid2 container spacing={2}>
-        <Grid2 size={{ sm: 6, xs: 12 }}>
-          <Typography variant="body1">
-            <strong>人数:</strong> {article.peopleNum}人
-          </Typography>
-        </Grid2>
-        <Grid2 size={{ sm: 6, xs: 12 }}>
-          <Typography variant="body1">
-            <strong>役割:</strong> {article.role}
-          </Typography>
-        </Grid2>
-        <Grid2 size={{ sm: 6, xs: 12 }}>
-          <Typography variant="body1">
-            <strong>期間:</strong> {article.period}
-          </Typography>
-        </Grid2>
-        <Grid2 size={{ sm: 6, xs: 12 }}>
-          <Typography variant="body1">
-            <strong>使用技術:</strong> {article.technologys.join(', ')}
-          </Typography>
-        </Grid2>
-      </Grid2>
-
-      <Divider />
+      {/* プロジェクトメタ */}
+      <div className="meta-grid-4" style={{ marginBottom: 56 }}>
+        {meta.map((m) => (
+          <div key={m.label}>
+            <div className="t-eyebrow" style={{ marginBottom: 8, fontSize: 10 }}>
+              {m.label}
+            </div>
+            <div style={{ fontFamily: 'var(--font-mincho)', lineHeight: 1.4 }}>{m.value}</div>
+          </div>
+        ))}
+      </div>
 
       {/* 本文 */}
-      <Box sx={{ lineHeight: 1.8, fontSize: '1rem', color: '#444' }}>
-        <ReactMarkdown rehypePlugins={[rehypeKatex]} remarkPlugins={[remarkMath]}>
-          {article.content}
-        </ReactMarkdown>
-      </Box>
+      <div className="markdown-body" style={{ maxWidth: 720, margin: '0 auto' }}>
+        <MarkdownContent content={article.content} />
+      </div>
 
-      {/* 戻るボタン */}
-      <Box sx={{ textAlign: 'start', mt: 4 }}>
-        <Button
-          onClick={() => {
-            router.back();
-          }}
-          sx={{
-            fontSize: '1rem',
-            fontWeight: 'bold',
-            padding: '8px 24px',
-            color: '#fff',
-            '&:hover': { backgroundColor: '#0056b3' },
-          }}
-          variant="contained"
-        >
-          戻る
-        </Button>
-      </Box>
-    </Box>
+      {/* フッターナビ */}
+      <div
+        style={{
+          marginTop: 80,
+          paddingTop: 32,
+          borderTop: '1px solid var(--hairline)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: 16,
+        }}
+      >
+        <button type="button" className="btn" onClick={() => router.push('/production')}>
+          ← Production 一覧に戻る
+        </button>
+        <span className="t-meta">— 了 —</span>
+      </div>
+    </article>
   );
 }

@@ -1,264 +1,192 @@
-import {
-  Box,
-  Typography,
-  Paper,
-  Container,
-  Divider,
-  Stack,
-  Chip,
-  Link,
-} from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import EmailIcon from '@mui/icons-material/Email';
+import SectionHeader, { SubSection } from '@/app/_components/design/SectionHeader';
+import Tategaki from '@/app/_components/design/Tategaki';
+import { PortraitPlaceholder } from '@/app/_components/design/Placeholders';
+import { Rakkan } from '@/app/_components/design/Wagara';
+
+interface TimelineItem {
+  year: string;
+  label: string;
+  note: string;
+}
+
+const EDUCATION: TimelineItem[] = [
+  {
+    year: '2023.04 — 2026.02',
+    label: '愛知工業大学 情報科学部 コンピュータシステム専攻',
+    note: 'Software Engineering / 在学中',
+  },
+];
+
+// 実績は確定情報のみ記載。詳細は今後追記。
+const EXPERIENCE: TimelineItem[] = [{ year: '—', label: '近日追記予定', note: 'Coming soon' }];
+
+const INTERESTS = [
+  'Backend Development',
+  'Golang',
+  'REST API',
+  'DDD (Domain-Driven Design)',
+  'Microservices',
+  'Docker',
+  'PostgreSQL',
+  'AWS',
+  'Next.js',
+  'TypeScript',
+];
+
+const SNS = [
+  { label: 'GitHub', handle: '@nishi240masa', url: 'https://github.com/nishi240masa' },
+  { label: 'X', handle: '@westM27', url: 'https://x.com/westM27' },
+  { label: 'Email', handle: 'nishi240masa@gmail.com', url: 'mailto:nishi240masa@gmail.com' },
+];
+
+function TimelineColumn({ title, kanji, jp, items }: { title: string; kanji: string; jp: string; items: TimelineItem[] }) {
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+        <span style={{ fontFamily: 'var(--font-mincho)', fontSize: 32, color: 'var(--primary)', lineHeight: 1 }}>{kanji}</span>
+        <div>
+          <div className="t-eyebrow">{title}</div>
+          <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 20 }}>{jp}</div>
+        </div>
+      </div>
+      <div style={{ borderLeft: '1px solid var(--hairline-strong)', paddingLeft: 24 }}>
+        {items.map((it, i) => (
+          <div key={i} style={{ marginBottom: 28, position: 'relative' }}>
+            <span
+              style={{
+                position: 'absolute',
+                left: -29,
+                top: 8,
+                width: 8,
+                height: 8,
+                background: 'var(--primary)',
+                borderRadius: '50%',
+                boxShadow: '0 0 0 4px var(--bg)',
+              }}
+            />
+            <div className="t-meta" style={{ marginBottom: 4 }}>
+              {it.year}
+            </div>
+            <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 16, marginBottom: 2 }}>{it.label}</div>
+            <div style={{ fontSize: 12, color: 'var(--fg-muted)' }}>{it.note}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function ProfilePage() {
   return (
-    <Container maxWidth="lg">
-      <Box
-        sx={{
-          pt: 8,
-          pb: 8,
+    <section className="page-enter container" style={{ paddingTop: 64, paddingBottom: 64 }}>
+      <SectionHeader eyebrow="PROFILE · 自己紹介" title="人物像。" kanji="人" />
+
+      {/* 2カラム導入 */}
+      <div className="profile-intro-grid" style={{ marginBottom: 96 }}>
+        <div style={{ position: 'relative' }}>
+          <PortraitPlaceholder size={320} label="PORTRAIT · 顔写真" src="/my_home.jpg" />
+          <div style={{ marginTop: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
+            <Rakkan size={40} fontSize={16} />
+            <div>
+              <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 18, letterSpacing: '0.12em' }}>西尾 匡生</div>
+              <div className="t-meta" style={{ marginTop: 2 }}>
+                MASAKI NISHIO · にっしー
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div className="t-eyebrow" style={{ marginBottom: 16 }}>
+            ABOUT ME · 自己紹介
+          </div>
+          <h2 className="t-h2" style={{ marginBottom: 20, fontSize: 28, textWrap: 'balance' }}>
+            つくることで、世界の解像度を上げたい。
+          </h2>
+          <div className="t-body" style={{ color: 'var(--fg)', textWrap: 'pretty', marginBottom: 16 }}>
+            愛知工業大学 情報科学部 コンピュータシステム専攻に在籍中のソフトウェアエンジニアです。
+            バックエンド開発を中心に、フロントエンドからインフラまで幅広く携わっています。
+          </div>
+          <div className="t-body" style={{ color: 'var(--fg)', textWrap: 'pretty', marginBottom: 16 }}>
+            特に Golang を用いたマイクロサービスアーキテクチャや REST API 設計、
+            ドメイン駆動設計（DDD）といった「構造を整える」ことに関心があります。
+          </div>
+          <div className="t-body" style={{ color: 'var(--fg)', textWrap: 'pretty' }}>
+            余白のあるコードと、誠実な設計を心がけています。
+            「未来のある開発を、意味のある人生を。」 — それが、書くことの軸です。
+          </div>
+
+          {/* SNS */}
+          <div style={{ marginTop: 32, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+            {SNS.map((s) => (
+              <a
+                key={s.label}
+                href={s.url}
+                target={s.url.startsWith('http') ? '_blank' : undefined}
+                rel={s.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="btn"
+                style={{ padding: '10px 16px', fontSize: 12 }}
+              >
+                <span style={{ fontFamily: 'var(--font-mincho)', fontSize: 14, marginRight: 6 }}>{s.label}</span>
+                <span className="t-meta" style={{ fontSize: 11 }}>
+                  {s.handle}
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Education & Experience */}
+      <div className="timeline-grid" style={{ marginBottom: 96 }}>
+        <TimelineColumn title="Education" kanji="学" jp="学歴" items={EDUCATION} />
+        <TimelineColumn title="Experience" kanji="歴" jp="経歴" items={EXPERIENCE} />
+      </div>
+
+      {/* Interests */}
+      <div style={{ marginBottom: 96 }}>
+        <SubSection eyebrow="INTERESTS · 関心" title="興味のある領域" />
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+          {INTERESTS.map((it, i) => (
+            <span
+              key={it}
+              className="tag"
+              style={{
+                fontSize: 13,
+                padding: '8px 16px',
+                fontFamily: 'var(--font-mincho)',
+                letterSpacing: '0.08em',
+                background: i % 3 === 0 ? 'color-mix(in oklab, var(--primary) 6%, transparent)' : 'transparent',
+                borderColor: i % 3 === 0 ? 'var(--primary)' : 'var(--hairline)',
+                color: i % 3 === 0 ? 'var(--primary)' : 'var(--fg)',
+              }}
+            >
+              {it}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* 締めの一文 */}
+      <div
+        style={{
+          textAlign: 'center',
+          padding: '64px 24px',
+          borderTop: '1px solid var(--hairline)',
+          borderBottom: '1px solid var(--hairline)',
         }}
       >
-        {/* ヘッダー */}
-        <Box
-          sx={{
-            textAlign: 'center',
-            mb: 6,
-          }}
-        >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 'bold',
-              color: 'primary.main',
-              mb: 2,
-              textShadow: '2px 2px 4px rgba(0,0,0,0.1)',
-            }}
+        <div style={{ display: 'inline-flex', gap: 24, justifyContent: 'center' }}>
+          <Tategaki style={{ fontFamily: 'var(--font-mincho)', fontSize: 28, lineHeight: 2, letterSpacing: '0.2em' }}>
+            未来のある開発を、
+          </Tategaki>
+          <Tategaki
+            style={{ fontFamily: 'var(--font-mincho)', fontSize: 28, lineHeight: 2, letterSpacing: '0.2em', color: 'var(--primary)' }}
           >
-            Profile
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              color: 'text.secondary',
-              fontStyle: 'italic',
-            }}
-          >
-            未来のある開発を 意味のある人生を
-          </Typography>
-        </Box>
-
-        {/* プロフィール本体 */}
-        <Paper
-          elevation={3}
-          sx={{
-            p: 4,
-            borderRadius: 2,
-            background: 'linear-gradient(135deg, #fffaf4 0%, #f7f4ef 100%)',
-            border: '2px solid',
-            borderColor: 'secondary.main',
-          }}
-        >
-          {/* 基本情報 */}
-          <Box sx={{ mb: 4 }}>
-            <Typography
-              variant="h4"
-              sx={{
-                fontWeight: 'bold',
-                color: 'primary.main',
-                mb: 2,
-                borderBottom: '3px solid',
-                borderColor: 'primary.main',
-                pb: 1,
-              }}
-            >
-              西尾 匡生 (Masaki Nishio)
-              にっしー
-            </Typography>
-            <Typography
-              variant="h6"
-              sx={{
-                color: 'text.secondary',
-                mb: 3,
-              }}
-            >
-              Software Engineer / Backend Developer
-            </Typography>
-          </Box>
-
-          <Divider sx={{ mb: 4, borderColor: 'secondary.main' }} />
-
-          {/* 自己紹介 */}
-          <Box sx={{ mb: 4 }}>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 'bold',
-                color: 'primary.main',
-                mb: 2,
-              }}
-            >
-              About Me
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                lineHeight: 2,
-                color: 'text.primary',
-                whiteSpace: 'pre-line',
-              }}
-            >
-              {`愛知工業大学情報科学部コンピュータシステム専攻に在学中のソフトウェアエンジニアです。
-バックエンド開発を中心に、フロントエンド、インフラまで幅広く携わっています。
-
-特にGolangを用いたマイクロサービスアーキテクチャやREST API設計、
-ドメイン駆動設計（DDD）に興味を持ち、実践的なプロジェクトに取り組んでいます。
-
-「未来のある開発を、意味のある人生を」をモットーに、
-技術を通じて社会に貢献できるエンジニアを目指しています。`}
-            </Typography>
-          </Box>
-
-          <Divider sx={{ mb: 4, borderColor: 'secondary.main' }} />
-
-          {/* 経歴 */}
-          <Box sx={{ mb: 4 }}>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 'bold',
-                color: 'primary.main',
-                mb: 2,
-              }}
-            >
-              Education &amp; Experience
-            </Typography>
-            <Stack spacing={2}>
-              <Box>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ fontWeight: 'bold', color: 'primary.main' }}
-                >
-                  愛知工業大学 情報科学部 コンピュータシステム専攻
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  2023年4月 - 2026年2月 在学中
-                </Typography>
-              </Box>
-            </Stack>
-          </Box>
-
-          <Divider sx={{ mb: 4, borderColor: 'secondary.main' }} />
-
-          {/* 興味分野 */}
-          <Box sx={{ mb: 4 }}>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 'bold',
-                color: 'primary.main',
-                mb: 2,
-              }}
-            >
-              Interests
-            </Typography>
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-              {[
-                'Backend Development',
-                'Golang',
-                'REST API',
-                'DDD (Domain-Driven Design)',
-                'Microservices',
-                'Docker',
-                'PostgreSQL',
-                'AWS',
-                'Next.js',
-                'TypeScript',
-              ].map((interest) => (
-                <Chip
-                  key={interest}
-                  label={interest}
-                  sx={{
-                    bgcolor: 'secondary.main',
-                    color: 'text.primary',
-                    fontWeight: 'bold',
-                    '&:hover': {
-                      bgcolor: 'primary.main',
-                      color: 'white',
-                    },
-                  }}
-                />
-              ))}
-            </Box>
-          </Box>
-
-          <Divider sx={{ mb: 4, borderColor: 'secondary.main' }} />
-
-          {/* SNS Links */}
-          <Box>
-            <Typography
-              variant="h5"
-              sx={{
-                fontWeight: 'bold',
-                color: 'primary.main',
-                mb: 2,
-              }}
-            >
-              Connect With Me
-            </Typography>
-            <Stack direction="row" spacing={2} flexWrap="wrap">
-              <Link
-                href="https://github.com/nishi240masa"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  color: 'text.primary',
-                  textDecoration: 'none',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                <GitHubIcon />
-                <Typography variant="body1">GitHub</Typography>
-              </Link>
-              <Link
-                href="https://x.com/westM27"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  color: 'text.primary',
-                  textDecoration: 'none',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                <TwitterIcon />
-                <Typography variant="body1">Twitter / X</Typography>
-              </Link>
-              <Link
-                href="mailto:nishi240masa@gmail.com"
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 1,
-                  color: 'text.primary',
-                  textDecoration: 'none',
-                  '&:hover': { color: 'primary.main' },
-                }}
-              >
-                <EmailIcon />
-                <Typography variant="body1">Email</Typography>
-              </Link>
-            </Stack>
-          </Box>
-        </Paper>
-      </Box>
-    </Container>
+            意味のある人生を。
+          </Tategaki>
+        </div>
+      </div>
+    </section>
   );
 }

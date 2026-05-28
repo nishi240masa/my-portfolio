@@ -1,50 +1,81 @@
 'use client';
 
-import { Box, CircularProgress, Typography, Grid2 } from '@mui/material';
+import { useMemo, useState } from 'react';
 import { useAtom } from 'jotai';
 import ProductionCard from './ProductionCard';
 import { postsAtomLoadable } from '@/store/postAtom';
+import { LoadingDots, EmptyState, ErrorState } from '@/app/_components/design/States';
 
 /**
- * Production一覧ページのロジックコンポーネント
- * データ取得・状態管理を担当し、ProductionCard に描画を委譲する
+ * Production 一覧のロジックコンポーネント
+ * データ取得・タグフィルタ・状態管理を担当し、ProductionCard に描画を委譲する
  */
 export default function ProductionList() {
   const [articles] = useAtom(postsAtomLoadable);
+  const [filter, setFilter] = useState('ALL');
 
-  // ローディング中
+  const allTags = useMemo(() => {
+    if (articles.state !== 'hasData') return [];
+    return Array.from(new Set(articles.data.flatMap((p) => p.tags)));
+  }, [articles]);
+
   if (articles.state === 'loading') {
-    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', py: 8 }}>
-        <CircularProgress color="primary" />
-      </Box>
-    );
+    return <LoadingDots />;
   }
 
-  // エラー発生
   if (articles.state === 'hasError') {
-    return (
-      <Box sx={{ textAlign: 'center', py: 8 }}>
-        <Typography color="error" variant="h6">
-          データの取得に失敗しました。しばらくしてからもう一度お試しください。
-        </Typography>
-      </Box>
-    );
+    return <ErrorState message="データの取得に失敗しました。しばらくしてからもう一度お試しください。" />;
   }
+
+  const filtered = filter === 'ALL' ? articles.data : articles.data.filter((p) => p.tags.includes(filter));
 
   return (
-    <Grid2
-      container
-      spacing={3}
-      sx={{
-        alignItems: 'stretch',
-      }}
-    >
-      {articles.data.map((data) => (
-        <Grid2 key={data.id} size={{ md: 4, sm: 6, xs: 12 }} sx={{ display: 'flex', justifyContent: 'center' }}>
-          <ProductionCard data={data} />
-        </Grid2>
-      ))}
-    </Grid2>
+    <>
+      {/* フィルタバー */}
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: 8,
+          marginBottom: 40,
+          paddingBottom: 24,
+          borderBottom: '1px solid var(--hairline)',
+          alignItems: 'center',
+        }}
+      >
+        <span className="t-eyebrow" style={{ marginRight: 8 }}>
+          FILTER ·
+        </span>
+        <button
+          type="button"
+          onClick={() => setFilter('ALL')}
+          className={'tag' + (filter === 'ALL' ? ' solid' : '')}
+          style={{ cursor: 'pointer', border: filter === 'ALL' ? '1px solid var(--primary)' : undefined }}
+        >
+          ALL · 全て
+        </button>
+        {allTags.map((t) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => setFilter(t)}
+            className={'tag' + (filter === t ? ' solid' : '')}
+            style={{ cursor: 'pointer', border: filter === t ? '1px solid var(--primary)' : undefined }}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {filtered.length === 0 ? (
+        <EmptyState title="該当する作品がありません" subtitle="Try another filter." />
+      ) : (
+        <div className="production-grid">
+          {filtered.map((data, i) => (
+            <ProductionCard key={data.id} data={data} index={i} />
+          ))}
+        </div>
+      )}
+    </>
   );
 }

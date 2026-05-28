@@ -1,108 +1,55 @@
-import { Card, CardActionArea, CardContent, Typography, Box } from '@mui/material';
 import Link from 'next/link';
-import Image from 'next/image';
 import { type Post } from '@/types/post';
+import { ImagePlaceholder } from '@/app/_components/design/Placeholders';
+import TagList from '@/app/_components/design/Tags';
 
 interface Props {
   data: Post;
+  index: number;
 }
 
-export default function ProductionCard({ data }: Props) {
+export default function ProductionCard({ data, index }: Props) {
   return (
-    <Card
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        height: '100%',
-        width: '100%',
-        borderRadius: 4,
-        boxShadow: '0 4px 8px rgba(0,0,0,0.2)',
-        overflow: 'hidden',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-        '&:hover': {
-          transform: 'scale(1.03)',
-          boxShadow: '0 8px 16px rgba(0,0,0,0.3)',
-        },
+    <Link
+      href={`/production/${data.id}`}
+      className="card"
+      style={{
+        textDecoration: 'none',
+        background: 'var(--bg-elev)',
+        color: 'inherit',
+        display: 'block',
+        animation: `fadeIn .6s ${index * 0.06}s both`,
       }}
     >
-      <CardActionArea
-        component={Link}
-        href={`/production/${data.id}`}
-        sx={{ flexGrow: 1 }}
-      >
-        {/* 画像 */}
-        <Box sx={{ position: 'relative', width: '100%', height: 180 }}>
-          <Image
-            alt={data.title}
-            src={data.image}
-            fill
-            style={{ objectFit: 'cover' }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </Box>
-
-        {/* コンテンツ */}
-        <CardContent>
-          {/* タイトル */}
-          <Typography
-            component="div"
-            sx={{
-              fontWeight: 'bold',
-              mb: 1,
-              whiteSpace: 'nowrap',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-            }}
-            variant="h6"
-          >
-            {data.title}
-          </Typography>
-
-          {/* タグ */}
-          <Box
-            sx={{
-              display: 'flex',
-              gap: 1,
-              flexWrap: 'wrap',
-              mb: 1,
-            }}
-          >
-            {data.tags.map((tag) => (
-              <Typography
-                key={tag}
-                sx={{
-                  fontSize: '0.75rem',
-                  color: 'text.secondary',
-                }}
-                variant="caption"
-              >
-                {tag}
-              </Typography>
-            ))}
-          </Box>
-        </CardContent>
-      </CardActionArea>
-
-      {/* 日付 */}
-      <Box
-        sx={{
-          backgroundColor: '#f4f4f4',
-          textAlign: 'center',
-          padding: '8px',
-          borderTop: '1px solid #ddd',
-        }}
-      >
-        <Typography
-          sx={{
-            fontSize: '0.75rem',
-            color: 'text.secondary',
+      <div style={{ position: 'relative' }}>
+        <ImagePlaceholder label={`PROJECT IMAGE · ${data.title}`} ratio="16/10" src={data.image} />
+        <span
+          className="t-meta"
+          style={{
+            position: 'absolute',
+            bottom: 12,
+            left: 12,
+            background: 'color-mix(in oklab, var(--bg-elev) 92%, transparent)',
+            padding: '4px 10px',
           }}
-          variant="caption"
         >
           {data.date}
-        </Typography>
-      </Box>
-    </Card>
+        </span>
+      </div>
+      <div style={{ padding: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 4 }}>
+          <h3 className="t-h3" style={{ fontSize: 22 }}>
+            {data.title}
+          </h3>
+          <span className="t-meta" style={{ fontSize: 10 }}>
+            NO.{String(index + 1).padStart(2, '0')}
+          </span>
+        </div>
+        <div className="t-body" style={{ fontSize: 13, color: 'var(--fg-muted)', marginBottom: 16, minHeight: 36 }}>
+          {data.description}
+        </div>
+        <TagList tags={data.tags.slice(0, 4)} />
+      </div>
+    </Link>
   );
 }
