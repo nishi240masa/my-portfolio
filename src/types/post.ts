@@ -2,7 +2,7 @@
 export interface Post {
   id: number;
   title: string;
-  image: string;
+  image?: string;
   description: string;
   date: string;
   tags: string[];
@@ -12,7 +12,7 @@ export interface Post {
 export interface PostPage {
   id: number;
   title: string;
-  image: string;
+  image?: string;
   peopleNum: number;
   role: string;
   period: string;

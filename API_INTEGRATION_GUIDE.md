@@ -270,7 +270,7 @@ NEXT_PUBLIC_API_RETRY_COUNT=3
       {
         "id": 1,
         "title": "MD2S",
-        "image": "https://production.w3st.net/image/md2s.png",
+        "image": "https://production.w3st.net/MD2S.jpeg",
         "description": "記事投稿・スライド変換サイト",
         "date": "2024-10-01T00:00:00Z",
         "tags": ["Golang", "PostgreSQL", "Docker"],
@@ -300,7 +300,7 @@ NEXT_PUBLIC_API_RETRY_COUNT=3
     "post": {
       "id": 1,
       "title": "MD2S",
-      "image": "https://production.w3st.net/image/md2s.png",
+      "image": "https://production.w3st.net/MD2S.jpeg",
       "description": "記事投稿・スライド変換サイト",
       "date": "2024-10-01T00:00:00Z",
       "tags": ["Golang", "PostgreSQL", "Docker"],
