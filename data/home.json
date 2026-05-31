@@ -1,0 +1,21 @@
+{
+  "nameJp": "西尾 匡生",
+  "nameEn": "NISHIO MASAKI",
+  "portraitSrc": "/my_home.jpg",
+  "heroLeft": "未来のある\n開発を、",
+  "heroRight": "意味のある\n人生を。",
+  "metaLines": [
+    "SOFTWARE ENGINEER · BACKEND",
+    "愛知工業大学 情報科学部 · Aichi Institute of Technology"
+  ],
+  "ctaLabel": "作品を見る · View Works",
+  "ctaHref": "/production",
+  "mottoEyebrow": "MOTTO · 信条",
+  "mottoTitle": "手に馴染む、\n意味のあるもの。",
+  "mottoBody": "愛知工業大学で情報科学を学ぶ学生エンジニア。Go と REST、DDD を軸に、フロントエンドからインフラまで、ひとつのプロダクトを通して仕立てるのが好きです。誠実な設計と、静かな佇まいのコードを心がけています。",
+  "indexItems": [
+    { "href": "/production", "n": "壱", "en": "Production", "jp": "作品集", "desc": "GoとReact、IoTで形にしたもの。" },
+    { "href": "/profile", "n": "弐", "en": "Profile", "jp": "人物像", "desc": "歩いてきた道と、関心の在り処。" },
+    { "href": "/skill", "n": "参", "en": "Skill", "jp": "技能", "desc": "段位で示す、現在地。" }
+  ]
+}

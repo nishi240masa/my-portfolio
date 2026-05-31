@@ -1,18 +1,6 @@
 import SectionHeader, { SubSection } from '@/app/_components/design/SectionHeader';
 import { EmptyState } from '@/app/_components/design/States';
-
-interface Skill {
-  name: string;
-  level: number;
-  years: string;
-  note?: string;
-}
-
-interface SkillCategory {
-  kanji: string;
-  en: string;
-  items: Skill[];
-}
+import type { SkillCategory, SkillItem, SkillsContent } from '@/types/skill';
 
 const RANK_LABELS = ['無段', '初段', '弐段', '参段', '四段', '五段', '皆伝'];
 
@@ -20,58 +8,6 @@ function rankFor(level: number): number {
   return Math.min(6, Math.max(0, Math.round((level / 100) * 6)));
 }
 
-const SKILLS: SkillCategory[] = [
-  {
-    kanji: '後',
-    en: 'Backend Development',
-    items: [
-      { name: 'Golang', level: 85, years: '2年', note: 'Echo / Gin / GORM' },
-      { name: 'REST API Design', level: 80, years: '2年', note: 'OpenAPI / バージョニング' },
-      { name: 'DDD', level: 75, years: '1年', note: '戦術的設計 / 集約境界' },
-      { name: 'Microservices', level: 70, years: '1年' },
-      { name: 'gRPC', level: 65, years: '1年' },
-    ],
-  },
-  {
-    kanji: '前',
-    en: 'Frontend Development',
-    items: [
-      { name: 'TypeScript', level: 80, years: '2年', note: '型設計 / Generics' },
-      { name: 'Next.js', level: 75, years: '1.5年', note: 'App Router / RSC' },
-      { name: 'React', level: 75, years: '2年', note: 'Hooks / Context' },
-      { name: 'Material-UI', level: 70, years: '1年', note: 'v6 / Emotion' },
-      { name: 'CSS / SCSS', level: 70, years: '2年' },
-    ],
-  },
-  {
-    kanji: '蔵',
-    en: 'Database & Storage',
-    items: [
-      { name: 'PostgreSQL', level: 80, years: '2年', note: '正規化 / Index 設計' },
-      { name: 'MySQL', level: 70, years: '1.5年' },
-      { name: 'Redis', level: 65, years: '1年', note: 'キャッシュ' },
-      { name: 'SQL Design', level: 75, years: '2年' },
-    ],
-  },
-  {
-    kanji: '基',
-    en: 'Infrastructure & DevOps',
-    items: [
-      { name: 'Docker', level: 80, years: '2年', note: 'Compose / マルチステージ' },
-      { name: 'AWS (EC2, RDS, S3)', level: 70, years: '1年' },
-      { name: 'GitHub Actions', level: 70, years: '1年', note: 'CI/CD 自動化' },
-      { name: 'Linux', level: 75, years: '2年' },
-      { name: 'Nginx', level: 65, years: '1年' },
-    ],
-  },
-];
-
-const TOOLS = ['Git', 'GitHub', 'VS Code', 'Postman', 'Figma', 'Notion', 'Slack', 'Jira'];
-
-// 確定している資格のみ掲載（現状なし）
-const CERTS: { name: string; year: string; org: string }[] = [];
-
-/** 段位インジケータ（六段階） */
 function DanIndicator({ level }: { level: number }) {
   const rank = rankFor(level);
   return (
@@ -101,7 +37,7 @@ function DanIndicator({ level }: { level: number }) {
   );
 }
 
-function SkillRow({ skill, index }: { skill: Skill; index: number }) {
+function SkillRow({ skill, index }: { skill: SkillItem; index: number }) {
   const rank = rankFor(skill.level);
   return (
     <div className="skill-row" style={{ animation: `fadeIn .6s ${0.04 * index}s both` }}>
@@ -152,26 +88,25 @@ function SkillCategoryBlock({ category }: { category: SkillCategory }) {
   );
 }
 
-export default function SkillPage() {
+export default function SkillView({ data }: { data: SkillsContent }) {
   return (
     <section className="page-enter container" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <SectionHeader eyebrow="SKILL · 技能" title="現在地、段位として。" kanji="技" />
 
       <div className="t-meta" style={{ marginBottom: 24, opacity: 0.7 }}>
-        習熟度は段位（初段〜皆伝）で表現しています。年数は実務・趣味の合計。
+        {data.intro}
       </div>
 
       <div style={{ display: 'grid', gap: 56 }}>
-        {SKILLS.map((category) => (
+        {data.categories.map((category) => (
           <SkillCategoryBlock key={category.en} category={category} />
         ))}
       </div>
 
-      {/* Tools */}
       <div style={{ marginTop: 96 }}>
         <SubSection eyebrow="TOOLS & SOFTWARE · 道具" title="日々の道具" />
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          {TOOLS.map((t) => (
+          {data.tools.map((t) => (
             <span key={t} className="tag" style={{ fontSize: 12, padding: '6px 14px', fontFamily: 'var(--font-mincho)' }}>
               {t}
             </span>
@@ -179,10 +114,9 @@ export default function SkillPage() {
         </div>
       </div>
 
-      {/* Certifications */}
       <div style={{ marginTop: 80 }}>
         <SubSection eyebrow="CERTIFICATIONS · 資格" title="記録のあるもの" />
-        {CERTS.length === 0 ? (
+        {data.certifications.length === 0 ? (
           <EmptyState title="記載できる資格はまだありません" subtitle="No certifications yet." />
         ) : (
           <div
@@ -192,7 +126,7 @@ export default function SkillPage() {
               border: '1px solid var(--hairline)',
             }}
           >
-            {CERTS.map((c, i) => (
+            {data.certifications.map((c, i) => (
               <div
                 key={c.name}
                 style={{

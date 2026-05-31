@@ -1,37 +1,25 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { useAtom } from 'jotai';
 import ProductionCard from './ProductionCard';
-import { postsAtomLoadable } from '@/store/postAtom';
-import { LoadingDots, EmptyState, ErrorState } from '@/app/_components/design/States';
+import { EmptyState } from '@/app/_components/design/States';
+import type { Post } from '@/types/post';
 
 /**
  * Production 一覧のロジックコンポーネント
- * データ取得・タグフィルタ・状態管理を担当し、ProductionCard に描画を委譲する
+ * データは親の Server Component から props で受け取る
  */
-export default function ProductionList() {
-  const [articles] = useAtom(postsAtomLoadable);
+export default function ProductionList({ data }: { data: Post[] }) {
   const [filter, setFilter] = useState('ALL');
 
   const allTags = useMemo(() => {
-    if (articles.state !== 'hasData') return [];
-    return Array.from(new Set(articles.data.flatMap((p) => p.tags)));
-  }, [articles]);
+    return Array.from(new Set(data.flatMap((p) => p.tags)));
+  }, [data]);
 
-  if (articles.state === 'loading') {
-    return <LoadingDots />;
-  }
-
-  if (articles.state === 'hasError') {
-    return <ErrorState message="データの取得に失敗しました。しばらくしてからもう一度お試しください。" />;
-  }
-
-  const filtered = filter === 'ALL' ? articles.data : articles.data.filter((p) => p.tags.includes(filter));
+  const filtered = filter === 'ALL' ? data : data.filter((p) => p.tags.includes(filter));
 
   return (
     <>
-      {/* フィルタバー */}
       <div
         style={{
           display: 'flex',

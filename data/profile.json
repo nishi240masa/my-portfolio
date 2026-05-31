@@ -1,0 +1,45 @@
+{
+  "nameJp": "西尾 匡生",
+  "nameEn": "MASAKI NISHIO",
+  "nickname": "にっしー",
+  "portraitSrc": "/my_home.jpg",
+  "headline": "つくることで、世界の解像度を上げたい。",
+  "bioParagraphs": [
+    "愛知工業大学 情報科学部 コンピュータシステム専攻に在籍中のソフトウェアエンジニアです。バックエンド開発を中心に、フロントエンドからインフラまで幅広く携わっています。",
+    "特に Golang を用いたマイクロサービスアーキテクチャや REST API 設計、ドメイン駆動設計（DDD）といった「構造を整える」ことに関心があります。",
+    "余白のあるコードと、誠実な設計を心がけています。「未来のある開発を、意味のある人生を。」 — それが、書くことの軸です。"
+  ],
+  "education": [
+    {
+      "year": "2023.04 — 2026.02",
+      "label": "愛知工業大学 情報科学部 コンピュータシステム専攻",
+      "note": "Software Engineering / 在学中"
+    }
+  ],
+  "experience": [
+    {
+      "year": "—",
+      "label": "近日追記予定",
+      "note": "Coming soon"
+    }
+  ],
+  "interests": [
+    "Backend Development",
+    "Golang",
+    "REST API",
+    "DDD (Domain-Driven Design)",
+    "Microservices",
+    "Docker",
+    "PostgreSQL",
+    "AWS",
+    "Next.js",
+    "TypeScript"
+  ],
+  "sns": [
+    { "label": "GitHub", "handle": "@nishi240masa", "url": "https://github.com/nishi240masa" },
+    { "label": "X", "handle": "@westM27", "url": "https://x.com/westM27" },
+    { "label": "Email", "handle": "nishi240masa@gmail.com", "url": "mailto:nishi240masa@gmail.com" }
+  ],
+  "closingLeft": "未来のある開発を、",
+  "closingRight": "意味のある人生を。"
+}

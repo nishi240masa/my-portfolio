@@ -1,8 +1,10 @@
-import ProfilePage from './_components/ProfilePage';
+import ProfileView from './_components/ProfileView';
+import { profileRepo } from '@/lib/repositories';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
-export default function Page() {
-  return <ProfilePage />;
+export default async function Page() {
+  const data = await profileRepo.get();
+  return <ProfileView data={data} />;
 }
-

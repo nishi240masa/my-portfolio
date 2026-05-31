@@ -1,0 +1,50 @@
+{
+  "intro": "習熟度は段位（初段〜皆伝）で表現しています。年数は実務・趣味の合計。",
+  "categories": [
+    {
+      "kanji": "後",
+      "en": "Backend Development",
+      "items": [
+        { "name": "Golang", "level": 85, "years": "2年", "note": "Echo / Gin / GORM" },
+        { "name": "REST API Design", "level": 80, "years": "2年", "note": "OpenAPI / バージョニング" },
+        { "name": "DDD", "level": 75, "years": "1年", "note": "戦術的設計 / 集約境界" },
+        { "name": "Microservices", "level": 70, "years": "1年" },
+        { "name": "gRPC", "level": 65, "years": "1年" }
+      ]
+    },
+    {
+      "kanji": "前",
+      "en": "Frontend Development",
+      "items": [
+        { "name": "TypeScript", "level": 80, "years": "2年", "note": "型設計 / Generics" },
+        { "name": "Next.js", "level": 75, "years": "1.5年", "note": "App Router / RSC" },
+        { "name": "React", "level": 75, "years": "2年", "note": "Hooks / Context" },
+        { "name": "Material-UI", "level": 70, "years": "1年", "note": "v6 / Emotion" },
+        { "name": "CSS / SCSS", "level": 70, "years": "2年" }
+      ]
+    },
+    {
+      "kanji": "蔵",
+      "en": "Database & Storage",
+      "items": [
+        { "name": "PostgreSQL", "level": 80, "years": "2年", "note": "正規化 / Index 設計" },
+        { "name": "MySQL", "level": 70, "years": "1.5年" },
+        { "name": "Redis", "level": 65, "years": "1年", "note": "キャッシュ" },
+        { "name": "SQL Design", "level": 75, "years": "2年" }
+      ]
+    },
+    {
+      "kanji": "基",
+      "en": "Infrastructure & DevOps",
+      "items": [
+        { "name": "Docker", "level": 80, "years": "2年", "note": "Compose / マルチステージ" },
+        { "name": "AWS (EC2, RDS, S3)", "level": 70, "years": "1年" },
+        { "name": "GitHub Actions", "level": 70, "years": "1年", "note": "CI/CD 自動化" },
+        { "name": "Linux", "level": 75, "years": "2年" },
+        { "name": "Nginx", "level": 65, "years": "1年" }
+      ]
+    }
+  ],
+  "tools": ["Git", "GitHub", "VS Code", "Postman", "Figma", "Notion", "Slack", "Jira"],
+  "certifications": []
+}

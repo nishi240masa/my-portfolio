@@ -1,8 +1,10 @@
-import SkillPage from './_components/SkillPage';
+import SkillView from './_components/SkillView';
+import { skillsRepo } from '@/lib/repositories';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
-export default function Page() {
-  return <SkillPage />;
+export default async function Page() {
+  const data = await skillsRepo.get();
+  return <SkillView data={data} />;
 }
-

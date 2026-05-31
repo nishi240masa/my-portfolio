@@ -3,26 +3,30 @@ import SectionHeader from '@/app/_components/design/SectionHeader';
 import Tategaki from '@/app/_components/design/Tategaki';
 import { PortraitPlaceholder } from '@/app/_components/design/Placeholders';
 import { AsanohaMedallion, HempLeafMark, Rakkan } from '@/app/_components/design/Wagara';
+import type { HomeContent } from '@/types/home';
 
-const INDEX_ITEMS = [
-  { href: '/production', n: '壱', en: 'Production', jp: '作品集', desc: 'GoとReact、IoTで形にしたもの。' },
-  { href: '/profile', n: '弐', en: 'Profile', jp: '人物像', desc: '歩いてきた道と、関心の在り処。' },
-  { href: '/skill', n: '参', en: 'Skill', jp: '技能', desc: '段位で示す、現在地。' },
-];
+function renderMultiline(text: string) {
+  const lines = text.split('\n');
+  return lines.map((line, i) => (
+    <span key={i}>
+      {line}
+      {i < lines.length - 1 ? <br /> : null}
+    </span>
+  ));
+}
 
-export default function HomePage() {
+export default function HomeView({ data }: { data: HomeContent }) {
   return (
     <section className="page-enter" style={{ paddingTop: 0 }}>
-      {/* ===== Hero（保守 静）===== */}
+      {/* ===== Hero ===== */}
       <div className="container" style={{ position: 'relative', paddingTop: 80, paddingBottom: 80 }}>
         <div style={{ position: 'absolute', top: 80, right: -40, pointerEvents: 'none' }}>
           <AsanohaMedallion size={360} color="var(--primary)" opacity={0.1} strokeWidth={0.5} />
         </div>
 
         <div className="hero-grid">
-          {/* 左 — 顔写真 */}
           <div style={{ position: 'relative' }}>
-            <PortraitPlaceholder size={360} label="PORTRAIT · 顔写真" src="/my_home.jpg" />
+            <PortraitPlaceholder size={360} label="PORTRAIT · 顔写真" src={data.portraitSrc} />
             <div
               style={{
                 position: 'absolute',
@@ -38,20 +42,18 @@ export default function HomePage() {
             >
               <Rakkan size={30} fontSize={13} />
               <div>
-                <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 14, letterSpacing: '0.1em' }}>西尾 匡生</div>
+                <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 14, letterSpacing: '0.1em' }}>{data.nameJp}</div>
                 <div className="t-meta" style={{ marginTop: 2 }}>
-                  NISHIO MASAKI
+                  {data.nameEn}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* 中央 — 縦の罫線 */}
           <div className="hero-vline" style={{ alignSelf: 'stretch', display: 'flex', justifyContent: 'center' }}>
             <hr className="sumi-line vert" />
           </div>
 
-          {/* 右 — 縦書きキャッチ */}
           <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 20, minHeight: 420 }}>
             <Tategaki
               style={{
@@ -62,9 +64,7 @@ export default function HomePage() {
                 color: 'var(--fg)',
               }}
             >
-              未来のある
-              <br />
-              開発を、
+              {renderMultiline(data.heroLeft)}
             </Tategaki>
             <Tategaki
               style={{
@@ -76,40 +76,38 @@ export default function HomePage() {
                 marginTop: 60,
               }}
             >
-              意味のある
-              <br />
-              人生を。
+              {renderMultiline(data.heroRight)}
             </Tategaki>
           </div>
         </div>
 
         <div className="hero-meta-row">
           <div className="t-meta" style={{ maxWidth: 360 }}>
-            SOFTWARE ENGINEER · BACKEND
-            <br />
-            愛知工業大学 情報科学部 · Aichi Institute of Technology
+            {data.metaLines.map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < data.metaLines.length - 1 ? <br /> : null}
+              </span>
+            ))}
           </div>
-          <Link href="/production" className="btn btn-primary">
-            作品を見る · View Works <span style={{ opacity: 0.7 }}>→</span>
+          <Link href={data.ctaHref} className="btn btn-primary">
+            {data.ctaLabel} <span style={{ opacity: 0.7 }}>→</span>
           </Link>
         </div>
       </div>
 
-      {/* ===== Motto / About teaser ===== */}
+      {/* ===== Motto ===== */}
       <div className="container motto-grid" style={{ marginTop: 120, marginBottom: 80 }}>
         <div>
           <div className="t-eyebrow" style={{ marginBottom: 12 }}>
-            MOTTO · 信条
+            {data.mottoEyebrow}
           </div>
           <h2 className="t-h2" style={{ marginBottom: 16 }}>
-            手に馴染む、
-            <br />
-            意味のあるもの。
+            {renderMultiline(data.mottoTitle)}
           </h2>
         </div>
         <div className="t-body" style={{ color: 'var(--fg)', maxWidth: 600, textWrap: 'pretty' }}>
-          愛知工業大学で情報科学を学ぶ学生エンジニア。Go と REST、DDD を軸に、フロントエンドからインフラまで、
-          ひとつのプロダクトを通して仕立てるのが好きです。誠実な設計と、静かな佇まいのコードを心がけています。
+          {data.mottoBody}
           <div style={{ marginTop: 24, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
             <Link href="/profile" className="btn">
               詳しく見る <span style={{ opacity: 0.5 }}>→</span>
@@ -125,7 +123,7 @@ export default function HomePage() {
       <div className="container" style={{ marginTop: 120 }}>
         <SectionHeader eyebrow="INDEX · 目次" title="Sections" kanji="目" />
         <div className="index-grid">
-          {INDEX_ITEMS.map((item) => (
+          {data.indexItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}

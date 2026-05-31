@@ -1,8 +1,10 @@
-import HomePage from './_components/HomePage';
+import HomeView from './_components/HomeView';
+import { homeRepo } from '@/lib/repositories';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
-export default function Page() {
-  return <HomePage />;
+export default async function Page() {
+  const data = await homeRepo.get();
+  return <HomeView data={data} />;
 }
-
