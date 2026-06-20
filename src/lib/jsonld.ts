@@ -7,6 +7,22 @@
 import type { Profile } from '@/types/profile';
 import type { PostPage } from '@/types/post';
 
+/**
+ * JSON-LD オブジェクトを `<script type="application/ld+json">` の中身として
+ * 安全に文字列化する。
+ *
+ * `JSON.stringify` 単独では `</script>` を含む文字列値を埋め込まれた場合に
+ * script タグを破壊して XSS の温床になる。`<`/`>`/`&` を Unicode エスケープ
+ * しておけば、JSON としての意味は維持されたまま HTML パーサに対しては
+ * 安全な表現になる。
+ */
+export function serializeJsonLd(obj: object): string {
+  return JSON.stringify(obj)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026');
+}
+
 // SITE_URL は環境変数 NEXT_PUBLIC_SITE_URL から取得する。
 // production では未設定を許容しない（明示的に絶対URLを与える必要がある）が、
 // import 時点で throw すると _not-found 等のエラーページのビルドまで巻き込むため、

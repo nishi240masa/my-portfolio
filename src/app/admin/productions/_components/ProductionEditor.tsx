@@ -3,7 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useActionState, useEffect, useState } from 'react';
 import dynamicImport from 'next/dynamic';
-import type { PostPage } from '@/types/post';
+import type { CSSProperties } from 'react';
+import type { CaseStudy, CaseStudyLink, CaseStudyMetric, PostPage } from '@/types/post';
 import {
   Field,
   FieldErrors,
@@ -39,6 +40,21 @@ function emptyForm(): FormState {
     period: '',
     technologys: [],
     content: '',
+    // caseStudy は optional — 既定は未定義（バッジが「ノート」になる）
+  };
+}
+
+function emptyCaseStudy(): CaseStudy {
+  return {
+    role: '',
+    period: '',
+    teamSize: undefined,
+    stack: [],
+    problem: '',
+    approach: '',
+    result: '',
+    metrics: [],
+    links: [],
   };
 }
 
@@ -64,6 +80,27 @@ export default function ProductionEditor({
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
+  }
+
+  // caseStudy 内のフィールドを部分更新する
+  function updateCS<K extends keyof CaseStudy>(key: K, value: CaseStudy[K]) {
+    setForm((prev) => {
+      const base = prev.caseStudy ?? emptyCaseStudy();
+      return { ...prev, caseStudy: { ...base, [key]: value } };
+    });
+  }
+
+  function enableCaseStudy() {
+    setForm((prev) => ({ ...prev, caseStudy: prev.caseStudy ?? emptyCaseStudy() }));
+  }
+
+  function disableCaseStudy() {
+    if (!confirm('ケーススタディ定義を削除します。よろしいですか？')) return;
+    setForm((prev) => {
+      const { caseStudy: _drop, ...rest } = prev;
+      void _drop;
+      return rest;
+    });
   }
 
   // 保存成功時のナビゲーション:
@@ -149,12 +186,33 @@ export default function ProductionEditor({
             <Field label="本文（Markdown）" hint="GFM + 数式 (KaTeX) 対応">
               <TextArea value={form.content} onChange={(v) => update('content', v)} rows={20} monospace />
             </Field>
+
+            <CaseStudySection
+              caseStudy={form.caseStudy}
+              onEnable={enableCaseStudy}
+              onDisable={disableCaseStudy}
+              onUpdate={updateCS}
+            />
           </div>
         }
         preview={
           <article style={{ padding: 24 }}>
-            <div className="t-eyebrow" style={{ marginBottom: 12 }}>
-              {form.date} · WORK
+            <div className="t-eyebrow" style={{ marginBottom: 12, display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+              <span>{form.date} · WORK</span>
+              <span
+                style={{
+                  display: 'inline-block',
+                  padding: '2px 8px',
+                  fontSize: 10,
+                  letterSpacing: '0.12em',
+                  fontFamily: 'var(--font-mincho)',
+                  border: '1px solid var(--hairline-strong)',
+                  background: form.caseStudy ? 'var(--fg)' : 'transparent',
+                  color: form.caseStudy ? 'var(--bg)' : 'var(--fg-muted)',
+                }}
+              >
+                {form.caseStudy ? 'ケーススタディ' : 'ノート'}
+              </span>
             </div>
             <h1 style={{ fontFamily: 'var(--font-mincho)', fontSize: 32, marginBottom: 12 }}>{form.title || '（タイトル未設定）'}</h1>
             <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 16, color: 'var(--fg-muted)', marginBottom: 16 }}>
@@ -192,3 +250,267 @@ export default function ProductionEditor({
     </form>
   );
 }
+
+// ケーススタディセクション
+// <details>/<summary> で折り畳み可能。Editor 本体から分離しておくことで
+// 折り畳みの開閉状態（DOM 側で保持）と form state を独立させる。
+function CaseStudySection({
+  caseStudy,
+  onEnable,
+  onDisable,
+  onUpdate,
+}: {
+  caseStudy: CaseStudy | undefined;
+  onEnable: () => void;
+  onDisable: () => void;
+  onUpdate: <K extends keyof CaseStudy>(key: K, value: CaseStudy[K]) => void;
+}) {
+  return (
+    <details
+      open={caseStudy != null}
+      style={{
+        marginTop: 24,
+        padding: 0,
+        border: '1px solid var(--hairline)',
+        background: 'var(--bg-elev)',
+      }}
+    >
+      <summary
+        style={{
+          padding: '10px 14px',
+          fontFamily: 'var(--font-mincho)',
+          fontSize: 13,
+          cursor: 'pointer',
+          listStyle: 'revert',
+          background: 'var(--bg)',
+          borderBottom: caseStudy != null ? '1px solid var(--hairline)' : 'none',
+        }}
+      >
+        ケーススタディ {caseStudy != null ? '(有効)' : '(未設定)'}
+      </summary>
+      <div style={{ padding: 16 }}>
+        {caseStudy == null ? (
+          <div>
+            <div style={{ fontSize: 12, color: 'var(--fg-muted)', marginBottom: 12, lineHeight: 1.6 }}>
+              役割・問・工・果・指標・参照リンクを定義すると、詳細ページに「ケーススタディ」として
+              表示されます。最低限 role / problem / result の入力が必要です。
+            </div>
+            <button
+              type="button"
+              onClick={onEnable}
+              style={addBtnPrimary}
+            >
+              + ケーススタディを有効化
+            </button>
+          </div>
+        ) : (
+          <CaseStudyFields cs={caseStudy} onUpdate={onUpdate} onDisable={onDisable} />
+        )}
+      </div>
+    </details>
+  );
+}
+
+function CaseStudyFields({
+  cs,
+  onUpdate,
+  onDisable,
+}: {
+  cs: CaseStudy;
+  onUpdate: <K extends keyof CaseStudy>(key: K, value: CaseStudy[K]) => void;
+  onDisable: () => void;
+}) {
+  return (
+    <div>
+      <Field label="役割 (role) ※必須">
+        <TextInput value={cs.role} onChange={(v) => onUpdate('role', v)} placeholder="フルスタック / 設計" />
+      </Field>
+      <Field label="期間 (period)">
+        <TextInput value={cs.period} onChange={(v) => onUpdate('period', v)} placeholder="2024-04 〜 2024-06" />
+      </Field>
+      <Field label="チーム規模 (teamSize)" hint="任意。個人開発なら空欄でも可">
+        <TextInput
+          value={cs.teamSize ?? ''}
+          onChange={(v) => onUpdate('teamSize', v === '' ? undefined : v)}
+          placeholder="3名"
+        />
+      </Field>
+      <Field label="スタック (stack)">
+        <StringListEditor value={cs.stack} onChange={(v) => onUpdate('stack', v)} placeholder="Next.js" />
+      </Field>
+      <Field label="問 · 問題 (problem) ※必須" hint="解決すべき課題・前提">
+        <TextArea value={cs.problem} onChange={(v) => onUpdate('problem', v)} rows={4} />
+      </Field>
+      <Field label="工 · アプローチ (approach)" hint="どう設計・実装したか">
+        <TextArea value={cs.approach} onChange={(v) => onUpdate('approach', v)} rows={4} />
+      </Field>
+      <Field label="果 · 結果 (result) ※必須" hint="得られた成果・学び">
+        <TextArea value={cs.result} onChange={(v) => onUpdate('result', v)} rows={4} />
+      </Field>
+
+      <Field label="定量指標 (metrics)" hint="label / value のペア">
+        <MetricsEditor
+          value={cs.metrics}
+          onChange={(v) => onUpdate('metrics', v)}
+        />
+      </Field>
+      <Field label="参照リンク (links)" hint="label / url (URL は http/https)">
+        <LinksEditor
+          value={cs.links}
+          onChange={(v) => onUpdate('links', v)}
+        />
+      </Field>
+
+      <div style={{ marginTop: 16, paddingTop: 16, borderTop: '1px dashed var(--hairline)' }}>
+        <button type="button" onClick={onDisable} style={dangerBtn}>
+          ケーススタディを削除
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function MetricsEditor({
+  value,
+  onChange,
+}: {
+  value: CaseStudyMetric[];
+  onChange: (v: CaseStudyMetric[]) => void;
+}) {
+  return (
+    <div>
+      {value.map((m, i) => (
+        <div
+          key={i}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 6, marginBottom: 6 }}
+        >
+          <input
+            type="text"
+            value={m.label}
+            placeholder="ラベル (例: PV)"
+            onChange={(e) => {
+              const next = [...value];
+              next[i] = { ...next[i], label: e.target.value };
+              onChange(next);
+            }}
+            style={pairInputStyle}
+          />
+          <input
+            type="text"
+            value={m.value}
+            placeholder="値 (例: +35%)"
+            onChange={(e) => {
+              const next = [...value];
+              next[i] = { ...next[i], value: e.target.value };
+              onChange(next);
+            }}
+            style={pairInputStyle}
+          />
+          <button type="button" onClick={() => onChange(value.filter((_, j) => j !== i))} style={removeBtn}>
+            ×
+          </button>
+        </div>
+      ))}
+      <button type="button" onClick={() => onChange([...value, { label: '', value: '' }])} style={addBtn}>
+        + 指標を追加
+      </button>
+    </div>
+  );
+}
+
+function LinksEditor({
+  value,
+  onChange,
+}: {
+  value: CaseStudyLink[];
+  onChange: (v: CaseStudyLink[]) => void;
+}) {
+  return (
+    <div>
+      {value.map((l, i) => (
+        <div
+          key={i}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 2fr auto', gap: 6, marginBottom: 6 }}
+        >
+          <input
+            type="text"
+            value={l.label}
+            placeholder="ラベル"
+            onChange={(e) => {
+              const next = [...value];
+              next[i] = { ...next[i], label: e.target.value };
+              onChange(next);
+            }}
+            style={pairInputStyle}
+          />
+          <input
+            type="url"
+            value={l.url}
+            placeholder="https://..."
+            onChange={(e) => {
+              const next = [...value];
+              next[i] = { ...next[i], url: e.target.value };
+              onChange(next);
+            }}
+            style={pairInputStyle}
+          />
+          <button type="button" onClick={() => onChange(value.filter((_, j) => j !== i))} style={removeBtn}>
+            ×
+          </button>
+        </div>
+      ))}
+      <button type="button" onClick={() => onChange([...value, { label: '', url: '' }])} style={addBtn}>
+        + リンクを追加
+      </button>
+    </div>
+  );
+}
+
+const pairInputStyle: CSSProperties = {
+  width: '100%',
+  padding: '8px 10px',
+  fontFamily: 'inherit',
+  fontSize: 13,
+  border: '1px solid var(--hairline-strong)',
+  background: 'var(--bg)',
+  color: 'var(--fg)',
+};
+
+const addBtn: CSSProperties = {
+  padding: '6px 12px',
+  fontSize: 12,
+  fontFamily: 'var(--font-mincho)',
+  border: '1px dashed var(--hairline-strong)',
+  background: 'transparent',
+  color: 'var(--fg-muted)',
+  cursor: 'pointer',
+};
+
+const addBtnPrimary: CSSProperties = {
+  padding: '8px 14px',
+  fontSize: 12,
+  fontFamily: 'var(--font-mincho)',
+  border: '1px solid var(--primary)',
+  background: 'var(--primary)',
+  color: 'var(--primary-on)',
+  cursor: 'pointer',
+};
+
+const removeBtn: CSSProperties = {
+  padding: '0 10px',
+  fontSize: 14,
+  border: '1px solid var(--hairline)',
+  background: 'transparent',
+  color: 'var(--fg-muted)',
+  cursor: 'pointer',
+};
+
+const dangerBtn: CSSProperties = {
+  padding: '6px 12px',
+  fontSize: 12,
+  fontFamily: 'var(--font-mincho)',
+  border: '1px solid #c33',
+  background: 'transparent',
+  color: '#c33',
+  cursor: 'pointer',
+};

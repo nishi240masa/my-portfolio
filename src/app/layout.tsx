@@ -7,7 +7,7 @@ import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
 import type { ThemeMode } from './theme';
 import { profileRepo } from '@/lib/repositories';
-import { personJsonLd } from '@/lib/jsonld';
+import { personJsonLd, serializeJsonLd } from '@/lib/jsonld';
 
 const hinaMincho = Hina_Mincho({
   weight: '400',
@@ -109,7 +109,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personLd) }}
         />
         <ClientLayout initialMode={themeMode}>{children}</ClientLayout>
         {cfBeaconToken ? (

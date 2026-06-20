@@ -2,6 +2,36 @@
 // data/productions.json の構造に従う。
 import { z } from 'zod';
 
+// ケーススタディ (採用判断材料化)
+// optional な拡張ブロック。productionDetailSchema にぶら下がる。
+//
+// - role / period / problem / approach / result は最低限の物語フィールド
+// - teamSize は任意（個人開発などでは省略可）
+// - stack / metrics / links は配列で default([]) を持つ
+//   .default() を含む field を含むため、productionPatchSchema は
+//   productionInputSchema.partial() を経由する必要がある（既存方針通り）。
+export const caseStudyMetricSchema = z.object({
+  label: z.string(),
+  value: z.string(),
+});
+
+export const caseStudyLinkSchema = z.object({
+  label: z.string(),
+  url: z.string().url(),
+});
+
+export const caseStudySchema = z.object({
+  role: z.string().trim().min(1, 'role は必須です'),
+  period: z.string(),
+  teamSize: z.string().optional(),
+  stack: z.array(z.string()).default([]),
+  problem: z.string().trim().min(1, 'problem は必須です'),
+  approach: z.string(),
+  result: z.string().trim().min(1, 'result は必須です'),
+  metrics: z.array(caseStudyMetricSchema).default([]),
+  links: z.array(caseStudyLinkSchema).default([]),
+});
+
 // 一覧用のサマリ（リスト表示で使う最小フィールド）
 export const productionSummarySchema = z.object({
   id: z.number(),
@@ -19,6 +49,7 @@ export const productionDetailSchema = productionSummarySchema.extend({
   period: z.string(),
   technologys: z.array(z.string()).default([]),
   content: z.string().default(''),
+  caseStudy: caseStudySchema.optional(),
 });
 
 // 管理APIで受け取る作成（POST）用スキーマ
@@ -35,6 +66,9 @@ export const productionInputSchema = productionDetailSchema.omit({ id: true }).e
 // productionInputSchema.partial() なので .default() の落とし穴がない。
 export const productionPatchSchema = productionInputSchema.partial();
 
+export type CaseStudyMetric = z.infer<typeof caseStudyMetricSchema>;
+export type CaseStudyLink = z.infer<typeof caseStudyLinkSchema>;
+export type CaseStudy = z.infer<typeof caseStudySchema>;
 export type ProductionSummary = z.infer<typeof productionSummarySchema>;
 export type ProductionDetail = z.infer<typeof productionDetailSchema>;
 export type ProductionInput = z.infer<typeof productionInputSchema>;
