@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import SkillView from './_components/SkillView';
-import { skillsRepo } from '@/lib/repositories';
+import { getSkillsCached } from '@/lib/repositories';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'スキル',
@@ -12,6 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const data = await skillsRepo.get();
+  const data = await getSkillsCached();
   return <SkillView data={data} />;
 }
