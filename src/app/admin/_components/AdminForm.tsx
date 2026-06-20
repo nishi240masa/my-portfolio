@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import type { ReactNode, CSSProperties } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -194,6 +195,17 @@ export function Toolbar({
   errorMessage?: string;
 }) {
   const isSubmitMode = !onSave;
+  // status==='success' (= state.ok=true) のメッセージが貼り付かないよう 3 秒後に自動消失。
+  // status==='error' は維持 (ユーザー操作で解除する想定なので触らない)。
+  const [showOk, setShowOk] = useState(false);
+  useEffect(() => {
+    if (status === 'success') {
+      setShowOk(true);
+      const t = setTimeout(() => setShowOk(false), 3000);
+      return () => clearTimeout(t);
+    }
+    setShowOk(false);
+  }, [status]);
   return (
     <div
       style={{
@@ -248,7 +260,7 @@ export function Toolbar({
         </button>
       ) : null}
       {extra}
-      {status === 'success' ? (
+      {status === 'success' && showOk ? (
         <span className="t-meta" style={{ color: 'var(--primary)' }}>
           ✓ 保存しました
         </span>
