@@ -21,7 +21,8 @@ export function createAppTheme(mode: ThemeMode): Theme {
       },
       text: {
         primary: isDark ? '#ede4d3' : '#2c2c2c',
-        secondary: isDark ? '#a9a195' : '#8a8a8a',
+        // --fg-muted と整合: light=#6b6b6b (washi上で 4.5:1), dark=#a8a4a0
+        secondary: isDark ? '#a8a4a0' : '#6b6b6b',
       },
     },
     typography: {
