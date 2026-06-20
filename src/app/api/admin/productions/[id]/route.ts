@@ -1,6 +1,6 @@
 import { productionRepo } from '@/lib/repositories';
 import { requireAdmin } from '@/lib/admin/auth';
-import { productionSchema } from '@/lib/admin/schemas';
+import { productionPatchSchema } from '@/lib/admin/schemas';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -21,7 +21,7 @@ export async function PUT(req: Request, { params }: Params) {
   if (unauthorized) return unauthorized;
   const { id } = await params;
   const body = await req.json();
-  const parsed = productionSchema.partial().safeParse(body);
+  const parsed = productionPatchSchema.safeParse(body);
   if (!parsed.success) {
     return Response.json({ error: 'Invalid body', issues: parsed.error.issues }, { status: 400 });
   }
