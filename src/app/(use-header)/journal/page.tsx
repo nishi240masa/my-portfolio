@@ -7,7 +7,6 @@ import { EmptyState } from '@/app/_components/design/States';
 import JournalCard from './_components/JournalCard';
 import { feedsSchema, type Feeds, type FeedItem } from '@/lib/schemas/feeds';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {

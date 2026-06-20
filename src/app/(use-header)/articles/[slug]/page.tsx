@@ -4,7 +4,6 @@ import { articleRepo } from '@/lib/repositories';
 import TagList from '@/app/_components/design/Tags';
 import ArticleBody from './_components/ArticleBody';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({

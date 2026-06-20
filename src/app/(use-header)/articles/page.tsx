@@ -3,7 +3,6 @@ import SectionHeader from '@/app/_components/design/SectionHeader';
 import ArticleList from './_components/ArticleList';
 import { articleRepo } from '@/lib/repositories';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {

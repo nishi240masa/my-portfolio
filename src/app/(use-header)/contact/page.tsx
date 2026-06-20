@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { profileRepo } from '@/lib/repositories';
 import ContactView from './_components/ContactView';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {

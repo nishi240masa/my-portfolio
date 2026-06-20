@@ -9,7 +9,6 @@ import { creativeWorkJsonLd, serializeJsonLd } from '@/lib/jsonld';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
-export const runtime = 'nodejs';
 export const revalidate = 60;
 
 export async function generateStaticParams() {

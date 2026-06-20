@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import ProfileView from './_components/ProfileView';
 import { getProfileCached } from '@/lib/repositories';
 
-export const runtime = 'nodejs';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
