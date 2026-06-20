@@ -1,18 +1,18 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import { ImagePlaceholder } from '@/app/_components/design/Placeholders';
 import TagList from '@/app/_components/design/Tags';
-import { LoadingDots } from '@/app/_components/design/States';
 import type { PostPage } from '@/types/post';
 
-const MarkdownContent = dynamic(() => import('./MarkdownContent'), {
-  ssr: false,
-  loading: () => <LoadingDots />,
-});
-
-export default function ProductionDetail({ article }: { article: PostPage }) {
+export default function ProductionDetail({
+  article,
+  markdown,
+}: {
+  article: PostPage;
+  markdown: ReactNode;
+}) {
   const router = useRouter();
 
   const meta = [
@@ -62,7 +62,7 @@ export default function ProductionDetail({ article }: { article: PostPage }) {
       </div>
 
       <div className="markdown-body" style={{ maxWidth: 720, margin: '0 auto' }}>
-        <MarkdownContent content={article.content} />
+        {markdown}
       </div>
 
       <div

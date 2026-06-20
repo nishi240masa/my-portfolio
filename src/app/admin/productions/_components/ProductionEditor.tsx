@@ -1,13 +1,24 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import dynamicImport from 'next/dynamic';
 import type { PostPage } from '@/types/post';
-import { Field, TextInput, NumberInput, TextArea, StringListEditor, Toolbar, TwoPaneLayout } from '../../_components/AdminForm';
+import {
+  Field,
+  FieldErrors,
+  TextInput,
+  NumberInput,
+  TextArea,
+  StringListEditor,
+  Toolbar,
+  TwoPaneLayout,
+} from '../../_components/AdminForm';
 import { ImagePlaceholder } from '@/app/_components/design/Placeholders';
 import TagList from '@/app/_components/design/Tags';
 import { LoadingDots } from '@/app/_components/design/States';
+import { upsertProduction } from '../../_actions/productions';
+import { INITIAL_ACTION_STATE, type ActionState } from '../../_actions/_types';
 
 const MarkdownContent = dynamicImport(
   () => import('@/app/(use-header)/production/(use-production)/[id]/MarkdownContent'),
@@ -45,36 +56,30 @@ export default function ProductionEditor({
     void _ignore;
     return rest;
   });
-  const [saving, setSaving] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [state, formAction] = useActionState<ActionState<PostPage>, FormData>(
+    upsertProduction,
+    INITIAL_ACTION_STATE as ActionState<PostPage>,
+  );
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  async function handleSave() {
-    setSaving(true);
-    setStatus('idle');
-    const url = id != null ? `/api/admin/productions/${id}` : '/api/admin/productions';
-    const method = id != null ? 'PUT' : 'POST';
-    const res = await fetch(url, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    setSaving(false);
-    if (!res.ok) {
-      setStatus('error');
-      return;
-    }
-    setStatus('success');
-    if (id == null) {
-      const data = (await res.json()) as { item: PostPage };
-      router.push(`/admin/productions/${data.item.id}`);
+  // 保存成功時のナビゲーション:
+  // - 新規 (id が無く data.id が返る) → 編集画面へ push
+  // - 既存 (id 指定済) → router.refresh()
+  // useActionState は毎回新しい state オブジェクトを返すため、state 自体を
+  // deps に入れることで 2 回目以降の成功時にも確実に発火する。
+  useEffect(() => {
+    if (!state.ok) return;
+    if (id == null && state.data?.id != null) {
+      router.push(`/admin/productions/${state.data.id}`);
     } else {
       router.refresh();
     }
-  }
+  }, [state, id, router]);
+
+  const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
   const meta = [
     { label: 'ROLE · 役割', value: form.role || '—' },
@@ -84,13 +89,16 @@ export default function ProductionEditor({
   ];
 
   return (
-    <>
+    <form action={formAction}>
+      <input type="hidden" name="payload" value={JSON.stringify(form)} />
+      {id != null ? <input type="hidden" name="id" value={String(id)} /> : null}
+
       <Toolbar
-        onSave={handleSave}
         onCancel={() => router.push('/admin/productions')}
-        saving={saving}
-        status={saving ? 'saving' : status}
+        status={status}
+        errorMessage={state.error}
       />
+      <FieldErrors errors={state.fieldErrors} />
 
       <TwoPaneLayout
         form={
@@ -169,6 +177,6 @@ export default function ProductionEditor({
           </article>
         }
       />
-    </>
+    </form>
   );
 }
