@@ -3,16 +3,24 @@ import { EmptyState } from '@/app/_components/design/States';
 import type { SkillCategory, SkillItem, SkillsContent } from '@/types/skill';
 
 const RANK_LABELS = ['初段', '壱段', '弐段', '参段', '四段', '五段', '六段'];
-const LEGEND_LABELS = ['初段', '壱段', '弐段', '参段', '四段', '五段', '六段', '極段'];
+const LEGEND_LABELS = ['初段', '壱段', '弐段', '参段', '四段', '五段', '六段'];
 const DAN_LEGEND_ID = 'dan-legend';
 
 function rankFor(level: number): number {
   return Math.min(6, Math.max(0, Math.round((level / 100) * 6)));
 }
 
-function DanIndicator({ level, years }: { level: number; years: string }) {
+function DanIndicator({
+  level,
+  years,
+  labelledBy,
+}: {
+  level: number;
+  years: string;
+  labelledBy?: string;
+}) {
   const rank = rankFor(level);
-  const rankLabel = RANK_LABELS[rank];
+  const rankLabel = rank === 0 ? '無段' : RANK_LABELS[rank];
   const valueText = `${rankLabel} (${rank}/6, ${years})`;
   return (
     <div
@@ -21,7 +29,7 @@ function DanIndicator({ level, years }: { level: number; years: string }) {
       aria-valuemin={0}
       aria-valuemax={6}
       aria-valuetext={valueText}
-      aria-describedby={DAN_LEGEND_ID}
+      aria-labelledby={labelledBy}
       style={{ display: 'flex', gap: 4, alignItems: 'center' }}
     >
       {[1, 2, 3, 4, 5, 6].map((n) => {
@@ -53,10 +61,31 @@ function DanIndicator({ level, years }: { level: number; years: string }) {
   );
 }
 
-function SkillRow({ skill, index }: { skill: SkillItem; index: number }) {
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function SkillRow({
+  skill,
+  index,
+  categoryKey,
+}: {
+  skill: SkillItem;
+  index: number;
+  categoryKey: string;
+}) {
   const rank = rankFor(skill.level);
+  const rowId = `skill-${categoryKey}-${index}`;
+  const rankDisplayLabel = rank === 0 ? '無段' : RANK_LABELS[rank];
   return (
-    <div className="skill-row" style={{ animation: `fadeIn .6s ${0.04 * index}s both` }}>
+    <div
+      id={rowId}
+      className="skill-row"
+      style={{ animation: `fadeIn .6s ${0.04 * index}s both` }}
+    >
       <div className="skill-name">
         <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 17, marginBottom: 2 }}>{skill.name}</div>
         <div className="t-meta" style={{ fontSize: 10 }}>
@@ -64,7 +93,7 @@ function SkillRow({ skill, index }: { skill: SkillItem; index: number }) {
         </div>
       </div>
       <div className="skill-viz">
-        <DanIndicator level={skill.level} years={skill.years} />
+        <DanIndicator level={skill.level} years={skill.years} labelledBy={rowId} />
       </div>
       <div className="skill-years" style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--fg-muted)' }}>
         {skill.years}
@@ -73,13 +102,14 @@ function SkillRow({ skill, index }: { skill: SkillItem; index: number }) {
         className="skill-rank"
         style={{ textAlign: 'center', fontFamily: 'var(--font-mincho)', fontSize: 14, color: 'var(--primary)', letterSpacing: '0.05em' }}
       >
-        {RANK_LABELS[rank]}
+        {rankDisplayLabel}
       </div>
     </div>
   );
 }
 
 function SkillCategoryBlock({ category }: { category: SkillCategory }) {
+  const categoryKey = slugify(category.en) || 'category';
   return (
     <div style={{ position: 'relative', paddingBottom: 32, borderBottom: '1px solid var(--hairline)' }}>
       <div style={{ display: 'flex', alignItems: 'flex-end', gap: 20, marginBottom: 28 }}>
@@ -97,7 +127,7 @@ function SkillCategoryBlock({ category }: { category: SkillCategory }) {
 
       <div style={{ display: 'grid', gap: 16 }}>
         {category.items.map((s, i) => (
-          <SkillRow key={s.name} skill={s} index={i} />
+          <SkillRow key={s.name} skill={s} index={i} categoryKey={categoryKey} />
         ))}
       </div>
     </div>
