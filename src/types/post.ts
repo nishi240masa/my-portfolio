@@ -3,6 +3,9 @@
 import type {
   ProductionSummary,
   ProductionDetail,
+  CaseStudy,
+  CaseStudyMetric,
+  CaseStudyLink,
 } from '@/lib/schemas/production';
 
 // 一覧/カード表示で使う最小フィールド
@@ -10,3 +13,7 @@ export type Post = ProductionSummary;
 
 // 詳細ページで使う完全な型
 export type PostPage = ProductionDetail;
+
+// ケーススタディ拡張
+// PostPage.caseStudy?: CaseStudy として参照される
+export type { CaseStudy, CaseStudyMetric, CaseStudyLink };

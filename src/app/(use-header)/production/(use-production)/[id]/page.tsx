@@ -3,7 +3,9 @@ import {
   getProductionByIdCached,
   listProductionsCached,
   listProductionsSummaryCached,
+  profileRepo,
 } from '@/lib/repositories';
+import { creativeWorkJsonLd } from '@/lib/jsonld';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
@@ -24,11 +26,29 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
   if (article == null) {
     notFound();
   }
+
+  // caseStudy 定義時のみ Article 型 JSON-LD を出力する。
+  // author は profileRepo.get() から自動補完する (jsonld helper に profile を渡す)。
+  let articleJsonLd: ReturnType<typeof creativeWorkJsonLd> | null = null;
+  if (article.caseStudy != null) {
+    const profile = await profileRepo.get();
+    articleJsonLd = creativeWorkJsonLd(article, { type: 'Article', profile });
+  }
+
   return (
-    <ProductionDetail
-      article={article}
-      all={all}
-      markdown={<MarkdownContent content={article.content} />}
-    />
+    <>
+      {articleJsonLd ? (
+        <script
+          type="application/ld+json"
+          // JSON.stringify は XSS 安全 (制御文字/タグは含まれない想定の値のみ)
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
+      ) : null}
+      <ProductionDetail
+        article={article}
+        all={all}
+        markdown={<MarkdownContent content={article.content} />}
+      />
+    </>
   );
 }
