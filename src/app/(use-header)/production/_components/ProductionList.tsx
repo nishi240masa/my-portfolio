@@ -1,22 +1,70 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import ProductionCard from './ProductionCard';
 import { EmptyState } from '@/app/_components/design/States';
 import type { Post } from '@/types/post';
 
+const ALL = 'ALL';
+
 /**
  * Production 一覧のロジックコンポーネント
- * データは親の Server Component から props で受け取る
+ * データは親の Server Component から props で受け取る。
+ * tag フィルタは URLSearchParams (?tag=...) と同期する。
  */
 export default function ProductionList({ data }: { data: Post[] }) {
-  const [filter, setFilter] = useState('ALL');
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const allTags = useMemo(() => {
     return Array.from(new Set(data.flatMap((p) => p.tags)));
   }, [data]);
 
-  const filtered = filter === 'ALL' ? data : data.filter((p) => p.tags.includes(filter));
+  // URL の ?tag= を初期状態として読む。allTags に含まれないものは無視する。
+  const tagFromUrl = searchParams?.get('tag') ?? null;
+  const initialFilter =
+    tagFromUrl != null && tagFromUrl !== '' && allTags.includes(tagFromUrl)
+      ? tagFromUrl
+      : ALL;
+
+  const [filter, setFilter] = useState<string>(initialFilter);
+
+  // URL が外部から変わった場合（戻る/進む等）に state を同期する
+  useEffect(() => {
+    const next =
+      tagFromUrl != null && tagFromUrl !== '' && allTags.includes(tagFromUrl)
+        ? tagFromUrl
+        : ALL;
+    setFilter((prev) => (prev === next ? prev : next));
+  }, [tagFromUrl, allTags]);
+
+  const updateUrl = useCallback(
+    (nextFilter: string) => {
+      const params = new URLSearchParams(searchParams?.toString() ?? '');
+      if (nextFilter === ALL) {
+        params.delete('tag');
+      } else {
+        params.set('tag', nextFilter);
+      }
+      const query = params.toString();
+      const next = query ? `${pathname}?${query}` : pathname;
+      router.replace(next, { scroll: false });
+    },
+    [pathname, router, searchParams],
+  );
+
+  const handleSelect = useCallback(
+    (next: string) => {
+      setFilter(next);
+      updateUrl(next);
+    },
+    [updateUrl],
+  );
+
+  const filtered =
+    filter === ALL ? data : data.filter((p) => p.tags.includes(filter));
 
   return (
     <>
@@ -25,7 +73,7 @@ export default function ProductionList({ data }: { data: Post[] }) {
           display: 'flex',
           flexWrap: 'wrap',
           gap: 8,
-          marginBottom: 40,
+          marginBottom: 16,
           paddingBottom: 24,
           borderBottom: '1px solid var(--hairline)',
           alignItems: 'center',
@@ -36,9 +84,10 @@ export default function ProductionList({ data }: { data: Post[] }) {
         </span>
         <button
           type="button"
-          onClick={() => setFilter('ALL')}
-          className={'tag' + (filter === 'ALL' ? ' solid' : '')}
-          style={{ cursor: 'pointer', border: filter === 'ALL' ? '1px solid var(--primary)' : undefined }}
+          onClick={() => handleSelect(ALL)}
+          aria-pressed={filter === ALL}
+          className={'tag' + (filter === ALL ? ' solid' : '')}
+          style={{ cursor: 'pointer', border: filter === ALL ? '1px solid var(--primary)' : undefined }}
         >
           ALL · 全て
         </button>
@@ -46,13 +95,25 @@ export default function ProductionList({ data }: { data: Post[] }) {
           <button
             key={t}
             type="button"
-            onClick={() => setFilter(t)}
+            onClick={() => handleSelect(t)}
+            aria-pressed={filter === t}
             className={'tag' + (filter === t ? ' solid' : '')}
             style={{ cursor: 'pointer', border: filter === t ? '1px solid var(--primary)' : undefined }}
           >
             {t}
           </button>
         ))}
+      </div>
+
+      <div
+        role="status"
+        aria-live="polite"
+        className="t-meta"
+        style={{ marginBottom: 24, fontSize: 12, color: 'var(--fg-muted)' }}
+      >
+        {filter === ALL
+          ? `全 ${filtered.length} 件を表示中`
+          : `「${filter}」で絞り込み — ${filtered.length} 件`}
       </div>
 
       {filtered.length === 0 ? (

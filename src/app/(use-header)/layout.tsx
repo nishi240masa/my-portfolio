@@ -1,5 +1,6 @@
 import Header from '../_components/Header';
 import Footer from '../_components/design/Footer';
+import NextStepCTA from '../_components/NextStepCTA';
 
 export default function UseHeaderLayout({
   children,
@@ -15,6 +16,7 @@ export default function UseHeaderLayout({
       <main id="main" tabIndex={-1} style={{ flex: 1 }}>
         {children}
       </main>
+      <NextStepCTA />
       <Footer />
     </div>
   );

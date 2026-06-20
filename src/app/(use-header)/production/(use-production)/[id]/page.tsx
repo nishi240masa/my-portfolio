@@ -7,9 +7,12 @@ export const dynamic = 'force-dynamic';
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const article = await productionRepo.getById(Number(id));
+  const [article, all] = await Promise.all([
+    productionRepo.getById(Number(id)),
+    productionRepo.listSummary(),
+  ]);
   if (article == null) {
     notFound();
   }
-  return <ProductionDetail article={article} />;
+  return <ProductionDetail article={article} all={all} />;
 }
