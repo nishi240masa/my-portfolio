@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
+import { deleteProduction } from '../../_actions/productions';
 
 export default function ProductionRow({
   id,
@@ -18,18 +19,20 @@ export default function ProductionRow({
   tags: string[];
 }) {
   const router = useRouter();
-  const [deleting, setDeleting] = useState(false);
+  const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | null>(null);
 
-  async function handleDelete() {
+  function handleDelete() {
     if (!confirm(`「${title}」を削除しますか？この操作は取り消せません。`)) return;
-    setDeleting(true);
-    const res = await fetch(`/api/admin/productions/${id}`, { method: 'DELETE' });
-    if (!res.ok) {
-      alert('削除に失敗しました');
-      setDeleting(false);
-      return;
-    }
-    router.refresh();
+    setError(null);
+    startTransition(async () => {
+      const res = await deleteProduction(id);
+      if (!res.ok) {
+        setError(res.error ?? '削除に失敗しました');
+        return;
+      }
+      router.refresh();
+    });
   }
 
   return (
@@ -58,6 +61,11 @@ export default function ProductionRow({
             </span>
           ))}
         </div>
+        {error ? (
+          <div className="t-meta" style={{ marginTop: 6, color: '#c33' }}>
+            ! {error}
+          </div>
+        ) : null}
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
         <Link
@@ -77,7 +85,7 @@ export default function ProductionRow({
         <button
           type="button"
           onClick={handleDelete}
-          disabled={deleting}
+          disabled={pending}
           style={{
             padding: '8px 14px',
             fontSize: 12,
@@ -85,11 +93,11 @@ export default function ProductionRow({
             border: '1px solid #c33',
             background: 'transparent',
             color: '#c33',
-            cursor: deleting ? 'not-allowed' : 'pointer',
-            opacity: deleting ? 0.5 : 1,
+            cursor: pending ? 'not-allowed' : 'pointer',
+            opacity: pending ? 0.5 : 1,
           }}
         >
-          {deleting ? '...' : '削除'}
+          {pending ? '...' : '削除'}
         </button>
       </div>
     </div>
