@@ -11,7 +11,7 @@
   --washi-shadow: #ece6dc;     /* 和紙の影 */
   --sumi: #1f1c19;             /* 墨 */
   --sumi-soft: #2c2c2c;        /* 墨（柔） */
-  --hai: #8a8a8a;              /* 灰 */
+  --hai: #6b6b6b;              /* 灰 (washi #fbf8f3 に対し 4.5:1 確保) */
   --hai-soft: #b4ada3;         /* 薄灰 */
 
   /* Accent — 朱と金茶 */
@@ -55,6 +55,7 @@
   --bg-deep: var(--washi-shadow);
   --fg: var(--sumi-soft);
   --fg-muted: var(--hai);
+  --touch-min: 44px;
   --hairline: rgba(31, 28, 25, 0.12);
   --hairline-strong: rgba(31, 28, 25, 0.24);
   --primary: var(--shu);
@@ -71,7 +72,7 @@
   --bg-elev: var(--yoru-paper);
   --bg-deep: var(--yoru-shadow);
   --fg: var(--yoru-text);
-  --fg-muted: var(--yoru-text-soft);
+  --fg-muted: #a8a4a0;
   --hairline: rgba(237, 228, 211, 0.10);
   --hairline-strong: rgba(237, 228, 211, 0.22);
   --primary-on: var(--yoru-text);
@@ -316,11 +317,16 @@ h1, h2, h3, h4, h5 {
   .page-enter, .fade-in { animation: none; }
 }
 
-/* ===== Focus ring (墨で囲う) ===== */
+/* ===== Focus ring (二層リング: 内側 白 1px, 外側 朱 3px) ===== */
 :focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 3px;
+  outline: none;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--primary);
   border-radius: 2px;
+}
+/* <main id="main"> はプログラム的フォーカス時のリングを抑制 */
+main:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 /* ===== Scrollbar ===== */
@@ -491,6 +497,79 @@ h1, h2, h3, h4, h5 {
   margin: 20px 0;
   padding: 4px 0 4px 20px;
   color: var(--fg-muted);
+}
+
+/* =========================================================
+   Accessibility utilities (WCAG 2.2 AA baseline)
+   ========================================================= */
+
+/* ===== Skip link ===== */
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: var(--ma-2);
+  background: var(--sumi);
+  color: var(--primary-on);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  /* visually-hidden until focus */
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  clip: auto;
+  clip-path: none;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  white-space: normal;
+  min-height: var(--touch-min);
+  min-width: var(--touch-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Screen reader only ===== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== Touch target minimum (WCAG 2.2 - Target Size) =====
+   .tag は span ベースの装飾チップなので対象外。
+   インタラクティブな a.tag / button.tag のみに適用する。
+   .skip-link は :focus 時に独自に touch-min を確保している。 */
+.btn,
+.theme-toggle,
+a.tag,
+button.tag {
+  min-height: var(--touch-min);
+  min-width: var(--touch-min);
+}
+a.tag,
+button.tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ===== next/font bridge ===== */
