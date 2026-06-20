@@ -1,13 +1,19 @@
 import type { Metadata } from 'next';
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
 import SectionHeader from '@/app/_components/design/SectionHeader';
 import { SubSection } from '@/app/_components/design/SectionHeader';
 import { EmptyState } from '@/app/_components/design/States';
 import JournalCard from './_components/JournalCard';
 import { feedsSchema, type Feeds, type FeedItem } from '@/lib/schemas/feeds';
+import feedsData from '../../../../data/feeds.json';
 
-export const dynamic = 'force-dynamic';
+// data ソースは node:fs ではなく data/feeds.json を静的 import で取り込み、
+// feedsSchema で validation する。
+//
+// runtime は Phase 2 で 'edge' に明示移行予定 (#28 レビュー応答):
+// `src/app/layout.tsx` が `profileRepo` 経由で repositories barrel に依存し、
+// 子ページに 'edge' を明示すると layout 経由で node:fs が edge bundle に混入するため、
+// layout.tsx と repositories barrel の rework と合わせて edge 化する。
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: '外部活動',
@@ -15,12 +21,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/journal' },
 };
 
-async function loadFeeds(): Promise<Feeds> {
-  const filePath = path.join(process.cwd(), 'data', 'feeds.json');
+function loadFeeds(): Feeds {
   try {
-    const text = await fs.readFile(filePath, 'utf8');
-    const json = JSON.parse(text) as unknown;
-    return feedsSchema.parse(json);
+    return feedsSchema.parse(feedsData);
   } catch {
     return { zenn: [], qiita: [], github: [], updatedAt: null };
   }
@@ -54,7 +57,7 @@ function Section({
 }
 
 export default async function Page() {
-  const feeds = await loadFeeds();
+  const feeds = loadFeeds();
   return (
     <section className="page-enter container" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <SectionHeader eyebrow="JOURNAL · 外部活動" title="外でも、書く。" kanji="外" />

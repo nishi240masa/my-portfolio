@@ -9,6 +9,10 @@ import { creativeWorkJsonLd, serializeJsonLd } from '@/lib/jsonld';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
+// Phase 2 で edge 化予定 (#28 レビュー応答):
+// `@/lib/repositories` barrel 経由で node:fs が edge bundle に混入するため、
+// barrel rework が完了する admin Phase まで Next.js default (nodejs) のままにする。
+// generateStaticParams も併用継続 (edge 化に伴う非互換は Phase 2 で扱う)。
 export const revalidate = 60;
 
 export async function generateStaticParams() {

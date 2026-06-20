@@ -2,6 +2,11 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getLandingEn } from '@/lib/i18n';
 
+// runtime は Phase 2 で 'edge' に明示移行予定 (#28 レビュー応答):
+// `src/app/layout.tsx` が `profileRepo` 経由で repositories barrel に依存しているため、
+// 子ページに 'edge' を明示すると layout 経由で node:fs が edge bundle に混入する。
+// 本 PR では `src/lib/i18n.ts` を node:fs から静的 import 化することで /en 単体の
+// edge 互換性は確保済 (layout rework と合わせて runtime='edge' を明示する)。
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
