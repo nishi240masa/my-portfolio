@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useMemo, useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createAppTheme, type ThemeMode } from '../theme';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -8,22 +8,16 @@ import { ThemeModeContext, THEME_STORAGE_KEY } from './ThemeModeContext';
 
 interface Props {
   children: ReactNode;
+  initialMode: ThemeMode;
 }
 
 /**
  * クライアントサイドのレイアウトコンポーネント
  * テーマ（ライト／夜墨）の状態管理、ErrorBoundary、ThemeProvider を含む。
- * 初期テーマは <head> のインラインスクリプトが data-theme として確定済みのため、
- * マウント後にそれを読み取って React 状態と同期する（フラッシュ無し）。
+ * 初期テーマは SSR 段階で cookie から確定済み(initialMode)を引き継ぐ。
  */
-export default function ClientLayout({ children }: Props) {
-  const [mode, setMode] = useState<ThemeMode>('light');
-
-  useEffect(() => {
-    const initial =
-      (document.documentElement.getAttribute('data-theme') as ThemeMode | null) ?? 'light';
-    setMode(initial);
-  }, []);
+export default function ClientLayout({ children, initialMode }: Props) {
+  const [mode, setMode] = useState<ThemeMode>(initialMode);
 
   const toggleMode = useCallback(() => {
     setMode((prev) => {
@@ -33,6 +27,11 @@ export default function ClientLayout({ children }: Props) {
         window.localStorage.setItem(THEME_STORAGE_KEY, next);
       } catch {
         // localStorage 不可（プライベートモード等）は無視
+      }
+      try {
+        document.cookie = `theme-mode=${next}; path=/; max-age=31536000; SameSite=Lax`;
+      } catch {
+        // cookie 書き込み不可は無視
       }
       return next;
     });

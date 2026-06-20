@@ -572,3 +572,9 @@ button.tag {
   justify-content: center;
 }
 
+/* ===== next/font bridge ===== */
+:root {
+  --font-mincho: var(--font-mincho-next), 'Hina Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans: var(--font-sans-next), 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-mono: var(--font-mono-next), 'JetBrains Mono', monospace;
+}
