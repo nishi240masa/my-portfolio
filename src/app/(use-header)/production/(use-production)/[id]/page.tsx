@@ -1,15 +1,26 @@
 import { notFound } from 'next/navigation';
-import { productionRepo } from '@/lib/repositories';
+import {
+  getProductionByIdCached,
+  listProductionsCached,
+} from '@/lib/repositories';
+import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const items = await listProductionsCached();
+  return items.map((item) => ({ id: String(item.id) }));
+}
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const article = await productionRepo.getById(Number(id));
+  const article = await getProductionByIdCached(Number(id));
   if (article == null) {
     notFound();
   }
-  return <ProductionDetail article={article} />;
+  return (
+    <ProductionDetail article={article} markdown={<MarkdownContent content={article.content} />} />
+  );
 }

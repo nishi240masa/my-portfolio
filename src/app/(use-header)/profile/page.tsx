@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import ProfileView from './_components/ProfileView';
-import { profileRepo } from '@/lib/repositories';
+import { getProfileCached } from '@/lib/repositories';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'プロフィール',
@@ -12,6 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const data = await profileRepo.get();
+  const data = await getProfileCached();
   return <ProfileView data={data} />;
 }

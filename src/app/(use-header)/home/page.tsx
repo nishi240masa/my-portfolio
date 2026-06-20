@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import HomeView from './_components/HomeView';
-import { homeRepo } from '@/lib/repositories';
+import { getHomeCached } from '@/lib/repositories';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'ホーム',
@@ -12,6 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const data = await homeRepo.get();
+  const data = await getHomeCached();
   return <HomeView data={data} />;
 }

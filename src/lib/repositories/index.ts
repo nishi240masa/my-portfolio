@@ -1,6 +1,11 @@
 // リポジトリのファクトリ
 // 環境変数 REPOSITORY_DRIVER で実装を切替（'json' (default) | 'github'）
 
+import { unstable_cache } from 'next/cache';
+import type { HomeContent } from '@/types/home';
+import type { Profile } from '@/types/profile';
+import type { SkillsContent } from '@/types/skill';
+import type { Post, PostPage } from '@/types/post';
 import { JsonProductionRepository } from './json/jsonProductionRepository';
 import { JsonProfileRepository } from './json/jsonProfileRepository';
 import { JsonSkillsRepository } from './json/jsonSkillsRepository';
@@ -75,3 +80,46 @@ export const productionRepo = makeProductionRepo();
 export const profileRepo = makeProfileRepo();
 export const skillsRepo = makeSkillsRepo();
 export const homeRepo = makeHomeRepo();
+
+// ---
+// 公開ページ向けのキャッシュ済み getter
+// driver が json でも github でも同じインタフェースで取得できるよう、
+// repository インスタンスのメソッドを unstable_cache で包んで再エクスポートする。
+// revalidateTag('home' | 'profile' | 'skills' | 'productions') で無効化する。
+// ---
+
+export const getHomeCached = unstable_cache(
+  async (): Promise<HomeContent> => homeRepo.get(),
+  ['home'],
+  { tags: ['home'] },
+);
+
+export const getProfileCached = unstable_cache(
+  async (): Promise<Profile> => profileRepo.get(),
+  ['profile'],
+  { tags: ['profile'] },
+);
+
+export const getSkillsCached = unstable_cache(
+  async (): Promise<SkillsContent> => skillsRepo.get(),
+  ['skills'],
+  { tags: ['skills'] },
+);
+
+export const listProductionsCached = unstable_cache(
+  async (): Promise<PostPage[]> => productionRepo.list(),
+  ['productions', 'list'],
+  { tags: ['productions'] },
+);
+
+export const listProductionsSummaryCached = unstable_cache(
+  async (): Promise<Post[]> => productionRepo.listSummary(),
+  ['productions', 'listSummary'],
+  { tags: ['productions'] },
+);
+
+export const getProductionByIdCached = unstable_cache(
+  async (id: number): Promise<PostPage | null> => productionRepo.getById(id),
+  ['productions', 'byId'],
+  { tags: ['productions'] },
+);

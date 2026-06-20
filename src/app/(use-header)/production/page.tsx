@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import ProductionPage from './_components/ProductionPage';
-import { productionRepo } from '@/lib/repositories';
+import { listProductionsSummaryCached } from '@/lib/repositories';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: '制作物',
@@ -12,6 +12,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const data = await productionRepo.listSummary();
+  const data = await listProductionsSummaryCached();
   return <ProductionPage data={data} />;
 }

@@ -1,3 +1,4 @@
+import { unstable_cache } from 'next/cache';
 import type { Profile } from '@/types/profile';
 import type { SingletonRepository } from '../types';
 import { readJson, writeJson } from './jsonFile';
@@ -14,3 +15,10 @@ export class JsonProfileRepository implements SingletonRepository<Profile> {
     return data;
   }
 }
+
+// unstable_cache でラップしたシングルトン取得 (revalidateTag('profile') で無効化)
+export const getProfileCached = unstable_cache(
+  async (): Promise<Profile> => readJson<Profile>(FILE),
+  ['profile'],
+  { tags: ['profile'] },
+);
