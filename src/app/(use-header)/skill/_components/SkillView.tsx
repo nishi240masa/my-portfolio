@@ -21,7 +21,9 @@ function DanIndicator({
 }) {
   const rank = rankFor(level);
   const rankLabel = rank === 0 ? '無段' : RANK_LABELS[rank];
-  const valueText = `${rankLabel} (${rank}/6, ${years})`;
+  const valueText = years
+    ? `${rankLabel} (${rank}/6, ${years})`
+    : `${rankLabel} (${rank}/6)`;
   return (
     <div
       role="meter"
@@ -78,25 +80,26 @@ function SkillRow({
   categoryKey: string;
 }) {
   const rank = rankFor(skill.level);
-  const rowId = `skill-${categoryKey}-${index}`;
+  const skillNameId = `skill-name-${categoryKey}-${index}`;
   const rankDisplayLabel = rank === 0 ? '無段' : RANK_LABELS[rank];
   return (
     <div
-      id={rowId}
       className="skill-row"
       style={{ animation: `fadeIn .6s ${0.04 * index}s both` }}
     >
       <div className="skill-name">
-        <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 17, marginBottom: 2 }}>{skill.name}</div>
+        <div style={{ fontFamily: 'var(--font-mincho)', fontSize: 17, marginBottom: 2 }}>
+          <span id={skillNameId}>{skill.name}</span>
+        </div>
         <div className="t-meta" style={{ fontSize: 10 }}>
           {skill.note || '—'}
         </div>
       </div>
       <div className="skill-viz">
-        <DanIndicator level={skill.level} years={skill.years} labelledBy={rowId} />
+        <DanIndicator level={skill.level} years={skill.years} labelledBy={skillNameId} />
       </div>
       <div className="skill-years" style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--fg-muted)' }}>
-        {skill.years}
+        {skill.years || '—'}
       </div>
       <div
         className="skill-rank"
