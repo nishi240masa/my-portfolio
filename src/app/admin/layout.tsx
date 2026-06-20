@@ -4,7 +4,8 @@ import type { ReactNode } from 'react';
 import { auth } from '@/auth';
 import AdminSignOutButton from './_components/AdminSignOutButton';
 
-export const runtime = 'nodejs';
+// runtime export を削除して edge runtime をデフォルトとする
+// (Cloudflare Pages の next-on-pages は全ルートが edge であることを要求するため)
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {

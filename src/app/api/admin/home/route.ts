@@ -2,7 +2,6 @@ import { homeRepo } from '@/lib/repositories';
 import { requireAdmin } from '@/lib/admin/auth';
 import { homeSchema } from '@/lib/admin/schemas';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {

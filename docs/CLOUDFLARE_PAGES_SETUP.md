@@ -1,90 +1,82 @@
 # Cloudflare Pages デプロイ設定について
 
-## 現状
+## 現状 (Phase 2 完了後)
 
-本プロジェクトは現在、以下の理由により **Cloudflare Pages では動作しません**。
-Vercel または Node.js ランタイムをサポートする他プラットフォームでのデプロイを推奨します。
+CF Pages Epic Phase 1 (`perf/cf-edge-public`) で公開ページが edge runtime に移行し、
+Phase 2 (`perf/cf-edge-admin`, 本 PR) で admin / api/admin も edge runtime に移行した。
 
-## 失敗の真因
+これにより `@cloudflare/next-on-pages` の「全ての非静的ルートが Edge Runtime」要件を
+全ルートで満たし、**CF dashboard 側で必要な secrets を登録すれば PR preview を通せる状態**になった。
 
-`yarn build:cf` (`next build && npx @cloudflare/next-on-pages`) を実行すると、以下のエラーで失敗します:
+## 必須環境変数 / Secrets
 
-```
-⚡️ ERROR: Failed to produce a Cloudflare Pages build from the project.
-⚡️
-⚡️ 	The following routes were not configured to run with the Edge Runtime:
-⚡️ 	  - /admin/home
-⚡️ 	  - /admin/login
-⚡️ 	  - /admin/productions/[id]
-⚡️ 	  - /admin/productions/new
-⚡️ 	  - /admin/productions
-⚡️ 	  - /admin/profile
-⚡️ 	  - /admin/skill
-⚡️ 	  - /admin
-⚡️ 	  - /api/admin/home
-⚡️ 	  - /api/admin/productions/[id]
-⚡️ 	  - /api/admin/productions
-⚡️ 	  - /api/admin/profile
-⚡️ 	  - /api/admin/skills
-⚡️ 	  - /api/auth/[...nextauth]
-⚡️ 	  - /home
-⚡️ 	  - /production/[id]
-⚡️ 	  - /production
-⚡️ 	  - /profile
-⚡️ 	  - /skill
-```
+Cloudflare Pages dashboard (`Settings → Environment variables`) で以下を登録する。
+`Type` 列の `Secret` は機密扱い、`Plaintext` は平文で OK。
 
-### 背景
+| Key | Type | 用途 |
+| --- | --- | --- |
+| `NODE_VERSION` | Plaintext | `20` |
+| `NEXT_PUBLIC_SITE_URL` | Plaintext | `https://<pages-project>.pages.dev` または独自ドメイン |
+| `REPOSITORY_DRIVER` | Plaintext | `github` (wrangler.toml の `[vars]` で既定済だが上書き可) |
+| `GITHUB_OWNER` | Plaintext | `nishi240masa` (wrangler.toml で既定済) |
+| `GITHUB_REPO` | Plaintext | `my-portfolio` (wrangler.toml で既定済) |
+| `GITHUB_BRANCH` | Plaintext | `develop` (wrangler.toml で既定済) |
+| `GITHUB_TOKEN` | **Secret** | fine-grained PAT (contents:write). admin から JSON を commit するため必須 |
+| `AUTH_SECRET` | **Secret** | `openssl rand -base64 32` |
+| `AUTH_GOOGLE_ID` | **Secret** | Google OAuth client id |
+| `AUTH_GOOGLE_SECRET` | **Secret** | Google OAuth client secret |
+| `ADMIN_EMAILS` | Plaintext | 管理アクセスを許可するメール (カンマ区切り) |
 
-`feat: implement admin dashboard with content management and authentication via JSON repositories` (d080cf6) で導入された admin ダッシュボードは、`src/lib/repositories/json/jsonFile.ts` 経由で `node:fs` を使ってサーバー側でファイル読み書きを行います。これは Node.js ランタイム専用の API であり、Cloudflare Pages の Edge Runtime では使用できません。
-
-そのため、各 page / route には明示的に以下が指定されています:
-
-```ts
-export const runtime = 'nodejs';
-```
-
-`@cloudflare/next-on-pages` は **全ての非静的ルートが `'edge'` ランタイム** であることを要求するため、ビルド時点でエラーになります。
-
-## 対処方法 (2 通り)
-
-### 1. Cloudflare Pages の自動 PR プレビューを無効化する (推奨・短期)
-
-Cloudflare dashboard で以下のいずれかの操作を行ってください:
-
-- プロジェクト "west-portfolio" の **Settings → Builds & deployments → Automatic deployments** で `Preview` を無効化
-- もしくは GitHub App のリポジトリ連携を解除
-
-`.github/workflows/deploy.yml` の Cloudflare Pages デプロイ Job も、本アーキテクチャでは失敗します。Vercel に統一する場合はこの workflow も削除を検討してください。
-
-### 2. Cloudflare Pages 用にアーキテクチャを移行する (長期)
-
-すべての admin / API ルートを Edge Runtime に対応させる必要があります:
-
-- `node:fs` を使った JSON ファイル永続化を、Cloudflare KV / D1 / R2 へ移行
-- `src/lib/repositories/json/jsonFile.ts` を Edge 互換ストレージに置き換え
-- 全ルートの `export const runtime = 'nodejs'` を `'edge'` に変更
-- `next-auth` の jose 由来の `CompressionStream` / `DecompressionStream` 警告も解消
-
-これは大規模な改修が必要です。
-
-## Cloudflare dashboard 側で確認すべき設定
-
-将来 CF Pages を再度使う場合に必要となる設定値:
+### Build settings
 
 | 項目 | 値 |
 | --- | --- |
 | Build command | `yarn build:cf` |
 | Build output directory | `.vercel/output/static` |
-| Node version (env var) | `NODE_VERSION=20` |
-| Project name | `west-portfolio` |
+| Root directory | (未設定 / リポジトリルート) |
+| Project name | `west-portfolio` (wrangler.toml の `name` と一致) |
 
-`wrangler.toml` の `name` も `west-portfolio` (CF dashboard 上のプロジェクト名) と合わせてあります。
+## 仕組み
 
-## ローカル再現コマンド
+- `src/lib/repositories/index.ts`: `process.env.REPOSITORY_DRIVER ?? (NODE_ENV === 'production' ? 'github' : 'json')`
+  - production build (CF Pages / `yarn build:cf`) では default が `github` に切替
+  - `GITHUB_TOKEN` / `OWNER` / `REPO` が無いと **起動時に明示的に throw** する
+- `src/app/admin/**/*` / `src/app/api/admin/**/*`: `runtime = 'nodejs'` を削除して edge runtime をデフォルト化
+- `src/app/(use-header)/**/*`: PR-A (`perf/cf-edge-public`) で同様に edge 化済
+- `src/lib/repositories/github/githubClient.ts`: `fetch` ベース + `Buffer` フォールバックの base64 で Workers 互換
+- `next-auth` v5: edge 互換 (`auth()` を middleware で呼べる前提)
+
+## ローカルでの再現
 
 ```bash
-yarn build:cf
+# dev/CI (json driver)
+REPOSITORY_DRIVER=json NEXT_PUBLIC_SITE_URL=https://example.com yarn build
+
+# Cloudflare Pages build (github driver)
+REPOSITORY_DRIVER=github \
+  GITHUB_TOKEN=<your-pat> \
+  GITHUB_OWNER=nishi240masa \
+  GITHUB_REPO=my-portfolio \
+  GITHUB_BRANCH=develop \
+  NEXT_PUBLIC_SITE_URL=https://example.com \
+  yarn build:cf
 ```
 
-最後に上記の Edge Runtime エラーが表示されれば、同じ失敗を再現できています。
+GitHub Actions の CI (`.github/workflows/test.yml`) では `REPOSITORY_DRIVER=json` を明示しており、
+PR ごとの GitHub API 書き込みを伴わずに通常の `yarn build` を行う。
+
+## 既知の残課題
+
+- CF Pages dashboard 側 secrets 設定は **手動で 1 回行う必要がある**。
+  自動化したい場合は GitHub Actions の `cloudflare/pages-action` 等でビルドする経路に切替える。
+- `next-auth` v5 (beta) で `jose` 由来の `CompressionStream` 警告が build 時に出るが、edge 動作には影響しない。
+- Server Action からの `revalidateTag()` は edge runtime でも動作する想定だが、CF Pages 上での挙動は要検証 (Phase 3 候補)。
+
+## 過去の状態 (Phase 1 / Phase 2 着手前)
+
+`feat: implement admin dashboard with content management and authentication via JSON repositories` (d080cf6) で
+admin が `src/lib/repositories/json/jsonFile.ts` 経由で `node:fs` を使用するようになり、
+全ルートが `runtime = 'nodejs'` を要求するようになっていた。
+これが `@cloudflare/next-on-pages` の Edge Runtime 要件と衝突し、CF Pages PR preview は失敗していた。
+
+Phase 1 (PR-A: 公開ページの edge 化) と Phase 2 (本 PR: admin の edge 化 + github driver default 化) で根本対処済。

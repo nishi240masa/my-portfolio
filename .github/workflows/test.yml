@@ -36,4 +36,8 @@ jobs:
           # jsonld.ts の resolveSiteUrl() が production build で throw するため、
           # CI でも canonical URL を渡す。本番 deploy では Vercel/Cloudflare 側の env で上書き
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://my-portfolio-kohl-one-59.vercel.app' }}
+          # production build では default driver が 'github' になるが、CI には GITHUB_TOKEN 等を渡さない方針なので
+          # 明示的に 'json' driver を選択してビルドを通す。本番 deploy (Vercel / Cloudflare Pages) では
+          # それぞれの dashboard 側で REPOSITORY_DRIVER と GITHUB_TOKEN 等を設定する。
+          REPOSITORY_DRIVER: json
         run: yarn build

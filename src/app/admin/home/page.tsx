@@ -1,7 +1,6 @@
 import { homeRepo } from '@/lib/repositories';
 import HomeEditor from './HomeEditor';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export default async function HomeAdminPage() {

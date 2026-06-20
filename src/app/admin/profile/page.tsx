@@ -1,7 +1,6 @@
 import { profileRepo } from '@/lib/repositories';
 import ProfileEditor from './ProfileEditor';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export default async function ProfileAdminPage() {

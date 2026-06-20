@@ -68,13 +68,20 @@
 
 ## 進行中 PR
 
-なし (Open: 0 / 全 merge 済)
+### Epic: CF Pages 根本対処 — 全ルート edge 化
+
+| Phase | branch | 内容 | 状態 |
+|---|---|---|---|
+| Phase 1 | `perf/cf-edge-public` | `(use-header)/**/*` を edge runtime 化 (公開ページ) | 進行中 / 別 PR (PR-A) |
+| Phase 2 | `perf/cf-edge-admin`  | admin + api/admin を edge 化 + `REPOSITORY_DRIVER=github` 本番強制 | 進行中 / 本 PR (PR-B) |
+
+完了後の効果: CF Pages dashboard に `GITHUB_TOKEN` 等 secrets を設定すれば PR preview が green に。
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
 | 優先度 | 領域 | 内容 |
 |---|---|---|
-| 高 | CF Pages 根本対処 | REPOSITORY_DRIVER=github 切替 + admin を edge runtime 化(node:fs 排除)。CF PR preview を本当に green にしたい時に着手。大規模 epic |
+| ~~高~~ | ~~CF Pages 根本対処~~ | ~~REPOSITORY_DRIVER=github 切替 + admin を edge runtime 化~~ → **進行中** (Phase 1/2 で対応中、上の「進行中 PR」参照) |
 | 中 | LHCI | `@lhci/cli` バージョン不整合: workflow が `npx @lhci/cli@0.14.x`, devDeps は `^0.15.1` → `yarn lhci autorun` で統一 |
 | 中 | a11y/SEO | OG image の alt をさらに改善 (現状は title 含むが、Twitter Card 等への動的化余地) |
 | 中 | a11y | DanIndicator の labelledby スコープ広すぎ問題 (skill name span のみに narrow) / years 空時の `'(0/6, )'` 末尾カンマ防御 |

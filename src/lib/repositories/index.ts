@@ -1,5 +1,8 @@
 // リポジトリのファクトリ
-// 環境変数 REPOSITORY_DRIVER で実装を切替（'json' (default) | 'github'）
+// 環境変数 REPOSITORY_DRIVER で実装を切替:
+//  - dev/test 環境 (NODE_ENV !== 'production'): default は 'json' (node:fs ベース、ローカルの /data 配下を読み書き)
+//  - production 環境 (NODE_ENV === 'production'): default は 'github' (Cloudflare Pages 等の edge 配備で必須)
+// 明示的に REPOSITORY_DRIVER を指定すれば常に上書き可能。
 
 import { unstable_cache } from 'next/cache';
 import type { HomeContent } from '@/types/home';
@@ -32,8 +35,12 @@ function assertGitHubEnv(): void {
 }
 
 // driver 解決時に 1 回だけ env を検証する（factory 毎に呼ぶ重複を排除）
+// production build (Cloudflare Pages 等の edge 配備) では default を 'github' に強制し、
+// edge 非互換の json driver (node:fs) を誤って使わないようにする。
 const assertedDriver = (() => {
-  const d = process.env.REPOSITORY_DRIVER ?? 'json';
+  const d =
+    process.env.REPOSITORY_DRIVER ??
+    (process.env.NODE_ENV === 'production' ? 'github' : 'json');
   if (d === 'github') assertGitHubEnv();
   return d;
 })();

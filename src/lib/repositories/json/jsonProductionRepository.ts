@@ -1,3 +1,5 @@
+// !!! dev/test 専用 — production (edge runtime) では使用不可 !!!
+// production deploy では REPOSITORY_DRIVER=github を強制し、github driver を使うこと。
 import type { Post, PostPage } from '@/types/post';
 import type { CollectionRepository } from '../types';
 import { readJson, writeJson } from './jsonFile';

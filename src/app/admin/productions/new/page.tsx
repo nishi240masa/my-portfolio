@@ -1,6 +1,5 @@
 import ProductionEditor from '../_components/ProductionEditor';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export default function NewProductionPage() {

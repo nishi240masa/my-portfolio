@@ -2,7 +2,6 @@ import { productionRepo } from '@/lib/repositories';
 import { requireAdmin } from '@/lib/admin/auth';
 import { productionPatchSchema } from '@/lib/admin/schemas';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 type Params = { params: Promise<{ id: string }> };

@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation';
 import { productionRepo } from '@/lib/repositories';
 import ProductionEditor from '../_components/ProductionEditor';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export default async function EditProductionPage({ params }: { params: Promise<{ id: string }> }) {

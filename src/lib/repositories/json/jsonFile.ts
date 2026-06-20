@@ -1,4 +1,7 @@
 // JSON ファイルの読み書き共通ユーティリティ
+// !!! dev/test 専用 — production (edge runtime) では使用不可 !!!
+// - node:fs を import しているため Cloudflare Pages の Edge Runtime ではビルド/実行時に失敗する
+// - production では REPOSITORY_DRIVER=github を経由して github driver を使うこと
 // - 読み込みは fs/promises で都度ファイルから取得（プロセス内キャッシュなし）
 // - 書き込みは一時ファイル → rename の atomic write
 // - 並行編集は想定しないが、書き込み中に読まれても整合性が崩れないようにする

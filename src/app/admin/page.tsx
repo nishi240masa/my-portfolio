@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { productionRepo, profileRepo, skillsRepo, homeRepo } from '@/lib/repositories';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboard() {

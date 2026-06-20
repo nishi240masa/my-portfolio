@@ -2,3 +2,13 @@ name = "west-portfolio"
 compatibility_date = "2025-01-20"
 compatibility_flags = [ "nodejs_compat" ]
 pages_build_output_dir = ".vercel/output/static"
+
+# Cloudflare Pages 用の public env vars
+# REPOSITORY_DRIVER: production では github driver を使う (Edge Runtime で動作)
+# GITHUB_TOKEN / AUTH_SECRET / AUTH_GOOGLE_* は secret として CF dashboard 側で登録する。
+# (wrangler.toml には書かない。dashboard: Settings > Environment variables > Secrets)
+[vars]
+REPOSITORY_DRIVER = "github"
+GITHUB_OWNER = "nishi240masa"
+GITHUB_REPO = "my-portfolio"
+GITHUB_BRANCH = "develop"

@@ -2,7 +2,6 @@ import { skillsRepo } from '@/lib/repositories';
 import { requireAdmin } from '@/lib/admin/auth';
 import { skillsSchema } from '@/lib/admin/schemas';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {

@@ -1,7 +1,6 @@
 import { skillsRepo } from '@/lib/repositories';
 import SkillEditor from './SkillEditor';
 
-export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export default async function SkillAdminPage() {
