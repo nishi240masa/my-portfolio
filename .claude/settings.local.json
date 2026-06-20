@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sips:*)",
+      "Bash(ls:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(yarn build:*)",
+      "Bash(git branch:*)",
+      "Bash(git merge:*)",
+      "Read(//private/tmp/design_extract/**)",
+      "Bash(mkdir -p extracted)",
+      "Bash(tar -xf design -C extracted)"
+    ]
+  }
+}
