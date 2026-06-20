@@ -130,7 +130,6 @@ export default function Header() {
           <Link
             href="/contact"
             aria-current={pathname === '/contact' ? 'page' : undefined}
-            aria-label="Contact · 連絡へ"
             className="header-contact-cta"
             style={{
               marginLeft: 8,

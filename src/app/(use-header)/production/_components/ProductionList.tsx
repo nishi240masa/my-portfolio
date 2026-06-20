@@ -30,6 +30,8 @@ export default function ProductionList({ data }: { data: Post[] }) {
       : ALL;
 
   const [filter, setFilter] = useState<string>(initialFilter);
+  // aria-live で読み上げるメッセージ。初期表示時は空、フィルタ操作後に件数文字列を入れる。
+  const [liveMessage, setLiveMessage] = useState<string>('');
 
   // URL が外部から変わった場合（戻る/進む等）に state を同期する
   useEffect(() => {
@@ -50,21 +52,29 @@ export default function ProductionList({ data }: { data: Post[] }) {
       }
       const query = params.toString();
       const next = query ? `${pathname}?${query}` : pathname;
+      // 履歴を残さず URL のみ同期 (フィルタは UI 状態であり、戻る/進むで全件に戻る方が直感的)
       router.replace(next, { scroll: false });
     },
     [pathname, router, searchParams],
   );
 
+  const filtered =
+    filter === ALL ? data : data.filter((p) => p.tags.includes(filter));
+
   const handleSelect = useCallback(
     (next: string) => {
       setFilter(next);
       updateUrl(next);
+      const nextFiltered =
+        next === ALL ? data : data.filter((p) => p.tags.includes(next));
+      setLiveMessage(
+        next === ALL
+          ? `全 ${nextFiltered.length} 件を表示中`
+          : `「${next}」で絞り込み — ${nextFiltered.length} 件`,
+      );
     },
-    [updateUrl],
+    [updateUrl, data],
   );
-
-  const filtered =
-    filter === ALL ? data : data.filter((p) => p.tags.includes(filter));
 
   return (
     <>
@@ -85,7 +95,8 @@ export default function ProductionList({ data }: { data: Post[] }) {
         <button
           type="button"
           onClick={() => handleSelect(ALL)}
-          aria-pressed={filter === ALL}
+          aria-current={filter === ALL ? 'true' : undefined}
+          aria-controls="production-list-results"
           className={'tag' + (filter === ALL ? ' solid' : '')}
           style={{ cursor: 'pointer', border: filter === ALL ? '1px solid var(--primary)' : undefined }}
         >
@@ -96,7 +107,8 @@ export default function ProductionList({ data }: { data: Post[] }) {
             key={t}
             type="button"
             onClick={() => handleSelect(t)}
-            aria-pressed={filter === t}
+            aria-current={filter === t ? 'true' : undefined}
+            aria-controls="production-list-results"
             className={'tag' + (filter === t ? ' solid' : '')}
             style={{ cursor: 'pointer', border: filter === t ? '1px solid var(--primary)' : undefined }}
           >
@@ -111,20 +123,20 @@ export default function ProductionList({ data }: { data: Post[] }) {
         className="t-meta"
         style={{ marginBottom: 24, fontSize: 12, color: 'var(--fg-muted)' }}
       >
-        {filter === ALL
-          ? `全 ${filtered.length} 件を表示中`
-          : `「${filter}」で絞り込み — ${filtered.length} 件`}
+        {liveMessage}
       </div>
 
-      {filtered.length === 0 ? (
-        <EmptyState title="該当する作品がありません" subtitle="Try another filter." />
-      ) : (
-        <div className="production-grid">
-          {filtered.map((data, i) => (
-            <ProductionCard key={data.id} data={data} index={i} />
-          ))}
-        </div>
-      )}
+      <div id="production-list-results">
+        {filtered.length === 0 ? (
+          <EmptyState title="該当する作品がありません" subtitle="Try another filter." />
+        ) : (
+          <div className="production-grid">
+            {filtered.map((data, i) => (
+              <ProductionCard key={data.id} data={data} index={i} />
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }

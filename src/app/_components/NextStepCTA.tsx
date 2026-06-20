@@ -117,7 +117,7 @@ export default function NextStepCTA() {
 
   return (
     <section
-      aria-label="次の導線"
+      aria-labelledby="next-step-cta-heading"
       className="container"
       style={{
         marginTop: 80,
@@ -126,6 +126,9 @@ export default function NextStepCTA() {
         borderTop: '1px solid var(--hairline)',
       }}
     >
+      <h2 id="next-step-cta-heading" className="sr-only">
+        次の一手
+      </h2>
       <div
         style={{
           display: 'flex',

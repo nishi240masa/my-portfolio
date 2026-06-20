@@ -39,7 +39,7 @@ export default function RelatedPosts({
 
   return (
     <section
-      aria-label="関連作品"
+      aria-labelledby="related-posts-heading"
       style={{
         marginTop: 80,
         paddingTop: 32,
@@ -48,6 +48,7 @@ export default function RelatedPosts({
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
         <span
+          aria-hidden="true"
           style={{
             fontFamily: 'var(--font-mincho)',
             fontSize: 30,
@@ -59,8 +60,8 @@ export default function RelatedPosts({
         </span>
         <div>
           <div className="t-eyebrow">RELATED · 関連作品</div>
-          <h2 className="t-h3" style={{ fontSize: 22, marginTop: 4 }}>
-            同じ系譜の作品
+          <h2 id="related-posts-heading" className="t-h3" style={{ fontSize: 22, marginTop: 4 }}>
+            関連する制作
           </h2>
         </div>
       </div>

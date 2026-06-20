@@ -15,8 +15,8 @@ export default function UseHeaderLayout({
       <Header />
       <main id="main" tabIndex={-1} style={{ flex: 1 }}>
         {children}
+        <NextStepCTA />
       </main>
-      <NextStepCTA />
       <Footer />
     </div>
   );

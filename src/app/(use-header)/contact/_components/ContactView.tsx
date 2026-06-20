@@ -110,64 +110,69 @@ export default function ContactView({ sns }: { sns: SnsLink[] }) {
           marginBottom: 80,
         }}
       >
-        {CARDS.map((c) => (
-          <a
-            key={c.title}
-            href={mailto({ subject: c.subject, body: c.body })}
-            className="card"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 16,
-              padding: 28,
-              textDecoration: 'none',
-              color: 'inherit',
-              background: 'var(--bg-elev)',
-            }}
-            aria-label={`${c.title} — ${c.ctaLabel}`}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <span
-                style={{
-                  fontFamily: 'var(--font-mincho)',
-                  fontSize: 30,
-                  color: 'var(--primary)',
-                  lineHeight: 1,
-                }}
-              >
-                {c.kanji}
-              </span>
-              <div>
-                <div className="t-eyebrow">{c.eyebrow}</div>
-                <div
+        {CARDS.map((c) => {
+          const descId = `contact-card-desc-${c.title}`;
+          return (
+            <a
+              key={c.title}
+              href={mailto({ subject: c.subject, body: c.body })}
+              className="card"
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 16,
+                padding: 28,
+                textDecoration: 'none',
+                color: 'inherit',
+                background: 'var(--bg-elev)',
+              }}
+              aria-describedby={descId}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <span
+                  aria-hidden="true"
                   style={{
                     fontFamily: 'var(--font-mincho)',
-                    fontSize: 20,
-                    marginTop: 4,
+                    fontSize: 30,
+                    color: 'var(--primary)',
+                    lineHeight: 1,
                   }}
                 >
-                  {c.title}
+                  {c.kanji}
+                </span>
+                <div>
+                  <div className="t-eyebrow">{c.eyebrow}</div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-mincho)',
+                      fontSize: 20,
+                      marginTop: 4,
+                    }}
+                  >
+                    {c.title}
+                  </div>
                 </div>
               </div>
-            </div>
-            <p
-              className="t-body"
-              style={{ fontSize: 13, color: 'var(--fg-muted)', textWrap: 'pretty' }}
-            >
-              {c.description}
-            </p>
-            <span
-              className="t-meta"
-              style={{
-                marginTop: 'auto',
-                color: 'var(--primary)',
-                fontSize: 11,
-              }}
-            >
-              {c.ctaLabel} →
-            </span>
-          </a>
-        ))}
+              <p
+                id={descId}
+                className="t-body"
+                style={{ fontSize: 13, color: 'var(--fg-muted)', textWrap: 'pretty' }}
+              >
+                {c.description}
+              </p>
+              <span
+                className="t-meta"
+                style={{
+                  marginTop: 'auto',
+                  color: 'var(--primary)',
+                  fontSize: 11,
+                }}
+              >
+                {c.ctaLabel} →
+              </span>
+            </a>
+          );
+        })}
       </div>
 
       <div
