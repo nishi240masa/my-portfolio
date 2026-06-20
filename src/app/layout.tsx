@@ -6,6 +6,8 @@ import { cookies } from 'next/headers';
 import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
 import type { ThemeMode } from './theme';
+import { profileRepo } from '@/lib/repositories';
+import { personJsonLd } from '@/lib/jsonld';
 
 const hinaMincho = Hina_Mincho({
   weight: '400',
@@ -41,6 +43,13 @@ export const metadata: Metadata = {
     template: '%s | west · Portfolio',
   },
   description: '未来のある開発を、意味のある人生を。— 西尾 匡生のポートフォリオ',
+  alternates: {
+    languages: {
+      ja: '/',
+      en: '/en',
+      'x-default': '/',
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -79,6 +88,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     cookieStore.get('theme-mode')?.value === 'dark' ? 'dark' : 'light';
   const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
+  // SEO: Schema.org Person を JSON-LD としてページ全体に注入する
+  const profile = await profileRepo.get();
+  const personLd = personJsonLd(profile);
+
   return (
     <html
       lang="ja"
@@ -94,6 +107,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+        />
         <ClientLayout initialMode={themeMode}>{children}</ClientLayout>
         {cfBeaconToken ? (
           <Script

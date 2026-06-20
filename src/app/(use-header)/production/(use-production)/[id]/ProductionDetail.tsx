@@ -1,19 +1,21 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
-import dynamic from 'next/dynamic';
 import { ImagePlaceholder } from '@/app/_components/design/Placeholders';
 import TagList from '@/app/_components/design/Tags';
-import { LoadingDots } from '@/app/_components/design/States';
 import RelatedPosts from './_components/RelatedPosts';
 import type { Post, PostPage } from '@/types/post';
 
-const MarkdownContent = dynamic(() => import('./MarkdownContent'), {
-  ssr: false,
-  loading: () => <LoadingDots />,
-});
-
-export default function ProductionDetail({ article, all }: { article: PostPage; all: Post[] }) {
+export default function ProductionDetail({
+  article,
+  all,
+  markdown,
+}: {
+  article: PostPage;
+  all: Post[];
+  markdown: ReactNode;
+}) {
   const router = useRouter();
 
   const meta = [
@@ -63,7 +65,7 @@ export default function ProductionDetail({ article, all }: { article: PostPage; 
       </div>
 
       <div className="markdown-body" style={{ maxWidth: 720, margin: '0 auto' }}>
-        <MarkdownContent content={article.content} />
+        {markdown}
       </div>
 
       <RelatedPosts currentId={article.id} currentTags={article.tags} all={all} />
