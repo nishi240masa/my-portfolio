@@ -15,6 +15,7 @@ import {
 } from '../_components/AdminForm';
 import { saveHome } from '../_actions/home';
 import { INITIAL_ACTION_STATE, type ActionState } from '../_actions/_types';
+import { useAutoDismissOnSuccess } from '../_hooks/useAutoDismissOnSuccess';
 
 const addBtn = {
   padding: '6px 12px',
@@ -85,7 +86,7 @@ export default function HomeEditor({ initial }: { initial: HomeContent }) {
     saveHome,
     INITIAL_ACTION_STATE as ActionState<HomeContent>,
   );
-  const [showOk, setShowOk] = useState(false);
+  const showOk = useAutoDismissOnSuccess(state);
 
   function update<K extends keyof HomeContent>(key: K, value: HomeContent[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -97,16 +98,6 @@ export default function HomeEditor({ initial }: { initial: HomeContent }) {
   useEffect(() => {
     if (state.ok) router.refresh();
   }, [state, router]);
-
-  // 「✓ 保存しました」を 3 秒後に自動消失。state オブジェクトの identity を
-  // 観測することで 2 回目以降の連続成功でも effect が再発火する。
-  useEffect(() => {
-    if (state.ok) {
-      setShowOk(true);
-      const t = setTimeout(() => setShowOk(false), 3000);
-      return () => clearTimeout(t);
-    }
-  }, [state]);
 
   const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 

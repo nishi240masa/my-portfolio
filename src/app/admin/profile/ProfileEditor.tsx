@@ -15,6 +15,7 @@ import {
 } from '../_components/AdminForm';
 import { saveProfile } from '../_actions/profile';
 import { INITIAL_ACTION_STATE, type ActionState } from '../_actions/_types';
+import { useAutoDismissOnSuccess } from '../_hooks/useAutoDismissOnSuccess';
 
 function TimelineEditor({ value, onChange }: { value: TimelineItem[]; onChange: (v: TimelineItem[]) => void }) {
   return (
@@ -107,7 +108,7 @@ export default function ProfileEditor({ initial }: { initial: Profile }) {
     saveProfile,
     INITIAL_ACTION_STATE as ActionState<Profile>,
   );
-  const [showOk, setShowOk] = useState(false);
+  const showOk = useAutoDismissOnSuccess(state);
 
   function update<K extends keyof Profile>(key: K, value: Profile[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -118,16 +119,6 @@ export default function ProfileEditor({ initial }: { initial: Profile }) {
   useEffect(() => {
     if (state.ok) router.refresh();
   }, [state, router]);
-
-  // 「✓ 保存しました」を 3 秒後に自動消失。state オブジェクトの identity を
-  // 観測することで 2 回目以降の連続成功でも effect が再発火する。
-  useEffect(() => {
-    if (state.ok) {
-      setShowOk(true);
-      const t = setTimeout(() => setShowOk(false), 3000);
-      return () => clearTimeout(t);
-    }
-  }, [state]);
 
   const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
