@@ -5,6 +5,20 @@
 ## 1. 現状把握 (必ず最初に実行)
 
 ```bash
+bash .claude/scripts/preflight.sh
+```
+
+このスクリプトは READ-ONLY で以下を一括表示する:
+- Node/yarn/gh のバージョンと認証状態
+- 現在ブランチ + `git status --short`
+- `origin/develop` との ahead/behind
+- open PRs (`gh pr list --base develop`)
+- リポジトリ設定 (`allow_auto_merge` / `allow_squash_merge` 等)
+- develop の branch protection と required status checks
+- 既知の notice (CF Pages CI は永続失敗、auto-merge 無効 等)
+
+手動で個別に確認したい場合は以下:
+```bash
 git -C $(git rev-parse --show-toplevel 2>/dev/null || echo .) fetch origin --prune
 git log --oneline origin/develop -20
 gh pr list --base develop --json number,title,state,mergeable,mergeStateStatus
@@ -36,17 +50,23 @@ export PATH="/Users/k23087kk/.nodebrew/current/bin:$PATH"
 
 ## 5. 開発フロー (PROGRESS.md にも記載)
 
+worktree のセットアップは一行で:
+
 ```bash
-REPO=$(git rev-parse --show-toplevel)
-BRANCH=feat/case-study-and-dan-indicator  # 例
-SLUG=$(echo $BRANCH | tr '/' '-')
+bash .claude/scripts/setup-worktree.sh feat/case-study  # 例
+```
 
-git -C $REPO fetch origin develop --prune
-git -C $REPO worktree add -B $BRANCH "$REPO/../portfolio-wt/$SLUG" origin/develop
-cd "$REPO/../portfolio-wt/$SLUG"
-ln -sfn "$REPO/node_modules" node_modules
+このスクリプトは以下を自動で実行する:
+- `git fetch origin develop --prune`
+- `git worktree add -B <branch> $REPO/../portfolio-wt/<slug> origin/develop`
+- `node_modules` を repo root から symlink (yarn install 不要)
+- 仕様 ticket のパスと次のコマンド例を表示
 
-cat "$REPO/.claude/tickets/$SLUG.md"  # 仕様を読む
+続きの実装〜PR 作成:
+
+```bash
+cd "$REPO/../portfolio-wt/<slug>"
+cat "$REPO/.claude/tickets/<slug>.md"  # 仕様を読む
 
 # ... 実装 ...
 
@@ -55,8 +75,8 @@ yarn lint && yarn test --passWithNoTests && yarn build
 
 git add -A
 git -c commit.gpgsign=false commit -m "..."
-git push -u origin $BRANCH
-gh pr create --base develop --head $BRANCH --title "..." --body "..."
+git push -u origin <branch>
+gh pr create --base develop --head <branch> --title "..." --body "..."
 ```
 
 ## 6. レビュー & マージ (auto-merge 無効)
