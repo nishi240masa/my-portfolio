@@ -572,6 +572,39 @@ button.tag {
   justify-content: center;
 }
 
+/* ===== Dan indicator cells (色覚多様性対応: 色だけでなくパターンで区別) ===== */
+.dan-cell {
+  box-sizing: border-box;
+}
+
+.dan-cell-filled {
+  /* 満マス = 墨ベタ (到達済み) */
+  background-color: var(--primary);
+  background-image: none;
+}
+
+.dan-cell-empty {
+  /* 空マス = ハッチパターン (習熟度不足) — 色覚多様性ユーザにも色以外で伝える */
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--hairline-strong) 0,
+    var(--hairline-strong) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
+[data-theme="dark"] .dan-cell-empty {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--hairline-strong) 0,
+    var(--hairline-strong) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+
 /* ===== next/font bridge ===== */
 :root {
   --font-mincho: var(--font-mincho-next), 'Hina Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;

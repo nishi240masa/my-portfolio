@@ -5,6 +5,20 @@
 ## 1. 現状把握 (必ず最初に実行)
 
 ```bash
+bash .claude/scripts/preflight.sh
+```
+
+このスクリプトは READ-ONLY で以下を一括表示する:
+- Node/yarn/gh のバージョンと認証状態
+- 現在ブランチ + `git status --short`
+- `origin/develop` との ahead/behind
+- open PRs (`gh pr list --base develop`)
+- リポジトリ設定 (`allow_auto_merge` / `allow_squash_merge` 等)
+- develop の branch protection と required status checks
+- 既知の notice (CF Pages CI は永続失敗、auto-merge 無効 等)
+
+手動で個別に確認したい場合は以下:
+```bash
 git -C $(git rev-parse --show-toplevel 2>/dev/null || echo .) fetch origin --prune
 git log --oneline origin/develop -20
 gh pr list --base develop --json number,title,state,mergeable,mergeStateStatus
@@ -36,17 +50,23 @@ export PATH="/Users/k23087kk/.nodebrew/current/bin:$PATH"
 
 ## 5. 開発フロー (PROGRESS.md にも記載)
 
+worktree のセットアップは一行で:
+
 ```bash
-REPO=$(git rev-parse --show-toplevel)
-BRANCH=feat/case-study-and-dan-indicator  # 例
-SLUG=$(echo $BRANCH | tr '/' '-')
+bash .claude/scripts/setup-worktree.sh feat/case-study  # 例
+```
 
-git -C $REPO fetch origin develop --prune
-git -C $REPO worktree add -B $BRANCH "$REPO/../portfolio-wt/$SLUG" origin/develop
-cd "$REPO/../portfolio-wt/$SLUG"
-ln -sfn "$REPO/node_modules" node_modules
+このスクリプトは以下を自動で実行する:
+- `git fetch origin develop --prune`
+- `git worktree add -B <branch> $REPO/../portfolio-wt/<slug> origin/develop`
+- `node_modules` を repo root から symlink (yarn install 不要)
+- 仕様 ticket のパスと次のコマンド例を表示
 
-cat "$REPO/.claude/tickets/$SLUG.md"  # 仕様を読む
+続きの実装〜PR 作成:
+
+```bash
+cd "$REPO/../portfolio-wt/<slug>"
+cat "$REPO/.claude/tickets/<slug>.md"  # 仕様を読む
 
 # ... 実装 ...
 
@@ -55,11 +75,11 @@ yarn lint && yarn test --passWithNoTests && yarn build
 
 git add -A
 git -c commit.gpgsign=false commit -m "..."
-git push -u origin $BRANCH
-gh pr create --base develop --head $BRANCH --title "..." --body "..."
+git push -u origin <branch>
+gh pr create --base develop --head <branch> --title "..." --body "..."
 ```
 
-## 6. レビュー & マージ (auto-merge 無効)
+## 6. レビュー & マージ (auto-merge 有効化済 / 2026-06-20)
 
 ```bash
 PR=<番号>
@@ -68,15 +88,12 @@ gh pr diff $PR | less
 # 専門領域から批判的レビュー → BLOCKER/MAJOR 1件でも REQUEST_CHANGES
 gh pr review $PR --approve --body "..." # or --request-changes --body "..."
 
-# auto-merge 無効なので直接 merge
-# CI test=pass を確認
-until [ "$(gh pr checks $PR --json name,bucket -q '.[]|select(.name=="test")|.bucket')" = "pass" ]; do sleep 30; done
+# auto-merge 有効。enqueue するだけで CI green を待って自動マージされる (polling 不要)
+gh pr merge $PR --auto --squash --delete-branch
 
-# MERGEABLE を確認 (CONFLICTING なら PM が手動解消)
-gh pr view $PR --json mergeable -q '.mergeable'
-
-# マージ実行 (CF Pages 失敗は無視可)
-gh pr merge $PR --squash --delete-branch
+# 即時 merge したい場合は --auto を外す:
+#   gh pr merge $PR --squash --delete-branch
+# (CONFLICTING なら PM が手動解消。CF Pages 失敗は required check ではないので無視可)
 ```
 
 ## 7. PROGRESS.md を更新
@@ -85,7 +102,7 @@ gh pr merge $PR --squash --delete-branch
 
 ## 困ったら
 
-- auto-merge 関連エラー: 設定で無効。`--auto` は使えない。直接 merge する
+- auto-merge 関連エラー: 2026-06-20 に有効化済み。`gh pr merge --auto --squash --delete-branch` が使える。即時 merge したい場合は `--auto` を外す
 - CF Pages CI が赤: 仕様。test と Vercel が pass なら無視可
 - conflict: 別 worktree で `git merge origin/develop` → fix → push
 - token 残量が 90% 接近: 停止サマリを出して止める
@@ -97,3 +114,8 @@ gh pr merge $PR --squash --delete-branch
 - `/tmp/portfolio-wt/` も持たない (新規 worktree を作る)
 - `Workflow` ツール(pipeline 並列実装)は **使えない** → `Agent` ツールで 1 PR ずつ順次実装
 - 単一エージェントなので self-critique パターンを使う(impl 後に別 persona で critique → fix)
+
+## Patterns library
+
+本リポジトリ固有の運用パターン (self-critique / budget-guard / cloud-serial-workflow) は [`.claude/patterns/README.md`](./patterns/README.md) に置いてあります。
+新セッション開始時にこの RESUME.md を読んだ後、自分の環境 (Workflow が使える / 使えない、単一 / 複数エージェント) に応じて該当 pattern を参照してください。

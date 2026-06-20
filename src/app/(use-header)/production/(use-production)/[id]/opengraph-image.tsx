@@ -13,9 +13,25 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
-export const alt = 'Production cover image';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
+
+// 動的 alt — タイトルを反映して a11y / SEO 向上
+export async function generateImageMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const numericId = Number(id);
+  if (!Number.isFinite(numericId)) {
+    return [{ id: 'default', alt: 'Production cover image', size, contentType }];
+  }
+  const article = await productionRepo.getById(numericId);
+  const alt =
+    article == null ? 'Production cover image' : `${article.title} のカバー画像`;
+  return [{ id: 'default', alt, size, contentType }];
+}
 
 // 和紙色 / 朱色 — 既存のテーマ感に近いトーン
 const WASHI = '#fbf8f3';
@@ -80,7 +96,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
               borderRadius: '4px',
             }}
           >
-            west
+            西
           </div>
           <div
             style={{

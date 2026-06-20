@@ -149,6 +149,7 @@ export default function SkillEditor({ initial }: { initial: SkillsContent }) {
     saveSkills,
     INITIAL_ACTION_STATE as ActionState<SkillsContent>,
   );
+  const [showOk, setShowOk] = useState(false);
 
   function update<K extends keyof SkillsContent>(key: K, value: SkillsContent[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -160,6 +161,16 @@ export default function SkillEditor({ initial }: { initial: SkillsContent }) {
     if (state.ok) router.refresh();
   }, [state, router]);
 
+  // 「✓ 保存しました」を 3 秒後に自動消失。state オブジェクトの identity を
+  // 観測することで 2 回目以降の連続成功でも effect が再発火する。
+  useEffect(() => {
+    if (state.ok) {
+      setShowOk(true);
+      const t = setTimeout(() => setShowOk(false), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [state]);
+
   const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
   return (
@@ -168,6 +179,7 @@ export default function SkillEditor({ initial }: { initial: SkillsContent }) {
       <Toolbar
         onCancel={() => setForm(initial)}
         status={status}
+        showOk={showOk}
         errorMessage={state.error}
       />
       <FieldErrors errors={state.fieldErrors} />
