@@ -32,4 +32,8 @@ jobs:
         run: yarn test --passWithNoTests
 
       - name: Build application
+        env:
+          # jsonld.ts の resolveSiteUrl() が production build で throw するため、
+          # CI でも canonical URL を渡す。本番 deploy では Vercel/Cloudflare 側の env で上書き
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://my-portfolio-kohl-one-59.vercel.app' }}
         run: yarn build
