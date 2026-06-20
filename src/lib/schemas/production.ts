@@ -21,13 +21,13 @@ export const caseStudyLinkSchema = z.object({
 });
 
 export const caseStudySchema = z.object({
-  role: z.string(),
+  role: z.string().trim().min(1, 'role は必須です'),
   period: z.string(),
   teamSize: z.string().optional(),
   stack: z.array(z.string()).default([]),
-  problem: z.string(),
+  problem: z.string().trim().min(1, 'problem は必須です'),
   approach: z.string(),
-  result: z.string(),
+  result: z.string().trim().min(1, 'result は必須です'),
   metrics: z.array(caseStudyMetricSchema).default([]),
   links: z.array(caseStudyLinkSchema).default([]),
 });

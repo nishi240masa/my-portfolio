@@ -5,7 +5,7 @@ import {
   listProductionsSummaryCached,
   profileRepo,
 } from '@/lib/repositories';
-import { creativeWorkJsonLd } from '@/lib/jsonld';
+import { creativeWorkJsonLd, serializeJsonLd } from '@/lib/jsonld';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
@@ -40,8 +40,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ id: st
       {articleJsonLd ? (
         <script
           type="application/ld+json"
-          // JSON.stringify は XSS 安全 (制御文字/タグは含まれない想定の値のみ)
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+          // serializeJsonLd で `<`/`>`/`&` をエスケープし、</script> 経由の XSS を防ぐ。
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
         />
       ) : null}
       <ProductionDetail
