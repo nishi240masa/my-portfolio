@@ -131,10 +131,12 @@ export const listProductionsSummaryCached = unstable_cache(
   { tags: ['productions'] },
 );
 
-// 引数 id は unstable_cache が自動で keyParts に追加される
-export const getProductionByIdCached = unstable_cache(
-  async (id: number): Promise<PostPage | null> => productionRepo.getById(id),
-  ['productions', 'byId'],
-  // TODO(PR-8): per-id 粒度に変更 (tags: ['productions', `production:${id}`])
-  { tags: ['productions'] },
-);
+// per-id 粒度の cache: 個別 id の更新で他の id を失効させないため、
+// id ごとに unstable_cache を組み立てて呼び出す wrapper を提供する。
+// revalidateTag('productions') で全件失効、revalidateTag(`production:${id}`) で個別失効。
+export const getProductionByIdCached = (id: number): Promise<PostPage | null> =>
+  unstable_cache(
+    async (): Promise<PostPage | null> => productionRepo.getById(id),
+    ['productions', 'byId', String(id)],
+    { tags: ['productions', `production:${id}`] },
+  )();

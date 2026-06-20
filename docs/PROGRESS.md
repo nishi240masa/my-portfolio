@@ -13,7 +13,7 @@
 
 - **Node**: >= 20 (PATH に `/Users/k23087kk/.nodebrew/current/bin` が必要)
 - **Yarn**: 1.22.x
-- **auto-merge**: GitHub リポ設定で **無効**。`gh pr merge --auto` は使えない。CI test=pass を `gh pr checks` で確認後、`gh pr merge <num> --squash --delete-branch` を直接実行する
+- **auto-merge**: 2026-06-20 に有効化済み。`gh pr merge --auto --squash --delete-branch` で CI green を待って自動マージできる。CI 失敗の場合は merge されない (CF Pages 失敗は required check ではないので無視される)。直接 merge する場合も従来通り `gh pr merge --squash --delete-branch` で可能。
 - **Cloudflare Pages CI**: admin が `node:fs` を使う関係で全ルートが `runtime='nodejs'` になっており next-on-pages の Edge 要件と非互換。PR preview は **常に失敗するが merge ブロックしない**ので無視可。根本対処は follow-up
 - **Worktree**: `$(git rev-parse --show-toplevel)/../portfolio-wt/<branch-slug>` に統一(local/cloud 両対応のため。`/tmp/` は使わない)
 - **node_modules**: 各 worktree で `ln -sfn $(git rev-parse --show-toplevel | xargs dirname | xargs basename)/my-portfolio/node_modules node_modules` で symlink (yarn install は repo ルートで1回だけ)
@@ -81,11 +81,14 @@ gh pr diff <num>
 # ... 専門領域から批判的にレビュー
 gh pr review <num> --approve --body "..." または --request-changes --body "..."
 
-# 7. マージ (auto-merge 無効なので直接)
-# CI test=pass を polling で確認
-gh pr checks <num> --json name,bucket -q '.[]|select(.name=="test")|.bucket'
-gh pr view <num> --json mergeable -q '.mergeable'  # MERGEABLE 確認
-gh pr merge <num> --squash --delete-branch
+# 7. マージ (auto-merge 有効化済 / 2026-06-20)
+# 推奨: enqueue して放置 — CI green を待って自動マージされる (polling 不要)
+gh pr merge <num> --auto --squash --delete-branch
+
+# 参考: 即時 merge したい / 古い polling パターン
+# gh pr checks <num> --json name,bucket -q '.[]|select(.name=="test")|.bucket'
+# gh pr view <num> --json mergeable -q '.mergeable'  # MERGEABLE 確認
+# gh pr merge <num> --squash --delete-branch
 
 # 8. PROGRESS.md を更新する PR を立てる
 ```
