@@ -1,4 +1,3 @@
-import { unstable_cache } from 'next/cache';
 import type { Post, PostPage } from '@/types/post';
 import type { CollectionRepository } from '../types';
 import { readJson, writeJson } from './jsonFile';
@@ -61,28 +60,3 @@ export class JsonProductionRepository implements CollectionRepository<PostPage> 
     await writeJson(FILE, next);
   }
 }
-
-// unstable_cache でラップした取得関数 (revalidateTag('productions') で無効化)
-export const listProductionsCached = unstable_cache(
-  async (): Promise<PostPage[]> => readJson<PostPage[]>(FILE),
-  ['productions', 'list'],
-  { tags: ['productions'] },
-);
-
-export const listProductionsSummaryCached = unstable_cache(
-  async (): Promise<Post[]> => {
-    const all = await readJson<PostPage[]>(FILE);
-    return all.map(toListItem);
-  },
-  ['productions', 'listSummary'],
-  { tags: ['productions'] },
-);
-
-export const getProductionByIdCached = unstable_cache(
-  async (id: number): Promise<PostPage | null> => {
-    const all = await readJson<PostPage[]>(FILE);
-    return all.find((p) => p.id === id) ?? null;
-  },
-  ['productions', 'byId'],
-  { tags: ['productions'] },
-);
