@@ -62,9 +62,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    canonical: '/',
-  },
 };
 
 export const viewport: Viewport = {
@@ -89,6 +86,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       className={`${hinaMincho.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var c=document.cookie.match(/(?:^|; )theme-mode=([^;]+)/);if(!c){var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         <ClientLayout initialMode={themeMode}>{children}</ClientLayout>
         {cfBeaconToken ? (

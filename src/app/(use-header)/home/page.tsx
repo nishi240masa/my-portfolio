@@ -8,6 +8,7 @@ export const dynamic = 'force-dynamic';
 export const metadata: Metadata = {
   title: 'ホーム',
   description: '西尾 匡生のポートフォリオ - ホーム。未来のある開発を、意味のある人生を。',
+  alternates: { canonical: '/home' },
 };
 
 export default async function Page() {
