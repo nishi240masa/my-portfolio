@@ -1,24 +1,12 @@
-// 記事の型
-export interface Post {
-  id: number;
-  title: string;
-  image?: string;
-  description: string;
-  date: string;
-  tags: string[];
-}
+// 記事 / ページ の型 — SSOTスキーマから z.infer して再エクスポート。
+// 既存呼び出し箇所が使用する型名 Post / PostPage を後方互換のために維持する。
+import type {
+  ProductionSummary,
+  ProductionDetail,
+} from '@/lib/schemas/production';
 
-// ページの型
-export interface PostPage {
-  id: number;
-  title: string;
-  image?: string;
-  peopleNum: number;
-  role: string;
-  period: string;
-  technologys: string[];
-  description: string;
-  date: string;
-  tags: string[];
-  content: string;
-}
+// 一覧/カード表示で使う最小フィールド
+export type Post = ProductionSummary;
+
+// 詳細ページで使う完全な型
+export type PostPage = ProductionDetail;
