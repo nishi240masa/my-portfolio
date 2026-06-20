@@ -12,8 +12,6 @@ import {
   GitHubSkillsRepository,
 } from './github';
 
-const driver = process.env.REPOSITORY_DRIVER ?? 'json';
-
 function assertGitHubEnv(): void {
   const missing: string[] = [];
   if (!process.env.GITHUB_TOKEN) missing.push('GITHUB_TOKEN');
@@ -26,10 +24,16 @@ function assertGitHubEnv(): void {
   }
 }
 
+// driver 解決時に 1 回だけ env を検証する（factory 毎に呼ぶ重複を排除）
+const assertedDriver = (() => {
+  const d = process.env.REPOSITORY_DRIVER ?? 'json';
+  if (d === 'github') assertGitHubEnv();
+  return d;
+})();
+
 function makeProductionRepo() {
-  switch (driver) {
+  switch (assertedDriver) {
     case 'github':
-      assertGitHubEnv();
       return new GitHubProductionRepository();
     case 'json':
     default:
@@ -38,9 +42,8 @@ function makeProductionRepo() {
 }
 
 function makeProfileRepo() {
-  switch (driver) {
+  switch (assertedDriver) {
     case 'github':
-      assertGitHubEnv();
       return new GitHubProfileRepository();
     case 'json':
     default:
@@ -49,9 +52,8 @@ function makeProfileRepo() {
 }
 
 function makeSkillsRepo() {
-  switch (driver) {
+  switch (assertedDriver) {
     case 'github':
-      assertGitHubEnv();
       return new GitHubSkillsRepository();
     case 'json':
     default:
@@ -60,9 +62,8 @@ function makeSkillsRepo() {
 }
 
 function makeHomeRepo() {
-  switch (driver) {
+  switch (assertedDriver) {
     case 'github':
-      assertGitHubEnv();
       return new GitHubHomeRepository();
     case 'json':
     default:

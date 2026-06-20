@@ -1,14 +1,9 @@
 // GitHub Contents API への薄いクライアント
 // - 環境変数: GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO, GITHUB_BRANCH (default: develop)
 // - fetch ベースで @octokit/rest 等の追加依存なし
-// - retry は実装しない（必要になったら別PR）
+// - putFile は 409 (sha 競合) のとき 1 回だけ sha を取り直して再試行する
 
 const GITHUB_API = 'https://api.github.com';
-
-export interface GitHubFile<T> {
-  content: T;
-  sha: string;
-}
 
 export interface GitHubClientConfig {
   token: string;
@@ -67,7 +62,20 @@ export interface GetFileResult {
   sha: string;
 }
 
-export async function getFile(filePath: string): Promise<GetFileResult> {
+export interface GetFileOptions {
+  // 404 のとき throw せず null を返す（既存呼び出しは未指定なので throw のまま）
+  allowNotFound?: boolean;
+}
+
+export async function getFile(filePath: string): Promise<GetFileResult>;
+export async function getFile(
+  filePath: string,
+  options: { allowNotFound: true },
+): Promise<GetFileResult | null>;
+export async function getFile(
+  filePath: string,
+  options?: GetFileOptions,
+): Promise<GetFileResult | null> {
   const cfg = getGitHubConfig();
   const url = `${GITHUB_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(
     cfg.repo,
@@ -79,6 +87,9 @@ export async function getFile(filePath: string): Promise<GetFileResult> {
     cache: 'no-store',
   });
   if (!res.ok) {
+    if (res.status === 404 && options?.allowNotFound) {
+      return null;
+    }
     const body = await res.text().catch(() => '');
     throw new Error(
       `GitHub getFile failed: ${res.status} ${res.statusText} (${filePath}) ${body}`,
@@ -96,12 +107,23 @@ export interface PutFileResult {
   sha: string;
 }
 
-export async function putFile(
+interface PutFileAttemptResult {
+  ok: true;
+  sha: string;
+}
+
+interface PutFileConflict {
+  ok: false;
+  status: number;
+  body: string;
+}
+
+async function tryPutFile(
   filePath: string,
   content: string,
   sha: string | undefined,
   message: string,
-): Promise<PutFileResult> {
+): Promise<PutFileAttemptResult | PutFileConflict> {
   const cfg = getGitHubConfig();
   const url = `${GITHUB_API}/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(
     cfg.repo,
@@ -124,6 +146,10 @@ export async function putFile(
   });
   if (!res.ok) {
     const text = await res.text().catch(() => '');
+    if (res.status === 409 || res.status === 422) {
+      // 409: sha conflict / 422: sha mismatch ともにリトライ対象
+      return { ok: false, status: res.status, body: text };
+    }
     throw new Error(
       `GitHub putFile failed: ${res.status} ${res.statusText} (${filePath}) ${text}`,
     );
@@ -133,5 +159,27 @@ export async function putFile(
   if (!newSha) {
     throw new Error(`GitHub putFile: missing sha in response for ${filePath}`);
   }
-  return { sha: newSha };
+  return { ok: true, sha: newSha };
+}
+
+// putFile: 409/422 (sha 競合) を検知した場合に 1 回だけ最新の sha を取り直して再試行する
+// 注: これは「上書き競合」を完全に防ぐわけではないが、本ケース(admin 自己編集中の競合)の
+// ほとんどは解消する短期解。長期的にはインタフェース拡張(eTag/optimistic lock)が必要。
+// TODO: interface 拡張で呼び出し側に明示的なリトライ制御を委ねる
+export async function putFile(
+  filePath: string,
+  content: string,
+  sha: string | undefined,
+  message: string,
+): Promise<PutFileResult> {
+  const first = await tryPutFile(filePath, content, sha, message);
+  if (first.ok) return { sha: first.sha };
+
+  // 競合: 最新の sha を取り直して 1 回だけ再試行
+  const latest = await getFile(filePath);
+  const retry = await tryPutFile(filePath, content, latest.sha, message);
+  if (retry.ok) return { sha: retry.sha };
+  throw new Error(
+    `GitHub putFile failed after retry: ${retry.status} (${filePath}) ${retry.body}`,
+  );
 }
