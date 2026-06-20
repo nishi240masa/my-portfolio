@@ -41,6 +41,13 @@ export const metadata: Metadata = {
     template: '%s | west · Portfolio',
   },
   description: '未来のある開発を、意味のある人生を。— 西尾 匡生のポートフォリオ',
+  alternates: {
+    languages: {
+      ja: '/',
+      en: '/en',
+      'x-default': '/',
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
