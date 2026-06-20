@@ -1,4 +1,5 @@
 import { Box, Typography, Button } from '@mui/material';
+import Image from 'next/image';
 
 export default function MaintenancePage() {
   return (
@@ -16,15 +17,21 @@ export default function MaintenancePage() {
     >
       {/* アイコンやイラスト */}
       <Box
-        alt="Maintenance"
-        component="img"
-        src="ment_cat.png" // メンテナンスを表すアイコンやイラスト
         sx={{
-          width: '300px',
-          height: '300px',
+          width: 300,
+          height: 300,
           mb: 4, // マージン（下）
         }}
-      />
+      >
+        <Image
+          alt="メンテナンス中のイラスト"
+          src="/ment_cat.png"
+          width={300}
+          height={300}
+          priority
+          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+        />
+      </Box>
 
       {/* メッセージ */}
       <Typography sx={{ fontWeight: 'bold', mb: 2 }} variant="h4">
