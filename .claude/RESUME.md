@@ -94,3 +94,8 @@ gh pr merge $PR --auto --squash --delete-branch
 - `/tmp/portfolio-wt/` も持たない (新規 worktree を作る)
 - `Workflow` ツール(pipeline 並列実装)は **使えない** → `Agent` ツールで 1 PR ずつ順次実装
 - 単一エージェントなので self-critique パターンを使う(impl 後に別 persona で critique → fix)
+
+## Patterns library
+
+本リポジトリ固有の運用パターン (self-critique / budget-guard / cloud-serial-workflow) は [`.claude/patterns/README.md`](./patterns/README.md) に置いてあります。
+新セッション開始時にこの RESUME.md を読んだ後、自分の環境 (Workflow が使える / 使えない、単一 / 複数エージェント) に応じて該当 pattern を参照してください。
