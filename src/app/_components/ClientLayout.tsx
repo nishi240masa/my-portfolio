@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useCallback, useMemo, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useMemo, useState } from 'react';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { createAppTheme, type ThemeMode } from '../theme';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -8,16 +8,23 @@ import { ThemeModeContext, THEME_STORAGE_KEY } from './ThemeModeContext';
 
 interface Props {
   children: ReactNode;
-  initialMode: ThemeMode;
 }
 
 /**
  * クライアントサイドのレイアウトコンポーネント
  * テーマ（ライト／夜墨）の状態管理、ErrorBoundary、ThemeProvider を含む。
- * 初期テーマは SSR 段階で cookie から確定済み(initialMode)を引き継ぐ。
+ * 初期テーマは layout.tsx の inline script が cookie / prefers-color-scheme から
+ * <html data-theme="..."> を確定するため、ここではマウント後にその属性を読み取り state を同期する。
  */
-export default function ClientLayout({ children, initialMode }: Props) {
-  const [mode, setMode] = useState<ThemeMode>(initialMode);
+export default function ClientLayout({ children }: Props) {
+  const [mode, setMode] = useState<ThemeMode>('light');
+
+  useEffect(() => {
+    const attr = document.documentElement.getAttribute('data-theme');
+    if (attr === 'dark' || attr === 'light') {
+      setMode(attr);
+    }
+  }, []);
 
   const toggleMode = useCallback(() => {
     setMode((prev) => {

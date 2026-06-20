@@ -2,10 +2,8 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import { Hina_Mincho, Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
-import { cookies } from 'next/headers';
 import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
-import type { ThemeMode } from './theme';
 import { profileRepo } from '@/lib/repositories';
 import { personJsonLd } from '@/lib/jsonld';
 
@@ -83,9 +81,6 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = await cookies();
-  const themeMode: ThemeMode =
-    cookieStore.get('theme-mode')?.value === 'dark' ? 'dark' : 'light';
   const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
   // SEO: Schema.org Person を JSON-LD としてページ全体に注入する
@@ -95,14 +90,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang="ja"
-      data-theme={themeMode}
+      data-theme="light"
       className={`${hinaMincho.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var c=document.cookie.match(/(?:^|; )theme-mode=([^;]+)/);if(!c){var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();`,
+            __html: `(function(){try{var c=document.cookie.match(/(?:^|; )theme-mode=([^;]+)/);var m=c?c[1]:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();`,
           }}
         />
       </head>
@@ -111,7 +106,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
         />
-        <ClientLayout initialMode={themeMode}>{children}</ClientLayout>
+        <ClientLayout>{children}</ClientLayout>
         {cfBeaconToken ? (
           <Script
             defer
