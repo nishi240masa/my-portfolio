@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import type { ReactNode, CSSProperties } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -179,11 +178,16 @@ const removeBtn: CSSProperties = {
 // - onSave 指定時: 旧パターン (fetch コールバック) — 後方互換
 // - onSave 省略時: <form action={...}> 内で type=submit として動作 (Server Action)
 //   この場合 saving は useFormStatus().pending で内部判定する
+//
+// 注: 保存成功時の「✓ 保存しました」自動消失 (3 秒) ロジックは親 Editor 側に持たせる。
+// useActionState が返す state object identity を観測する必要があるため Toolbar は
+// presentational のまま showOk を受け取るだけにする。
 export function Toolbar({
   onSave,
   onCancel,
   saving,
   status,
+  showOk,
   extra,
   errorMessage,
 }: {
@@ -191,21 +195,11 @@ export function Toolbar({
   onCancel?: () => void;
   saving?: boolean;
   status?: 'idle' | 'saving' | 'success' | 'error';
+  showOk?: boolean;
   extra?: ReactNode;
   errorMessage?: string;
 }) {
   const isSubmitMode = !onSave;
-  // status==='success' (= state.ok=true) のメッセージが貼り付かないよう 3 秒後に自動消失。
-  // status==='error' は維持 (ユーザー操作で解除する想定なので触らない)。
-  const [showOk, setShowOk] = useState(false);
-  useEffect(() => {
-    if (status === 'success') {
-      setShowOk(true);
-      const t = setTimeout(() => setShowOk(false), 3000);
-      return () => clearTimeout(t);
-    }
-    setShowOk(false);
-  }, [status]);
   return (
     <div
       style={{
@@ -261,7 +255,7 @@ export function Toolbar({
       ) : null}
       {extra}
       {status === 'success' && showOk ? (
-        <span className="t-meta" style={{ color: 'var(--primary)' }}>
+        <span role="status" aria-live="polite" className="t-meta" style={{ color: 'var(--primary)' }}>
           ✓ 保存しました
         </span>
       ) : null}
