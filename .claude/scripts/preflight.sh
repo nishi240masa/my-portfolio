@@ -3,16 +3,12 @@
 #
 # 目的: 新セッション(ローカル/クラウド/別エージェント)が作業を始める前に、
 #       環境とリポジトリの状態を一括で確認する。副作用なし、check only。
+#       READ-ONLY 契約: 何も書き換えない・何も fetch しない。
 #
 # Usage:
 #   bash .claude/scripts/preflight.sh
 
-set -u
-
-# nodebrew の Node 20 を優先 (ローカル開発環境向け)
-if [ -d "/Users/k23087kk/.nodebrew/current/bin" ]; then
-  export PATH="/Users/k23087kk/.nodebrew/current/bin:$PATH"
-fi
+set -euo pipefail
 
 # 色 (TTY のみ)
 if [ -t 1 ]; then
@@ -59,14 +55,20 @@ if command -v node >/dev/null 2>&1; then
   NODE_V=$(node -v 2>/dev/null || echo "unknown")
   NODE_MAJOR=$(echo "$NODE_V" | sed -E 's/^v([0-9]+).*/\1/')
   print_kv "node" "$NODE_V"
-  if [ -n "$NODE_MAJOR" ] && [ "$NODE_MAJOR" -ge 20 ] 2>/dev/null; then
+  # NODE_MAJOR が空 or 非数字を含む場合は不正扱い
+  case "$NODE_MAJOR" in
+    ''|*[!0-9]*) NODE_OK=no ;;
+    *) if [ "$NODE_MAJOR" -ge 20 ]; then NODE_OK=yes; else NODE_OK=no; fi ;;
+  esac
+  if [ "$NODE_OK" = "yes" ]; then
     print_ok "node >= 20"
   else
     print_err "node < 20 (この repo は >= 20 が必要)"
-    print_notice "export PATH=\"/Users/k23087kk/.nodebrew/current/bin:\$PATH\" を実行してください"
+    print_notice "PATH に Node 20+ を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
   fi
 else
   print_err "node not found"
+  print_notice "PATH に Node 20+ を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
 fi
 
 # yarn
@@ -89,7 +91,7 @@ fi
 if command -v gh >/dev/null 2>&1; then
   GH_V=$(gh --version 2>/dev/null | head -1 | awk '{print $3}')
   print_kv "gh" "$GH_V"
-  GH_AUTH=$(gh auth status 2>&1 | grep -E "Logged in|not logged" | head -1)
+  GH_AUTH=$(gh auth status 2>&1 | grep -E "Logged in|not logged" | head -1 || true)
   if echo "$GH_AUTH" | grep -q "Logged in"; then
     print_ok "gh auth: $(echo "$GH_AUTH" | sed 's/^[[:space:]]*//')"
   else
@@ -127,7 +129,7 @@ print_kv "current branch" "$CUR_BRANCH"
 
 # git status --short
 print_section "Working tree (git status --short)"
-GIT_STATUS=$(git status --short 2>/dev/null)
+GIT_STATUS=$(git status --short 2>/dev/null || true)
 if [ -z "$GIT_STATUS" ]; then
   print_ok "clean"
 else
@@ -137,9 +139,7 @@ fi
 # ---------------- 3. origin/develop との差分 ----------------
 print_section "Diff vs origin/develop"
 
-# fetch は重いので silent (failure 無視)
-git fetch origin develop --prune >/dev/null 2>&1 || true
-
+# READ-ONLY 契約: fetch はしない。ローカル refs のみで判定。
 if git rev-parse --verify origin/develop >/dev/null 2>&1; then
   AHEAD=$(git rev-list --count origin/develop..HEAD 2>/dev/null || echo "?")
   BEHIND=$(git rev-list --count HEAD..origin/develop 2>/dev/null || echo "?")
@@ -147,9 +147,11 @@ if git rev-parse --verify origin/develop >/dev/null 2>&1; then
   print_kv "behind develop" "$BEHIND"
   echo ""
   echo "  recent develop commits:"
-  git log --oneline origin/develop -5 2>/dev/null | sed 's/^/    /'
+  git log --oneline origin/develop -5 2>/dev/null | sed 's/^/    /' || true
+  print_notice "最新を見たい場合は事前に手動で: git fetch origin develop --prune"
 else
-  print_warn "origin/develop not found (fetch failed?)"
+  print_warn "origin/develop not found (ローカル refs 未取得)"
+  print_notice "事前に手動で: git fetch origin develop --prune"
 fi
 
 # ---------------- 4. Open PRs ----------------
@@ -184,19 +186,18 @@ fi
 print_section "Branch protection (develop)"
 
 if [ -n "$OWNER_REPO" ]; then
-  # gh api を一度呼んで raw JSON を取得 (stderr は捨てる)。
-  # not protected な branch は status:404 のエラー JSON を返す。
-  PROTECTION_RAW=$(gh api -X GET "/repos/$OWNER_REPO/branches/develop/protection" 2>/dev/null || true)
+  # gh api を 1 回だけ呼んで raw JSON を取得し、jq でローカル抽出する。
+  # 404 (not protected) のとき gh api は非 0 を返すため、exit code で判定する。
+  PROTECTION_RAW=""
+  PROTECTION_EXIT=0
+  PROTECTION_RAW=$(gh api -X GET "/repos/$OWNER_REPO/branches/develop/protection" 2>/dev/null) || PROTECTION_EXIT=$?
 
-  if [ -z "$PROTECTION_RAW" ]; then
-    print_kv "protection" "unreachable (gh api failed silently)"
-  elif echo "$PROTECTION_RAW" | grep -q '"status":"404"'; then
-    print_kv "protection" "not protected"
-  elif echo "$PROTECTION_RAW" | grep -q '"message":"Branch not protected"'; then
-    print_kv "protection" "not protected"
+  if [ "$PROTECTION_EXIT" -ne 0 ] || [ -z "$PROTECTION_RAW" ]; then
+    # 失敗 = 多くの場合 not protected (404)
+    print_kv "protection" "not protected (or unreachable)"
   else
-    # 保護されているなら詳細を表示
-    REQUIRED=$(gh api -X GET "/repos/$OWNER_REPO/branches/develop/protection" --jq '.required_status_checks // "none"' 2>/dev/null || echo "")
+    # 保護されているなら jq でローカル抽出
+    REQUIRED=$(printf '%s' "$PROTECTION_RAW" | jq -r '.required_status_checks // "none"' 2>/dev/null || echo "")
     if [ -z "$REQUIRED" ] || [ "$REQUIRED" = "none" ] || [ "$REQUIRED" = "null" ]; then
       print_kv "required_status_checks" "none"
     else
@@ -204,7 +205,7 @@ if [ -n "$OWNER_REPO" ]; then
       echo "$REQUIRED" | sed 's/^/    /'
     fi
 
-    CONTEXTS=$(gh api -X GET "/repos/$OWNER_REPO/branches/develop/protection" --jq '.required_status_checks.contexts // []' 2>/dev/null || echo "[]")
+    CONTEXTS=$(printf '%s' "$PROTECTION_RAW" | jq -c '.required_status_checks.contexts // []' 2>/dev/null || echo "[]")
     if [ "$CONTEXTS" != "[]" ] && [ -n "$CONTEXTS" ] && [ "$CONTEXTS" != "null" ]; then
       echo "  required check contexts:"
       echo "$CONTEXTS" | sed 's/^/    /'
@@ -218,7 +219,8 @@ fi
 print_section "Notices"
 
 print_notice "CF Pages CI は永続的に失敗します。test=pass のみ確認すれば merge 可能"
-print_notice "Node が 18 系なら: export PATH=\"/Users/k23087kk/.nodebrew/current/bin:\$PATH\""
+print_notice "Node が 18 系なら: PATH に Node 20+ を入れて再実行 (例: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\")"
+print_notice "このスクリプトは READ-ONLY です。最新の origin を見たい場合は事前に: git fetch origin develop --prune"
 
 echo ""
 printf "${C_DIM}preflight complete.${C_RESET}\n"

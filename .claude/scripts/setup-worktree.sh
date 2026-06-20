@@ -12,12 +12,7 @@
 # Example:
 #   bash .claude/scripts/setup-worktree.sh feat/case-study
 
-set -eu
-
-# nodebrew の Node 20 を優先 (ローカル開発環境向け)
-if [ -d "/Users/k23087kk/.nodebrew/current/bin" ]; then
-  export PATH="/Users/k23087kk/.nodebrew/current/bin:$PATH"
-fi
+set -euo pipefail
 
 # ---- 引数チェック ----
 if [ $# -lt 1 ] || [ -z "${1:-}" ]; then
@@ -39,13 +34,33 @@ BRANCH="$1"
 SLUG=$(printf '%s' "$BRANCH" | tr '/' '-')
 
 # ---- repo root を解決 ----
+# worktree 内から実行されても main repo に行けるよう、git-common-dir 経由でも解決する。
 REPO=$(git rev-parse --show-toplevel 2>/dev/null || true)
 if [ -z "$REPO" ]; then
   echo "error: not inside a git repository" >&2
   exit 1
 fi
 
-WT_BASE="$REPO/../portfolio-wt"
+# worktree 内のとき --show-toplevel は worktree のパスを返すので、
+# main repo を git-common-dir (=メイン .git の場所) から逆算する。
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir 2>/dev/null || echo "")
+if [ -n "$GIT_COMMON_DIR" ]; then
+  # 絶対パス化
+  case "$GIT_COMMON_DIR" in
+    /*) ABS_COMMON_DIR="$GIT_COMMON_DIR" ;;
+    *)  ABS_COMMON_DIR="$(cd "$GIT_COMMON_DIR" 2>/dev/null && pwd)" || ABS_COMMON_DIR="" ;;
+  esac
+  if [ -n "$ABS_COMMON_DIR" ]; then
+    # .git の親 = main repo root
+    MAIN_REPO=$(dirname "$ABS_COMMON_DIR")
+    if [ -d "$MAIN_REPO" ]; then
+      REPO="$MAIN_REPO"
+    fi
+  fi
+fi
+
+# WT_BASE は REPO の親ディレクトリ配下に正規化 (".." を解決した絶対パスにする)
+WT_BASE="$(cd "$REPO/.." && pwd)/portfolio-wt"
 WT_PATH="$WT_BASE/$SLUG"
 
 # 既存 worktree のチェック
@@ -90,8 +105,7 @@ fi
 
 cat <<HINT
 
-  # 実装後の流れ:
-  export PATH="/Users/k23087kk/.nodebrew/current/bin:\$PATH"
+  # 実装後の流れ (Node 20+ が PATH にある前提):
   yarn lint && yarn test --passWithNoTests && yarn build
   git add -A
   git -c commit.gpgsign=false commit -m "..."
