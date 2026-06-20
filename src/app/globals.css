@@ -317,12 +317,16 @@ h1, h2, h3, h4, h5 {
   .page-enter, .fade-in { animation: none; }
 }
 
-/* ===== Focus ring (二層リング: 内側 白 1px, 外側 朱 2px) ===== */
+/* ===== Focus ring (二層リング: 内側 白 1px, 外側 朱 3px) ===== */
 :focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 1px #ffffff, 0 0 0 4px var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--primary);
   border-radius: 2px;
+}
+/* <main id="main"> はプログラム的フォーカス時のリングを抑制 */
+main:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 /* ===== Scrollbar ===== */
@@ -507,7 +511,7 @@ h1, h2, h3, h4, h5 {
   z-index: 1000;
   padding: var(--ma-2);
   background: var(--sumi);
-  color: var(--shu);
+  color: var(--primary-on);
   font-family: var(--font-sans);
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -550,15 +554,19 @@ h1, h2, h3, h4, h5 {
   border: 0;
 }
 
-/* ===== Touch target minimum (WCAG 2.2 - Target Size) ===== */
+/* ===== Touch target minimum (WCAG 2.2 - Target Size) =====
+   .tag は span ベースの装飾チップなので対象外。
+   インタラクティブな a.tag / button.tag のみに適用する。
+   .skip-link は :focus 時に独自に touch-min を確保している。 */
 .btn,
-.tag,
-.theme-toggle {
+.theme-toggle,
+a.tag,
+button.tag {
   min-height: var(--touch-min);
   min-width: var(--touch-min);
 }
-/* .tag は inline-block なので box-sizing と alignment を維持 */
-.tag {
+a.tag,
+button.tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;

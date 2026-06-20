@@ -62,7 +62,7 @@ export default function Header() {
                 <Link
                   key={it.href}
                   href={it.href}
-                  aria-current={active ? 'page' : undefined}
+                  aria-current={pathname === it.href ? 'page' : undefined}
                   style={{
                     position: 'relative',
                     padding: '8px 16px',
@@ -98,7 +98,11 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleMode}
-            aria-label={mode === 'dark' ? 'ライトテーマに切替' : 'ダークテーマに切替'}
+            aria-label={
+              mode === 'dark'
+                ? '現在ダークテーマです。クリックでライトテーマに切替'
+                : '現在ライトテーマです。クリックでダークテーマに切替'
+            }
             aria-pressed={mode === 'dark'}
             title={mode === 'dark' ? '昼（和紙）へ' : '夜（夜墨）へ'}
             className="theme-toggle"
@@ -120,7 +124,6 @@ export default function Header() {
               justifyContent: 'center',
             }}
           >
-            <span className="sr-only">テーマ切替</span>
             {mode === 'dark' ? '昼' : '夜'}
           </button>
         </div>
