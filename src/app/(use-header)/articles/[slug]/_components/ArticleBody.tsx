@@ -1,25 +1,18 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-import { LoadingDots } from '@/app/_components/design/States';
-
-const MarkdownContent = dynamic(
-  () => import('@/app/(use-header)/production/(use-production)/[id]/MarkdownContent'),
-  {
-    ssr: false,
-    loading: () => <LoadingDots />,
-  },
-);
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 /**
- * 記事本文 (Markdown) を表示するクライアントラッパ。
- * 既存 production 詳細と同じ MarkdownContent を共用し、
- * 同じ rehype-katex の SSR 制約を満たす。
+ * 記事本文 (Markdown) を表示する Server Component。
+ *
+ * /articles/[slug] は SEO/初期表示が重要なため、SSR で本文を描画する。
+ * rehype-katex は DOMParser など SSR 不可な API を巻き込むため、ここでは
+ * 数式拡張を外し、remark-gfm のみで標準 Markdown を SSR 描画する。
+ * 数式が必要になった場合は別途 client island としてマウントする方針。
  */
 export default function ArticleBody({ content }: { content: string }) {
   return (
     <div className="markdown-body" style={{ maxWidth: 720, margin: '0 auto' }}>
-      <MarkdownContent content={content} />
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
     </div>
   );
 }

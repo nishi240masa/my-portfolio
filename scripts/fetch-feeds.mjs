@@ -128,7 +128,10 @@ async function fetchGithub(user) {
     { headers },
   );
   if (!Array.isArray(json)) return [];
-  return json.slice(0, MAX_ITEMS).map((repo) => ({
+  // 自分のオリジナルリポジトリのみを残す (fork / archived は除外)。
+  // ポートフォリオ目的では、外部の fork や凍結済みの古い置き場を出したくないため。
+  const filtered = json.filter((repo) => repo && repo.fork !== true && repo.archived !== true);
+  return filtered.slice(0, MAX_ITEMS).map((repo) => ({
     title: String(repo.full_name ?? repo.name ?? ''),
     url: String(repo.html_url ?? ''),
     publishedAt: repo.pushed_at ?? null,
@@ -166,6 +169,16 @@ async function main() {
     github: github.length > 0 ? github : (existing.github ?? []),
     updatedAt: new Date().toISOString(),
   };
+
+  // どのサービスが今回 0 件で「既存値フォールバック」になったかを stderr に集約サマリ出力。
+  // CI ログから一目で「N services failed」を読み取れるようにする。
+  const failed = [];
+  if (zenn.length === 0) failed.push('zenn');
+  if (qiita.length === 0) failed.push('qiita');
+  if (github.length === 0) failed.push('github');
+  if (failed.length > 0) {
+    console.error(`[fetch-feeds] ${failed.length} services failed: ${failed.join(', ')}`);
+  }
 
   await fs.mkdir(path.dirname(OUT_FILE), { recursive: true });
   await fs.writeFile(OUT_FILE, JSON.stringify(next, null, 2) + '\n', 'utf8');

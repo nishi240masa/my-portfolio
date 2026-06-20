@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "slug": "hello-world",
+    "title": "Hello, world",
+    "summary": "最初の記事",
+    "body": "これは最初の記事です。\n\n## はじめに\n\nポートフォリオに記事機能を実装しました。",
+    "publishedAt": "2026-01-01",
+    "tags": []
+  }
+]

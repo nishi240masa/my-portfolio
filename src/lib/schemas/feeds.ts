@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 export const feedItemSchema = z.object({
   title: z.string(),
-  url: z.string(),
+  url: z.string().url(),
   publishedAt: z.string().nullable().optional(),
   source: z.string(),
   summary: z.string().optional(),

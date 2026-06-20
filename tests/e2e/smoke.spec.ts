@@ -31,13 +31,42 @@ test.describe('public pages smoke', () => {
 
 test.describe('public pages a11y (axe)', () => {
   for (const { path } of PAGES) {
-    test(`${path} has no critical axe violations`, async ({ page }) => {
+    test(`${path} has no critical/serious axe violations`, async ({ page }) => {
       await page.goto(path);
       const results = await new AxeBuilder({ page })
         .withTags(['wcag2a', 'wcag2aa'])
         .analyze();
-      const critical = results.violations.filter((v) => v.impact === 'critical');
-      expect(critical, `critical a11y violations on ${path}: ${JSON.stringify(critical, null, 2)}`).toEqual([]);
+      const blocking = results.violations.filter(
+        (v) => v.impact === 'critical' || v.impact === 'serious',
+      );
+      expect(
+        blocking,
+        `critical/serious a11y violations on ${path}: ${JSON.stringify(blocking, null, 2)}`,
+      ).toEqual([]);
     });
   }
+});
+
+test.describe('article detail (fixture)', () => {
+  test('GET /articles/hello-world renders title and body', async ({ page }) => {
+    const response = await page.goto('/articles/hello-world');
+    expect(response?.status(), 'status for /articles/hello-world').toBeLessThan(400);
+    const h1 = page.locator('h1').first();
+    await expect(h1).toBeVisible({ timeout: 15_000 });
+    await expect(h1).toContainText(/Hello, world/);
+    // 本文 (Markdown) が SSR 描画されていることを確認
+    await expect(page.locator('.markdown-body')).toContainText(/最初の記事/);
+  });
+});
+
+test.describe('journal cards (fixture)', () => {
+  test('GET /journal renders at least one card per source', async ({ page }) => {
+    const response = await page.goto('/journal');
+    expect(response?.status(), 'status for /journal').toBeLessThan(400);
+    // fixture では zenn / qiita / github 各 1 件以上の card が存在する
+    const cards = page.locator('.card');
+    await expect(cards.first()).toBeVisible({ timeout: 15_000 });
+    const count = await cards.count();
+    expect(count, 'journal card count').toBeGreaterThanOrEqual(3);
+  });
 });
