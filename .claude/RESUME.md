@@ -59,7 +59,7 @@ git push -u origin $BRANCH
 gh pr create --base develop --head $BRANCH --title "..." --body "..."
 ```
 
-## 6. レビュー & マージ (auto-merge 無効)
+## 6. レビュー & マージ (auto-merge 有効化済 / 2026-06-20)
 
 ```bash
 PR=<番号>
@@ -68,15 +68,12 @@ gh pr diff $PR | less
 # 専門領域から批判的レビュー → BLOCKER/MAJOR 1件でも REQUEST_CHANGES
 gh pr review $PR --approve --body "..." # or --request-changes --body "..."
 
-# auto-merge 無効なので直接 merge
-# CI test=pass を確認
-until [ "$(gh pr checks $PR --json name,bucket -q '.[]|select(.name=="test")|.bucket')" = "pass" ]; do sleep 30; done
+# auto-merge 有効。enqueue するだけで CI green を待って自動マージされる (polling 不要)
+gh pr merge $PR --auto --squash --delete-branch
 
-# MERGEABLE を確認 (CONFLICTING なら PM が手動解消)
-gh pr view $PR --json mergeable -q '.mergeable'
-
-# マージ実行 (CF Pages 失敗は無視可)
-gh pr merge $PR --squash --delete-branch
+# 即時 merge したい場合は --auto を外す:
+#   gh pr merge $PR --squash --delete-branch
+# (CONFLICTING なら PM が手動解消。CF Pages 失敗は required check ではないので無視可)
 ```
 
 ## 7. PROGRESS.md を更新
@@ -85,7 +82,7 @@ gh pr merge $PR --squash --delete-branch
 
 ## 困ったら
 
-- auto-merge 関連エラー: 設定で無効。`--auto` は使えない。直接 merge する
+- auto-merge 関連エラー: 2026-06-20 に有効化済み。`gh pr merge --auto --squash --delete-branch` が使える。即時 merge したい場合は `--auto` を外す
 - CF Pages CI が赤: 仕様。test と Vercel が pass なら無視可
 - conflict: 別 worktree で `git merge origin/develop` → fix → push
 - token 残量が 90% 接近: 停止サマリを出して止める
