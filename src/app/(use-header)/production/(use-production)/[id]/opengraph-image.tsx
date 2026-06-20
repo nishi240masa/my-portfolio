@@ -5,9 +5,13 @@
 // ここでは next/og の組み込みフォント (Inter) で描画する。
 
 import { ImageResponse } from 'next/og';
+import { notFound } from 'next/navigation';
 import { productionRepo } from '@/lib/repositories';
 
 export const runtime = 'nodejs';
+// OG画像のキャッシュ戦略 — 1時間 revalidate、可能なら静的化して過剰呼び出しを抑える
+export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 export const alt = 'Production cover image';
 export const size = { width: 1200, height: 630 };
@@ -21,12 +25,20 @@ const MUTED = '#6b5e57';
 
 export default async function Image({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const article = await productionRepo.getById(Number(id));
+  const numericId = Number(id);
+  // soft-404 防止: 数値化失敗や該当記事不在ならルートとして 404 を返す
+  if (!Number.isFinite(numericId)) {
+    notFound();
+  }
+  const article = await productionRepo.getById(numericId);
+  if (article == null) {
+    notFound();
+  }
 
-  const title = article?.title ?? 'Production';
-  const role = article?.role ?? '';
-  const stack = (article?.technologys ?? []).slice(0, 6).join(' / ');
-  const date = article?.date ?? '';
+  const title = article.title;
+  const role = article.role ?? '';
+  const stack = (article.technologys ?? []).slice(0, 6).join(' / ');
+  const date = article.date ?? '';
 
   return new ImageResponse(
     (
