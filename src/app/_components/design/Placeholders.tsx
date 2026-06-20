@@ -7,11 +7,13 @@ export function ImagePlaceholder({
   ratio = '16/9',
   src,
   style,
+  priority = false,
 }: {
   label: string;
   ratio?: string;
   src?: string;
   style?: CSSProperties;
+  priority?: boolean;
 }) {
   if (src) {
     return (
@@ -31,6 +33,7 @@ export function ImagePlaceholder({
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           style={{ objectFit: 'cover' }}
+          {...(priority ? { priority: true } : { loading: 'lazy' })}
         />
       </div>
     );
@@ -47,10 +50,12 @@ export function PortraitPlaceholder({
   size = 320,
   label = 'PORTRAIT',
   src,
+  priority = true,
 }: {
   size?: number;
   label?: string;
   src?: string;
+  priority?: boolean;
 }) {
   if (src) {
     return (
@@ -65,7 +70,14 @@ export function PortraitPlaceholder({
           border: '1px solid var(--hairline)',
         }}
       >
-        <Image alt={label} src={src} fill priority sizes="(max-width: 768px) 90vw, 420px" style={{ objectFit: 'cover' }} />
+        <Image
+          alt={label}
+          src={src}
+          fill
+          sizes="(max-width: 768px) 90vw, 420px"
+          style={{ objectFit: 'cover' }}
+          {...(priority ? { priority: true } : { loading: 'lazy' })}
+        />
       </div>
     );
   }
