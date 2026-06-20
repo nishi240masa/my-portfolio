@@ -1,0 +1,28 @@
+{
+  "zenn": [
+    {
+      "title": "Zenn サンプル記事",
+      "url": "https://zenn.dev/example/articles/sample",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "source": "zenn"
+    }
+  ],
+  "qiita": [
+    {
+      "title": "Qiita サンプル記事",
+      "url": "https://qiita.com/example/items/sample",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "source": "qiita"
+    }
+  ],
+  "github": [
+    {
+      "title": "example/sample-repo",
+      "url": "https://github.com/example/sample-repo",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "source": "github",
+      "summary": "サンプルリポジトリ"
+    }
+  ],
+  "updatedAt": "2026-01-01T00:00:00Z"
+}

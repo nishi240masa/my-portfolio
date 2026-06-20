@@ -20,6 +20,14 @@ pnpm-lock.yaml
 # testing
 /coverage
 
+# playwright
+/playwright-report
+/test-results
+/blob-report
+
+# lighthouse
+/.lighthouseci
+
 # next.js
 /.next/
 /out/
