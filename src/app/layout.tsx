@@ -1,10 +1,45 @@
 // app/layout.tsx
 import './globals.css';
+import type { Metadata, Viewport } from 'next';
+import { Hina_Mincho, Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
+import { cookies } from 'next/headers';
+import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
-import { THEME_STORAGE_KEY } from './_components/themeStorageKey';
+import type { ThemeMode } from './theme';
 
-export const metadata = {
-  title: 'west · Portfolio — Masaki Nishio',
+const hinaMincho = Hina_Mincho({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-mincho-next',
+  fallback: ['Hiragino Mincho ProN', 'Yu Mincho', 'serif'],
+});
+
+const notoSansJp = Noto_Sans_JP({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans-next',
+  fallback: ['Hiragino Sans', 'Yu Gothic', 'sans-serif'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono-next',
+});
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
+const SITE_NAME = 'west · Portfolio';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: 'west · Portfolio — Masaki Nishio',
+    template: '%s | west · Portfolio',
+  },
   description: '未来のある開発を、意味のある人生を。— 西尾 匡生のポートフォリオ',
   icons: {
     icon: [
@@ -14,27 +49,60 @@ export const metadata = {
     apple: '/apple-icon.png',
   },
   manifest: '/manifest.json',
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'ja_JP',
+    images: [{ url: '/og-default.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-// data-theme をペイント前に確定させ、ダークテーマのちらつきを防ぐ
-const themeInitScript = `(function(){try{var k='${THEME_STORAGE_KEY}';var s=localStorage.getItem(k);var m=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbf8f3' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1614' },
+  ],
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const themeMode: ThemeMode =
+    cookieStore.get('theme-mode')?.value === 'dark' ? 'dark' : 'light';
+  const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+
   return (
-    <html lang="ja" data-theme="light" suppressHydrationWarning>
+    <html
+      lang="ja"
+      data-theme={themeMode}
+      className={`${hinaMincho.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var c=document.cookie.match(/(?:^|; )theme-mode=([^;]+)/);if(!c){var d=window.matchMedia('(prefers-color-scheme: dark)').matches;document.documentElement.setAttribute('data-theme',d?'dark':'light');}}catch(e){}})();`,
+          }}
         />
-        <meta name="google-adsense-account" content="ca-pub-4043815049492410" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043815049492410" crossOrigin="anonymous"></script>
       </head>
       <body>
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout initialMode={themeMode}>{children}</ClientLayout>
+        {cfBeaconToken ? (
+          <Script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

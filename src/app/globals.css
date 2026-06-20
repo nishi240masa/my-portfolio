@@ -492,3 +492,10 @@ h1, h2, h3, h4, h5 {
   padding: 4px 0 4px 20px;
   color: var(--fg-muted);
 }
+
+/* ===== next/font bridge ===== */
+:root {
+  --font-mincho: var(--font-mincho-next), 'Hina Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans: var(--font-sans-next), 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-mono: var(--font-mono-next), 'JetBrains Mono', monospace;
+}
