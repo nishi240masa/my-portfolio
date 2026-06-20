@@ -8,8 +8,14 @@ import { ImageResponse } from 'next/og';
 import { notFound } from 'next/navigation';
 import { productionRepo } from '@/lib/repositories';
 
+// `productionRepo` は `@/lib/repositories` barrel から import しており、barrel が
+// `JsonProductionRepository` を static import するため、本ファイルに
+// `runtime = 'edge'` を明示すると webpack edge SSR entry に `node:fs` が混入する。
+// dynamic import に切り替えても webpack は dynamic import 先の transitive 依存を
+// edge SSR bundle に含めるため、barrel rework (admin epic) を待ち Phase 2 で
+// edge 化する。本ファイルは `dynamic = 'force-static'` で build 時に静的化されるため、
+// 実体は CF Pages 上の静的アセットとして配信され Edge 実行は不要。
 export const runtime = 'nodejs';
-// OG画像のキャッシュ戦略 — 1時間 revalidate、可能なら静的化して過剰呼び出しを抑える
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 

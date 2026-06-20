@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import HomeView from './_components/HomeView';
 import { getHomeCached } from '@/lib/repositories';
 
-// Phase 2 で edge 化予定 (#28 レビュー応答):
-// 現状 `@/lib/repositories` の barrel が JsonProductionRepository を static import
-// しており、`runtime='edge'` を明示すると edge bundle に node:fs が混入して build が落ちる。
-// barrel を lazy/conditional import 化する admin Phase (PR-B-admin-edge) と合わせて
-// `runtime='edge'` を明示する。本 PR では Next.js の default (nodejs) のままにする。
+// `getHomeCached` は `@/lib/repositories` barrel から import しており、barrel が
+// `JsonProductionRepository` を static import するため、本ページに
+// `runtime = 'edge'` を明示すると webpack edge SSR entry に `node:fs` が混入する。
+// barrel の lazy/conditional 化 (admin epic / PR-B-admin-edge) を待ち、Phase 2 で
+// edge 化する。それまでは Next.js default (nodejs) + `revalidate` ベースの ISR で
+// 静的化することにより CF Pages 互換を担保する。
 export const revalidate = 3600;
 
 export const metadata: Metadata = {

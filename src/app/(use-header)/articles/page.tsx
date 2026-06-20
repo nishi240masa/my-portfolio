@@ -10,8 +10,9 @@ import articlesData from '../../../../data/articles.json';
 // runtime は Phase 2 で 'edge' に明示移行予定 (#28 レビュー応答):
 // 現状 `src/app/layout.tsx` が `profileRepo` を経由して repositories barrel を
 // 読み込むため、子ページに runtime='edge' を明示すると layout 経由で node:fs が
-// edge bundle に混入し build が落ちる。layout.tsx と repositories barrel の
-// rework (admin Phase / PR-B-admin-edge) と合わせて edge 化する。
+// edge bundle に混入し build が落ちる (dynamic import に切り替えても webpack edge SSR
+// entry は transitive 依存を bundle に含めるため解消しない)。layout.tsx と
+// repositories barrel の rework (admin Phase / PR-B-admin-edge) と合わせて edge 化する。
 export const revalidate = 3600;
 
 export const metadata: Metadata = {

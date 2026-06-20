@@ -13,7 +13,9 @@ import articlesData from '../../../../../data/articles.json';
 //    (layout 経由で node:fs が edge bundle に混入する)。
 // 2) `ArticleBody` が `react-markdown` を SSR で利用 → edge ssr entry で
 //    useState/useEffect の import 解決に失敗する。
-// 上記 2 つは admin Phase の barrel rework + markdown client island 化と合わせて解消する。
+// 3) Next.js 15 は `runtime='edge'` と `generateStaticParams` の併用を許可しない
+//    (build error)。SSG は維持するため、runtime 指定は default のまま。
+// 上記は admin Phase の barrel rework + markdown client island 化と合わせて解消する。
 export const revalidate = 3600;
 
 function getArticles(): Article[] {
