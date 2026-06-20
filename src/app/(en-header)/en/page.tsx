@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getLandingEn } from '@/lib/i18n';
 
 export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'west · Portfolio (EN)',
