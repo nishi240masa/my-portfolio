@@ -154,9 +154,11 @@ export default function SkillEditor({ initial }: { initial: SkillsContent }) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
+  // useActionState は毎回新しい state オブジェクトを返すため、state 自体を
+  // deps に入れることで 2 回目以降の成功時にも確実に refresh される。
   useEffect(() => {
     if (state.ok) router.refresh();
-  }, [state.ok, router]);
+  }, [state, router]);
 
   const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 

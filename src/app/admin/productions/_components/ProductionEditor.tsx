@@ -68,6 +68,8 @@ export default function ProductionEditor({
   // 保存成功時のナビゲーション:
   // - 新規 (id が無く data.id が返る) → 編集画面へ push
   // - 既存 (id 指定済) → router.refresh()
+  // useActionState は毎回新しい state オブジェクトを返すため、state 自体を
+  // deps に入れることで 2 回目以降の成功時にも確実に発火する。
   useEffect(() => {
     if (!state.ok) return;
     if (id == null && state.data?.id != null) {
@@ -75,7 +77,7 @@ export default function ProductionEditor({
     } else {
       router.refresh();
     }
-  }, [state.ok, state.data?.id, id, router]);
+  }, [state, id, router]);
 
   const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
