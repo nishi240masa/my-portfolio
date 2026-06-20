@@ -55,13 +55,14 @@ export default function Header() {
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          <nav style={{ display: 'flex', gap: 4 }}>
+          <nav aria-label="メインナビゲーション" style={{ display: 'flex', gap: 4 }}>
             {NAV_ITEMS.map((it) => {
               const active = pathname === it.href || pathname.startsWith(it.href + '/');
               return (
                 <Link
                   key={it.href}
                   href={it.href}
+                  aria-current={pathname === it.href ? 'page' : undefined}
                   style={{
                     position: 'relative',
                     padding: '8px 16px',
@@ -97,8 +98,14 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleMode}
-            aria-label={mode === 'dark' ? 'ライトテーマに切替' : 'ダークテーマに切替'}
+            aria-label={
+              mode === 'dark'
+                ? '現在ダークテーマです。クリックでライトテーマに切替'
+                : '現在ライトテーマです。クリックでダークテーマに切替'
+            }
+            aria-pressed={mode === 'dark'}
             title={mode === 'dark' ? '昼（和紙）へ' : '夜（夜墨）へ'}
+            className="theme-toggle"
             style={{
               marginLeft: 8,
               width: 34,

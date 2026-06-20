@@ -8,8 +8,13 @@ export default function UseHeaderLayout({
 }>) {
   return (
     <div className="shell">
+      <a href="#main" className="skip-link">
+        本文へスキップ
+      </a>
       <Header />
-      <main style={{ flex: 1 }}>{children}</main>
+      <main id="main" tabIndex={-1} style={{ flex: 1 }}>
+        {children}
+      </main>
       <Footer />
     </div>
   );

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { auth } from '@/auth';
@@ -5,6 +6,14 @@ import AdminSignOutButton from './_components/AdminSignOutButton';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: { index: false, follow: false },
+  },
+};
 
 const NAV = [
   { href: '/admin', label: 'Dashboard' },
