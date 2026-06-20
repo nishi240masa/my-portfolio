@@ -1,10 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { SkillsContent, SkillCategory, Certification } from '@/types/skill';
 import SkillView from '@/app/(use-header)/skill/_components/SkillView';
-import { Field, TextInput, TextArea, NumberInput, StringListEditor, Toolbar, TwoPaneLayout } from '../_components/AdminForm';
+import {
+  Field,
+  FieldErrors,
+  TextInput,
+  TextArea,
+  NumberInput,
+  StringListEditor,
+  Toolbar,
+  TwoPaneLayout,
+} from '../_components/AdminForm';
+import { saveSkills } from '../_actions/skills';
+import { INITIAL_ACTION_STATE, type ActionState } from '../_actions/_types';
 
 const addBtn = {
   padding: '6px 12px',
@@ -134,29 +145,30 @@ function CertEditor({
 export default function SkillEditor({ initial }: { initial: SkillsContent }) {
   const router = useRouter();
   const [form, setForm] = useState<SkillsContent>(initial);
-  const [saving, setSaving] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [state, formAction] = useActionState<ActionState<SkillsContent>, FormData>(
+    saveSkills,
+    INITIAL_ACTION_STATE as ActionState<SkillsContent>,
+  );
 
   function update<K extends keyof SkillsContent>(key: K, value: SkillsContent[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  async function handleSave() {
-    setSaving(true);
-    setStatus('idle');
-    const res = await fetch('/api/admin/skills', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    setSaving(false);
-    setStatus(res.ok ? 'success' : 'error');
-    if (res.ok) router.refresh();
-  }
+  useEffect(() => {
+    if (state.ok) router.refresh();
+  }, [state.ok, router]);
+
+  const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
   return (
-    <>
-      <Toolbar onSave={handleSave} onCancel={() => setForm(initial)} saving={saving} status={saving ? 'saving' : status} />
+    <form action={formAction}>
+      <input type="hidden" name="payload" value={JSON.stringify(form)} />
+      <Toolbar
+        onCancel={() => setForm(initial)}
+        status={status}
+        errorMessage={state.error}
+      />
+      <FieldErrors errors={state.fieldErrors} />
       <TwoPaneLayout
         form={
           <div>
@@ -190,6 +202,6 @@ export default function SkillEditor({ initial }: { initial: SkillsContent }) {
         }
         preview={<SkillView data={form} />}
       />
-    </>
+    </form>
   );
 }

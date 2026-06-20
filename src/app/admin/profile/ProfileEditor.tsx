@@ -1,10 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Profile, TimelineItem, SnsLink } from '@/types/profile';
 import ProfileView from '@/app/(use-header)/profile/_components/ProfileView';
-import { Field, TextInput, TextArea, StringListEditor, Toolbar, TwoPaneLayout } from '../_components/AdminForm';
+import {
+  Field,
+  FieldErrors,
+  TextInput,
+  TextArea,
+  StringListEditor,
+  Toolbar,
+  TwoPaneLayout,
+} from '../_components/AdminForm';
+import { saveProfile } from '../_actions/profile';
+import { INITIAL_ACTION_STATE, type ActionState } from '../_actions/_types';
 
 function TimelineEditor({ value, onChange }: { value: TimelineItem[]; onChange: (v: TimelineItem[]) => void }) {
   return (
@@ -93,29 +103,30 @@ const removeBtn = {
 export default function ProfileEditor({ initial }: { initial: Profile }) {
   const router = useRouter();
   const [form, setForm] = useState<Profile>(initial);
-  const [saving, setSaving] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [state, formAction] = useActionState<ActionState<Profile>, FormData>(
+    saveProfile,
+    INITIAL_ACTION_STATE as ActionState<Profile>,
+  );
 
   function update<K extends keyof Profile>(key: K, value: Profile[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  async function handleSave() {
-    setSaving(true);
-    setStatus('idle');
-    const res = await fetch('/api/admin/profile', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    setSaving(false);
-    setStatus(res.ok ? 'success' : 'error');
-    if (res.ok) router.refresh();
-  }
+  useEffect(() => {
+    if (state.ok) router.refresh();
+  }, [state.ok, router]);
+
+  const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
   return (
-    <>
-      <Toolbar onSave={handleSave} onCancel={() => setForm(initial)} saving={saving} status={saving ? 'saving' : status} />
+    <form action={formAction}>
+      <input type="hidden" name="payload" value={JSON.stringify(form)} />
+      <Toolbar
+        onCancel={() => setForm(initial)}
+        status={status}
+        errorMessage={state.error}
+      />
+      <FieldErrors errors={state.fieldErrors} />
       <TwoPaneLayout
         form={
           <div>
@@ -177,6 +188,6 @@ export default function ProfileEditor({ initial }: { initial: Profile }) {
         }
         preview={<ProfileView data={form} />}
       />
-    </>
+    </form>
   );
 }
