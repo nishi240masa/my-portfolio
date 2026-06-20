@@ -4,13 +4,16 @@ import type { ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import { ImagePlaceholder } from '@/app/_components/design/Placeholders';
 import TagList from '@/app/_components/design/Tags';
-import type { PostPage } from '@/types/post';
+import RelatedPosts from './_components/RelatedPosts';
+import type { Post, PostPage } from '@/types/post';
 
 export default function ProductionDetail({
   article,
+  all,
   markdown,
 }: {
   article: PostPage;
+  all: Post[];
   markdown: ReactNode;
 }) {
   const router = useRouter();
@@ -64,6 +67,8 @@ export default function ProductionDetail({
       <div className="markdown-body" style={{ maxWidth: 720, margin: '0 auto' }}>
         {markdown}
       </div>
+
+      <RelatedPosts currentId={article.id} currentTags={article.tags} all={all} />
 
       <div
         style={{

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import {
   getProductionByIdCached,
   listProductionsCached,
+  listProductionsSummaryCached,
 } from '@/lib/repositories';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
@@ -16,11 +17,18 @@ export async function generateStaticParams() {
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const article = await getProductionByIdCached(Number(id));
+  const [article, all] = await Promise.all([
+    getProductionByIdCached(Number(id)),
+    listProductionsSummaryCached(),
+  ]);
   if (article == null) {
     notFound();
   }
   return (
-    <ProductionDetail article={article} markdown={<MarkdownContent content={article.content} />} />
+    <ProductionDetail
+      article={article}
+      all={all}
+      markdown={<MarkdownContent content={article.content} />}
+    />
   );
 }

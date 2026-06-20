@@ -121,15 +121,18 @@ export function Rakkan({
   size = 36,
   fontSize = 14,
   style,
+  ariaHidden = true,
 }: {
   char?: string;
   size?: number;
   fontSize?: number;
   style?: CSSProperties;
+  ariaHidden?: boolean;
 }) {
   return (
     <span
       className="rakkan"
+      aria-hidden={ariaHidden ? 'true' : undefined}
       style={{ width: size, height: size, lineHeight: `${size}px`, fontSize, ...style }}
     >
       {char}

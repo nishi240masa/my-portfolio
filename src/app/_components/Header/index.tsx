@@ -126,6 +126,38 @@ export default function Header() {
           >
             {mode === 'dark' ? '昼' : '夜'}
           </button>
+
+          <Link
+            href="/contact"
+            aria-current={pathname === '/contact' ? 'page' : undefined}
+            className="header-contact-cta"
+            style={{
+              marginLeft: 8,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '6px 12px 6px 8px',
+              borderRadius: 4,
+              border:
+                pathname === '/contact'
+                  ? '1px solid var(--primary)'
+                  : '1px solid var(--hairline-strong)',
+              background:
+                pathname === '/contact'
+                  ? 'color-mix(in oklab, var(--primary) 8%, transparent)'
+                  : 'transparent',
+              color: pathname === '/contact' ? 'var(--primary)' : 'var(--fg)',
+              textDecoration: 'none',
+              fontFamily: 'var(--font-mincho)',
+              fontSize: 14,
+              letterSpacing: '0.14em',
+              transition: 'color .35s, border-color .35s, background .35s',
+              lineHeight: 1,
+            }}
+          >
+            <Rakkan char="連" size={22} fontSize={11} />
+            <span>Contact</span>
+          </Link>
         </div>
       </div>
     </header>
