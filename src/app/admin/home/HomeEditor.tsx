@@ -85,6 +85,7 @@ export default function HomeEditor({ initial }: { initial: HomeContent }) {
     saveHome,
     INITIAL_ACTION_STATE as ActionState<HomeContent>,
   );
+  const [showOk, setShowOk] = useState(false);
 
   function update<K extends keyof HomeContent>(key: K, value: HomeContent[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -97,6 +98,16 @@ export default function HomeEditor({ initial }: { initial: HomeContent }) {
     if (state.ok) router.refresh();
   }, [state, router]);
 
+  // 「✓ 保存しました」を 3 秒後に自動消失。state オブジェクトの identity を
+  // 観測することで 2 回目以降の連続成功でも effect が再発火する。
+  useEffect(() => {
+    if (state.ok) {
+      setShowOk(true);
+      const t = setTimeout(() => setShowOk(false), 3000);
+      return () => clearTimeout(t);
+    }
+  }, [state]);
+
   const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
   return (
@@ -105,6 +116,7 @@ export default function HomeEditor({ initial }: { initial: HomeContent }) {
       <Toolbar
         onCancel={() => setForm(initial)}
         status={status}
+        showOk={showOk}
         errorMessage={state.error}
       />
       <FieldErrors errors={state.fieldErrors} />
