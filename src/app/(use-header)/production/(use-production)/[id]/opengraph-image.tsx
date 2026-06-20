@@ -6,12 +6,26 @@
 
 import { ImageResponse } from 'next/og';
 import { notFound } from 'next/navigation';
-import { productionRepo } from '@/lib/repositories';
+import productionsData from '../../../../../../data/productions.json';
 
-export const runtime = 'nodejs';
-// OG画像のキャッシュ戦略 — 1時間 revalidate、可能なら静的化して過剰呼び出しを抑える
+// 静的 import パターン (articles/journal/contact と同じ) を採用し、
+// `@/lib/repositories` barrel 経由の node:fs 混入を回避して edge runtime 化。
+// データは build 時に bundle へ inline され、static asset として配信される。
+// admin 編集で productions.json が更新されると CF Pages は次回 build で反映。
+export const runtime = 'edge';
 export const dynamic = 'force-static';
 export const revalidate = 3600;
+
+type ProductionItem = {
+  id: number;
+  title: string;
+  role?: string;
+  technologys?: string[];
+  date?: string;
+};
+
+const findById = (id: number): ProductionItem | null =>
+  (productionsData as ProductionItem[]).find((p) => p.id === id) ?? null;
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -27,7 +41,7 @@ export async function generateImageMetadata({
   if (!Number.isFinite(numericId)) {
     return [{ id: 'default', alt: 'Production cover image', size, contentType }];
   }
-  const article = await productionRepo.getById(numericId);
+  const article = findById(numericId);
   const alt =
     article == null ? 'Production cover image' : `${article.title} のカバー画像`;
   return [{ id: 'default', alt, size, contentType }];
@@ -46,7 +60,7 @@ export default async function Image({ params }: { params: Promise<{ id: string }
   if (!Number.isFinite(numericId)) {
     notFound();
   }
-  const article = await productionRepo.getById(numericId);
+  const article = findById(numericId);
   if (article == null) {
     notFound();
   }

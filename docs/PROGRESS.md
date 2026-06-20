@@ -66,15 +66,17 @@
 | #21 | chore(patterns) | プロセス | .claude/patterns/ (self-critique / budget-guard / cloud-serial-workflow) — Claude Code skill loader 衝突回避で skills→patterns |
 | #22 | chore(scripts) | プロセス | .claude/scripts/preflight.sh + setup-worktree.sh + RESUME 更新 |
 
-## 進行中 PR
+## 進行中 PR — CF Pages Epic
 
-なし (Open: 0 / 全 merge 済)
+| Phase | PR | 状態 | 内容 |
+|---|---|---|---|
+| Phase 1 | PR-A `perf/cf-edge-public` | **進行中 (本 PR)** | 公開ページ (home/profile/skill/production[/id]/articles[/slug]/journal/en/contact) の `runtime='nodejs'` を撤去。静的化可能なルート (home/profile/skill/production/[id]/en) は CF Pages 静的アセットとして配信され Edge 制約をクリア。`dynamic='force-dynamic'` 系 (articles/contact/journal) は Phase 1 では default (nodejs) のまま残り CF preview では依然エラーとなる — Phase 2 で扱う。OG 画像は edge 化を試みたが `@/lib/repositories` 経由の JSON repo `node:fs` import が webpack edge bundle に混入し失敗、`force-static` で静的化されるため `'nodejs'` 据え置き。 |
+| Phase 2 | PR-B `perf/cf-edge-admin` (予定) | 未着手 | admin 系 (`src/app/admin/**`, `src/app/api/admin/**`, `/api/auth/[...nextauth]`) を edge runtime 化。`src/lib/repositories/json/*` を KV/D1/R2 化または lazy-import 化、articles/contact/journal の Edge 化、OG 画像の edge 化を含む。 |
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
 | 優先度 | 領域 | 内容 |
 |---|---|---|
-| 高 | CF Pages 根本対処 | REPOSITORY_DRIVER=github 切替 + admin を edge runtime 化(node:fs 排除)。CF PR preview を本当に green にしたい時に着手。大規模 epic |
 | 中 | LHCI | `@lhci/cli` バージョン不整合: workflow が `npx @lhci/cli@0.14.x`, devDeps は `^0.15.1` → `yarn lhci autorun` で統一 |
 | 中 | a11y/SEO | OG image の alt をさらに改善 (現状は title 含むが、Twitter Card 等への動的化余地) |
 | 中 | a11y | DanIndicator の labelledby スコープ広すぎ問題 (skill name span のみに narrow) / years 空時の `'(0/6, )'` 末尾カンマ防御 |

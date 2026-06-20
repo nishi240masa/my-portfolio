@@ -1,9 +1,10 @@
 // i18n サブセット読み込みユーティリティ
 // - /en ランディング専用の最小実装
 // - 既存 repositories とは独立（ja は repositories 経由のまま）
+// - edge runtime 互換のため、static import で landing.json を取り込む
+//   （node:fs を避けることで CF Pages edge function でも動作する）
 
-import { promises as fs } from 'node:fs';
-import path from 'node:path';
+import landingEnData from '../../data/en/landing.json';
 
 export type LandingEn = {
   hero: {
@@ -32,10 +33,6 @@ export type LandingEn = {
   note: string;
 };
 
-const EN_DATA_DIR = path.join(process.cwd(), 'data', 'en');
-
 export async function getLandingEn(): Promise<LandingEn> {
-  const filePath = path.join(EN_DATA_DIR, 'landing.json');
-  const text = await fs.readFile(filePath, 'utf8');
-  return JSON.parse(text) as LandingEn;
+  return landingEnData as LandingEn;
 }

@@ -9,7 +9,13 @@ import { creativeWorkJsonLd, serializeJsonLd } from '@/lib/jsonld';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
-export const runtime = 'nodejs';
+// 本ページは `generateStaticParams` で完全 SSG 化されており、Next.js 15 の制約上
+// `export const runtime = 'edge'` と `generateStaticParams` を併用できない
+// (build error: "cannot use both ...edge... and export generateStaticParams")。
+// SSG された static asset は CF Pages 上で edge runtime を必要としないため、
+// runtime 指定は省略し default のままにする (CF Pages 互換性は SSG により担保)。
+// `profileRepo` は `@/lib/repositories` barrel 経由で import されているが、
+// SSG (build 時 fs アクセス) のため node:fs は edge bundle に乗らない。
 export const revalidate = 60;
 
 export async function generateStaticParams() {
