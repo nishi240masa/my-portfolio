@@ -11,7 +11,7 @@
   ],
   "education": [
     {
-      "year": "2023.04 — 2026.02",
+      "year": "2023.04 — 2026.05",
       "label": "愛知工業大学 情報科学部 コンピュータシステム専攻",
       "note": "Software Engineering / 在学中"
     }
@@ -36,9 +36,21 @@
     "TypeScript"
   ],
   "sns": [
-    { "label": "GitHub", "handle": "@nishi240masa", "url": "https://github.com/nishi240masa" },
-    { "label": "X", "handle": "@westM27", "url": "https://x.com/westM27" },
-    { "label": "Email", "handle": "nishi240masa@gmail.com", "url": "mailto:nishi240masa@gmail.com" }
+    {
+      "label": "GitHub",
+      "handle": "@nishi240masa",
+      "url": "https://github.com/nishi240masa"
+    },
+    {
+      "label": "X",
+      "handle": "@westM27",
+      "url": "https://x.com/westM27"
+    },
+    {
+      "label": "Email",
+      "handle": "nishi240masa@gmail.com",
+      "url": "mailto:nishi240masa@gmail.com"
+    }
   ],
   "closingLeft": "未来のある開発を、",
   "closingRight": "意味のある人生を。"
