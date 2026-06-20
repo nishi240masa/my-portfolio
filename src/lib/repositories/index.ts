@@ -5,11 +5,13 @@ import { JsonProductionRepository } from './json/jsonProductionRepository';
 import { JsonProfileRepository } from './json/jsonProfileRepository';
 import { JsonSkillsRepository } from './json/jsonSkillsRepository';
 import { JsonHomeRepository } from './json/jsonHomeRepository';
+import { JsonArticleRepository } from './json/jsonArticleRepository';
 import {
   GitHubHomeRepository,
   GitHubProductionRepository,
   GitHubProfileRepository,
   GitHubSkillsRepository,
+  GitHubArticleRepository,
 } from './github';
 
 function assertGitHubEnv(): void {
@@ -71,7 +73,18 @@ function makeHomeRepo() {
   }
 }
 
+function makeArticleRepo() {
+  switch (assertedDriver) {
+    case 'github':
+      return new GitHubArticleRepository();
+    case 'json':
+    default:
+      return new JsonArticleRepository();
+  }
+}
+
 export const productionRepo = makeProductionRepo();
 export const profileRepo = makeProfileRepo();
 export const skillsRepo = makeSkillsRepo();
 export const homeRepo = makeHomeRepo();
+export const articleRepo = makeArticleRepo();

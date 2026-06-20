@@ -5,3 +5,5 @@ export * from './production';
 export * from './profile';
 export * from './skill';
 export * from './home';
+export * from './article';
+export * from './feeds';
