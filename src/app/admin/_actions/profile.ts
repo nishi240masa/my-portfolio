@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { profileRepo } from '@/lib/repositories';
+import { profileRepo } from '@/lib/repositories/sync';
 import { profileSchema } from '@/lib/admin/schemas';
 import type { Profile } from '@/types/profile';
 import {

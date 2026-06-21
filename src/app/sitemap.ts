@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { productionRepo } from '@/lib/repositories';
+import { productionRepo } from '@/lib/repositories/sync';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';

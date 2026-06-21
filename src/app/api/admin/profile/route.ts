@@ -1,4 +1,4 @@
-import { profileRepo } from '@/lib/repositories';
+import { profileRepo } from '@/lib/repositories/sync';
 import { requireAdmin } from '@/lib/admin/auth';
 import { profileSchema } from '@/lib/admin/schemas';
 

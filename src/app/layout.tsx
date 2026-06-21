@@ -4,7 +4,7 @@ import type { Metadata, Viewport } from 'next';
 import { Hina_Mincho, Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
 import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
-import { profileRepo } from '@/lib/repositories';
+import { getProfileCached } from '@/lib/repositories';
 import { personJsonLd, serializeJsonLd } from '@/lib/jsonld';
 
 const hinaMincho = Hina_Mincho({
@@ -83,8 +83,11 @@ export const viewport: Viewport = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
 
-  // SEO: Schema.org Person を JSON-LD としてページ全体に注入する
-  const profile = await profileRepo.get();
+  // SEO: Schema.org Person を JSON-LD としてページ全体に注入する。
+  // 公開ルートと共有される RootLayout なので、edge 互換の cached wrapper
+  // (内部は async factory + lazy import) を使い json driver の静的 dep を
+  // edge bundle に引き込まないようにする。
+  const profile = await getProfileCached();
   const personLd = personJsonLd(profile);
 
   return (

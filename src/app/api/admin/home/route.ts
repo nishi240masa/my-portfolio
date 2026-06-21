@@ -1,4 +1,4 @@
-import { homeRepo } from '@/lib/repositories';
+import { homeRepo } from '@/lib/repositories/sync';
 import { requireAdmin } from '@/lib/admin/auth';
 import { homeSchema } from '@/lib/admin/schemas';
 

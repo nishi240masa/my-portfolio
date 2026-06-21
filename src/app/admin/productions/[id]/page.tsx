@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { productionRepo } from '@/lib/repositories';
+import { productionRepo } from '@/lib/repositories/sync';
 import ProductionEditor from '../_components/ProductionEditor';
 
 export const runtime = 'nodejs';

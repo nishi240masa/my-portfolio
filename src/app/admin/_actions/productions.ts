@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { productionRepo } from '@/lib/repositories';
+import { productionRepo } from '@/lib/repositories/sync';
 import { productionSchema } from '@/lib/admin/schemas';
 import type { PostPage } from '@/types/post';
 import {

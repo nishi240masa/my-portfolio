@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { homeRepo } from '@/lib/repositories';
+import { homeRepo } from '@/lib/repositories/sync';
 import { homeSchema } from '@/lib/admin/schemas';
 import type { HomeContent } from '@/types/home';
 import {

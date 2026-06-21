@@ -1,4 +1,4 @@
-import { productionRepo } from '@/lib/repositories';
+import { productionRepo } from '@/lib/repositories/sync';
 import { requireAdmin } from '@/lib/admin/auth';
 import { productionPatchSchema } from '@/lib/admin/schemas';
 
