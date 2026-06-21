@@ -1,4 +1,4 @@
-import { skillsRepo } from '@/lib/repositories';
+import { skillsRepo } from '@/lib/repositories/sync';
 import SkillEditor from './SkillEditor';
 
 export const runtime = 'nodejs';

@@ -1,4 +1,4 @@
-import { homeRepo } from '@/lib/repositories';
+import { homeRepo } from '@/lib/repositories/sync';
 import HomeEditor from './HomeEditor';
 
 export const runtime = 'nodejs';

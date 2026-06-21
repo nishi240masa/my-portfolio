@@ -1,13 +1,22 @@
-// リポジトリのファクトリ
-// 環境変数 REPOSITORY_DRIVER で実装を切替（'json' (default) | 'github'）
+// リポジトリの async factories + cached wrappers (edge 互換)
 //
-// 構造:
-// - sync exports (legacy): admin/api ルート / layout / sitemap 等 node runtime 専用 consumer 向け。
-//   eager import なので import するだけで json driver (node:fs) が bundle 入りする。
-// - async factories (NEW): 呼び出し側の bundle に json driver の static dep を引き込まない。
-//   edge runtime 化したいルートはこちら経由を使う。
-// - cached wrappers (unstable_cache): 内部で async factory を使うため、これを import する
-//   公開ページの edge bundle には json driver の static dep が含まれない。
+// このファイルは driver 実装 (json / github) への eager static import を
+// **一切持たない**。本ファイルを import するだけで json driver の `node:fs`
+// 依存をバンドルに引き込まないことを保証する。
+//
+// 物理分割の意図:
+// - 同一ファイル top-level に static `import { JsonXxx }` と factory 内
+//   `await import('./json/...')` が共存すると、webpack は dynamic import を
+//   static 側に寄せて bundle してしまうことが知られている (chunk 分割せず
+//   inlineされる)。結果として edge bundle に json driver が混入し続ける。
+// - そのため、sync exports と eager imports は `./sync` に物理的に分離した。
+// - 公開ページ (CF Pages edge runtime) では本ファイルの cached wrapper /
+//   async factory のみを使うこと。admin / api / sitemap など node runtime
+//   consumer は `./sync` から sync export を使ってよい。
+//
+// driver 切替: 環境変数 REPOSITORY_DRIVER ('json' (default) | 'github')
+// revalidation: revalidateTag('home' | 'profile' | 'skills' | 'productions')
+//   per-id 失効は revalidateTag(`production:${id}`) を使う。
 
 import { unstable_cache } from 'next/cache';
 import type { HomeContent } from '@/types/home';
@@ -15,18 +24,6 @@ import type { Profile } from '@/types/profile';
 import type { SkillsContent } from '@/types/skill';
 import type { Post, PostPage } from '@/types/post';
 import type { CollectionRepository, SingletonRepository } from './types';
-import { JsonProductionRepository } from './json/jsonProductionRepository';
-import { JsonProfileRepository } from './json/jsonProfileRepository';
-import { JsonSkillsRepository } from './json/jsonSkillsRepository';
-import { JsonHomeRepository } from './json/jsonHomeRepository';
-import { JsonArticleRepository } from './json/jsonArticleRepository';
-import {
-  GitHubHomeRepository,
-  GitHubProductionRepository,
-  GitHubProfileRepository,
-  GitHubSkillsRepository,
-  GitHubArticleRepository,
-} from './github';
 
 // Production リポジトリだけは listSummary も提供する（json/github 双方で実装済み）。
 // types.ts への追加は scope 外なので、本ファイル内で interface を合成する。
@@ -34,97 +31,47 @@ type ProductionRepository = CollectionRepository<PostPage> & {
   listSummary(): Promise<Post[]>;
 };
 
-function assertGitHubEnv(): void {
-  const missing: string[] = [];
-  if (!process.env.GITHUB_TOKEN) missing.push('GITHUB_TOKEN');
-  if (!process.env.GITHUB_OWNER) missing.push('GITHUB_OWNER');
-  if (!process.env.GITHUB_REPO) missing.push('GITHUB_REPO');
-  if (missing.length > 0) {
-    throw new Error(
-      `REPOSITORY_DRIVER=github is selected but required env vars are missing: ${missing.join(', ')}`,
-    );
+export type { HomeContent } from '@/types/home';
+export type { Profile } from '@/types/profile';
+export type { SkillsContent } from '@/types/skill';
+export type { Post, PostPage } from '@/types/post';
+export type { CollectionRepository, SingletonRepository } from './types';
+
+// === driver 解決 ========================================================
+// 各 async factory 内で都度評価する。env 検証 (assertGitHubEnv) は最初の
+// 呼び出し時 1 回だけ走るよう module-local の lazy flag で制御する。
+// module load 時の副作用 (top-level IIFE での env throw) を避け、テスト時
+// にも安全に import できるようにする。
+
+let envAsserted = false;
+function ensureEnvForDriver(driver: string): void {
+  if (envAsserted) return;
+  if (driver === 'github') {
+    const missing: string[] = [];
+    if (!process.env.GITHUB_TOKEN) missing.push('GITHUB_TOKEN');
+    if (!process.env.GITHUB_OWNER) missing.push('GITHUB_OWNER');
+    if (!process.env.GITHUB_REPO) missing.push('GITHUB_REPO');
+    if (missing.length > 0) {
+      throw new Error(
+        `REPOSITORY_DRIVER=github is selected but required env vars are missing: ${missing.join(', ')}`,
+      );
+    }
   }
+  envAsserted = true;
 }
 
-// driver 解決時に 1 回だけ env を検証する（factory 毎に呼ぶ重複を排除）
-const assertedDriver = (() => {
-  const d = process.env.REPOSITORY_DRIVER ?? 'json';
-  if (d === 'github') assertGitHubEnv();
-  return d;
-})();
-
-// === SYNC factories (legacy) ============================================
-// admin/api ルート（node runtime）と layout / sitemap が依然これを使う。
-// Phase 2c で async factory 経由に migrate 予定。
-
-function makeProductionRepo() {
-  switch (assertedDriver) {
-    case 'github':
-      return new GitHubProductionRepository();
-    case 'json':
-    default:
-      return new JsonProductionRepository();
-  }
+function resolveDriver(): string {
+  return process.env.REPOSITORY_DRIVER ?? 'json';
 }
-
-function makeProfileRepo() {
-  switch (assertedDriver) {
-    case 'github':
-      return new GitHubProfileRepository();
-    case 'json':
-    default:
-      return new JsonProfileRepository();
-  }
-}
-
-function makeSkillsRepo() {
-  switch (assertedDriver) {
-    case 'github':
-      return new GitHubSkillsRepository();
-    case 'json':
-    default:
-      return new JsonSkillsRepository();
-  }
-}
-
-function makeHomeRepo() {
-  switch (assertedDriver) {
-    case 'github':
-      return new GitHubHomeRepository();
-    case 'json':
-    default:
-      return new JsonHomeRepository();
-  }
-}
-
-function makeArticleRepo() {
-  switch (assertedDriver) {
-    case 'github':
-      return new GitHubArticleRepository();
-    case 'json':
-    default:
-      return new JsonArticleRepository();
-  }
-}
-
-/** @deprecated edge 互換が必要な consumer は `getProductionRepo()` を使うこと */
-export const productionRepo = makeProductionRepo();
-/** @deprecated edge 互換が必要な consumer は `getProfileRepo()` を使うこと */
-export const profileRepo = makeProfileRepo();
-/** @deprecated edge 互換が必要な consumer は `getSkillsRepo()` を使うこと */
-export const skillsRepo = makeSkillsRepo();
-/** @deprecated edge 互換が必要な consumer は `getHomeRepo()` を使うこと */
-export const homeRepo = makeHomeRepo();
-/** @deprecated edge 互換が必要な consumer は `getArticleRepo()` を使うこと */
-export const articleRepo = makeArticleRepo();
 
 // === ASYNC factories (edge-compatible) ===================================
-// dynamic import により、呼び出し側の edge bundle に json/github driver の static
-// dep が含まれない（必要時に lazy load される）。
-// driver 解決は eager に済ませた `assertedDriver` を再利用。
+// dynamic import により、呼び出し側の edge bundle に json/github driver の
+// static dep が含まれない (webpack が真の lazy chunk として扱う)。
 
 export async function getHomeRepo(): Promise<SingletonRepository<HomeContent>> {
-  if (assertedDriver === 'github') {
+  const driver = resolveDriver();
+  ensureEnvForDriver(driver);
+  if (driver === 'github') {
     const m = await import('./github/githubHomeRepository');
     return new m.GitHubHomeRepository();
   }
@@ -133,7 +80,9 @@ export async function getHomeRepo(): Promise<SingletonRepository<HomeContent>> {
 }
 
 export async function getProfileRepo(): Promise<SingletonRepository<Profile>> {
-  if (assertedDriver === 'github') {
+  const driver = resolveDriver();
+  ensureEnvForDriver(driver);
+  if (driver === 'github') {
     const m = await import('./github/githubProfileRepository');
     return new m.GitHubProfileRepository();
   }
@@ -142,7 +91,9 @@ export async function getProfileRepo(): Promise<SingletonRepository<Profile>> {
 }
 
 export async function getSkillsRepo(): Promise<SingletonRepository<SkillsContent>> {
-  if (assertedDriver === 'github') {
+  const driver = resolveDriver();
+  ensureEnvForDriver(driver);
+  if (driver === 'github') {
     const m = await import('./github/githubSkillsRepository');
     return new m.GitHubSkillsRepository();
   }
@@ -151,7 +102,9 @@ export async function getSkillsRepo(): Promise<SingletonRepository<SkillsContent
 }
 
 export async function getProductionRepo(): Promise<ProductionRepository> {
-  if (assertedDriver === 'github') {
+  const driver = resolveDriver();
+  ensureEnvForDriver(driver);
+  if (driver === 'github') {
     const m = await import('./github/githubProductionRepository');
     return new m.GitHubProductionRepository();
   }
@@ -159,15 +112,22 @@ export async function getProductionRepo(): Promise<ProductionRepository> {
   return new m.JsonProductionRepository();
 }
 
-// ---
-// 公開ページ向けのキャッシュ済み getter
+export async function getArticleRepo() {
+  const driver = resolveDriver();
+  ensureEnvForDriver(driver);
+  if (driver === 'github') {
+    const m = await import('./github/githubArticleRepository');
+    return new m.GitHubArticleRepository();
+  }
+  const m = await import('./json/jsonArticleRepository');
+  return new m.JsonArticleRepository();
+}
+
+// === cached wrappers =====================================================
 // driver が json でも github でも同じインタフェースで取得できるよう、
 // async factory のメソッドを unstable_cache で包んで再エクスポートする。
-// revalidateTag('home' | 'profile' | 'skills' | 'productions') で無効化する。
-//
 // 内部で async factory を使うことで、cached wrapper を import するページの
 // edge bundle に json driver の static dep を引き込まない。
-// ---
 
 export const getHomeCached = unstable_cache(
   async (): Promise<HomeContent> => {

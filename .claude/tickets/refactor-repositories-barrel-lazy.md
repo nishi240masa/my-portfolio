@@ -15,7 +15,7 @@
 
 Phase 2 admin epic の基盤。`src/lib/repositories/index.ts` の barrel eager import が
 JSON driver (`node:fs` 依存) を edge bundle に混入させている問題を解消する。
-lazy import + async factory パターンを追加し、`unstable_cache` wrapper を lazy 経路
+async factory + lazy `await import()` を導入し、`unstable_cache` wrapper を lazy 経路
 に切り替えることで、cached wrapper を import する公開ページの edge SSR bundle から
 `node:fs` static dep を排除する。
 
@@ -27,26 +27,72 @@ lazy import + async factory パターンを追加し、`unstable_cache` wrapper 
 - Phase 2b: 認証/CSRF を edge 互換に migrate (別 PR)
 - Phase 2c: admin/api ルートを async factory 経由に書き換え、`runtime = 'edge'` を付与
 
+## Rework: 物理分割で eager / lazy を確実に分離
+
+初版は同一ファイル (`src/lib/repositories/index.ts`) の top-level に
+static `import { JsonXxx }` と factory 内 `await import('./json/...')` を共存
+させていたが、reviewer から「webpack は dynamic import を static 側に寄せて
+bundle するため lazy chunk として切り出されない可能性が高い」と major finding。
+
+そのため**物理分割**で構造を整理した:
+
+| ファイル | 責務 | eager import |
+|---|---|---|
+| `src/lib/repositories/sync.ts` (新規) | sync exports (`homeRepo` 等) + IIFE で env 検証 | JsonXxx / GitHubXxx を **eager** に static import (node runtime 専用) |
+| `src/lib/repositories/index.ts` (改修) | async factory (`getHomeRepo` 等) + cached wrapper (`getHomeCached` 等) | **eager import ゼロ**。driver 実装は `await import()` のみで参照 |
+
+これにより webpack には index.ts は「driver 実装を持たない pure な wrapper
+モジュール」として見え、`await import('./json/...')` が真の lazy chunk として
+切り出される。edge bundle に json driver が混入しなくなる。
+
 ## 変更ファイル (これ以外は触らない)
 
-- `src/lib/repositories/index.ts` — barrel を lazy 化、async factory を追加、cached wrapper を async factory 経由に切替
-- `.claude/tickets/refactor-repositories-barrel-lazy.md` (新規) — 本仕様 SSOT
+- `src/lib/repositories/sync.ts` (新規) — sync exports + eager imports
+- `src/lib/repositories/index.ts` (改修) — async factories + cached wrappers のみ、eager import 排除
+- `src/app/sitemap.ts` — `from '@/lib/repositories/sync'` に切替
+- `src/app/admin/page.tsx` / `home/page.tsx` / `profile/page.tsx` / `skill/page.tsx`
+  / `productions/page.tsx` / `productions/[id]/page.tsx` — sync import 経路を `/sync` に切替
+- `src/app/admin/_actions/{home,profile,skills,productions}.ts` — 同上
+- `src/app/api/admin/{home,profile,skills,productions,productions/[id]}/route.ts` — 同上
+- `src/app/layout.tsx` — `profileRepo` (sync) → `getProfileCached` (cached) に切替
+- `src/app/(use-header)/production/(use-production)/[id]/page.tsx` — 同上
+- `.claude/tickets/refactor-repositories-barrel-lazy.md` — 本仕様 SSOT
 
 ## 禁止事項
 
-- `src/app/admin/` 配下 — Phase 2c で扱う
-- `src/app/api/` 配下 — Phase 2c で扱う
 - `src/lib/repositories/{json,github}/` 内部実装 — 挙動変更なし
 - `src/lib/schemas/` — 別 scope
 - ライブラリ追加 (yarn.lock 不変)
 - 公開ページの runtime 変更 (PR #28 で済)
+- admin の **挙動** 変更 (import 経路の付け替えのみ)
 
 ## 実装ポイント
 
-### 1. Async factory を新規 export (lazy import)
+### 1. sync.ts に sync exports を集約
 
 ```ts
-export async function getHomeRepo(): Promise<HomeRepository> {
+// src/lib/repositories/sync.ts
+import { JsonHomeRepository } from './json/jsonHomeRepository';
+import { GitHubHomeRepository } from './github';
+// ...
+const assertedDriver = (() => { /* env 検証 */ })();
+export const homeRepo = makeHomeRepo(); // 等
+```
+
+- 既存の sync API は完全互換 (admin/api は import 経路のみ変更)
+- `@deprecated` コメントは外す (sync.ts は active な API)
+
+### 2. index.ts は async factory + cached wrapper のみ
+
+```ts
+// src/lib/repositories/index.ts
+import { unstable_cache } from 'next/cache';
+import type { ... } from './types';
+// **eager import なし**
+
+export async function getHomeRepo() {
+  const driver = resolveDriver();
+  ensureEnvForDriver(driver);
   if (driver === 'github') {
     const m = await import('./github/githubHomeRepository');
     return new m.GitHubHomeRepository();
@@ -54,42 +100,34 @@ export async function getHomeRepo(): Promise<HomeRepository> {
   const m = await import('./json/jsonHomeRepository');
   return new m.JsonHomeRepository();
 }
-```
 
-- 同じパターンで `getProfileRepo` / `getSkillsRepo` / `getProductionRepo` を追加
-- `await import()` により、呼び出し側の edge bundle に json driver の static dep が
-  含まれなくなる (chunk として動的に loadable な形になる)
-
-### 2. Cached wrappers を async factory 経由に切替
-
-```ts
 export const getHomeCached = unstable_cache(
-  async (): Promise<HomeContent> => {
-    const repo = await getHomeRepo();
-    return repo.get();
-  },
+  async () => (await getHomeRepo()).get(),
   ['home'],
   { tags: ['home'] },
 );
 ```
 
-- 既存の sync `homeRepo` 参照を除去し、cached wrapper 内部で async factory を呼ぶ
-- 呼び出し側 (`getHomeCached()`) の interface は不変 → 公開ページの diff ゼロ
+- `getHomeRepo` / `getProfileRepo` / `getSkillsRepo` / `getProductionRepo`
+  / **`getArticleRepo` (reviewer M2 解消で追加)** の 5 つを export
+- `assertGitHubEnv` は module-load 時の IIFE ではなく、各 factory 呼び出し時
+  に 1 回だけ走る `ensureEnvForDriver` に移動 (module-load 副作用排除、
+  reviewer minor3 解消)
+- cached wrappers の interface は不変 (公開ページの diff ゼロ)
 
-### 3. Sync exports (legacy) は維持
+### 3. consumer 側の import 経路更新
 
-- `homeRepo` / `profileRepo` / `skillsRepo` / `productionRepo` / `articleRepo` は
-  そのまま eager construction で残す
-- admin pages / api routes / `layout.tsx` の `profileRepo` / `sitemap.ts` の `productionRepo`
-  が依然これを使用 (Phase 2c で個別に移行)
-- これらは node runtime で動くため `node:fs` を含んでよい
+- admin / api / sitemap → `from '@/lib/repositories/sync'`
+- layout.tsx / production/[id]/page.tsx (公開ルートと共有 / 利用) →
+  `getProfileCached` (cached wrapper) を使う
 
-### 4. Edge bundle 改善の検証ポイント
+### 4. 検証ポイント (empirical)
 
-- `yarn build:cf` の warning 一覧から `/home` `/profile` `/skill` `/production` `/production/[id]`
-  が edge required リストに含まれないこと
-- admin/api の 14 ルートは依然エラーとして残る (期待通り、Phase 2c で edge 化)
-- 通常 `yarn build` は成功
+- `yarn build:cf` の warning から `/home` `/profile` `/skill` `/production`
+  `/production/[id]` `/articles` `/articles/[slug]` `/journal` `/contact`
+  `/en` が edge required list に **絶対に出ない** こと
+- admin (8) + api/admin (5) + api/auth (1) = **14 ルートのみ** が残る期待
+- 通常 `yarn build` 成功
 
 ## 検証
 
@@ -97,25 +135,17 @@ export const getHomeCached = unstable_cache(
 export PATH="/Users/k23087kk/.nodebrew/current/bin:$PATH"
 yarn lint && yarn test --passWithNoTests
 NEXT_PUBLIC_SITE_URL=https://example.com yarn build
-NEXT_PUBLIC_SITE_URL=https://example.com yarn build:cf 2>&1 | tail -30
-```
-
-## コミット & PR
-
-```bash
-git add -A
-git -c commit.gpgsign=false commit -m "refactor(repositories): json driver を lazy import 化し edge bundle 混入を回避 (Phase 2a)"
-git push -u origin refactor/repositories-barrel-lazy
-gh pr create --base develop --head refactor/repositories-barrel-lazy \
-  --title "refactor(repositories): json driver を lazy import 化 (Phase 2a)" \
-  --body "..."
+NEXT_PUBLIC_SITE_URL=https://example.com yarn build:cf 2>&1 | tail -40
 ```
 
 ## レビュー観点 (チェックリスト)
 
+- [ ] sync.ts と index.ts が物理分割されている (index.ts に eager import ゼロ)
 - [ ] async factory のシグネチャが `Promise<XxxRepository>` を返す
 - [ ] cached wrapper の interface は不変 (call site 変更なし)
-- [ ] sync exports (`homeRepo` 等) は残置されている
-- [ ] admin/api/layout/sitemap など禁止 scope を触っていない
-- [ ] `yarn build:cf` の警告から公開ページが消えている
+- [ ] admin / api / sitemap の sync import 経路が `/sync` に切替済み
+- [ ] layout.tsx / production/[id]/page.tsx の profileRepo 使用が cached wrapper に置換済み
+- [ ] `getArticleRepo()` が追加されている
+- [ ] `assertGitHubEnv` が module-load 時 IIFE ではなく factory 内 lazy 検証
+- [ ] `yarn build:cf` の警告から公開ページが消えている (empirical evidence)
 - [ ] 通常 build / lint / test green

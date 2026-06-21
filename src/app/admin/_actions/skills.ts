@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { skillsRepo } from '@/lib/repositories';
+import { skillsRepo } from '@/lib/repositories/sync';
 import { skillsSchema } from '@/lib/admin/schemas';
 import type { SkillsContent } from '@/types/skill';
 import {

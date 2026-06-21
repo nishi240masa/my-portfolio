@@ -1,4 +1,4 @@
-import { profileRepo } from '@/lib/repositories';
+import { profileRepo } from '@/lib/repositories/sync';
 import ProfileEditor from './ProfileEditor';
 
 export const runtime = 'nodejs';

@@ -1,4 +1,4 @@
-import { skillsRepo } from '@/lib/repositories';
+import { skillsRepo } from '@/lib/repositories/sync';
 import { requireAdmin } from '@/lib/admin/auth';
 import { skillsSchema } from '@/lib/admin/schemas';
 

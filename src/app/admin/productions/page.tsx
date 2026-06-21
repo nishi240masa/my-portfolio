@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { productionRepo } from '@/lib/repositories';
+import { productionRepo } from '@/lib/repositories/sync';
 import ProductionRow from './_components/ProductionRow';
 
 export const runtime = 'nodejs';
