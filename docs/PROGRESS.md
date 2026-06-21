@@ -22,7 +22,7 @@
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
 - **CI 環境変数**: `.github/workflows/test.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 22 PR)
+## 完了 PR (develop 統合済 / 計 27 PR)
 
 ### Layer 0 — 基盤 (7 PR)
 
@@ -46,7 +46,7 @@
 | #11 | feat(admin) | アーキテクト | Server Actions + useActionState + CSRF 強化 |
 | #12 | feat(content+ci) | コンテンツ/CI | /articles + /journal + GH Actions feeds + Lighthouse CI / axe / Playwright |
 
-### Layer 2 — 機能完成 (5 PR)
+### Layer 2 — 機能完成 (8 PR)
 
 | # | PR | 担当領域 | 説明 |
 |---|---|---|---|
@@ -56,8 +56,10 @@
 | #17 | feat(og) | SEO | OG 画像の alt 動的化 + 落款を漢字一字「西」へ |
 | #18 | feat(content) | コンテンツ | Production ケーススタディ化 (caseStudy: 問・工・果 + metrics + Article JSON-LD) + serializeJsonLd XSS escape |
 | #19 | perf(ssg) | Perf | root layout cookies() → Client Theme Provider 局所化 (公開ページ実 SSG 化) + CI に NEXT_PUBLIC_SITE_URL |
+| #25 | a11y(skill) | A11y | DanIndicator labelledby narrow + years 空時 `'(0/6, )'` 末尾カンマ防御 + dark mode hairline-strong コントラスト (WCAG 1.4.11) |
+| #26 | refactor(admin) | UX/DRY | AdminForm 4 Editor の重複 useEffect を `useAutoDismissOnSuccess(state)` カスタムフックへ集約 |
 
-### プロセス基盤 (5 PR)
+### プロセス基盤 (6 PR)
 
 | # | PR | 担当領域 | 説明 |
 |---|---|---|---|
@@ -65,25 +67,55 @@
 | #20 | docs | プロセス | auto-merge 有効化を PROGRESS / RESUME / tickets に反映 |
 | #21 | chore(patterns) | プロセス | .claude/patterns/ (self-critique / budget-guard / cloud-serial-workflow) — Claude Code skill loader 衝突回避で skills→patterns |
 | #22 | chore(scripts) | プロセス | .claude/scripts/preflight.sh + setup-worktree.sh + RESUME 更新 |
+| #23 | docs(progress) | プロセス | Layer 2 + プロセス基盤 完了反映 (累計 22 PR merged 時点) |
+| #24 | fix(ci) | プロセス/CI | LHCI を `yarn lhci` に統一 (workflow `npx @lhci/cli@0.14.x` と devDeps `^0.15.1` の不整合解消) |
 
-## 進行中 PR — CF Pages Epic
+### CF Pages Epic — Phase 1 (1 PR)
 
-| Phase | PR | 状態 | 内容 |
+| # | PR | 担当領域 | 説明 |
 |---|---|---|---|
-| Phase 1 | PR-A `perf/cf-edge-public` | **進行中 (本 PR)** | 公開ページ (home/profile/skill/production[/id]/articles[/slug]/journal/en/contact) の `runtime='nodejs'` を撤去。静的化可能なルート (home/profile/skill/production/[id]/en) は CF Pages 静的アセットとして配信され Edge 制約をクリア。`dynamic='force-dynamic'` 系 (articles/contact/journal) は Phase 1 では default (nodejs) のまま残り CF preview では依然エラーとなる — Phase 2 で扱う。OG 画像は edge 化を試みたが `@/lib/repositories` 経由の JSON repo `node:fs` import が webpack edge bundle に混入し失敗、`force-static` で静的化されるため `'nodejs'` 据え置き。 |
-| Phase 2 | PR-B `perf/cf-edge-admin` (予定) | 未着手 | admin 系 (`src/app/admin/**`, `src/app/api/admin/**`, `/api/auth/[...nextauth]`) を edge runtime 化。`src/lib/repositories/json/*` を KV/D1/R2 化または lazy-import 化、articles/contact/journal の Edge 化、OG 画像の edge 化を含む。 |
+| #28 | perf(public) | Perf/CF | 公開ルート (home/profile/skill/production[/id]/articles[/slug]/journal/en/contact) の `runtime='nodejs'` 撤廃 + 静的 import 化 + OG image edge 化 (CF Pages Phase 1) |
+
+## 進行中 PR
+
+なし (PR #28 で CF Pages Phase 1 完了。Phase 2 admin epic は下記計画参照)
+
+## CF Pages Epic (進行中)
+
+### Phase 1 — 公開ルート edge/static 化 ✅ 完了
+
+| # | 状態 | 内容 |
+|---|---|---|
+| #28 | ✅ merged (2026-06-20) | 公開ページの `runtime='nodejs'` 撤廃。静的化可能なルート (home/profile/skill/production/[id]/en) は CF Pages 静的アセットとして配信。articles/journal は force-static 化。OG image は edge 化済。 |
+
+### Phase 2 — admin/api/auth edge 化 (未着手 / 4 サブ epic)
+
+Phase 1 完了時点で `yarn build:cf` が依然 fail するルートは **計 14**:
+- **admin pages**: 8 (`/admin`, `/admin/home`, `/admin/skill`, `/admin/profile`, `/admin/productions`, `/admin/productions/new`, `/admin/productions/[id]`, `/admin/login`) ※ `src/app/admin/layout.tsx` も nodejs に依存
+- **api/admin**: 5 (`home`, `productions`, `profile`, `skills`, `productions/[id]`)
+- **api/auth**: 1 (`[...nextauth]`)
+
+| Phase | branch (予定) | 状態 | 内容 |
+|---|---|---|---|
+| 2a | `refactor/repo-barrel-split` | 未着手 | `src/lib/repositories/index.ts` の static import (`JsonXxxRepository` + `GitHubXxxRepository`) を driver 別 barrel に分割。`json` 側 module は `node:fs` を使うため edge bundle に混入させない。Phase 2b/2c の前提。 |
+| 2b | `perf/cf-edge-api-auth` | 未着手 (依存: 2a) | `api/admin/*` (5) + `api/auth/[...nextauth]` を `runtime='edge'` 化。NextAuth の edge 互換 adapter 検証 (JWT only / GitHub driver 強制)。 |
+| 2c | `perf/cf-edge-admin-pages` | 未着手 (依存: 2a/2b) | `src/app/admin/**` の 8 ルート + `layout.tsx` を edge 化。Server Actions の edge 互換確認。 |
+| 2d | `chore/cf-pages-docs-and-env` | 未着手 (依存: 2a-2c) | CF Pages 本番で `REPOSITORY_DRIVER=github` を強制 (json driver は edge で動かないため)。`docs/CLOUDFLARE_PAGES_SETUP.md` に Phase 2 完了状態と env 設定を反映。 |
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
 | 優先度 | 領域 | 内容 |
 |---|---|---|
-| 中 | LHCI | `@lhci/cli` バージョン不整合: workflow が `npx @lhci/cli@0.14.x`, devDeps は `^0.15.1` → `yarn lhci autorun` で統一 |
 | 中 | a11y/SEO | OG image の alt をさらに改善 (現状は title 含むが、Twitter Card 等への動的化余地) |
-| 中 | a11y | DanIndicator の labelledby スコープ広すぎ問題 (skill name span のみに narrow) / years 空時の `'(0/6, )'` 末尾カンマ防御 |
-| 中 | UX | AdminForm の 4 Editor で同一の useEffect が重複 → `useAutoDismissOnSuccess(state)` カスタムフック化 |
 | 低 | コンテンツ | caseStudy の minor: MetricsEditor/LinksEditor の key={i} → 安定 id、article.role と caseStudy.role の二重持ち hint、image なし時 Article→CreativeWork フォールバック、Tategaki モバイル grid 調整 |
-| 低 | A11y/CSS | dark mode の --hairline-strong/ハッチパターンのコントラスト微調整 (WCAG 1.4.11 確認) |
 | 低 | SEO | Article rich result の image 必須に対する Editor hint |
+
+### 完了済 (履歴)
+
+- LHCI バージョン不整合 → **#24** で `yarn lhci` 統一により解決
+- DanIndicator labelledby スコープ広すぎ / years 空時 `'(0/6, )'` 末尾カンマ → **#25** で解決
+- AdminForm 4 Editor の useEffect 重複 → **#26** で `useAutoDismissOnSuccess` 化
+- dark mode hairline-strong / ハッチパターン WCAG 1.4.11 → **#25** で解決
 
 ## 開発フロー (各 PR 共通)
 
