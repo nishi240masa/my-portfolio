@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { skillsRepo } from '@/lib/repositories/sync';
+import { getSkillsRepo } from '@/lib/repositories';
 import { skillsSchema } from '@/lib/admin/schemas';
 import type { SkillsContent } from '@/types/skill';
 import {
@@ -10,6 +10,9 @@ import {
   readJsonPayload,
   requireAdminAction,
 } from './_shared';
+
+// NOTE: 'use server' file は runtime 定数 export を許可しないため、
+// runtime = 'edge' は呼び出し元 (page) 経由で設定される。
 
 export async function saveSkills(
   _prevState: ActionState<SkillsContent> | undefined,
@@ -32,7 +35,8 @@ export async function saveSkills(
     };
   }
 
-  const updated = await skillsRepo.update(parsed.data);
+  const repo = await getSkillsRepo();
+  const updated = await repo.update(parsed.data);
   revalidateTag('skills');
   return { ok: true, data: updated };
 }

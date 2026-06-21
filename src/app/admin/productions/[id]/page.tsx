@@ -1,13 +1,14 @@
 import { notFound } from 'next/navigation';
-import { productionRepo } from '@/lib/repositories/sync';
+import { getProductionRepo } from '@/lib/repositories';
 import ProductionEditor from '../_components/ProductionEditor';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export default async function EditProductionPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const item = await productionRepo.getById(Number(id));
+  const repo = await getProductionRepo();
+  const item = await repo.getById(Number(id));
   if (!item) notFound();
   return (
     <div>
