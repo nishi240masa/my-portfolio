@@ -1,10 +1,21 @@
 import Link from 'next/link';
-import { productionRepo, profileRepo, skillsRepo, homeRepo } from '@/lib/repositories/sync';
+import {
+  getHomeRepo,
+  getProductionRepo,
+  getProfileRepo,
+  getSkillsRepo,
+} from '@/lib/repositories';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboard() {
+  const [productionRepo, profileRepo, skillsRepo, homeRepo] = await Promise.all([
+    getProductionRepo(),
+    getProfileRepo(),
+    getSkillsRepo(),
+    getHomeRepo(),
+  ]);
   const [productions, profile, skills, home] = await Promise.all([
     productionRepo.list(),
     profileRepo.get(),

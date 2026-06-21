@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 import { auth } from '@/auth';
 import AdminSignOutButton from './_components/AdminSignOutButton';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {

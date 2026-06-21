@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { homeRepo } from '@/lib/repositories/sync';
+import { getHomeRepo } from '@/lib/repositories';
 import { homeSchema } from '@/lib/admin/schemas';
 import type { HomeContent } from '@/types/home';
 import {
@@ -10,6 +10,13 @@ import {
   readJsonPayload,
   requireAdminAction,
 } from './_shared';
+
+// NOTE: Server Action ファイルは 'use server' の制約により非 async export を持てない
+// (runtime 等の定数 export 不可)。Server Actions は呼び出し元 (page/layout) の
+// runtime ではなく自身の runtime を解決する必要があるが、'use server' file では
+// runtime config は config 専用 export として扱えないため、edge への migration は
+// 呼び出し元 page の runtime + auth/repository が edge-compat であれば自動的に
+// edge bundle に乗る。本ファイルは runtime export なしで OK。
 
 export async function saveHome(
   _prevState: ActionState<HomeContent> | undefined,
@@ -32,7 +39,8 @@ export async function saveHome(
     };
   }
 
-  const updated = await homeRepo.update(parsed.data);
+  const repo = await getHomeRepo();
+  const updated = await repo.update(parsed.data);
   revalidateTag('home');
   return { ok: true, data: updated };
 }

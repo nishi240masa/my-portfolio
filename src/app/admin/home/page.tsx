@@ -1,11 +1,12 @@
-import { homeRepo } from '@/lib/repositories/sync';
+import { getHomeRepo } from '@/lib/repositories';
 import HomeEditor from './HomeEditor';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export default async function HomeAdminPage() {
-  const data = await homeRepo.get();
+  const repo = await getHomeRepo();
+  const data = await repo.get();
   return (
     <div>
       <div className="t-eyebrow" style={{ marginBottom: 6 }}>

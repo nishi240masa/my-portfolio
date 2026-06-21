@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { productionRepo } from '@/lib/repositories/sync';
+import { getProductionRepo } from '@/lib/repositories';
 import { productionSchema } from '@/lib/admin/schemas';
 import type { PostPage } from '@/types/post';
 import {
@@ -10,6 +10,9 @@ import {
   readJsonPayload,
   requireAdminAction,
 } from './_shared';
+
+// NOTE: 'use server' file は runtime 定数 export を許可しないため、
+// runtime = 'edge' は呼び出し元 (page) 経由で設定される。
 
 // 新規作成と部分更新で共通利用する upsert アクション。
 // formData.id が空 (または undefined) なら create / 数値なら update。
@@ -40,13 +43,14 @@ export async function upsertProduction(
   const id = hasId ? Number(idStr) : NaN;
 
   try {
+    const repo = await getProductionRepo();
     if (hasId && Number.isFinite(id)) {
-      const updated = await productionRepo.update(id, parsed.data);
+      const updated = await repo.update(id, parsed.data);
       revalidateTag('productions');
       revalidateTag(`production:${id}`);
       return { ok: true, data: updated };
     }
-    const created = await productionRepo.create(parsed.data);
+    const created = await repo.create(parsed.data);
     revalidateTag('productions');
     return { ok: true, data: created };
   } catch (e) {
@@ -62,7 +66,8 @@ export async function deleteProduction(id: number): Promise<ActionState> {
 
   if (!Number.isFinite(id)) return { ok: false, error: 'Invalid id' };
   try {
-    await productionRepo.delete(id);
+    const repo = await getProductionRepo();
+    await repo.delete(id);
     revalidateTag('productions');
     revalidateTag(`production:${id}`);
     return { ok: true };

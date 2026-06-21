@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidateTag } from 'next/cache';
-import { profileRepo } from '@/lib/repositories/sync';
+import { getProfileRepo } from '@/lib/repositories';
 import { profileSchema } from '@/lib/admin/schemas';
 import type { Profile } from '@/types/profile';
 import {
@@ -10,6 +10,9 @@ import {
   readJsonPayload,
   requireAdminAction,
 } from './_shared';
+
+// NOTE: 'use server' file は runtime 定数 export を許可しないため、
+// runtime = 'edge' は呼び出し元 (page) 経由で設定される。
 
 export async function saveProfile(
   _prevState: ActionState<Profile> | undefined,
@@ -32,7 +35,8 @@ export async function saveProfile(
     };
   }
 
-  const updated = await profileRepo.update(parsed.data);
+  const repo = await getProfileRepo();
+  const updated = await repo.update(parsed.data);
   revalidateTag('profile');
   return { ok: true, data: updated };
 }
