@@ -24,11 +24,11 @@ export async function generateStaticParams() {
   return items.map((item) => ({ id: String(item.id) }));
 }
 
-// PR #17 で opengraph-image.tsx の generateImageMetadata が alt を動的化したが、
-// Twitter Card は file-based opengraph-image の alt を継承しないため、
-// generateMetadata 側で openGraph.images / twitter.images を明示し、
-// alt を `${article.title} のカバー画像` で揃える (a11y / SEO 整合)。
-// metadataBase は app/layout.tsx で設定済みなので、images.url は相対 path で OK。
+// PR #17 で opengraph-image.tsx の generateImageMetadata が alt を動的に title 含むよう
+// 設定済。Next.js は file-based opengraph-image を auto-discover し、og:image / twitter:image
+// 両方を generateImageMetadata の alt 付きで埋める。よってここでは images を明示しない
+// (明示するとハッシュ付きの実 route と URL が不一致になり 404 / SEO 破綻)。
+// title / description / canonical / og:type='article' / twitter:card のみ動的化する。
 export async function generateMetadata({
   params,
 }: {
@@ -42,8 +42,6 @@ export async function generateMetadata({
       alternates: { canonical: `/production/${id}` },
     };
   }
-  const ogImageUrl = `/production/${article.id}/opengraph-image`;
-  const alt = `${article.title} のカバー画像`;
   return {
     title: article.title,
     description: article.description,
@@ -52,13 +50,11 @@ export async function generateMetadata({
       title: article.title,
       description: article.description,
       type: 'article',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt }],
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.description,
-      images: [{ url: ogImageUrl, alt }],
     },
   };
 }
