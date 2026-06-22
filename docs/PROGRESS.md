@@ -22,7 +22,9 @@
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
 - **CI 環境変数**: `.github/workflows/test.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 27 PR)
+## 完了 PR (develop 統合済 / 計 32 PR merged ※ #27 は CLOSED で未merge、#33/#35 が両方 merge された時点で 34 PR)
+
+> 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は merged の実数 (#1-#26, #28-#32, #34 = 32) を SSOT とする。
 
 ### Layer 0 — 基盤 (7 PR)
 
@@ -70,15 +72,21 @@
 | #23 | docs(progress) | プロセス | Layer 2 + プロセス基盤 完了反映 (累計 22 PR merged 時点) |
 | #24 | fix(ci) | プロセス/CI | LHCI を `yarn lhci` に統一 (workflow `npx @lhci/cli@0.14.x` と devDeps `^0.15.1` の不整合解消) |
 
-### CF Pages Epic — Phase 1 (1 PR)
+### CF Pages Epic — Phase 1 / 2a / 2b / 2c / 2d-1 (6 PR)
 
 | # | PR | 担当領域 | 説明 |
 |---|---|---|---|
 | #28 | perf(public) | Perf/CF | 公開ルート (home/profile/skill/production[/id]/articles[/slug]/journal/en/contact) の `runtime='nodejs'` 撤廃 + 静的 import 化 + OG image edge 化 (CF Pages Phase 1) |
+| #29 | docs(progress) | プロセス | #24-#28 反映 + Phase 1 完了 + Phase 2 計画 |
+| #30 | refactor(repositories) | アーキテクト/CF | json driver を lazy import 化 (Phase 2a)。`src/lib/repositories/{json,github,sync.ts,index.ts}` を driver 別 barrel に分割し、edge bundle に `node:fs` を混入させない |
+| #31 | perf(edge) | Perf/CF | `api/auth/[...nextauth]` を edge runtime 化 (Phase 2b)。JWT-only / GitHub driver で edge 互換 |
+| #32 | perf(edge) | Perf/CF | admin pages 9 (layout.tsx 含む) + Server Actions 4 + api/admin 5 を edge runtime 化 (Phase 2c)。async factory pattern + next.config.mjs の `node:*` externals 追加 |
+| #34 | fix(repositories) | アーキテクト/CF | edge runtime + json driver の partial failure を明示的 throw (Phase 2d-1)。`NEXT_RUNTIME==='edge' && driver==='json'` で fail-fast guard を全 async factory に追加 |
 
 ## 進行中 PR
 
-なし (PR #28 で CF Pages Phase 1 完了。Phase 2 admin epic は下記計画参照)
+- **#33** Phase 2d-2 (env/docs) — wrangler.toml / .env.example / docs/CLOUDFLARE_PAGES_SETUP.md
+- **#35** Phase 2d-3 (本 PR) — PROGRESS.md SSOT 整合 + next.config.mjs コメント + force-dynamic 撤廃
 
 ## CF Pages Epic (進行中)
 
@@ -88,19 +96,19 @@
 |---|---|---|
 | #28 | ✅ merged (2026-06-20) | 公開ページの `runtime='nodejs'` 撤廃。静的化可能なルート (home/profile/skill/production/[id]/en) は CF Pages 静的アセットとして配信。articles/journal は force-static 化。OG image は edge 化済。 |
 
-### Phase 2 — admin/api/auth edge 化 (未着手 / 4 サブ epic)
+### Phase 2 — admin/api/auth edge 化 (2a / 2b / 2c ✅ 完了 / 2d 進行中)
 
-Phase 1 完了時点で `yarn build:cf` が依然 fail するルートは **計 14**:
-- **admin pages**: 8 (`/admin`, `/admin/home`, `/admin/skill`, `/admin/profile`, `/admin/productions`, `/admin/productions/new`, `/admin/productions/[id]`, `/admin/login`) ※ `src/app/admin/layout.tsx` も nodejs に依存
+Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは **計 15** (admin pages 9 + api/admin 5 + api/auth 1):
+- **admin pages**: 9 (`src/app/admin/layout.tsx` + `/admin`, `/admin/home`, `/admin/skill`, `/admin/profile`, `/admin/productions`, `/admin/productions/new`, `/admin/productions/[id]`, `/admin/login`)
 - **api/admin**: 5 (`home`, `productions`, `profile`, `skills`, `productions/[id]`)
 - **api/auth**: 1 (`[...nextauth]`)
 
-| Phase | branch (予定) | 状態 | 内容 |
+| Phase | branch | 状態 | 内容 |
 |---|---|---|---|
-| 2a | `refactor/repo-barrel-split` | 未着手 | `src/lib/repositories/index.ts` の static import (`JsonXxxRepository` + `GitHubXxxRepository`) を driver 別 barrel に分割。`json` 側 module は `node:fs` を使うため edge bundle に混入させない。Phase 2b/2c の前提。 |
-| 2b | `perf/cf-edge-api-auth` | 未着手 (依存: 2a) | `api/admin/*` (5) + `api/auth/[...nextauth]` を `runtime='edge'` 化。NextAuth の edge 互換 adapter 検証 (JWT only / GitHub driver 強制)。 |
-| 2c | `perf/cf-edge-admin-pages` | 未着手 (依存: 2a/2b) | `src/app/admin/**` の 8 ルート + `layout.tsx` を edge 化。Server Actions の edge 互換確認。 |
-| 2d | `chore/cf-pages-docs-and-env` | 未着手 (依存: 2a-2c) | CF Pages 本番で `REPOSITORY_DRIVER=github` を強制 (json driver は edge で動かないため)。`docs/CLOUDFLARE_PAGES_SETUP.md` に Phase 2 完了状態と env 設定を反映。 |
+| 2a | `refactor/repositories-barrel-lazy` | ✅ merged (#30, 2026-06-21) | `src/lib/repositories/index.ts` を driver 別 barrel に分割し json driver を lazy import 化。`json` 側 module の `node:fs` 依存を edge bundle から逃がす。Phase 2b/2c の前提。 |
+| 2b | `perf/cf-edge-auth` | ✅ merged (#31, 2026-06-21) | `api/auth/[...nextauth]` を `runtime='edge'` 化。NextAuth は JWT only / GitHub driver 強制で edge 互換確認済。 |
+| 2c | `perf/cf-edge-admin-pages` | ✅ merged (#32, 2026-06-21) | `src/app/admin/**` の 9 ファイル (`layout.tsx` 含む 8 page + layout) + Server Actions 4 + `api/admin/*` 5 を edge 化。next.config.mjs に edge layer 用の `node:fs` / `node:path` externals fallback を追加。 |
+| 2d | `chore/cf-pages-docs-and-env` ほか | 進行中 (defensive guard / env / docs) | CF Pages 本番で `REPOSITORY_DRIVER=github` を強制 (json driver は edge で動かないため)。`docs/CLOUDFLARE_PAGES_SETUP.md` に Phase 2 完了状態と env 設定を反映。本 PR (Phase 2d-3) は PROGRESS 反映 + 軽微 follow-up を兼ねる。 |
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
