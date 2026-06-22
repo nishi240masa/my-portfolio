@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
   getProductionByIdCached,
@@ -21,6 +22,45 @@ export const revalidate = 60;
 export async function generateStaticParams() {
   const items = await listProductionsCached();
   return items.map((item) => ({ id: String(item.id) }));
+}
+
+// PR #17 で opengraph-image.tsx の generateImageMetadata が alt を動的化したが、
+// Twitter Card は file-based opengraph-image の alt を継承しないため、
+// generateMetadata 側で openGraph.images / twitter.images を明示し、
+// alt を `${article.title} のカバー画像` で揃える (a11y / SEO 整合)。
+// metadataBase は app/layout.tsx で設定済みなので、images.url は相対 path で OK。
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const article = await getProductionByIdCached(Number(id));
+  if (article == null) {
+    return {
+      title: '作品が見つかりません',
+      alternates: { canonical: `/production/${id}` },
+    };
+  }
+  const ogImageUrl = `/production/${article.id}/opengraph-image`;
+  const alt = `${article.title} のカバー画像`;
+  return {
+    title: article.title,
+    description: article.description,
+    alternates: { canonical: `/production/${article.id}` },
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: 'article',
+      images: [{ url: ogImageUrl, width: 1200, height: 630, alt }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.description,
+      images: [{ url: ogImageUrl, alt }],
+    },
+  };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
