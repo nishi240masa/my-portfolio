@@ -43,7 +43,10 @@ const nextConfig = {
         ...externalsArr,
         ({ request }, callback) => {
           if (request === 'node:fs' || request === 'node:path') {
-            // commonjs 形式の外部参照 (edge target は dynamic import を許さないため module 形式は不可)
+            // ESM 形式の外部参照 (Next.js edge target 上書き)。
+            // webpack の externals type は build target に依存するが、ここでは
+            // edge layer の解決を諦めて参照だけ残し、runtime に到達した場合は
+            // workers が module を解決できず明示的に error となる経路にする。
             return callback(null, 'commonjs ' + request);
           }
           return callback();

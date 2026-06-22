@@ -13,17 +13,18 @@
 
 ## ゴール
 
-CF Pages epic 最後の本丸。残り 13 ルート (admin 8 + api/admin 5) を edge runtime に
-migrate する。Phase 2a で整備した async factory (`getHomeRepo` / `getProfileRepo`
-/ `getSkillsRepo` / `getProductionRepo` / `getArticleRepo`) を使い、admin の sync
-export 依存を排除して edge bundle から node:fs を完全に逃がす。
+CF Pages epic 最後の本丸。残り admin 系 (admin pages 8 + layout.tsx 1 = 9 + api/admin 5
+= 計 14) を edge runtime に migrate する。Phase 2a で整備した async factory
+(`getHomeRepo` / `getProfileRepo` / `getSkillsRepo` / `getProductionRepo` /
+`getArticleRepo`) を使い、admin の sync export 依存を排除して edge bundle から
+node:fs を完全に逃がす。
 
 ## 位置づけ
 
 - Phase 1: public routes static 化 (#28)
 - Phase 2a: repositories barrel 物理分割 (#30)
 - Phase 2b: api/auth/[...nextauth] edge runtime 化 (#31)
-- Phase 2c: 本 PR — admin pages (10) + Server Actions (4) + api/admin routes (5) を edge runtime に
+- Phase 2c: 本 PR — admin pages (8) + layout.tsx (1) + Server Actions (4) + api/admin routes (5) を edge runtime に (= 計 14 + Server Actions 4)
 - Phase 2d (後続): CF dashboard 用 env 設定 docs (REPOSITORY_DRIVER=github)
 
 ## 変更ファイル (これ以外は触らない)
@@ -113,7 +114,7 @@ NEXT_PUBLIC_SITE_URL=https://example.com yarn build:cf 2>&1 | tail -40
 
 ### 期待される build:cf 結果
 
-- edge エラー一覧が **空** になる (admin 13 ルートも edge OK)
+- edge エラー一覧が **空** になる (admin 9 + api/admin 5 = 14 ルートも edge OK)
 - Cloudflare Pages PR preview がついに通る (CF dashboard secrets 設定済の場合)
 
 ## コミット & PR
