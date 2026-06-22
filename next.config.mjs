@@ -43,10 +43,12 @@ const nextConfig = {
         ...externalsArr,
         ({ request }, callback) => {
           if (request === 'node:fs' || request === 'node:path') {
-            // ESM 形式の外部参照 (Next.js edge target 上書き)。
-            // webpack の externals type は build target に依存するが、ここでは
-            // edge layer の解決を諦めて参照だけ残し、runtime に到達した場合は
-            // workers が module を解決できず明示的に error となる経路にする。
+            // commonjs 形式の外部参照として宣言する (実装は `commonjs ${request}`)。
+            // 注: Next.js は edge target 向けに一部 externals を ESM 形式に上書きする
+            // ことがあるが、ここで指定するのは webpack に対する宣言フォーマットであり、
+            // 最終的に edge layer の解決を諦めて参照だけ残す挙動は変わらない。
+            // runtime に到達した場合は workers が module を解決できず明示的に error
+            // となる経路となり、json driver が edge で呼ばれていないことを保証する。
             return callback(null, 'commonjs ' + request);
           }
           return callback();
