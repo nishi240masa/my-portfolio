@@ -22,7 +22,7 @@
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
 - **CI 環境変数**: `.github/workflows/test.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 32 PR merged ※ 本 PR (#35) merge 時点で 33 PR、後続 #33 merge で 34 PR)
+## 完了 PR (develop 統合済 / 計 32 PR merged ※ #27 は CLOSED で未merge、#33/#35 が両方 merge された時点で 34 PR)
 
 > 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は merged の実数 (#1-#26, #28-#32, #34 = 32) を SSOT とする。
 
@@ -72,7 +72,7 @@
 | #23 | docs(progress) | プロセス | Layer 2 + プロセス基盤 完了反映 (累計 22 PR merged 時点) |
 | #24 | fix(ci) | プロセス/CI | LHCI を `yarn lhci` に統一 (workflow `npx @lhci/cli@0.14.x` と devDeps `^0.15.1` の不整合解消) |
 
-### CF Pages Epic — Phase 1 / 2a / 2b / 2c (5 PR)
+### CF Pages Epic — Phase 1 / 2a / 2b / 2c / 2d-1 (6 PR)
 
 | # | PR | 担当領域 | 説明 |
 |---|---|---|---|
@@ -81,10 +81,12 @@
 | #30 | refactor(repositories) | アーキテクト/CF | json driver を lazy import 化 (Phase 2a)。`src/lib/repositories/{json,github,sync.ts,index.ts}` を driver 別 barrel に分割し、edge bundle に `node:fs` を混入させない |
 | #31 | perf(edge) | Perf/CF | `api/auth/[...nextauth]` を edge runtime 化 (Phase 2b)。JWT-only / GitHub driver で edge 互換 |
 | #32 | perf(edge) | Perf/CF | admin pages 9 (layout.tsx 含む) + Server Actions 4 + api/admin 5 を edge runtime 化 (Phase 2c)。async factory pattern + next.config.mjs の `node:*` externals 追加 |
+| #34 | fix(repositories) | アーキテクト/CF | edge runtime + json driver の partial failure を明示的 throw (Phase 2d-1)。`NEXT_RUNTIME==='edge' && driver==='json'` で fail-fast guard を全 async factory に追加 |
 
 ## 進行中 PR
 
-Phase 2d — CF Pages 本番運用の defensive guard / env / docs (本 PR 系列含む後続 3 サブ)
+- **#33** Phase 2d-2 (env/docs) — wrangler.toml / .env.example / docs/CLOUDFLARE_PAGES_SETUP.md
+- **#35** Phase 2d-3 (本 PR) — PROGRESS.md SSOT 整合 + next.config.mjs コメント + force-dynamic 撤廃
 
 ## CF Pages Epic (進行中)
 
