@@ -17,7 +17,7 @@
 - **Yarn**: 1.22.x
 - **auto-merge**: **有効化済** (2026-06-20)。`gh pr merge <num> --auto --squash --delete-branch` で CI green を待って自動マージ。直接 merge も可能 (`--auto` を外す)
 - **CI 必須 check**: `test` のみ実質的に required。`e2e` / `lhci` / `Cloudflare Pages` の失敗は merge を阻まない
-- **Cloudflare Pages CI**: admin が `node:fs` を使う関係で全ルートが `runtime='nodejs'` になり next-on-pages の Edge 要件と非互換。PR preview は **常に失敗するが merge ブロックしない**ので無視可。根本対処は follow-up
+- **Cloudflare Pages CI** (旧: 常に失敗): Phase 2 (PR #28-#34) で全 dynamic route を edge runtime 化し、edge required list が空になったため **CF dashboard で secrets を設定すれば本番で PR preview が通る想定**。実 green 化は CF dashboard 側の設定後に確認。設定手順は [docs/CLOUDFLARE_PAGES_SETUP.md](./CLOUDFLARE_PAGES_SETUP.md)
 - **Worktree**: `$(git rev-parse --show-toplevel)/../portfolio-wt/<branch-slug>` に統一 (local/cloud 両対応のため。`/tmp/` は使わない)
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
 - **CI 環境変数**: `.github/workflows/test.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
@@ -109,6 +109,17 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 | 2b | `perf/cf-edge-auth` | ✅ merged (#31, 2026-06-21) | `api/auth/[...nextauth]` を `runtime='edge'` 化。NextAuth は JWT only / GitHub driver 強制で edge 互換確認済。 |
 | 2c | `perf/cf-edge-admin-pages` | ✅ merged (#32, 2026-06-21) | `src/app/admin/**` の 9 ファイル (`layout.tsx` 含む 8 page + layout) + Server Actions 4 + `api/admin/*` 5 を edge 化。next.config.mjs に edge layer 用の `node:fs` / `node:path` externals fallback を追加。 |
 | 2d | `chore/cf-pages-docs-and-env` ほか | 進行中 (defensive guard / env / docs) | CF Pages 本番で `REPOSITORY_DRIVER=github` を強制 (json driver は edge で動かないため)。`docs/CLOUDFLARE_PAGES_SETUP.md` に Phase 2 完了状態と env 設定を反映。本 PR (Phase 2d-3) は PROGRESS 反映 + 軽微 follow-up を兼ねる。 |
+
+## 既知の問題 (Known Issues)
+
+- **Vercel preview deploy が systematically 失敗** (PR #28 / 2026-06-20 以降):
+  - コード自体は `yarn build` ローカル green、Vercel deploy のみ fail。
+  - 詳細ログ取得には `npx vercel inspect dpl_<id> --logs` が必要 (オーナー作業)。
+  - 仮説候補:
+    - `NEXT_PUBLIC_SITE_URL` 等の env が Vercel 側に未設定
+    - opengraph-image edge runtime と Vercel build target の互換性
+    - barrel 物理分割 (Phase 2a) 後のモジュール解決
+  - `test` job (GitHub Actions) と `build:cf` は green なので **merge は問題なし**。
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
