@@ -64,12 +64,27 @@ function resolveDriver(): string {
   return process.env.REPOSITORY_DRIVER ?? 'json';
 }
 
+// edge runtime では json driver の `node:fs` 依存が nodejs_compat 下で
+// partial に動いてしまい (一部 API のみ shim、その他は no-op or throw)、
+// 失敗が runtime 中の不定箇所で発生する。本 guard は factory 呼び出し時点で
+// fail-fast に検出し、明確なエラーメッセージで誘導する。
+function assertEdgeCompat(driver: string): void {
+  if (process.env.NEXT_RUNTIME === 'edge' && driver === 'json') {
+    throw new Error(
+      'REPOSITORY_DRIVER=json (default) is not edge-compatible. ' +
+        'Set REPOSITORY_DRIVER=github with GITHUB_TOKEN/OWNER/REPO/BRANCH env, ' +
+        'or run in node runtime (e.g., yarn dev).',
+    );
+  }
+}
+
 // === ASYNC factories (edge-compatible) ===================================
 // dynamic import により、呼び出し側の edge bundle に json/github driver の
 // static dep が含まれない (webpack が真の lazy chunk として扱う)。
 
 export async function getHomeRepo(): Promise<SingletonRepository<HomeContent>> {
   const driver = resolveDriver();
+  assertEdgeCompat(driver);
   ensureEnvForDriver(driver);
   if (driver === 'github') {
     const m = await import('./github/githubHomeRepository');
@@ -81,6 +96,7 @@ export async function getHomeRepo(): Promise<SingletonRepository<HomeContent>> {
 
 export async function getProfileRepo(): Promise<SingletonRepository<Profile>> {
   const driver = resolveDriver();
+  assertEdgeCompat(driver);
   ensureEnvForDriver(driver);
   if (driver === 'github') {
     const m = await import('./github/githubProfileRepository');
@@ -92,6 +108,7 @@ export async function getProfileRepo(): Promise<SingletonRepository<Profile>> {
 
 export async function getSkillsRepo(): Promise<SingletonRepository<SkillsContent>> {
   const driver = resolveDriver();
+  assertEdgeCompat(driver);
   ensureEnvForDriver(driver);
   if (driver === 'github') {
     const m = await import('./github/githubSkillsRepository');
@@ -103,6 +120,7 @@ export async function getSkillsRepo(): Promise<SingletonRepository<SkillsContent
 
 export async function getProductionRepo(): Promise<ProductionRepository> {
   const driver = resolveDriver();
+  assertEdgeCompat(driver);
   ensureEnvForDriver(driver);
   if (driver === 'github') {
     const m = await import('./github/githubProductionRepository');
@@ -114,6 +132,7 @@ export async function getProductionRepo(): Promise<ProductionRepository> {
 
 export async function getArticleRepo() {
   const driver = resolveDriver();
+  assertEdgeCompat(driver);
   ensureEnvForDriver(driver);
   if (driver === 'github') {
     const m = await import('./github/githubArticleRepository');
