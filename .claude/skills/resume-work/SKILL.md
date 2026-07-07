@@ -1,9 +1,9 @@
 ---
-name: resume
-description: セッション開始時・作業再開時の状況把握。preflight 実行 + SSOT (PROGRESS/tickets/open PR) 確認 + 次の一手の提案。「現状確認」「どこから再開」「続きをやって」と言われた時、または新セッションで作業に入る前に使う。
+name: resume-work
+description: セッション開始時・作業再開時の状況把握。preflight 実行 + SSOT (PROGRESS/tickets/open PR) 確認 + 次の一手の提案。「現状確認」「どこから再開」「続きをやって」と言われた時、または新セッションで作業に入る前に使う。 (組み込み /resume との衝突回避のため resume-work)
 ---
 
-# resume — セッション再開
+# resume-work — セッション再開
 
 ## 手順
 

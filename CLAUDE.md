@@ -42,7 +42,7 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 
 ## Skills (定型フローの自動化)
 
-- `/resume` — セッション開始時の状況把握 (preflight + SSOT + 次の一手)
+- `/resume-work` — セッション開始時の状況把握 (preflight + SSOT + 次の一手。組み込み /resume と別物)
 - `/ticket` — ticket 作成の定型化
 - `/impl-pr` — ticket 1 枚を worktree → 実装 → self-critique → PR → auto-merge まで
 - `/review-pr` — persona ベースの批判的 PR レビュー

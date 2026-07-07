@@ -18,7 +18,8 @@
 ## 変更ファイル (これ以外は触らない)
 
 - `CLAUDE.md` (新規) — 環境 (Node 20 PATH / yarn) / git フロー / SSOT ポインタ / skill 一覧
-- `.claude/skills/resume/SKILL.md` (新規) — セッション開始時の状況把握
+- `.gitignore` — 改行欠落で `next-env.d.ts` / `.claude/settings.local.json` の ignore が無効だった不備の修復 (実装中に発見)
+- `.claude/skills/resume-work/SKILL.md` (新規) — セッション開始時の状況把握 (組み込み /resume との衝突回避で resume-work)
 - `.claude/skills/ticket/SKILL.md` (新規) — ticket 作成の定型化
 - `.claude/skills/impl-pr/SKILL.md` (新規) — ticket → worktree → 実装 → self-critique → PR → auto-merge
 - `.claude/skills/review-pr/SKILL.md` (新規) — persona ベースの批判的レビュー
