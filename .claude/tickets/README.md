@@ -41,4 +41,4 @@ gh pr diff <num>                 # 実装
 | Ticket | Status |
 |---|---|
 | [feat-case-study-and-dan-indicator.md](./feat-case-study-and-dan-indicator.md) | 未着手 (Layer 2) |
-| [chore-claude-skills-and-structure.md](./chore-claude-skills-and-structure.md) | 実装中 |
+| [chore-claude-skills-and-structure.md](./chore-claude-skills-and-structure.md) | ✅ merged (#39) |
