@@ -2,6 +2,10 @@
 
 新セッション(ローカル/クラウド/別エージェント)が作業を再開する時の **最初に読むファイル**。
 
+> **ショートカット**: Claude Code なら `/resume` skill が本ファイルの手順 1-4 を自動実行する。
+> 定型フローは skill 化済み — `/ticket` `/impl-pr` `/review-pr` `/wave` `/progress-update` ([.claude/skills/](./skills/))。
+> 以下は skill が使えない環境 (他エージェント / 手動) 向けの手順。
+
 ## 1. 現状把握 (必ず最初に実行)
 
 ```bash

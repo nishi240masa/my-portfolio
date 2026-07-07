@@ -16,6 +16,9 @@
 
 組み込みの slash skill (`/init`, `/review`, etc.) は別 (`~/.claude/skills/` や Claude Code 配布物) にあります。
 
+> **[.claude/skills/](../skills/) との役割分担**: `skills/` は正しい frontmatter を持つ **invocable skill** (`/resume` 等の定型フロー自動化)。
+> `patterns/` は frontmatter を持たない **概念パターン集** (skill から参照される読み物)。ここに skill を置かないこと。
+
 ## ファイル
 
 | pattern | 目的 |

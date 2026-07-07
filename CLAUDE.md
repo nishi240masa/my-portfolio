@@ -1,0 +1,57 @@
+# CLAUDE.md
+
+Next.js 15 (App Router) 製ポートフォリオサイト。Vercel (本番) + Cloudflare Pages (edge 検証) にデプロイ。
+
+## 環境 (最初に必ず)
+
+- **Node >= 20 必須**。デフォルト shell は Node 18 なので、build/dev/test の前に必ず:
+  ```bash
+  export PATH="$HOME/.nodebrew/current/bin:$PATH"   # node -v → v20.x を確認
+  ```
+- パッケージマネージャは **yarn 1.22** (npm / pnpm 禁止。`package-lock.json` は gitignore 済)
+- **`next dev` 起動中に `next build` を走らせない** (同じ `.next` を壊し dev が 500 になる)。dev を止めるか `rm -rf .next`
+
+## コマンド
+
+```bash
+yarn dev          # 開発サーバ
+yarn lint         # eslint (src のみ)
+yarn test         # jest (--passWithNoTests 可)
+yarn build        # next build
+yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
+```
+
+## Git / PR フロー
+
+- ベースブランチは **develop**。PR は `gh pr create --base develop`
+- コミットは **日本語 conventional commit** (`feat(seo): ...` 等)。`git -c commit.gpgsign=false commit` で署名スキップ
+- **auto-merge 有効**: `gh pr merge <num> --auto --squash --delete-branch` で CI green 待ちの自動マージ
+- required check は実質 `test` のみ。**CF Pages / e2e / lhci の失敗は merge を阻まない**
+- 並列作業は worktree: `bash .claude/scripts/setup-worktree.sh <branch>` (`$REPO/../portfolio-wt/<slug>` に作成、node_modules は symlink 共有)
+- 1 PR = 1 ticket (`.claude/tickets/<branch-slug>.md`)。仕様は会話 context でなく ticket に書く
+
+## SSOT (作業前に読む)
+
+| ファイル | 内容 |
+|---|---|
+| `docs/PROGRESS.md` | 改善作業の進捗 SSOT。完了 PR / 進行中 / 次の作業 |
+| `docs/DESIGN_PROPOSAL.md` | 全体方針と各 PR の仕様 |
+| `.claude/tickets/` | 各 PR の実装仕様 (1 ファイル 1 PR) |
+| `.claude/RESUME.md` | セッション再開手順 |
+| `.claude/patterns/` | 概念パターン集 (self-critique / budget-guard / cloud-serial-workflow) |
+
+## Skills (定型フローの自動化)
+
+- `/resume` — セッション開始時の状況把握 (preflight + SSOT + 次の一手)
+- `/ticket` — ticket 作成の定型化
+- `/impl-pr` — ticket 1 枚を worktree → 実装 → self-critique → PR → auto-merge まで
+- `/review-pr` — persona ベースの批判的 PR レビュー
+- `/wave` — 複数 PR の DAG ストリーミング編成 (PM + 並列実装 + 別エージェントレビュー)
+- `/progress-update` — merge 後の docs/PROGRESS.md 更新 PR
+
+## アーキテクチャ要点
+
+- データ層は **driver パターン**: `src/lib/repositories/` (`REPOSITORY_DRIVER=json|github`)。edge runtime では json driver 不可 (fail-fast guard あり)
+- バリデーションは **Zod SSOT**: `src/lib/schemas/`
+- 全 dynamic route は edge runtime 化済 (CF Pages Epic Phase 2)。新規 route を足す時は edge 互換 (node:fs 等を静的 import しない) を維持する
+- 認証は next-auth v5 (JWT-only)。admin 系は Server Actions + CSRF
