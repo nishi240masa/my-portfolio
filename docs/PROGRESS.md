@@ -17,13 +17,13 @@
 - **Node**: >= 20 (環境変数で PATH に Node 20 を入れる。例: `export PATH=~/.nodebrew/current/bin:$PATH`)
 - **Yarn**: 1.22.x
 - **auto-merge**: **有効化済** (2026-06-20)。`gh pr merge <num> --auto --squash --delete-branch` で CI green を待って自動マージ。直接 merge も可能 (`--auto` を外す)
-- **CI 必須 check**: `test` のみ実質的に required。`e2e` / `lhci` / `Cloudflare Pages` の失敗は merge を阻まない
+- **CI 必須 check**: `test` のみ実質的に required。`e2e` / `lhci` / `Cloudflare Pages` の失敗は merge を阻まない。※ `e2e` / `lhci` は #42 で build に `NEXT_PUBLIC_SITE_URL` を配線し build blocker を解消済 (それ以前は build 失敗で本体未実行だった)
 - **Cloudflare Pages CI** (旧: 常に失敗): Phase 2 (PR #28-#34) で全 dynamic route を edge runtime 化し、edge required list が空になったため **CF dashboard で secrets を設定すれば本番で PR preview が通る想定**。実 green 化は CF dashboard 側の設定後に確認。設定手順は [docs/CLOUDFLARE_PAGES_SETUP.md](./CLOUDFLARE_PAGES_SETUP.md)
 - **Worktree**: `$(git rev-parse --show-toplevel)/../portfolio-wt/<branch-slug>` に統一 (local/cloud 両対応のため。`/tmp/` は使わない)
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
-- **CI 環境変数**: `.github/workflows/test.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
+- **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。3 workflow で同一式に統一 = #42)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 38 PR merged)
+## 完了 PR (develop 統合済 / 計 44 PR merged)
 
 > 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は merged の実数 (#1-#26, #28-#39 = 38) を SSOT とする。
 
@@ -75,6 +75,7 @@
 | #35 | chore | プロセス | PROGRESS.md Phase 2a-c 反映 + next.config.mjs コメント + force-dynamic 撤廃 (Phase 2d-3) |
 | #36 | docs(progress) | プロセス | CF Pages 注記を Phase 2 後の現状に整合 + Vercel known issue 追記 |
 | #39 | chore(process) | プロセス | CLAUDE.md 新設 + .claude/skills/ 6 本 (resume-work / ticket / impl-pr / review-pr / wave / progress-update) + root 陳腐化 docs → docs/archive/ 移動 + 重複 icon.svg 削除 + .gitignore 改行欠落修復 |
+| #40 | docs(progress) | プロセス | #33/#35-#39 反映 (累計 38 PR merged 時点 / CF Pages Epic コード側完了 / skills 整備) |
 
 ### CF Pages Epic — Phase 1 / 2a-2d (8 PR)
 
@@ -95,9 +96,21 @@
 |---|---|---|---|
 | #38 | feat(seo) | SEO | OG image alt を Twitter Card メタにも動的反映 |
 
+### e2e スイート健全化 + case-study follow-up (2026-07-19, 5 PR)
+
+> 契機: `NEXT_PUBLIC_SITE_URL` の CI 配線漏れで e2e/lhci が恒常 fail していたのを #42 で修正したところ、build エラーの陰に隠れていた e2e 本体の失敗 (3 系統) が顕在化。系統ごとに分割して解消した。
+
+| # | PR | 担当領域 | 説明 |
+|---|---|---|---|
+| #41 | refactor(admin) | UX/React | CaseStudy Editor の metrics/links を安定 key 化 (`useKeyedRows`、`key={i}` 起因の途中削除フォーカスずれ解消) + metrics 上限 UI (4件)。feat-case-study follow-up nit |
+| #42 | fix(ci) | プロセス/CI | e2e / lhci の build に `NEXT_PUBLIC_SITE_URL` を配線 (test.yml と統一)。lhci 実 green 化・e2e build blocker 解消 |
+| #43 | test(e2e) | テスト | smoke の /profile /skill 見出し期待値を実 h2 に整合 (SectionHeader は eyebrow=div/title=h2)。e2e 系統1 |
+| #44 | fix(a11y) | A11y | primary 前景の color-contrast を WCAG AA (4.5:1) に是正。新トークン `--primary-strong` (light 深朱/dark 淡朱) で NextStepCTA・`.tag.solid`・ProfileView チップ・SkillView opacity を修正。axe 全 6 公開ページ serious/critical 0。e2e 系統2 |
+| #45 | fix(content) | コンテンツ | 404 の production 画像 (id:3 sensor-game) を削除し ImagePlaceholder fallback。e2e 系統3 |
+
 ## 進行中 PR
 
-なし (2026-07-07 時点)。次の候補は [.claude/tickets/](../.claude/tickets/) の未着手チケット (例: feat-case-study-and-dan-indicator は Layer 2 で一部実施済のため要精査)。
+なし (2026-07-19 時点)。`feat-case-study-and-dan-indicator` は精査の結果 #15/#18/#25/#26 + follow-up #41 で完了 = クローズ相当。純粋な未着手チケットは残っていない (残るは下記 Follow-up Issues の低優先のみ)。
 
 ## CF Pages Epic (コード側 ✅ 完了 / CF dashboard 設定待ち)
 
@@ -136,7 +149,7 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 
 | 優先度 | 領域 | 内容 |
 |---|---|---|
-| 低 | コンテンツ | caseStudy の minor: MetricsEditor/LinksEditor の key={i} → 安定 id、article.role と caseStudy.role の二重持ち hint、image なし時 Article→CreativeWork フォールバック、Tategaki モバイル grid 調整 |
+| 低 | コンテンツ | caseStudy の minor: article.role と caseStudy.role の二重持ち hint、image なし時 Article→CreativeWork フォールバック、Tategaki モバイル grid 調整 (MetricsEditor/LinksEditor の key={i} → 安定 id は #41 で解決済) |
 | 低 | SEO | Article rich result の image 必須に対する Editor hint |
 | 低 | skills | `/resume-work` ほか各 skill の実運用フィードバック反映 (名前・description の調整) |
 
@@ -148,6 +161,11 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 - dark mode hairline-strong / ハッチパターン WCAG 1.4.11 → **#25** で解決
 - OG image alt の Twitter Card 動的化 → **#38** で解決
 - 定型フローの skill 化 (resume-work / ticket / impl-pr / review-pr / wave / progress-update) + CLAUDE.md → **#39** で解決
+- CaseStudy Editor の metrics/links `key={i}` → 安定 id + metrics 上限 → **#41** で解決 (`useKeyedRows`)
+- CI の `NEXT_PUBLIC_SITE_URL` 配線漏れで e2e/lhci 恒常 fail → **#42** で解決 (test.yml と統一、lhci 実 green)
+- e2e smoke の /profile /skill 見出し期待値の陳腐化 (系統1) → **#43** で解決
+- primary 前景の color-contrast AA 割れ (系統2, 全公開ページ) → **#44** で解決 (`--primary-strong`)
+- production id:3 の 404 画像 (系統3) → **#45** で ImagePlaceholder fallback 化
 
 ## 開発フロー (各 PR 共通)
 
