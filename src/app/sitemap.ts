@@ -3,7 +3,7 @@ import { productionRepo } from '@/lib/repositories/sync';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
-  const staticRoutes = ['/home', '/profile', '/skill', '/production'].map((p) => ({
+  const staticRoutes = ['/home', '/profile', '/skill', '/production', '/services', '/contact'].map((p) => ({
     url: `${base}${p}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
