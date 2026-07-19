@@ -15,13 +15,15 @@
 
 /wave が実装・レビューの各エージェントへ毎回プロンプトで注入している役割定義 (Node 20 PATH / worktree 手順 / persona レビュー手順) を `.claude/agents/` のカスタムサブエージェント定義に切り出す。特にレビュアー (`pr-critic`) は **Edit/Write を持たないツール制限** で「実装者と別人格・コードを直せない」ことを構造的に保証する。
 
+(スコープ拡張 2026-07-19) 加えて **オーケストレーション原則** を CLAUDE.md に明文化する: main loop (特に Fable) は指示役 (PM) に徹して実装をサブエージェントへ委譲し、独立作業は並列で走らせて時間短縮と品質担保 (別エージェントレビュー) を両立する。/wave (3 PR 以上) に限らず常時適用の原則とする。
+
 ## 変更ファイル (これ以外は触らない)
 
 - `.claude/agents/pr-implementer.md` (新規) — 実装エージェント定義。全ツール可。手順 SSOT は `.claude/skills/impl-pr/SKILL.md` を参照させ、環境制約 (Node 20 PATH / worktree / edge 互換 / ticket 外変更禁止) のみ本文に持つ
 - `.claude/agents/pr-critic.md` (新規) — レビューエージェント定義。tools は Read / Grep / Glob / Bash のみ (Edit/Write なし)。手順 SSOT は `.claude/skills/review-pr/SKILL.md` を参照。persona は呼び出しプロンプトまたは ticket の「想定 reviewer 観点」から
 - `.claude/skills/wave/SKILL.md` — 手順 2 の impl agent / review agent を「`/impl-pr`・`/review-pr` の手順を注入」から「`agentType: 'pr-implementer'` / `'pr-critic'` (Workflow opts) ないし Agent ツールの subagent_type 指定」に書き換え。「各エージェントへの指示には Node 20 PATH を含める」の注意書きは agent 定義側に移った旨へ更新
-- `.claude/skills/impl-pr/SKILL.md` — 前提に 1 行追記: エージェントへ委譲する場合は `pr-implementer` を使う (手順 SSOT はこのファイルのまま)
-- `CLAUDE.md` — Skills セクション直後に `.claude/agents/` の 1 行説明を追加 (pr-implementer / pr-critic)
+- `.claude/skills/impl-pr/SKILL.md` — 前提に追記: main loop がオーケストレータの場合は inline 実行せず `pr-implementer` へ委譲 (手順 SSOT はこのファイルのまま)
+- `CLAUDE.md` — Skills セクション直後に `.claude/agents/` の説明と「オーケストレーション原則」セクションを追加 (main loop = 指示役 / 実装は委譲 / 独立作業は並列 / 別エージェントレビュー必須)
 - `.claude/tickets/chore-claude-agents-definitions.md` (新規) — 本 ticket
 - `.claude/tickets/README.md` — 既存チケット表に行追加
 
