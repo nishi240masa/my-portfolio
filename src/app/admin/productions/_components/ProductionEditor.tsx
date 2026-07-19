@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useActionState, useEffect, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
 import dynamicImport from 'next/dynamic';
 import type { CSSProperties } from 'react';
 import type { CaseStudy, CaseStudyLink, CaseStudyMetric, PostPage } from '@/types/post';
@@ -361,6 +361,33 @@ function CaseStudyFields({
   );
 }
 
+// metrics は UI 上で最大 4 件まで (ticket 実装ポイント)。上限は Editor UI のみで、
+// 永続スキーマ (production.ts) には制約を足さない — 既存データ互換のため。
+const METRICS_MAX = 4;
+
+// クライアント側の安定 id を各行に採番するフック。
+// key に配列 index を使うと途中行の削除で React が別行の DOM/state を再利用し、
+// 入力中のフォーカスや値がずれる。id を data と分離して持つことでこれを防ぐ。
+// 初期化は props から一度だけ (CaseStudyFields は disable 時にアンマウントされ、
+// 再有効化時は空配列で remount されるため stale にならない)。
+function useKeyedRows<T>(value: T[], onChange: (v: T[]) => void) {
+  const counter = useRef(0);
+  const [rows, setRows] = useState<{ id: number; data: T }[]>(() =>
+    value.map((data) => ({ id: counter.current++, data })),
+  );
+  const commit = (next: { id: number; data: T }[]) => {
+    setRows(next);
+    onChange(next.map((r) => r.data));
+  };
+  return {
+    rows,
+    add: (data: T) => commit([...rows, { id: counter.current++, data }]),
+    remove: (i: number) => commit(rows.filter((_, j) => j !== i)),
+    patch: (i: number, partial: Partial<T>) =>
+      commit(rows.map((r, j) => (j === i ? { ...r, data: { ...r.data, ...partial } } : r))),
+  };
+}
+
 function MetricsEditor({
   value,
   onChange,
@@ -368,43 +395,47 @@ function MetricsEditor({
   value: CaseStudyMetric[];
   onChange: (v: CaseStudyMetric[]) => void;
 }) {
+  const { rows, add, remove, patch } = useKeyedRows(value, onChange);
+  const atMax = rows.length >= METRICS_MAX;
   return (
     <div>
-      {value.map((m, i) => (
+      {rows.map((r, i) => (
         <div
-          key={i}
+          key={r.id}
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr auto', gap: 6, marginBottom: 6 }}
         >
           <input
             type="text"
-            value={m.label}
+            value={r.data.label}
             placeholder="ラベル (例: PV)"
-            onChange={(e) => {
-              const next = [...value];
-              next[i] = { ...next[i], label: e.target.value };
-              onChange(next);
-            }}
+            onChange={(e) => patch(i, { label: e.target.value })}
             style={pairInputStyle}
           />
           <input
             type="text"
-            value={m.value}
+            value={r.data.value}
             placeholder="値 (例: +35%)"
-            onChange={(e) => {
-              const next = [...value];
-              next[i] = { ...next[i], value: e.target.value };
-              onChange(next);
-            }}
+            onChange={(e) => patch(i, { value: e.target.value })}
             style={pairInputStyle}
           />
-          <button type="button" onClick={() => onChange(value.filter((_, j) => j !== i))} style={removeBtn}>
+          <button type="button" onClick={() => remove(i)} style={removeBtn}>
             ×
           </button>
         </div>
       ))}
-      <button type="button" onClick={() => onChange([...value, { label: '', value: '' }])} style={addBtn}>
+      <button
+        type="button"
+        onClick={() => add({ label: '', value: '' })}
+        disabled={atMax}
+        style={atMax ? { ...addBtn, opacity: 0.5, cursor: 'not-allowed' } : addBtn}
+      >
         + 指標を追加
       </button>
+      {atMax ? (
+        <p style={{ margin: '6px 0 0', fontSize: 11, color: 'var(--fg-muted)' }}>
+          最大 {METRICS_MAX} 件まで
+        </p>
+      ) : null}
     </div>
   );
 }
@@ -416,41 +447,34 @@ function LinksEditor({
   value: CaseStudyLink[];
   onChange: (v: CaseStudyLink[]) => void;
 }) {
+  const { rows, add, remove, patch } = useKeyedRows(value, onChange);
   return (
     <div>
-      {value.map((l, i) => (
+      {rows.map((r, i) => (
         <div
-          key={i}
+          key={r.id}
           style={{ display: 'grid', gridTemplateColumns: '1fr 2fr auto', gap: 6, marginBottom: 6 }}
         >
           <input
             type="text"
-            value={l.label}
+            value={r.data.label}
             placeholder="ラベル"
-            onChange={(e) => {
-              const next = [...value];
-              next[i] = { ...next[i], label: e.target.value };
-              onChange(next);
-            }}
+            onChange={(e) => patch(i, { label: e.target.value })}
             style={pairInputStyle}
           />
           <input
             type="url"
-            value={l.url}
+            value={r.data.url}
             placeholder="https://..."
-            onChange={(e) => {
-              const next = [...value];
-              next[i] = { ...next[i], url: e.target.value };
-              onChange(next);
-            }}
+            onChange={(e) => patch(i, { url: e.target.value })}
             style={pairInputStyle}
           />
-          <button type="button" onClick={() => onChange(value.filter((_, j) => j !== i))} style={removeBtn}>
+          <button type="button" onClick={() => remove(i)} style={removeBtn}>
             ×
           </button>
         </div>
       ))}
-      <button type="button" onClick={() => onChange([...value, { label: '', url: '' }])} style={addBtn}>
+      <button type="button" onClick={() => add({ label: '', url: '' })} style={addBtn}>
         + リンクを追加
       </button>
     </div>
