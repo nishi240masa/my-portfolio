@@ -23,7 +23,7 @@
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
 - **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。3 workflow で同一式に統一 = #42)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 44 PR merged)
+## 完了 PR (develop 統合済 / 計 46 PR merged)
 
 > 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は merged の実数 (#1-#26, #28-#39 = 38) を SSOT とする。
 
@@ -62,7 +62,7 @@
 | #25 | a11y(skill) | A11y | DanIndicator labelledby narrow + years 空時 `'(0/6, )'` 末尾カンマ防御 + dark mode hairline-strong コントラスト (WCAG 1.4.11) |
 | #26 | refactor(admin) | UX/DRY | AdminForm 4 Editor の重複 useEffect を `useAutoDismissOnSuccess(state)` カスタムフックへ集約 |
 
-### プロセス基盤 (9 PR)
+### プロセス基盤 (12 PR)
 
 | # | PR | 担当領域 | 説明 |
 |---|---|---|---|
@@ -76,6 +76,8 @@
 | #36 | docs(progress) | プロセス | CF Pages 注記を Phase 2 後の現状に整合 + Vercel known issue 追記 |
 | #39 | chore(process) | プロセス | CLAUDE.md 新設 + .claude/skills/ 6 本 (resume-work / ticket / impl-pr / review-pr / wave / progress-update) + root 陳腐化 docs → docs/archive/ 移動 + 重複 icon.svg 削除 + .gitignore 改行欠落修復 |
 | #40 | docs(progress) | プロセス | #33/#35-#39 反映 (累計 38 PR merged 時点 / CF Pages Epic コード側完了 / skills 整備) |
+| #46 | docs(progress) | プロセス | #40-#45 反映 (累計 44 PR merged 時点 / e2e スイート健全化 3 系統解消) |
+| #47 | chore(claude) | プロセス | `.claude/agents/` にサブエージェント定義 pr-implementer / pr-critic 新設 (/wave から参照、pr-critic は Edit/Write なし) + CLAUDE.md にオーケストレーション原則を明文化 |
 
 ### CF Pages Epic — Phase 1 / 2a-2d (8 PR)
 
