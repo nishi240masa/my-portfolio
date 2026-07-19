@@ -14,7 +14,7 @@ import profileData from '../../../../data/profile.json';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    '西尾 匡生への連絡先。採用オファー・協業相談・雑談など、お気軽にどうぞ。',
+    '西尾 匡生への連絡先。お仕事のご依頼・ご相談を中心に、協業・採用オファー・雑談もお気軽にどうぞ。',
   alternates: { canonical: '/contact' },
 };
 
