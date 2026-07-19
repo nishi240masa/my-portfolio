@@ -11,7 +11,8 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'スキル',
-  description: '西尾 匡生の保有スキル一覧 - 言語・フレームワーク・ツールなど。',
+  description:
+    '西尾 匡生 (west) の保有スキル一覧 - Go / TypeScript を軸に、言語・フレームワーク・ツールを紹介します。',
   alternates: { canonical: '/skill' },
 };
 
