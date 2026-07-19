@@ -11,7 +11,8 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'プロフィール',
-  description: '西尾 匡生のプロフィール - 経歴・学歴・連絡先などを紹介します。',
+  description:
+    '西尾 匡生 (west) のプロフィール - 経歴・学歴・連絡先などを紹介します。受託開発のご依頼前の確認にもご覧ください。',
   alternates: { canonical: '/profile' },
 };
 
