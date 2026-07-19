@@ -10,6 +10,7 @@ const NAV_ITEMS = [
   { href: '/production', label: 'Production', jp: '作' },
   { href: '/profile', label: 'Profile', jp: '人' },
   { href: '/skill', label: 'Skill', jp: '技' },
+  { href: '/services', label: 'Services', jp: '依' },
   { href: '/articles', label: 'Articles', jp: '記' },
   { href: '/journal', label: 'Journal', jp: '誌' },
 ];

@@ -7,3 +7,4 @@ export * from './skill';
 export * from './home';
 export * from './article';
 export * from './feeds';
+export * from './services';

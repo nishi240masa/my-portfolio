@@ -1,0 +1,43 @@
+{
+  "intro": "クラウドソーシングなどを通じた受託開発を承っています。小さなご依頼から、まずはご相談ください。",
+  "aiNote": "実装には AI 駆動開発 (Claude Code) を取り入れ、短い納期で形にします。動作確認とセキュリティの検証は、必ず人間の手で行っています。",
+  "items": [
+    {
+      "kanji": "頁",
+      "title": "LPコーディング",
+      "description": "デザインカンプ (Figma 等) からのランディングページ実装。レスポンシブ対応と表示速度にも配慮します。",
+      "turnaround": "3〜5日",
+      "tags": ["HTML/CSS", "JavaScript", "React", "Next.js"]
+    },
+    {
+      "kanji": "自",
+      "title": "業務自動化ツール (GAS・Python)",
+      "description": "スプレッドシート連携や定型作業の自動化、通知ボットなど。日々の手作業をスクリプトに置き換えます。",
+      "turnaround": "即日〜2日",
+      "tags": ["Google Apps Script", "Python"]
+    },
+    {
+      "kanji": "集",
+      "title": "スクレイピング",
+      "description": "Web サイトからのデータ収集・整形。対象サイトの利用規約と robots.txt を尊重できる範囲で実施します。",
+      "turnaround": "2〜4日",
+      "tags": ["Python", "データ収集"]
+    },
+    {
+      "kanji": "拡",
+      "title": "Chrome拡張",
+      "description": "ブラウザ作業を効率化する Chrome 拡張の設計・実装。ストア公開までの支援も可能です。",
+      "turnaround": "3〜7日",
+      "tags": ["Chrome Extension", "TypeScript"]
+    },
+    {
+      "kanji": "直",
+      "title": "既存コードの改修・バグ修正",
+      "description": "既存コードの不具合調査・修正・小さな機能追加。修正一件だけのご依頼も歓迎します。",
+      "turnaround": "即日〜3日",
+      "tags": ["改修", "バグ修正", "調査"]
+    }
+  ],
+  "turnaroundNote": "納期は目安です。規模・要件により変動します。",
+  "contactCta": "まずはお気軽にご相談ください。"
+}
