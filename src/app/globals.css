@@ -60,6 +60,9 @@
   --hairline-strong: rgba(31, 28, 25, 0.24);
   --primary: var(--shu);
   --primary-on: #fffaf4;
+  /* faint-tint 背景 (NextStepCTA primary) 上でも WCAG AA (4.5:1) を満たす前景朱。
+     --primary (#b5495b) 直だと tint bg 上で 4.0:1 と AA 割れするため深朱に。 */
+  --primary-strong: var(--shu-deep);
   --shadow-card: 0 1px 0 rgba(31,28,25,0.04), 0 12px 32px -16px rgba(31,28,25,0.18);
   --shadow-float: 0 2px 0 rgba(31,28,25,0.04), 0 24px 48px -20px rgba(31,28,25,0.25);
 
@@ -78,6 +81,8 @@
      yoru-base (#14110e) 上で約 3.32:1。dan-cell-empty ハッチおよび hairline 全般の視認性を担保。 */
   --hairline-strong: rgba(237, 228, 211, 0.40);
   --primary-on: var(--yoru-text);
+  /* dark: tint bg 上で --shu 直は 3.3:1。淡朱で 6.5:1 を確保。 */
+  --primary-strong: var(--shu-pale);
   --shadow-card: 0 1px 0 rgba(0,0,0,0.4), 0 16px 40px -16px rgba(0,0,0,0.6);
   --shadow-float: 0 24px 56px -20px rgba(0,0,0,0.7);
   --wagara-alpha: 0.08;
@@ -210,7 +215,8 @@ h1, h2, h3, h4, h5 {
   display: inline-block;
 }
 .tag.solid {
-  color: var(--primary);
+  /* faint/透明背景の小さな tag テキストは --primary 直だと AA 割れ (4.0:1)。深朱/淡朱に */
+  color: var(--primary-strong);
   border-color: var(--primary);
   opacity: 0.9;
 }

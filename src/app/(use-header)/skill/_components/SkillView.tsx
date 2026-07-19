@@ -225,7 +225,8 @@ export default function SkillView({ data }: { data: SkillsContent }) {
     <section className="page-enter container" style={{ paddingTop: 64, paddingBottom: 64 }}>
       <SectionHeader eyebrow="SKILL · 技能" title="現在地、段位として。" kanji="技" />
 
-      <div className="t-meta" style={{ marginBottom: 24, opacity: 0.7 }}>
+      {/* opacity は付けない: .t-meta (--fg-muted) は単体で 4.5:1、opacity で薄めると AA 割れ */}
+      <div className="t-meta" style={{ marginBottom: 24 }}>
         {data.intro}
       </div>
 
