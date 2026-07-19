@@ -56,7 +56,7 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 
 ## オーケストレーション原則 (main loop = 指示役)
 
-- main loop (特に Fable) は **PM/指示役に徹する**: 実装は `pr-implementer`、レビューは `pr-critic` に委譲し、main loop 自身は ticket 準備 / 依存 DAG 管理 / REQUEST_CHANGES の差し戻し / conflict 解消 / merge 管理を担う。main loop が直接コードを書くのは数行の trivial fix のみ
+- main loop (特に Fable) は **PM/指示役に徹する**: 実装は `pr-implementer`、レビューは `pr-critic` に委譲し、main loop 自身は ticket 準備 / 依存 DAG 管理 / REQUEST_CHANGES の差し戻し / conflict 解消 / merge 管理を担う (詳細は `/wave` 手順 3)。main loop が直接コードを書くのは数行の trivial fix のみ
 - **並列化できるものは並列に**: 依存がなく同一ファイルを触らない ticket は worktree 分離で同時に走らせる (3 PR 以上は `/wave`、1-2 PR でも実装は委譲)。観点が複数ある PR は `pr-critic` を persona ごとに並列起動してよい
 - **品質担保**: どの経路でも「実装エージェントとは別のエージェントによるレビュー」を必ず挟む (自己レビューは blocker 見落としが実証済み)
 
