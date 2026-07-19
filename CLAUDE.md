@@ -49,6 +49,11 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 - `/wave` — 複数 PR の DAG ストリーミング編成 (PM + 並列実装 + 別エージェントレビュー)
 - `/progress-update` — merge 後の docs/PROGRESS.md 更新 PR
 
+## Agents (`.claude/agents/` — /wave・/impl-pr の委譲先)
+
+- `pr-implementer` — ticket 1 枚を worktree で実装し PR を作る (全ツール)
+- `pr-critic` — persona ベース批判的レビュー。**Edit/Write なし** (レビュアーがコードを直せない構造的保証)。手順 SSOT は各 SKILL.md 側
+
 ## アーキテクチャ要点
 
 - データ層は **driver パターン**: `src/lib/repositories/` (`REPOSITORY_DRIVER=json|github`)。edge runtime では json driver 不可 (fail-fast guard あり)

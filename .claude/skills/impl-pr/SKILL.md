@@ -10,6 +10,7 @@ argument-hint: <ticket ファイル名 or ブランチ名>
 
 - ticket (`.claude/tickets/<slug>.md`) が存在すること。無ければ先に `/ticket` で作る
 - Node 20 PATH: `export PATH="$HOME/.nodebrew/current/bin:$PATH"`
+- このフローをエージェントに委譲する時は `pr-implementer` (`.claude/agents/pr-implementer.md`) を使う。手順 SSOT は本ファイルのまま
 
 ## 手順
 

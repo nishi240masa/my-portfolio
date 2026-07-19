@@ -45,3 +45,4 @@ gh pr diff <num>                 # 実装
 | [refactor-case-study-editor-nits.md](./refactor-case-study-editor-nits.md) | ✅ merged (#41) |
 | [fix-ci-site-url-e2e-lhci.md](./fix-ci-site-url-e2e-lhci.md) | ✅ merged (#42) |
 | [fix-e2e-suite-failures.md](./fix-e2e-suite-failures.md) | ✅ 3 系統解消 (#43 系統1 / #44 系統2 / #45 系統3) |
+| [chore-claude-agents-definitions.md](./chore-claude-agents-definitions.md) | 未着手 |
