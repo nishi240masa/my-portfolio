@@ -33,6 +33,8 @@ export const caseStudySchema = z.object({
 });
 
 // 一覧用のサマリ（リスト表示で使う最小フィールド）
+// caseStudy は一覧カードで problem を 1〜2 行表示するための最小 pick のみ持つ
+// （detail 側は productionDetailSchema.extend で完全な caseStudySchema に上書きされる）。
 export const productionSummarySchema = z.object({
   id: z.number(),
   title: z.string().min(1, 'タイトルは必須です'),
@@ -40,6 +42,7 @@ export const productionSummarySchema = z.object({
   description: z.string(),
   date: z.string().min(1, '日付は必須です'),
   tags: z.array(z.string()).default([]),
+  caseStudy: caseStudySchema.pick({ problem: true }).optional(),
 });
 
 // 詳細ページ用の完全な型
