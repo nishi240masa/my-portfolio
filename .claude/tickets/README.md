@@ -40,5 +40,8 @@ gh pr diff <num>                 # 実装
 
 | Ticket | Status |
 |---|---|
-| [feat-case-study-and-dan-indicator.md](./feat-case-study-and-dan-indicator.md) | 未着手 (Layer 2) |
+| [feat-case-study-and-dan-indicator.md](./feat-case-study-and-dan-indicator.md) | ✅ 実装済クローズ (#15/#18/#25/#26 + follow-up #41) |
 | [chore-claude-skills-and-structure.md](./chore-claude-skills-and-structure.md) | ✅ merged (#39) |
+| [refactor-case-study-editor-nits.md](./refactor-case-study-editor-nits.md) | ✅ merged (#41) |
+| [fix-ci-site-url-e2e-lhci.md](./fix-ci-site-url-e2e-lhci.md) | ✅ merged (#42) |
+| [fix-e2e-suite-failures.md](./fix-e2e-suite-failures.md) | ✅ 3 系統解消 (#43 系統1 / #44 系統2 / #45 系統3) |
