@@ -68,18 +68,6 @@
     "content": "# センサー連動型対戦ゲーム\n\nRaspberry Piに接続された加速度センサーをコントローラーとして使用し、ブラウザ上でリアルタイムに進行する対戦型Webゲームです。IoT技術とモダンなWebフロントエンド技術の融合をテーマにしたハッカソン向けプロジェクトとして制作しました。\n\n## システム構成\n\n1. **IoTエッジデバイス (Raspberry Pi)**\n   - プレイヤーの手元にあるコントローラー。\n   - 3軸加速度センサーモジュール（MPU6050など）からデータを取得。\n   - Pythonスクリプトでセンサー値をフィルタリング（カルマンフィルタ適用）し、WebSocket経由でサーバーへ送信。\n\n2. **ゲームサーバー (Golang)**\n   - クライアントとエッジデバイス間の通信を仲介。\n   - WebSocket接続をゴルーチン（Goroutine）で並行処理し、極めて低いレイテンシでのデータブロードキャストを実現。\n   - ルーム管理機能（マッチメイキング、ゲーム状態の同期）。\n\n3. **クライアントUI (Next.js)**\n   - サーバーから流れてくるリアルタイム座標データを元に、CanvasAPI（またはWebGL）を利用して自機や敵機の位置を描画。\n   - Reactの宣言的なUIで、スコアボードやエフェクトを滑らかに表現。\n\n## 直面した課題とアプローチ\n\n### 1. センサーのノイズ除去と遅延\n生データをそのまま送信するとキャラクターがブレてしまう問題がありました。エッジ側で単純な移動平均フィルタをかけたところ遅延が目立ったため、予測と補正を組み合わせたフィルタリングアルゴリズムを導入し、滑らかさと応答性を両立させました。\n\n### 2. WebSocket接続の負荷対策\n毎秒数十回の頻度で送られてくるメッセージを、接続している全クライアントに配信する必要がありました。Golangの強力な並行処理モデルを活かし、Roomごとのハブとなる構造体を定義。チャネル（Channel）を用いて安全かつ非同期にメッセージをルーティングする設計としました。\n\n```go\n// WebSocketのハブルーティングの一部\nfunc (h *Hub) Run() {\n\tfor {\n\t\tselect {\n\t\tcase client := <-h.register:\n\t\t\th.clients[client] = true\n\t\tcase client := <-h.unregister:\n\t\t\tif _, ok := h.clients[client]; ok {\n\t\t\t\tdelete(h.clients, client)\n\t\t\t\tclose(client.send)\n\t\t\t}\n\t\tcase message := <-h.broadcast:\n\t\t\tfor client := range h.clients {\n\t\t\t\tselect {\n\t\t\t\tcase client.send <- message:\n\t\t\t\tdefault:\n\t\t\t\t\tclose(client.send)\n\t\t\t\t\tdelete(h.clients, client)\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n```\n\n## 結果\n\nハッカソンでは、実際にデバイスを振り回して遊ぶというフィジカルな体験が高く評価され、技術部門賞を受賞することができました。\n"
   },
   {
-    "id": 4,
-    "title": "Design System & Component Library",
-    "description": "フロントエンド開発の効率化とUIの統一を目的とした、React向け社内用コンポーネントライブラリ。",
-    "date": "2024-07-10",
-    "tags": ["React", "TypeScript", "Storybook", "Figma"],
-    "peopleNum": 2,
-    "role": "フロントエンド開発 / UI設計",
-    "period": "2ヶ月",
-    "technologys": ["React", "TypeScript", "Storybook", "Tailwind CSS", "Figma", "NPM Workspace"],
-    "content": "# Design System & Component Library\n\nプロダクトチーム全体の開発スピード向上と、アプリケーション間でのUI/UXの一貫性を担保するために構築した、独自のReactコンポーネントライブラリです。\n\n## プロジェクトの目的\n\n複数のWebアプリケーションを並行して開発する中で、ボタンやモーダル、フォーム要素などのUI部品が各プロジェクトでバラバラに再実装されているという課題がありました。これにより、デザインのブレや、修正時の重複作業が発生していました。\nこの問題を解決するため、Figma上のデザイントークンと同期した「Single Source of Truth（信頼できる唯一の情報源）」となるライブラリを開発しました。\n\n## 主な特徴\n\n- **デザイントークンの活用**: 色、タイポグラフィ、スペーシングなどの基礎要素をJSONとして定義。CSS Variablesを生成するスクリプトを組み込み、一元管理。\n- **Storybookによるカタログ化**: 全コンポーネントをStorybook上でドキュメント化し、デザイナーとエンジニアのコミュニケーションハブとして活用。\n- **アクセシビリティ (a11y)**: WAI-ARIAのベストプラクティスに従い、キーボード操作やスクリーンリーダーに配慮した実装（Radix UIなどのヘッドレスUIを一部ラップして利用）。\n- **完全な型定義**: TypeScriptによる厳格なPropsの型付けにより、利用側での開発体験（DX）を大きく向上。\n\n## パッケージ公開とCI/CD\n\nライブラリは社内のプライベートNPMレジストリへ公開。GitHub Actionsを利用し、以下のCI/CDパイプラインを構築しました。\n\n1. **Lint / Format**: ESLint, Prettierによる静的解析。\n2. **Test**: Jest + React Testing Libraryを用いた単体テスト。\n3. **Visual Regression Test**: Chromaticを導入し、予期せぬデザイン崩れをPR単位で検知。\n4. **Publish**: セマンティックバージョニングに基づく自動リリース。\n\n> **Note**: 現在このプロジェクトにはサムネイル画像が設定されていませんが、UI側で適切にプレースホルダが表示されるようになっています。\n"
-  },
-  {
     "id": 5,
     "title": "高トラフィック対応 GraphQL BFF",
     "description": "マイクロサービスアーキテクチャのフロントエンドとバックエンドを繋ぐ、ApolloベースのBFF。",
