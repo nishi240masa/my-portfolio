@@ -126,7 +126,8 @@ export default function ProfileView({ data }: { data: Profile }) {
                 letterSpacing: '0.08em',
                 background: i % 3 === 0 ? 'color-mix(in oklab, var(--primary) 6%, transparent)' : 'transparent',
                 borderColor: i % 3 === 0 ? 'var(--primary)' : 'var(--hairline)',
-                color: i % 3 === 0 ? 'var(--primary)' : 'var(--fg)',
+                // tint 背景上の小テキストは AA 確保のため深朱/淡朱 (--primary-strong)
+                color: i % 3 === 0 ? 'var(--primary-strong)' : 'var(--fg)',
               }}
             >
               {it}

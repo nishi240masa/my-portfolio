@@ -93,12 +93,14 @@ function CTAButton({ cta }: { cta: CTA }) {
         border: isPrimary
           ? '1px solid var(--primary)'
           : '1px solid var(--hairline-strong)',
-        color: isPrimary ? 'var(--primary)' : 'var(--fg)',
+        // faint-tint 背景 (isPrimary) では --primary 直だと AA 割れするため深朱/淡朱に
+        color: isPrimary ? 'var(--primary-strong)' : 'var(--fg)',
       }}
     >
       <Rakkan char={cta.kanji} size={26} fontSize={12} />
       <span style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1.2 }}>
-        <span className="t-eyebrow" style={{ fontSize: 10 }}>
+        {/* primary は eyebrow の --fg-muted を継承色 (--primary-strong) で上書きし AA を確保 */}
+        <span className="t-eyebrow" style={{ fontSize: 10, color: isPrimary ? 'inherit' : undefined }}>
           {cta.label}
         </span>
         <span style={{ fontSize: 15 }}>{cta.jp}</span>
