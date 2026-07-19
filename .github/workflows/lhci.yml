@@ -21,6 +21,10 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build
+        # jsonld.ts が production build で NEXT_PUBLIC_SITE_URL を要求する。
+        # test.yml と同じ式で配線する。
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://my-portfolio-kohl-one-59.vercel.app' }}
         run: yarn build
 
       - name: Run Lighthouse CI
