@@ -12,6 +12,8 @@ function toListItem(p: PostPage): Post {
     description: p.description,
     date: p.date,
     tags: p.tags,
+    // 一覧カードの要約表示用に problem のみ最小 pick で渡す
+    ...(p.caseStudy != null ? { caseStudy: { problem: p.caseStudy.problem } } : {}),
   };
 }
 
