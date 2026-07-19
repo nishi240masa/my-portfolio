@@ -28,9 +28,9 @@ const HOME_CTA: CTAPair = {
 
 const PRODUCTION_LIST_CTA: CTAPair = {
   eyebrow: 'NEXT STEP · 次へ',
-  title: '気になる作品があれば、人物像と連絡へ。',
+  title: '気になる作品があれば、人物像かご依頼へ。',
   primary: { href: '/profile', label: 'Profile', jp: '人物像へ', kanji: '人', variant: 'primary' },
-  secondary: { href: '/contact', label: 'Contact', jp: '連絡する', kanji: '連', variant: 'ghost' },
+  secondary: { href: '/services', label: 'Services', jp: 'ご依頼はこちら', kanji: '依', variant: 'ghost' },
 };
 
 const PRODUCTION_DETAIL_CTA: CTAPair = {
@@ -49,9 +49,16 @@ const PROFILE_CTA: CTAPair = {
 
 const SKILL_CTA: CTAPair = {
   eyebrow: 'NEXT STEP · 次へ',
-  title: '技を見たなら、作品か連絡へ。',
+  title: '技を見たなら、作品かご依頼へ。',
   primary: { href: '/production', label: 'Production', jp: '作品を見る', kanji: '作', variant: 'primary' },
-  secondary: { href: '/contact', label: 'Contact', jp: '連絡する', kanji: '連', variant: 'ghost' },
+  secondary: { href: '/services', label: 'Services', jp: 'ご依頼はこちら', kanji: '依', variant: 'ghost' },
+};
+
+const SERVICES_CTA: CTAPair = {
+  eyebrow: 'NEXT STEP · 次へ',
+  title: 'ご相談は連絡へ。実績は作品から。',
+  primary: { href: '/contact', label: 'Contact', jp: '相談する', kanji: '連', variant: 'primary' },
+  secondary: { href: '/production', label: 'Production', jp: '作品を見る', kanji: '作', variant: 'ghost' },
 };
 
 const CONTACT_CTA: CTAPair = {
@@ -68,6 +75,7 @@ function resolveCTA(pathname: string): CTAPair {
   if (pathname === '/contact') return CONTACT_CTA;
   if (pathname === '/profile' || pathname.startsWith('/profile/')) return PROFILE_CTA;
   if (pathname === '/skill' || pathname.startsWith('/skill/')) return SKILL_CTA;
+  if (pathname === '/services' || pathname.startsWith('/services/')) return SERVICES_CTA;
   if (pathname === '/production') return PRODUCTION_LIST_CTA;
   if (pathname.startsWith('/production/')) return PRODUCTION_DETAIL_CTA;
   return DEFAULT_CTA;
