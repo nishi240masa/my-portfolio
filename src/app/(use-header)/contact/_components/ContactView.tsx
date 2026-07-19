@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SectionHeader from '@/app/_components/design/SectionHeader';
 import { Rakkan } from '@/app/_components/design/Wagara';
 import type { SnsLink } from '@/types/profile';
@@ -15,6 +16,51 @@ type Card = {
 };
 
 const CARDS: Card[] = [
+  {
+    kanji: '依',
+    eyebrow: 'WORK · お仕事のご依頼',
+    title: 'お仕事のご依頼',
+    description:
+      'Web サイト・アプリの開発、API 設計、技術相談などの受託のご依頼はこちらから。内容が固まっていなくても、まずはご相談ください。',
+    subject: '【お仕事のご依頼】西尾 匡生 宛',
+    body: [
+      '西尾 様',
+      '',
+      'はじめまして。',
+      'ご依頼内容：',
+      '・',
+      '',
+      'ご希望納期：',
+      '・',
+      '',
+      'ご予算感（任意）：',
+      '・',
+      '',
+      'ご返信お待ちしております。',
+    ].join('\n'),
+    ctaLabel: 'メールでご依頼内容を送る',
+  },
+  {
+    kanji: '結',
+    eyebrow: 'COLLAB · 協業相談',
+    title: '協業相談',
+    description:
+      '個人開発・受託・共同プロジェクトなど、つくる仲間として声をかけていただけたら嬉しいです。',
+    subject: '【協業のご相談】西尾 匡生 宛',
+    body: [
+      '西尾 様',
+      '',
+      'はじめまして。',
+      'ご相談したい内容：',
+      '・',
+      '',
+      '想定するスコープ / 期間 / 体制：',
+      '・',
+      '',
+      'よろしくお願いいたします。',
+    ].join('\n'),
+    ctaLabel: 'メールで協業相談を送る',
+  },
   {
     kanji: '招',
     eyebrow: 'OFFER · 採用オファー',
@@ -38,27 +84,6 @@ const CARDS: Card[] = [
       'ご返信お待ちしております。',
     ].join('\n'),
     ctaLabel: 'メールで採用相談を送る',
-  },
-  {
-    kanji: '結',
-    eyebrow: 'COLLAB · 協業相談',
-    title: '協業相談',
-    description:
-      '個人開発・受託・共同プロジェクトなど、つくる仲間として声をかけていただけたら嬉しいです。',
-    subject: '【協業のご相談】西尾 匡生 宛',
-    body: [
-      '西尾 様',
-      '',
-      'はじめまして。',
-      'ご相談したい内容：',
-      '・',
-      '',
-      '想定するスコープ / 期間 / 体制：',
-      '・',
-      '',
-      'よろしくお願いいたします。',
-    ].join('\n'),
-    ctaLabel: 'メールで協業相談を送る',
   },
   {
     kanji: '談',
@@ -98,8 +123,20 @@ export default function ContactView({ sns }: { sns: SnsLink[] }) {
           textWrap: 'pretty',
         }}
       >
-        採用オファー、協業相談、雑談まで。
-        以下の3つの導線からどうぞ。返信は数日いただくことがあります。
+        お仕事のご依頼・協業相談から、採用オファー、雑談まで。
+        以下の導線からどうぞ。返信は数日いただくことがあります。
+        対応できる内容の詳細は
+        <Link
+          href="/services"
+          style={{
+            color: 'var(--primary)',
+            textDecoration: 'underline',
+            textUnderlineOffset: 4,
+          }}
+        >
+          サービス一覧
+        </Link>
+        をご覧ください。
       </p>
 
       <div
