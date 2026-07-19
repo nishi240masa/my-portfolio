@@ -23,7 +23,7 @@
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
 - **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。3 workflow で同一式に統一 = #42)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 46 PR merged)
+## 完了 PR (develop 統合済 / 計 51 PR merged)
 
 > 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は merged の実数 (#1-#26, #28-#39 = 38) を SSOT とする。
 
@@ -110,9 +110,21 @@
 | #44 | fix(a11y) | A11y | primary 前景の color-contrast を WCAG AA (4.5:1) に是正。新トークン `--primary-strong` (light 深朱/dark 淡朱) で NextStepCTA・`.tag.solid`・ProfileView チップ・SkillView opacity を修正。axe 全 6 公開ページ serious/critical 0。e2e 系統2 |
 | #45 | fix(content) | コンテンツ | 404 の production 画像 (id:3 sensor-game) を削除し ImagePlaceholder fallback。e2e 系統3 |
 
+### 受託営業ツール化 wave (2026-07-19, 5 PR)
+
+> 契機: サイトの目的を「クラウドソーシングで受託案件を獲得する営業ツール」と再定義した診断で、受託メニュー不在・caseStudy 未投入・メタが就活向け・OG 画像 404 等の欠落が判明。4 ticket + follow-up を /wave (pr-implementer 並列実装 + pr-critic 別エージェントレビュー) で解消した。**develop のみ。main へのリリース (デプロイ) はオーナー確認待ち。**
+
+| # | PR | 担当領域 | 説明 |
+|---|---|---|---|
+| #49 | fix(contact) | UX/営業導線 | /contact 第一カードを「依 · お仕事のご依頼」に再構成 (依頼→協業→採用→雑談)。mailto テンプレートに 依頼内容/希望納期/予算感 の記入欄。mailto 維持 (バックエンド増やさない方針) |
+| #50 | feat(seo) | SEO/OGP | root title/description を受託開発向けに最適化 + `src/app/opengraph-image.tsx` 新設 (next/og、和風トーン) で 404 だった `/og-default.png` 参照を撤去。twitter card summary_large_image + @westM27 |
+| #51 | feat(services) | UX/コンテンツ | `/services`「お仕事のご依頼」新設。`data/services.json` + Zod SSOT (static import で edge 互換)。メニュー 5 件 (LP/GAS・Python 自動化/スクレイピング/Chrome 拡張/改修) + 想定納期 + AI 駆動開発の誠実な注記。NAV_ITEMS/NextStepCTA 配線 |
+| #52 | feat(content) | コンテンツ誠実性 | 制作物 id:1/2/3/5 に caseStudy (問・工・果) を投入し一覧カードに problem 要約表示。実施していない id:4 (Design System) を削除、id:5 を個人検証として誠実化 (40%/30% の根拠なし数値と Bckend typo を除去) — いずれもオーナー確認済みの事実に基づく |
+| #53 | fix(seo) | SEO | sitemap に /services と /contact を追加 (wave follow-up) |
+
 ## 進行中 PR
 
-なし (2026-07-19 時点)。`feat-case-study-and-dan-indicator` は精査の結果 #15/#18/#25/#26 + follow-up #41 で完了 = クローズ相当。純粋な未着手チケットは残っていない (残るは下記 Follow-up Issues の低優先のみ)。
+なし (2026-07-19 受託営業ツール化 wave 完了時点)。**次の一手はオーナー確認後の develop → main リリース** (本番は 2026-06-20 ビルドのまま: /contact 404・作品 0 件表示・旧メタが継続中。オーナーの確認が済むまでデプロイしない指示あり)。
 
 ## CF Pages Epic (コード側 ✅ 完了 / CF dashboard 設定待ち)
 
