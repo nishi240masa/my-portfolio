@@ -46,3 +46,7 @@ gh pr diff <num>                 # 実装
 | [fix-ci-site-url-e2e-lhci.md](./fix-ci-site-url-e2e-lhci.md) | ✅ merged (#42) |
 | [fix-e2e-suite-failures.md](./fix-e2e-suite-failures.md) | ✅ 3 系統解消 (#43 系統1 / #44 系統2 / #45 系統3) |
 | [chore-claude-agents-definitions.md](./chore-claude-agents-definitions.md) | ✅ merged (#47) |
+| [fix-contact-commission-copy.md](./fix-contact-commission-copy.md) | ✅ merged (#49) |
+| [feat-seo-commission-meta.md](./feat-seo-commission-meta.md) | ✅ merged (#50 + follow-up #53 sitemap) |
+| [feat-services-page.md](./feat-services-page.md) | ✅ merged (#51) |
+| [feat-production-case-study.md](./feat-production-case-study.md) | ✅ merged (#52) |
