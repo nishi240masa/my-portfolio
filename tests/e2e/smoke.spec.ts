@@ -9,8 +9,10 @@ interface PageCase {
 const PAGES: PageCase[] = [
   { path: '/home', expectedHeading: /./ },
   { path: '/production', expectedHeading: /作品|つくった/ },
-  { path: '/profile', expectedHeading: /プロフィール|profile|PROFILE|西尾/i },
-  { path: '/skill', expectedHeading: /スキル|skill|SKILL/i },
+  // SectionHeader は eyebrow を <div>、title を <h2> で描画するため、
+  // h1/h2 に載る実見出し (title) に合わせる。eyebrow の "PROFILE"/"SKILL" は拾えない。
+  { path: '/profile', expectedHeading: /人物像|プロフィール|profile|西尾/i },
+  { path: '/skill', expectedHeading: /現在地|段位|スキル|skill/i },
   { path: '/articles', expectedHeading: /記事|書いた/ },
   { path: '/journal', expectedHeading: /外部活動|外でも/ },
 ];
