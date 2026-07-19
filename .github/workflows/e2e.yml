@@ -24,6 +24,10 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Run Playwright tests
+        # webServer の `yarn build` は production build のため jsonld.ts が
+        # NEXT_PUBLIC_SITE_URL を要求する。test.yml と同じ式で配線する。
+        env:
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://my-portfolio-kohl-one-59.vercel.app' }}
         run: npx playwright test
 
       - name: Upload Playwright report
