@@ -49,6 +49,17 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 - `/wave` — 複数 PR の DAG ストリーミング編成 (PM + 並列実装 + 別エージェントレビュー)
 - `/progress-update` — merge 後の docs/PROGRESS.md 更新 PR
 
+## Agents (`.claude/agents/` — /wave・/impl-pr の委譲先)
+
+- `pr-implementer` — ticket 1 枚を worktree で実装し PR を作る (全ツール)
+- `pr-critic` — persona ベース批判的レビュー。**Edit/Write なし** (レビュアーによるコード修正をツールレベルで抑止)。手順 SSOT は各 SKILL.md 側
+
+## オーケストレーション原則 (main loop = 指示役)
+
+- main loop (特に Fable) は **PM/指示役に徹する**: 実装は `pr-implementer`、レビューは `pr-critic` に委譲し、main loop 自身は ticket 準備 / 依存 DAG 管理 / REQUEST_CHANGES の差し戻し / conflict 解消 / merge 管理を担う (詳細は `/wave` 手順 3)。main loop が直接コードを書くのは数行の trivial fix のみ
+- **並列化できるものは並列に**: 依存がなく同一ファイルを触らない ticket は worktree 分離で同時に走らせる (3 PR 以上は `/wave`、1-2 PR でも実装は委譲)。観点が複数ある PR は `pr-critic` を persona ごとに並列起動してよい
+- **品質担保**: どの経路でも「実装エージェントとは別のエージェントによるレビュー」を必ず挟む (自己レビューは blocker 見落としが実証済み)
+
 ## アーキテクチャ要点
 
 - データ層は **driver パターン**: `src/lib/repositories/` (`REPOSITORY_DRIVER=json|github`)。edge runtime では json driver 不可 (fail-fast guard あり)
