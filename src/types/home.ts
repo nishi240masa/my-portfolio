@@ -1,23 +1,3 @@
-// ホームページのコンテンツ型
-export interface HomeIndexItem {
-  href: string;
-  n: string;
-  en: string;
-  jp: string;
-  desc: string;
-}
-
-export interface HomeContent {
-  nameJp: string;
-  nameEn: string;
-  portraitSrc: string;
-  heroLeft: string;
-  heroRight: string;
-  metaLines: string[];
-  ctaLabel: string;
-  ctaHref: string;
-  mottoEyebrow: string;
-  mottoTitle: string;
-  mottoBody: string;
-  indexItems: HomeIndexItem[];
-}
+// ホームページのコンテンツ型 — SSOTスキーマから z.infer して再エクスポート。
+// 既存呼び出し箇所が使用する型名 (HomeIndexItem / HomeContent) を維持する。
+export type { HomeIndexItem, HomeContent } from '@/lib/schemas/home';

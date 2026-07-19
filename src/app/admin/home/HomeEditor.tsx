@@ -1,10 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { HomeContent, HomeIndexItem } from '@/types/home';
 import HomeView from '@/app/(use-header)/home/_components/HomeView';
-import { Field, TextInput, TextArea, StringListEditor, Toolbar, TwoPaneLayout } from '../_components/AdminForm';
+import {
+  Field,
+  FieldErrors,
+  TextInput,
+  TextArea,
+  StringListEditor,
+  Toolbar,
+  TwoPaneLayout,
+} from '../_components/AdminForm';
+import { saveHome } from '../_actions/home';
+import { INITIAL_ACTION_STATE, type ActionState } from '../_actions/_types';
+import { useAutoDismissOnSuccess } from '../_hooks/useAutoDismissOnSuccess';
 
 const addBtn = {
   padding: '6px 12px',
@@ -71,29 +82,35 @@ function IndexItemsEditor({
 export default function HomeEditor({ initial }: { initial: HomeContent }) {
   const router = useRouter();
   const [form, setForm] = useState<HomeContent>(initial);
-  const [saving, setSaving] = useState(false);
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [state, formAction] = useActionState<ActionState<HomeContent>, FormData>(
+    saveHome,
+    INITIAL_ACTION_STATE as ActionState<HomeContent>,
+  );
+  const showOk = useAutoDismissOnSuccess(state);
 
   function update<K extends keyof HomeContent>(key: K, value: HomeContent[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  async function handleSave() {
-    setSaving(true);
-    setStatus('idle');
-    const res = await fetch('/api/admin/home', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    });
-    setSaving(false);
-    setStatus(res.ok ? 'success' : 'error');
-    if (res.ok) router.refresh();
-  }
+  // 保存成功時に Server Component を再フェッチして表示を反映。
+  // useActionState は毎回新しい state オブジェクトを返すため、state 自体を
+  // deps に入れることで 2 回目以降の成功時にも確実に refresh される。
+  useEffect(() => {
+    if (state.ok) router.refresh();
+  }, [state, router]);
+
+  const status = state.ok ? 'success' : state.error ? 'error' : 'idle';
 
   return (
-    <>
-      <Toolbar onSave={handleSave} onCancel={() => setForm(initial)} saving={saving} status={saving ? 'saving' : status} />
+    <form action={formAction}>
+      <input type="hidden" name="payload" value={JSON.stringify(form)} />
+      <Toolbar
+        onCancel={() => setForm(initial)}
+        status={status}
+        showOk={showOk}
+        errorMessage={state.error}
+      />
+      <FieldErrors errors={state.fieldErrors} />
       <TwoPaneLayout
         form={
           <div>
@@ -137,6 +154,6 @@ export default function HomeEditor({ initial }: { initial: HomeContent }) {
         }
         preview={<HomeView data={form} />}
       />
-    </>
+    </form>
   );
 }

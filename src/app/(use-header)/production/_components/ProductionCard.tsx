@@ -48,6 +48,25 @@ export default function ProductionCard({ data, index }: Props) {
         <div className="t-body" style={{ fontSize: 13, color: 'var(--fg-muted)', marginBottom: 16, minHeight: 36 }}>
           {data.description}
         </div>
+        {data.caseStudy?.problem ? (
+          <div
+            className="t-meta"
+            style={{
+              fontSize: 11,
+              color: 'var(--fg-muted)',
+              lineHeight: 1.7,
+              marginBottom: 16,
+              paddingLeft: 10,
+              borderLeft: '2px solid var(--hairline)',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }}
+          >
+            {data.caseStudy.problem}
+          </div>
+        ) : null}
         <TagList tags={data.tags.slice(0, 4)} />
       </div>
     </Link>

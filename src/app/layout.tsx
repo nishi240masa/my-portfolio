@@ -1,11 +1,54 @@
 // app/layout.tsx
 import './globals.css';
+import type { Metadata, Viewport } from 'next';
+import { Hina_Mincho, Noto_Sans_JP, JetBrains_Mono } from 'next/font/google';
+import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
-import { THEME_STORAGE_KEY } from './_components/themeStorageKey';
+import { getProfileCached } from '@/lib/repositories';
+import { personJsonLd, serializeJsonLd } from '@/lib/jsonld';
 
-export const metadata = {
-  title: 'west · Portfolio — Masaki Nishio',
-  description: '未来のある開発を、意味のある人生を。— 西尾 匡生のポートフォリオ',
+const hinaMincho = Hina_Mincho({
+  weight: '400',
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  variable: '--font-mincho-next',
+  fallback: ['Hiragino Mincho ProN', 'Yu Mincho', 'serif'],
+});
+
+const notoSansJp = Noto_Sans_JP({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans-next',
+  fallback: ['Hiragino Sans', 'Yu Gothic', 'sans-serif'],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono-next',
+});
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
+const SITE_NAME = 'west · Portfolio';
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: '西尾匡生 (west) — Web開発・業務自動化の受託 | 情報系学生エンジニア',
+    template: '%s | west · Portfolio',
+  },
+  description:
+    'Go / TypeScript を軸に開発する情報系学生エンジニア・西尾匡生 (west) のポートフォリオ。LP コーディング、GAS・Python による業務自動化、スクレイピング、Chrome 拡張、既存サイトの改修・バグ修正などの受託開発を請け負っています。',
+  alternates: {
+    languages: {
+      ja: '/',
+      en: '/en',
+      'x-default': '/',
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -14,27 +57,71 @@ export const metadata = {
     apple: '/apple-icon.png',
   },
   manifest: '/manifest.json',
+  // og:image / twitter:image は file convention の src/app/opengraph-image.tsx が
+  // 自動配線するため images は指定しない (実体のない /og-default.png への参照を撤去)。
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'ja_JP',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@westM27',
+    creator: '@westM27',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
-// data-theme をペイント前に確定させ、ダークテーマのちらつきを防ぐ
-const themeInitScript = `(function(){try{var k='${THEME_STORAGE_KEY}';var s=localStorage.getItem(k);var m=s||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#fbf8f3' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1614' },
+  ],
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cfBeaconToken = process.env.NEXT_PUBLIC_CF_BEACON_TOKEN;
+
+  // SEO: Schema.org Person を JSON-LD としてページ全体に注入する。
+  // 公開ルートと共有される RootLayout なので、edge 互換の cached wrapper
+  // (内部は async factory + lazy import) を使い json driver の静的 dep を
+  // edge bundle に引き込まないようにする。
+  const profile = await getProfileCached();
+  const personLd = personJsonLd(profile);
+
   return (
-    <html lang="ja" data-theme="light" suppressHydrationWarning>
+    <html
+      lang="ja"
+      data-theme="light"
+      className={`${hinaMincho.variable} ${notoSansJp.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Noto+Sans+JP:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
-          rel="stylesheet"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var c=document.cookie.match(/(?:^|; )theme-mode=([^;]+)/);var m=c?c[1]:(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();`,
+          }}
         />
-        <meta name="google-adsense-account" content="ca-pub-4043815049492410" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4043815049492410" crossOrigin="anonymous"></script>
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(personLd) }}
+        />
         <ClientLayout>{children}</ClientLayout>
+        {cfBeaconToken ? (
+          <Script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+            strategy="afterInteractive"
+          />
+        ) : null}
       </body>
     </html>
   );

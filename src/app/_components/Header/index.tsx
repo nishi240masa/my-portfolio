@@ -10,6 +10,9 @@ const NAV_ITEMS = [
   { href: '/production', label: 'Production', jp: '作' },
   { href: '/profile', label: 'Profile', jp: '人' },
   { href: '/skill', label: 'Skill', jp: '技' },
+  { href: '/services', label: 'Services', jp: '依' },
+  { href: '/articles', label: 'Articles', jp: '記' },
+  { href: '/journal', label: 'Journal', jp: '誌' },
 ];
 
 export default function Header() {
@@ -55,13 +58,14 @@ export default function Header() {
         </Link>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-          <nav style={{ display: 'flex', gap: 4 }}>
+          <nav aria-label="メインナビゲーション" style={{ display: 'flex', gap: 4 }}>
             {NAV_ITEMS.map((it) => {
               const active = pathname === it.href || pathname.startsWith(it.href + '/');
               return (
                 <Link
                   key={it.href}
                   href={it.href}
+                  aria-current={pathname === it.href ? 'page' : undefined}
                   style={{
                     position: 'relative',
                     padding: '8px 16px',
@@ -97,8 +101,14 @@ export default function Header() {
           <button
             type="button"
             onClick={toggleMode}
-            aria-label={mode === 'dark' ? 'ライトテーマに切替' : 'ダークテーマに切替'}
+            aria-label={
+              mode === 'dark'
+                ? '現在ダークテーマです。クリックでライトテーマに切替'
+                : '現在ライトテーマです。クリックでダークテーマに切替'
+            }
+            aria-pressed={mode === 'dark'}
             title={mode === 'dark' ? '昼（和紙）へ' : '夜（夜墨）へ'}
+            className="theme-toggle"
             style={{
               marginLeft: 8,
               width: 34,
@@ -119,6 +129,38 @@ export default function Header() {
           >
             {mode === 'dark' ? '昼' : '夜'}
           </button>
+
+          <Link
+            href="/contact"
+            aria-current={pathname === '/contact' ? 'page' : undefined}
+            className="header-contact-cta"
+            style={{
+              marginLeft: 8,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 8,
+              padding: '6px 12px 6px 8px',
+              borderRadius: 4,
+              border:
+                pathname === '/contact'
+                  ? '1px solid var(--primary)'
+                  : '1px solid var(--hairline-strong)',
+              background:
+                pathname === '/contact'
+                  ? 'color-mix(in oklab, var(--primary) 8%, transparent)'
+                  : 'transparent',
+              color: pathname === '/contact' ? 'var(--primary)' : 'var(--fg)',
+              textDecoration: 'none',
+              fontFamily: 'var(--font-mincho)',
+              fontSize: 14,
+              letterSpacing: '0.14em',
+              transition: 'color .35s, border-color .35s, background .35s',
+              lineHeight: 1,
+            }}
+          >
+            <Rakkan char="連" size={22} fontSize={11} />
+            <span>Contact</span>
+          </Link>
         </div>
       </div>
     </header>

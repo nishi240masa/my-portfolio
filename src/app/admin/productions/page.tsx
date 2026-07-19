@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { productionRepo } from '@/lib/repositories';
+import { getProductionRepo } from '@/lib/repositories';
 import ProductionRow from './_components/ProductionRow';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export default async function ProductionsAdminPage() {
-  const items = await productionRepo.list();
+  const repo = await getProductionRepo();
+  const items = await repo.list();
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>

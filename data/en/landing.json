@@ -1,0 +1,40 @@
+{
+  "hero": {
+    "name": "Masaki Nishio",
+    "alias": "west",
+    "headline": "Building software that sharpens the world's resolution.",
+    "tagline": "Backend-focused software engineer based in Japan."
+  },
+  "role": {
+    "title": "Software Engineer",
+    "summary": "Backend-focused engineer with experience across the stack: REST API design, microservices, and Domain-Driven Design. Currently a Computer Systems student at Aichi Institute of Technology (graduating May 2026), open to full-time opportunities in Japan and abroad.",
+    "lookingFor": "Open to full-time backend / full-stack roles starting 2026."
+  },
+  "skills": [
+    {
+      "category": "Backend",
+      "items": ["Go (Echo, Gin, GORM)", "REST API Design", "DDD", "Microservices", "gRPC"]
+    },
+    {
+      "category": "Frontend",
+      "items": ["TypeScript", "Next.js (App Router, RSC)", "React"]
+    },
+    {
+      "category": "Database",
+      "items": ["PostgreSQL", "MySQL", "Redis"]
+    },
+    {
+      "category": "Infrastructure",
+      "items": ["Docker", "AWS (EC2, RDS, S3)", "GitHub Actions", "Linux"]
+    }
+  ],
+  "contact": {
+    "intro": "For hiring inquiries or collaboration, please reach out via email or the channels below.",
+    "links": [
+      { "label": "Email", "handle": "nishi240masa@gmail.com", "url": "mailto:nishi240masa@gmail.com" },
+      { "label": "GitHub", "handle": "@nishi240masa", "url": "https://github.com/nishi240masa" },
+      { "label": "X", "handle": "@westM27", "url": "https://x.com/westM27" }
+    ]
+  },
+  "note": "This page is a concise English summary for recruiters. The full portfolio is available in Japanese on the home page."
+}

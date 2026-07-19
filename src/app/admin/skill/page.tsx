@@ -1,11 +1,12 @@
-import { skillsRepo } from '@/lib/repositories';
+import { getSkillsRepo } from '@/lib/repositories';
 import SkillEditor from './SkillEditor';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export default async function SkillAdminPage() {
-  const data = await skillsRepo.get();
+  const repo = await getSkillsRepo();
+  const data = await repo.get();
   return (
     <div>
       <div className="t-eyebrow" style={{ marginBottom: 6 }}>

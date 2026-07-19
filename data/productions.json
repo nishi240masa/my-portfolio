@@ -10,6 +10,16 @@
     "role": "バックエンド開発 / アーキテクチャ設計",
     "period": "約2ヶ月",
     "technologys": ["Golang", "GORM", "Gin", "Docker", "PostgreSQL", "React"],
+    "caseStudy": {
+      "role": "バックエンド開発 / アーキテクチャ設計",
+      "period": "約2ヶ月",
+      "stack": [],
+      "problem": "エンジニアがスライド資料を作るたびに、GUI ツールのレイアウト調整に時間を取られる。書き慣れた Markdown だけで資料を完成させたい——そんな不便の解消を目指した。",
+      "approach": "Go (Gin) + React で、リアルタイムプレビュー・PDF 出力・共有 URL を備えたスライド生成 Web アプリを 4 人チームで開発。バックエンドとアーキテクチャ設計を担当した。",
+      "result": "Markdown を書くだけでスライドが完成する体験を実現。約 2 ヶ月のチーム開発で完成させた。",
+      "metrics": [],
+      "links": []
+    },
     "content": "# MD2S (Markdown to Slide)\n\nMarkdown形式で記述したテキストから、ブラウザ上で直感的にプレゼンテーションスライドを生成できるWebアプリケーションです。\n\n## プロジェクトの背景\n\nエンジニアがスライド資料を作成する際、GUIのプレゼンテーションソフトを使用するのは学習コストやレイアウト調整の手間がかかります。普段から慣れ親しんでいるMarkdownだけで、高品質なスライドを作れるツールがあれば便利だと考え、開発に至りました。\n\n## 主な機能\n- **リアルタイムプレビュー**: 左ペインでMarkdownを編集し、右ペインで即座にスライドの仕上がりを確認できます。\n- **テーマカスタマイズ**: ダークモードや複数パレットからのカラーテーマ切り替え機能。\n- **PDFエクスポート**: 完成したスライドをボタンひとつでPDF形式に出力し、ローカルに保存できます。\n- **シェア機能**: 生成したスライドに一意のURLを発行し、チーム内で素早く共有可能。\n\n## アーキテクチャと技術スタック\n\n本システムのバックエンドは**Golang**と**Gin**フレームワークを採用し、軽量かつ高速なAPIサーバーを構築しています。データベースには**PostgreSQL**を利用し、**GORM**を通じてデータを永続化。\n\nインフラ環境は全て**Docker**でコンテナ化されており、開発環境と本番環境の差異をなくすことで、デプロイの安定性を高めました。\n\n```go\n// サンプル: スライド保存APIのハンドラ\nfunc (h *SlideHandler) SaveSlide(c *gin.Context) {\n    var req SaveSlideRequest\n    if err := c.ShouldBindJSON(&req); err != nil {\n        c.JSON(http.StatusBadRequest, gin.H{\"error\": \"Invalid request format\"})\n        return\n    }\n\n    slide, err := h.UseCase.CreateOrUpdate(c.Request.Context(), req.UserID, req.Content)\n    if err != nil {\n        c.JSON(http.StatusInternalServerError, gin.H{\"error\": \"Failed to save slide\"})\n        return\n    }\n\n    c.JSON(http.StatusOK, slide)\n}\n```\n\n## 課題と解決策\n\nMarkdownパーサーとスライドレンダリングエンジンの間で、独自の拡張記法（例: スライドの区切り文字 `---` の扱い）をどう同期するかが課題でした。\n解決策として、フロントエンド側で構文解析（AST）を行い、スライドごとのデータチャンクに分割した上でレンダリングする専用のミドルウェア層を実装。これにより、パフォーマンスを落とさずに複雑なレイアウト要件にも対応できるようになりました。\n"
   },
   {
@@ -23,12 +33,21 @@
     "role": "フルスタック開発 / インフラ構築",
     "period": "5ヶ月",
     "technologys": ["Golang", "PostgreSQL", "Docker", "AWS", "ECS", "Terraform"],
+    "caseStudy": {
+      "role": "フルスタック開発 / インフラ構築",
+      "period": "5ヶ月",
+      "stack": [],
+      "problem": "SaaS 型 CMS では権限制御や独自のデータモデリングに制限があり、要件に合わせた柔軟なコンテンツスキーマを定義できない場面があった。",
+      "approach": "DDD + クリーンアーキテクチャの 4 層構成で Go 製ヘッドレス CMS をフルスクラッチ開発。Terraform で AWS (ECS/RDS/S3) を IaC 化し、1 人で 5 ヶ月かけて構築した。",
+      "result": "ドメイン層に影響を与えずインフラ実装を差し替えられる、保守性の高い構造を実現した。",
+      "metrics": [],
+      "links": []
+    },
     "content": "# w3st CMS\n\n独自のオウンドメディアやポートフォリオサイトを効率的に管理・配信するためのヘッドレスCMSです。高い拡張性と保守性を両立させるため、ドメイン駆動設計（DDD）とクリーンアーキテクチャを採用しています。\n\n## 開発の目的\n\n既存のSaaS型CMS（Contentful, microCMSなど）は便利ですが、細かい権限制御や独自のデータモデリングにおいて制限を感じる場面がありました。要件に合わせた柔軟なコンテンツスキーマを定義し、さらにGo言語によるバックエンド開発の知見を深めるために、自作CMSのフルスクラッチ開発を決意しました。\n\n## アーキテクチャの概要\n\nシステム全体を以下の4つの層に分割しています。\n\n1. **Domain Layer**: コンテンツ、ユーザー、カテゴリなどのビジネスルールをカプセル化。\n2. **Usecase Layer**: アプリケーション固有のユースケース（記事の公開、下書き保存など）を実装。\n3. **Interface / Adapter Layer**: HTTPリクエストのルーティング（Gin）や、DBモデルからドメインモデルへの変換。\n4. **Infrastructure Layer**: PostgreSQLへのクエリ実行（GORM）や外部ストレージ（S3）への画像アップロード。\n\nこの分離により、例えばデータベースのORマッパーを変更する際も、ドメイン層やユースケース層には一切影響を与えずにリファクタリングが可能です。\n\n## インフラ構成 (AWS)\n\nインフラストラクチャは**Terraform**を用いてコード化（IaC）し、AWS上に構築しました。\n\n- **コンピューティング**: ECS (Fargate) を使用し、トラフィックに応じたオートスケーリングを設定。\n- **データベース**: Amazon RDS (PostgreSQL) をマルチAZ配置で可用性を確保。\n- **メディア保存**: 画像やファイルは S3 に保存し、CloudFront 経由でCDN配信。\n\n```yaml\n# Docker Composeの例（ローカル開発環境）\nversion: '3.8'\nservices:\n  api:\n    build: .\n    ports:\n      - \"8080:8080\"\n    environment:\n      - DB_DSN=host=db user=postgres password=postgres dbname=cms port=5432 sslmode=disable\n    depends_on:\n      - db\n  db:\n    image: postgres:14-alpine\n    environment:\n      POSTGRES_USER: postgres\n      POSTGRES_PASSWORD: postgres\n      POSTGRES_DB: cms\n    ports:\n      - \"5432:5432\"\n```\n\n## 今後の展望\n\n現在は個人プロジェクト用途での利用がメインですが、将来的には複数テナント（マルチテナント）対応や、GraphQL APIの提供、Webhookによる静的サイトジェネレーター（Next.js等）の自動ビルド連携機能を拡充していく予定です。\n"
   },
   {
     "id": 3,
     "title": "センサー連動型対戦ゲーム",
-    "image": "https://production.w3st.net/image/sensor-game.png",
     "description": "Raspberry PiとWebSocketを活用した、リアルタイムIoT対戦ゲーム。",
     "date": "2024-08-20",
     "tags": ["Golang", "WebSocket", "Next.js", "Raspberry Pi", "IoT"],
@@ -36,19 +55,17 @@
     "role": "バックエンド・IoTデバイス開発",
     "period": "約1.5ヶ月",
     "technologys": ["Golang", "WebSocket", "Next.js", "Raspberry Pi", "Python", "加速度センサー"],
+    "caseStudy": {
+      "role": "バックエンド・IoTデバイス開発",
+      "period": "約1.5ヶ月",
+      "stack": [],
+      "problem": "加速度センサーの生データはノイズと遅延が大きく、そのまま使うとゲームキャラクターの動きがブレて操作にならない。",
+      "approach": "エッジ側で予測と補正を組み合わせたフィルタリングを実装し、Go の並行処理 (goroutine + channel) で毎秒数十回のセンサーデータを低遅延で配信した。",
+      "result": "滑らかな操作感を実現し、ハッカソンで技術部門賞を受賞した。",
+      "metrics": [],
+      "links": []
+    },
     "content": "# センサー連動型対戦ゲーム\n\nRaspberry Piに接続された加速度センサーをコントローラーとして使用し、ブラウザ上でリアルタイムに進行する対戦型Webゲームです。IoT技術とモダンなWebフロントエンド技術の融合をテーマにしたハッカソン向けプロジェクトとして制作しました。\n\n## システム構成\n\n1. **IoTエッジデバイス (Raspberry Pi)**\n   - プレイヤーの手元にあるコントローラー。\n   - 3軸加速度センサーモジュール（MPU6050など）からデータを取得。\n   - Pythonスクリプトでセンサー値をフィルタリング（カルマンフィルタ適用）し、WebSocket経由でサーバーへ送信。\n\n2. **ゲームサーバー (Golang)**\n   - クライアントとエッジデバイス間の通信を仲介。\n   - WebSocket接続をゴルーチン（Goroutine）で並行処理し、極めて低いレイテンシでのデータブロードキャストを実現。\n   - ルーム管理機能（マッチメイキング、ゲーム状態の同期）。\n\n3. **クライアントUI (Next.js)**\n   - サーバーから流れてくるリアルタイム座標データを元に、CanvasAPI（またはWebGL）を利用して自機や敵機の位置を描画。\n   - Reactの宣言的なUIで、スコアボードやエフェクトを滑らかに表現。\n\n## 直面した課題とアプローチ\n\n### 1. センサーのノイズ除去と遅延\n生データをそのまま送信するとキャラクターがブレてしまう問題がありました。エッジ側で単純な移動平均フィルタをかけたところ遅延が目立ったため、予測と補正を組み合わせたフィルタリングアルゴリズムを導入し、滑らかさと応答性を両立させました。\n\n### 2. WebSocket接続の負荷対策\n毎秒数十回の頻度で送られてくるメッセージを、接続している全クライアントに配信する必要がありました。Golangの強力な並行処理モデルを活かし、Roomごとのハブとなる構造体を定義。チャネル（Channel）を用いて安全かつ非同期にメッセージをルーティングする設計としました。\n\n```go\n// WebSocketのハブルーティングの一部\nfunc (h *Hub) Run() {\n\tfor {\n\t\tselect {\n\t\tcase client := <-h.register:\n\t\t\th.clients[client] = true\n\t\tcase client := <-h.unregister:\n\t\t\tif _, ok := h.clients[client]; ok {\n\t\t\t\tdelete(h.clients, client)\n\t\t\t\tclose(client.send)\n\t\t\t}\n\t\tcase message := <-h.broadcast:\n\t\t\tfor client := range h.clients {\n\t\t\t\tselect {\n\t\t\t\tcase client.send <- message:\n\t\t\t\tdefault:\n\t\t\t\t\tclose(client.send)\n\t\t\t\t\tdelete(h.clients, client)\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n```\n\n## 結果\n\nハッカソンでは、実際にデバイスを振り回して遊ぶというフィジカルな体験が高く評価され、技術部門賞を受賞することができました。\n"
-  },
-  {
-    "id": 4,
-    "title": "Design System & Component Library",
-    "description": "フロントエンド開発の効率化とUIの統一を目的とした、React向け社内用コンポーネントライブラリ。",
-    "date": "2024-07-10",
-    "tags": ["React", "TypeScript", "Storybook", "Figma"],
-    "peopleNum": 2,
-    "role": "フロントエンド開発 / UI設計",
-    "period": "2ヶ月",
-    "technologys": ["React", "TypeScript", "Storybook", "Tailwind CSS", "Figma", "NPM Workspace"],
-    "content": "# Design System & Component Library\n\nプロダクトチーム全体の開発スピード向上と、アプリケーション間でのUI/UXの一貫性を担保するために構築した、独自のReactコンポーネントライブラリです。\n\n## プロジェクトの目的\n\n複数のWebアプリケーションを並行して開発する中で、ボタンやモーダル、フォーム要素などのUI部品が各プロジェクトでバラバラに再実装されているという課題がありました。これにより、デザインのブレや、修正時の重複作業が発生していました。\nこの問題を解決するため、Figma上のデザイントークンと同期した「Single Source of Truth（信頼できる唯一の情報源）」となるライブラリを開発しました。\n\n## 主な特徴\n\n- **デザイントークンの活用**: 色、タイポグラフィ、スペーシングなどの基礎要素をJSONとして定義。CSS Variablesを生成するスクリプトを組み込み、一元管理。\n- **Storybookによるカタログ化**: 全コンポーネントをStorybook上でドキュメント化し、デザイナーとエンジニアのコミュニケーションハブとして活用。\n- **アクセシビリティ (a11y)**: WAI-ARIAのベストプラクティスに従い、キーボード操作やスクリーンリーダーに配慮した実装（Radix UIなどのヘッドレスUIを一部ラップして利用）。\n- **完全な型定義**: TypeScriptによる厳格なPropsの型付けにより、利用側での開発体験（DX）を大きく向上。\n\n## パッケージ公開とCI/CD\n\nライブラリは社内のプライベートNPMレジストリへ公開。GitHub Actionsを利用し、以下のCI/CDパイプラインを構築しました。\n\n1. **Lint / Format**: ESLint, Prettierによる静的解析。\n2. **Test**: Jest + React Testing Libraryを用いた単体テスト。\n3. **Visual Regression Test**: Chromaticを導入し、予期せぬデザイン崩れをPR単位で検知。\n4. **Publish**: セマンティックバージョニングに基づく自動リリース。\n\n> **Note**: 現在このプロジェクトにはサムネイル画像が設定されていませんが、UI側で適切にプレースホルダが表示されるようになっています。\n"
   },
   {
     "id": 5,
@@ -60,6 +77,16 @@
     "role": "バックエンド開発 / API設計",
     "period": "約3週間",
     "technologys": ["TypeScript", "GraphQL", "Apollo Server", "Redis", "Express"],
-    "content": "# 高トラフィック対応 GraphQL BFF\n\n複数のマイクロサービス（ユーザー管理、商品管理、決済など）から取得したデータを集約し、フロントエンド（Web、モバイルアプリ）に最適な形で提供するためのBFF（Bckend For Frontend）層をGraphQLで構築した事例です。\n\n## 背景\n\n各マイクロサービスが提供するREST APIをフロントエンドから直接呼び出す構成では、画面表示に必要な情報を揃えるためにN+1リクエストが発生し、ネットワーク帯域の浪費や遅延が問題化していました。また、UI側に不要なデータ加工のロジックが漏れ出すという課題もありました。\n\n## アーキテクチャとアプローチ\n\nそこで、フロントエンドとマイクロサービスの間に **Apollo Server (Node.js)** を配置しました。\n\n- **データの集約と整形**: GraphQLのスキーマを定義し、UIが要求する形式にデータを加工して一度のリクエストで返却。\n- **DataLoaderの導入**: リゾルバ内でのマイクロサービス呼び出しにおいて発生するN+1問題を解決するため、`dataloader` ライブラリを活用。IDをバッチ化して一括取得する仕組みを実装。\n- **キャッシュ戦略**: Redisを利用した分散キャッシュ層を構築。変更頻度が低く、読み込みの多いマスタデータ等をGraphQLのリゾルバレベルでキャッシュし、バックエンド群への負荷を大幅に削減。\n\n```typescript\n// DataLoaderの簡単な実装例\nconst userLoader = new DataLoader(async (userIds: readonly string[]) => {\n  // 複数のIDをまとめてバックエンドAPIへリクエスト\n  const response = await userMicroservice.getUsersByIds(userIds);\n  \n  // IDの順序に合わせて結果をマッピング\n  const userMap = new Map(response.data.map(u => [u.id, u]));\n  return userIds.map(id => userMap.get(id) || null);\n});\n```\n\n## 成果\n\nBFF層の導入により、フロントエンドの初期ロード時間を平均で40%短縮。また、バックエンドサービスの負荷（特にDBのREADクエリ）もピーク時で約30%削減することに成功しました。フロントエンドエンジニアはGraphQLの自己文書化されたスキーマを通じて、直感的にデータを取得できるようになりました。\n"
+    "caseStudy": {
+      "role": "バックエンド開発 / API設計",
+      "period": "約3週間",
+      "stack": [],
+      "problem": "フロントエンドが複数の REST API を直接呼ぶ構成で生じる N+1 リクエストと過剰なデータ加工を、BFF 層でどう解消できるか検証したかった。",
+      "approach": "Apollo Server による GraphQL BFF を個人開発し、DataLoader によるバッチ取得と Redis キャッシュでバックエンド負荷を抑える設計を実装した。",
+      "result": "1 リクエストで画面に必要なデータが揃う構成を実証し、BFF の設計パターンを習得した。",
+      "metrics": [],
+      "links": []
+    },
+    "content": "# 高トラフィック対応 GraphQL BFF\n\n複数のマイクロサービス（ユーザー管理、商品管理、決済など）から取得したデータを集約し、フロントエンド（Web、モバイルアプリ）に最適な形で提供するためのBFF（Backend For Frontend）層をGraphQLで構築した、個人の検証プロジェクトです。\n\n## 背景\n\nマイクロサービスが提供するREST APIをフロントエンドから直接呼び出す構成では、画面表示に必要な情報を揃えるためにN+1リクエストが発生しやすく、UI側に不要なデータ加工のロジックが漏れ出しがちです。この課題をBFF層でどこまで解消できるかを検証テーマとして設定し、設計・実装を行いました。\n\n## アーキテクチャとアプローチ\n\n検証構成として、フロントエンドとマイクロサービスの間に **Apollo Server (Node.js)** を配置しました。\n\n- **データの集約と整形**: GraphQLのスキーマを定義し、UIが要求する形式にデータを加工して一度のリクエストで返却。\n- **DataLoaderの導入**: リゾルバ内でのマイクロサービス呼び出しにおいて発生するN+1問題を解決するため、`dataloader` ライブラリを活用。IDをバッチ化して一括取得する仕組みを実装。\n- **キャッシュ戦略**: Redisを利用した分散キャッシュ層を構築。変更頻度が低く、読み込みの多いマスタデータ等をGraphQLのリゾルバレベルでキャッシュし、バックエンド群への負荷を抑える構成としました。\n\n```typescript\n// DataLoaderの簡単な実装例\nconst userLoader = new DataLoader(async (userIds: readonly string[]) => {\n  // 複数のIDをまとめてバックエンドAPIへリクエスト\n  const response = await userMicroservice.getUsersByIds(userIds);\n  \n  // IDの順序に合わせて結果をマッピング\n  const userMap = new Map(response.data.map(u => [u.id, u]));\n  return userIds.map(id => userMap.get(id) || null);\n});\n```\n\n## 成果\n\n1回のGraphQLリクエストで画面表示に必要なデータが揃う構成を実証しました。数値としての効果測定は行っていませんが、個人検証を通じて以下の学びを得ました。\n\n- **DataLoaderによるバッチ化**: リゾルバ内で発生するN+1リクエストを、IDをまとめて一括取得する仕組みで解消するパターンを習得。\n- **リゾルバレベルのキャッシュ戦略**: 変更頻度の低いマスタデータをRedisでキャッシュする際の、キャッシュキー設計とTTLの考え方を整理。\n- **スキーマ駆動の開発**: 自己文書化されたGraphQLスキーマを起点に、フロントエンドが必要なデータを宣言的に取得できる開発体験を確認しました。\n"
   }
 ]

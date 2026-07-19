@@ -1,4 +1,21 @@
-name = "my-portfolio"
+name = "west-portfolio"
 compatibility_date = "2025-01-20"
 compatibility_flags = [ "nodejs_compat" ]
 pages_build_output_dir = ".vercel/output/static"
+
+# ============================================
+# Production default 環境変数
+# ============================================
+# Cloudflare Pages 本番では GitHub Contents API driver を使用する。
+# (Edge Runtime 配下では node:fs が使えないため、json driver は本番では成立しない)
+#
+# 注意:
+#   GITHUB_TOKEN / GITHUB_OWNER / GITHUB_REPO / GITHUB_BRANCH は
+#   **secret** として Cloudflare dashboard の
+#     Settings → Environment variables → Production / Preview
+#   に登録すること。`[vars]` に書くと公開リポジトリで漏洩するため絶対に書かない。
+#   AUTH_SECRET / AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET / ADMIN_EMAILS も同様。
+#
+# 詳細手順は docs/CLOUDFLARE_PAGES_SETUP.md を参照。
+[vars]
+REPOSITORY_DRIVER = "github"

@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode, CSSProperties } from 'react';
+import { useFormStatus } from 'react-dom';
 
 export function Field({
   label,
@@ -173,19 +174,32 @@ const removeBtn: CSSProperties = {
   cursor: 'pointer',
 };
 
+// Toolbar
+// - onSave 指定時: 旧パターン (fetch コールバック) — 後方互換
+// - onSave 省略時: <form action={...}> 内で type=submit として動作 (Server Action)
+//   この場合 saving は useFormStatus().pending で内部判定する
+//
+// 注: 保存成功時の「✓ 保存しました」自動消失 (3 秒) ロジックは親 Editor 側に持たせる。
+// useActionState が返す state object identity を観測する必要があるため Toolbar は
+// presentational のまま showOk を受け取るだけにする。
 export function Toolbar({
   onSave,
   onCancel,
   saving,
   status,
+  showOk,
   extra,
+  errorMessage,
 }: {
-  onSave: () => void;
+  onSave?: () => void;
   onCancel?: () => void;
-  saving: boolean;
+  saving?: boolean;
   status?: 'idle' | 'saving' | 'success' | 'error';
+  showOk?: boolean;
   extra?: ReactNode;
+  errorMessage?: string;
 }) {
+  const isSubmitMode = !onSave;
   return (
     <div
       style={{
@@ -201,23 +215,27 @@ export function Toolbar({
         background: 'var(--bg)',
       }}
     >
-      <button
-        type="button"
-        onClick={onSave}
-        disabled={saving}
-        style={{
-          padding: '10px 20px',
-          fontFamily: 'var(--font-mincho)',
-          fontSize: 13,
-          border: '1px solid var(--primary)',
-          background: 'var(--primary)',
-          color: 'var(--primary-on)',
-          cursor: saving ? 'not-allowed' : 'pointer',
-          opacity: saving ? 0.6 : 1,
-        }}
-      >
-        {saving ? '保存中...' : '保存'}
-      </button>
+      {isSubmitMode ? (
+        <SubmitButton />
+      ) : (
+        <button
+          type="button"
+          onClick={onSave}
+          disabled={saving}
+          style={{
+            padding: '10px 20px',
+            fontFamily: 'var(--font-mincho)',
+            fontSize: 13,
+            border: '1px solid var(--primary)',
+            background: 'var(--primary)',
+            color: 'var(--primary-on)',
+            cursor: saving ? 'not-allowed' : 'pointer',
+            opacity: saving ? 0.6 : 1,
+          }}
+        >
+          {saving ? '保存中...' : '保存'}
+        </button>
+      )}
       {onCancel ? (
         <button
           type="button"
@@ -236,16 +254,73 @@ export function Toolbar({
         </button>
       ) : null}
       {extra}
-      {status === 'success' ? (
-        <span className="t-meta" style={{ color: 'var(--primary)' }}>
+      {status === 'success' && showOk ? (
+        <span role="status" aria-live="polite" className="t-meta" style={{ color: 'var(--primary)' }}>
           ✓ 保存しました
         </span>
       ) : null}
       {status === 'error' ? (
         <span className="t-meta" style={{ color: '#c33' }}>
-          ! 保存に失敗しました
+          ! {errorMessage ?? '保存に失敗しました'}
         </span>
       ) : null}
+    </div>
+  );
+}
+
+// useFormStatus は <form> の子孫でしか動作しないため、別コンポーネントに分離。
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      style={{
+        padding: '10px 20px',
+        fontFamily: 'var(--font-mincho)',
+        fontSize: 13,
+        border: '1px solid var(--primary)',
+        background: 'var(--primary)',
+        color: 'var(--primary-on)',
+        cursor: pending ? 'not-allowed' : 'pointer',
+        opacity: pending ? 0.6 : 1,
+      }}
+    >
+      {pending ? '保存中...' : '保存'}
+    </button>
+  );
+}
+
+// fieldErrors を表示する小さなヘルパ。
+// Server Action の戻り値 (ActionState.fieldErrors) を受けて key ごとに行を作る。
+export function FieldErrors({
+  errors,
+}: {
+  errors?: Record<string, string[] | undefined>;
+}) {
+  if (!errors) return null;
+  const entries = Object.entries(errors).filter(([, v]) => v && v.length > 0);
+  if (entries.length === 0) return null;
+  return (
+    <div
+      style={{
+        marginBottom: 12,
+        padding: '10px 12px',
+        border: '1px solid #c33',
+        background: 'rgba(204,51,51,0.06)',
+        color: '#c33',
+        fontFamily: 'var(--font-mincho)',
+        fontSize: 12,
+      }}
+    >
+      <div style={{ marginBottom: 4 }}>入力エラー:</div>
+      <ul style={{ margin: 0, paddingLeft: 16 }}>
+        {entries.map(([key, msgs]) => (
+          <li key={key}>
+            <code style={{ fontFamily: 'var(--font-mono, ui-monospace, monospace)' }}>{key}</code>: {(msgs ?? []).join(', ')}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

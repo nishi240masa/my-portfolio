@@ -1,27 +1,3 @@
-// プロフィールページのコンテンツ型
-export interface TimelineItem {
-  year: string;
-  label: string;
-  note: string;
-}
-
-export interface SnsLink {
-  label: string;
-  handle: string;
-  url: string;
-}
-
-export interface Profile {
-  nameJp: string;
-  nameEn: string;
-  nickname: string;
-  portraitSrc: string;
-  headline: string;
-  bioParagraphs: string[];
-  education: TimelineItem[];
-  experience: TimelineItem[];
-  interests: string[];
-  sns: SnsLink[];
-  closingLeft: string;
-  closingRight: string;
-}
+// プロフィールページのコンテンツ型 — SSOTスキーマから z.infer して再エクスポート。
+// 既存呼び出し箇所が使用する型名 (TimelineItem / SnsLink / Profile) を維持する。
+export type { TimelineItem, SnsLink, Profile } from '@/lib/schemas/profile';

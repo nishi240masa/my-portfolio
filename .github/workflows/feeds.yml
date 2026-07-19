@@ -1,0 +1,42 @@
+name: Refresh external feeds
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch_feeds:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch feeds
+        env:
+          ZENN_USER: ${{ vars.ZENN_USER || secrets.ZENN_USER }}
+          QIITA_USER: ${{ vars.QIITA_USER || secrets.QIITA_USER }}
+          GITHUB_USER: ${{ vars.GITHUB_USER || secrets.GITHUB_USER }}
+          USER_HANDLE: ${{ vars.USER_HANDLE || secrets.USER_HANDLE }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/fetch-feeds.mjs
+
+      - name: Commit and push if changed
+        run: |
+          if [[ -n "$(git status --porcelain data/feeds.json)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/feeds.json
+            git commit -m "chore(data): refresh feeds.json"
+            git push
+          else
+            echo "No changes to data/feeds.json"
+          fi

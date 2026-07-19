@@ -1,14 +1,15 @@
-import { productionRepo } from '@/lib/repositories';
+import { getProductionRepo } from '@/lib/repositories';
 import { requireAdmin } from '@/lib/admin/auth';
 import { productionSchema } from '@/lib/admin/schemas';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   const unauthorized = await requireAdmin();
   if (unauthorized) return unauthorized;
-  const items = await productionRepo.list();
+  const repo = await getProductionRepo();
+  const items = await repo.list();
   return Response.json({ items });
 }
 
@@ -20,6 +21,7 @@ export async function POST(req: Request) {
   if (!parsed.success) {
     return Response.json({ error: 'Invalid body', issues: parsed.error.issues }, { status: 400 });
   }
-  const created = await productionRepo.create(parsed.data);
+  const repo = await getProductionRepo();
+  const created = await repo.create(parsed.data);
   return Response.json({ item: created }, { status: 201 });
 }

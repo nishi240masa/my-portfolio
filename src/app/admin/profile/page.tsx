@@ -1,11 +1,12 @@
-import { profileRepo } from '@/lib/repositories';
+import { getProfileRepo } from '@/lib/repositories';
 import ProfileEditor from './ProfileEditor';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 export const dynamic = 'force-dynamic';
 
 export default async function ProfileAdminPage() {
-  const data = await profileRepo.get();
+  const repo = await getProfileRepo();
+  const data = await repo.get();
   return (
     <div>
       <div className="t-eyebrow" style={{ marginBottom: 6 }}>

@@ -4,7 +4,7 @@ export type WagaraKind = 'asanoha' | 'seigaiha' | 'ichimatsu';
 
 // 麻の葉 (asanoha) — hemp leaf
 const asanohaSVG = (color: string) => `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 104" width="60" height="104">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 104" width="60" height="104" aria-hidden="true" focusable="false">
     <g fill="none" stroke="${color}" stroke-width="0.8" stroke-linecap="round">
       <path d="M30 0 L30 52 L60 26 Z M30 0 L30 52 L0 26 Z M30 52 L30 104 L60 78 Z M30 52 L30 104 L0 78 Z M0 26 L30 52 L0 78 Z M60 26 L30 52 L60 78 Z"/>
       <path d="M30 0 L0 26 L0 78 L30 104 L60 78 L60 26 Z"/>
@@ -14,7 +14,7 @@ const asanohaSVG = (color: string) => `
 
 // 青海波 (seigaiha) — blue ocean waves
 const seigaihaSVG = (color: string) => `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="60" height="30">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="60" height="30" aria-hidden="true" focusable="false">
     <g fill="none" stroke="${color}" stroke-width="0.8">
       <circle cx="0" cy="15" r="20"/><circle cx="0" cy="15" r="14"/><circle cx="0" cy="15" r="8"/><circle cx="0" cy="15" r="2"/>
       <circle cx="30" cy="0" r="20"/><circle cx="30" cy="0" r="14"/><circle cx="30" cy="0" r="8"/><circle cx="30" cy="0" r="2"/>
@@ -25,7 +25,7 @@ const seigaihaSVG = (color: string) => `
 
 // 市松 (ichimatsu) — checkerboard
 const ichimatsuSVG = (color: string) => `
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" focusable="false">
     <rect x="0" y="0" width="20" height="20" fill="${color}"/>
     <rect x="20" y="20" width="20" height="20" fill="${color}"/>
   </svg>`;
@@ -70,7 +70,7 @@ export function AsanohaMedallion({
     );
   }
   return (
-    <svg viewBox="0 0 100 100" width={size} height={size} style={{ opacity }} aria-hidden="true">
+    <svg viewBox="0 0 100 100" width={size} height={size} style={{ opacity }} aria-hidden="true" focusable="false">
       <g fill="none" stroke={color} strokeWidth={strokeWidth} strokeLinejoin="round">
         <circle cx="50" cy="50" r="40" />
         <circle cx="50" cy="50" r="28" />
@@ -106,6 +106,7 @@ export function HempLeafMark({
       height={size * (52 / 30)}
       style={{ opacity, display: 'block' }}
       aria-hidden="true"
+      focusable="false"
     >
       <g fill="none" stroke={color} strokeWidth="1" strokeLinecap="round">
         <path d="M15 0 L15 26 L30 13 Z M15 0 L15 26 L0 13 Z M15 26 L15 52 L30 39 Z M15 26 L15 52 L0 39 Z M0 13 L15 26 L0 39 Z M30 13 L15 26 L30 39 Z" />
@@ -120,15 +121,18 @@ export function Rakkan({
   size = 36,
   fontSize = 14,
   style,
+  ariaHidden = true,
 }: {
   char?: string;
   size?: number;
   fontSize?: number;
   style?: CSSProperties;
+  ariaHidden?: boolean;
 }) {
   return (
     <span
       className="rakkan"
+      aria-hidden={ariaHidden ? 'true' : undefined}
       style={{ width: size, height: size, lineHeight: `${size}px`, fontSize, ...style }}
     >
       {char}
