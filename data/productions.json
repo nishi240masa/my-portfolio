@@ -28,7 +28,6 @@
   {
     "id": 3,
     "title": "センサー連動型対戦ゲーム",
-    "image": "https://production.w3st.net/image/sensor-game.png",
     "description": "Raspberry PiとWebSocketを活用した、リアルタイムIoT対戦ゲーム。",
     "date": "2024-08-20",
     "tags": ["Golang", "WebSocket", "Next.js", "Raspberry Pi", "IoT"],
