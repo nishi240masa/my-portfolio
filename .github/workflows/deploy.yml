@@ -66,4 +66,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .vercel/output/static --project-name=my-portfolio
+          # プロジェクト名の SSOT は wrangler.toml の name (= CF dashboard の Project name)
+          command: pages deploy .vercel/output/static --project-name=west-portfolio
