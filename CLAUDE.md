@@ -52,7 +52,7 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 ## Agents (`.claude/agents/` — /wave・/impl-pr の委譲先)
 
 - `pr-implementer` — ticket 1 枚を worktree で実装し PR を作る (全ツール)
-- `pr-critic` — persona ベース批判的レビュー。**Edit/Write なし** (レビュアーがコードを直せない構造的保証)。手順 SSOT は各 SKILL.md 側
+- `pr-critic` — persona ベース批判的レビュー。**Edit/Write なし** (レビュアーによるコード修正をツールレベルで抑止)。手順 SSOT は各 SKILL.md 側
 
 ## アーキテクチャ要点
 

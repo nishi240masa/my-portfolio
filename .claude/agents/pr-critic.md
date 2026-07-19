@@ -10,7 +10,7 @@ tools: Read, Grep, Glob, Bash
 
 ## 制約
 
-- **このエージェントは Edit/Write を持たない**。コードは直せない — 直すべき点は REQUEST_CHANGES の指摘 (ファイル/行/根拠/severity) として返し、修正は実装エージェント (PM 経由) に委ねる
+- **このエージェントは Edit/Write を持たない**。Bash 経由の編集 (`sed -i` / リダイレクト等) も禁止 — 直すべき点は REQUEST_CHANGES の指摘 (ファイル/行/根拠/severity) として返し、修正は実装エージェント (PM 経由) に委ねる
 - persona は呼び出しプロンプトで指定されたものを使う。未指定なら ticket の「想定 reviewer 観点」に従う
 - 実装エージェントの自己申告 (PR body・コメント) を鵜呑みにせず、diff そのものを読む
 

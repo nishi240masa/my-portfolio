@@ -18,7 +18,7 @@ argument-hint: <ticket ファイル名... (省略時は PROGRESS.md の未着手
 2. **Workflow で編成** (ローカル。Workflow が使えない環境は `.claude/patterns/cloud-serial-workflow/SKILL.md` にフォールバック):
    - `pipeline(independentTickets, impl, review, merge)` — 独立 ticket はフェーズ境界なしで流す (impl 完了した PR から順に review へ)
    - impl agent: `agentType: 'pr-implementer'` (Workflow opts) / Agent ツールなら `subagent_type: pr-implementer`。prompt は ticket パス + branch 名のみでよい (環境制約は `.claude/agents/pr-implementer.md` が持つ)
-   - review agent: `agentType: 'pr-critic'` + persona 指定。**実装 agent とは別エージェント** に必ず分ける (自己レビューは blocker 見落としが実証済み)。pr-critic は Edit/Write を持たないため、コード修正が混ざる事故は構造的に起きない
+   - review agent: `agentType: 'pr-critic'` + persona 指定。**実装 agent とは別エージェント** に必ず分ける (自己レビューは blocker 見落としが実証済み)。pr-critic は Edit/Write を持たないため、コード修正が混ざる事故をツールレベルで抑止できる
    - merge: LGTM + CI green + non-CONFLICTING で `gh pr merge --auto --squash --delete-branch`
    - 依存のある ticket は、依存先の merge を確認してから同じ pipeline に投入
 3. **PM の仕事** (エージェントに委譲しない):
@@ -30,4 +30,4 @@ argument-hint: <ticket ファイル名... (省略時は PROGRESS.md の未着手
 ## 注意
 
 - 同一ファイルを触る ticket 同士は並列に走らせない (DAG 上で直列化する)
-- 各エージェントへの指示には必ず ticket パスを含める (Node 20 PATH や worktree 手順は `.claude/agents/` の定義側が持つ。pr-implementer / pr-critic 以外の汎用エージェントを使う場合のみ従来通り手順を注入する)
+- 各エージェントへの指示には必ず ticket パスを含める (Node 20 PATH / worktree 手順は `pr-implementer` の定義側が持つ。pr-critic に build/test を頼む場合や汎用エージェントを使う場合は従来通り Node 20 PATH 等を注入する)
