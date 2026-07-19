@@ -29,6 +29,10 @@ jobs:
         run: yarn test --passWithNoTests
 
       - name: Build application
+        env:
+          # jsonld.ts の resolveSiteUrl() が production build で throw するため必須。
+          # 本番 canonical は w3st.net (test.yml の Vercel フォールバックは使わない)
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
         run: yarn build
 
   deploy:
@@ -52,6 +56,9 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build for Cloudflare
+        env:
+          # 本番 (CF Pages) ビルドの canonical / JSON-LD / OG 用
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
         run: yarn build:cf
 
       - name: Deploy to Cloudflare Pages
