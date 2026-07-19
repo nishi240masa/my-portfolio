@@ -37,10 +37,11 @@ const SITE_NAME = 'west · Portfolio';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'west · Portfolio — Masaki Nishio',
+    default: '西尾匡生 (west) — Web開発・業務自動化の受託 | 情報系学生エンジニア',
     template: '%s | west · Portfolio',
   },
-  description: '未来のある開発を、意味のある人生を。— 西尾 匡生のポートフォリオ',
+  description:
+    'Go / TypeScript を軸に開発する情報系学生エンジニア・西尾匡生 (west) のポートフォリオ。LP コーディング、GAS・Python による業務自動化、スクレイピング、Chrome 拡張、既存サイトの改修・バグ修正などの受託開発を請け負っています。',
   alternates: {
     languages: {
       ja: '/',
@@ -56,14 +57,17 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   manifest: '/manifest.json',
+  // og:image / twitter:image は file convention の src/app/opengraph-image.tsx が
+  // 自動配線するため images は指定しない (実体のない /og-default.png への参照を撤去)。
   openGraph: {
     type: 'website',
     siteName: SITE_NAME,
     locale: 'ja_JP',
-    images: [{ url: '/og-default.png', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@westM27',
+    creator: '@westM27',
   },
   robots: {
     index: true,
