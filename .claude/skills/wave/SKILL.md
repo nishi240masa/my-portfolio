@@ -17,7 +17,7 @@ argument-hint: <ticket ファイル名... (省略時は PROGRESS.md の未着手
 1. **DAG 構築**: 対象 ticket の「依存」欄から依存グラフを作る。ticket が無いものは先に `/ticket` で作成
 2. **Workflow で編成** (ローカル。Workflow が使えない環境は `.claude/patterns/cloud-serial-workflow/SKILL.md` にフォールバック):
    - `pipeline(independentTickets, impl, review, merge)` — 独立 ticket はフェーズ境界なしで流す (impl 完了した PR から順に review へ)
-   - impl agent: `agentType: 'pr-implementer'` (Workflow opts) / Agent ツールなら `subagent_type: pr-implementer`。prompt は ticket パス + branch 名のみでよい (環境制約は `.claude/agents/pr-implementer.md` が持つ)
+   - impl agent: `agentType: 'pr-implementer'` (Workflow opts) / Agent ツールなら `subagent_type: pr-implementer`。prompt は ticket パス + branch 名のみでよい (環境制約は `.claude/agents/pr-implementer.md` が持つ)。model は agent 定義 frontmatter で固定 (implementer = opus / critic = sonnet) — 呼び出し側で `model` を上書きしない (main loop の Fable を継承させないため)
    - review agent: `agentType: 'pr-critic'` + persona 指定。**実装 agent とは別エージェント** に必ず分ける (自己レビューは blocker 見落としが実証済み)。pr-critic は Edit/Write を持たないため、コード修正が混ざる事故をツールレベルで抑止できる
    - merge: LGTM + CI green + non-CONFLICTING で `gh pr merge --auto --squash --delete-branch`
    - 依存のある ticket は、依存先の merge を確認してから同じ pipeline に投入
