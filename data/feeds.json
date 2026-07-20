@@ -1,9 +1,123 @@
 {
   "zenn": [
     {
-      "title": "Zenn サンプル記事",
-      "url": "https://zenn.dev/example/articles/sample",
-      "publishedAt": "2026-01-01T00:00:00Z",
+      "title": "ゴールまで自走するだけではない？——ループエンジニアリングの本質はどこにあるのか",
+      "url": "https://zenn.dev/r_kaga/articles/a27a3879dd3ce4",
+      "publishedAt": "Sun, 19 Jul 2026 07:48:51 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "1-bit LLM「Bonsai」活用ガイド — 1.15GB で動く 8B モデルをローカルで使い倒す",
+      "url": "https://zenn.dev/tkou15/articles/bonsai-1bit-llm-guide",
+      "publishedAt": "Sun, 19 Jul 2026 07:35:46 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Codeの日本語入力が荒ぶる問題がWezTerm Nightlyビルドで解決した",
+      "url": "https://zenn.dev/nuresen/articles/claude-code-ime-wezterm",
+      "publishedAt": "Sun, 19 Jul 2026 06:35:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ChatGPTで始める衛星画像処理入門",
+      "url": "https://zenn.dev/syu_tan/books/chatgpt-satellite-image-intro",
+      "publishedAt": "Sun, 19 Jul 2026 05:29:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "codexの独自用語乱立･曖昧問題への対策",
+      "url": "https://zenn.dev/u1/articles/codex-referent-before-label",
+      "publishedAt": "Sun, 19 Jul 2026 04:23:22 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ImportLintの紹介: import専門の高速なリンター",
+      "url": "https://zenn.dev/uhyo/articles/import-lint-intro",
+      "publishedAt": "Sun, 19 Jul 2026 03:46:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "趣味でサーバを触り始めた人のおうちラボ紹介 基本サービスや構築・管理方法について",
+      "url": "https://zenn.dev/pkkudo/articles/homelab-overview-hlv5",
+      "publishedAt": "Sun, 19 Jul 2026 01:21:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Google Search Console APIを使ってSEO改善を自動化する",
+      "url": "https://zenn.dev/asoventure/articles/2026-07-19-gsc-api-seo-automation",
+      "publishedAt": "Sun, 19 Jul 2026 01:00:33 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "関数型まつり2026参加記",
+      "url": "https://zenn.dev/konn/articles/2026-07-13-fp-matsuri-2026",
+      "publishedAt": "Sat, 18 Jul 2026 16:50:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AWSのBilling障害の対応への反省点",
+      "url": "https://zenn.dev/blue_jam/articles/08b31e29699b56",
+      "publishedAt": "Sat, 18 Jul 2026 15:21:40 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ループエンジニアリングの次は本当に「グラフ」なのか考えてみた",
+      "url": "https://zenn.dev/jodycraft/articles/dfe38e73e1ef8a",
+      "publishedAt": "Sat, 18 Jul 2026 13:56:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIでがんがん書く時代の「きれいなコード」の守り方 — ESLint+SonarJS / jscpd / knip をCIに置く",
+      "url": "https://zenn.dev/singularity/articles/clean-code-ci-for-ai-era",
+      "publishedAt": "Sat, 18 Jul 2026 06:13:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オープンLLMをLambdaで動かしてみる",
+      "url": "https://zenn.dev/edash_tech_blog/articles/528ab6bd044c35",
+      "publishedAt": "Sat, 18 Jul 2026 03:00:52 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIに「レビューして」はもう古い？「敵対的検証」のすすめ",
+      "url": "https://zenn.dev/loglass/articles/6aa18c80496ec6",
+      "publishedAt": "Fri, 17 Jul 2026 05:56:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GitHub Release 作成をパッケージリリースのトリガーにするな！",
+      "url": "https://zenn.dev/yumemi_inc/articles/github-release-not-a-publish-trigger",
+      "publishedAt": "Fri, 17 Jul 2026 05:22:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "E2Eテストをユニットテスト並みの実行時間に — Playwright並列化とGitHub Actionsチューニングの実践",
+      "url": "https://zenn.dev/berry_blog/articles/39392e1da7ca71",
+      "publishedAt": "Fri, 17 Jul 2026 04:54:22 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "DELETE したはずの行が SELECT で返り続ける ときに何を疑うか",
+      "url": "https://zenn.dev/dress_code/articles/15659114e7f21c",
+      "publishedAt": "Thu, 16 Jul 2026 09:00:15 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "SQL MCP Server が GA したらしい",
+      "url": "https://zenn.dev/microsoft/articles/1113250e1e63dc",
+      "publishedAt": "Thu, 16 Jul 2026 04:43:35 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Codeが化けた。今使っている3つのプラグイン+標準機能の活用法",
+      "url": "https://zenn.dev/sonicmoov/articles/8712598f532b18",
+      "publishedAt": "Wed, 15 Jul 2026 09:00:13 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "一人前のエンジニアなら、PRでコメントをもらうな。",
+      "url": "https://zenn.dev/headwaters/articles/72c39ad735038d",
+      "publishedAt": "Tue, 14 Jul 2026 13:17:16 GMT",
       "source": "zenn"
     }
   ],
@@ -24,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-01-01T00:00:00Z"
+  "updatedAt": "2026-07-20T02:26:08.403Z"
 }
