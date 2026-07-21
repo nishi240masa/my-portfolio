@@ -1,6 +1,42 @@
 {
   "zenn": [
     {
+      "title": "Async React時代の宣言的UI 3: useActionStateでユーザーの操作を妨げないUXを作る",
+      "url": "https://zenn.dev/uhyo/articles/async-react-action-queue",
+      "publishedAt": "Mon, 20 Jul 2026 05:29:51 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Linuxのディレクトリ配置ルール（FHS）超入門",
+      "url": "https://zenn.dev/juth/articles/9dc12f2621e2c1",
+      "publishedAt": "Mon, 20 Jul 2026 02:18:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "仕様駆動開発で起こる「仕様とコードのズレ」をハッシュで決定的に検出するツールを作った",
+      "url": "https://zenn.dev/mrmtsntr/articles/artgraph-spec-code-drift",
+      "publishedAt": "Sun, 19 Jul 2026 22:19:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "自宅でサーバーを建てたいエンジニアにおすすめの構成",
+      "url": "https://zenn.dev/joeee/articles/048addcc0c2ce6",
+      "publishedAt": "Sun, 19 Jul 2026 11:27:11 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "検索画面のUI設計で、バックエンドエンジニアが早めに口出しすべき3つのこと",
+      "url": "https://zenn.dev/ncdc/articles/6c8eabde83cf0a",
+      "publishedAt": "Sun, 19 Jul 2026 09:49:11 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "tokioからフルスタックWebフレームワークtopcoatが出た",
+      "url": "https://zenn.dev/hiiraginil/articles/9c62603c4b37ed",
+      "publishedAt": "Sun, 19 Jul 2026 09:44:09 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ゴールまで自走するだけではない？——ループエンジニアリングの本質はどこにあるのか",
       "url": "https://zenn.dev/r_kaga/articles/a27a3879dd3ce4",
       "publishedAt": "Sun, 19 Jul 2026 07:48:51 GMT",
@@ -13,9 +49,9 @@
       "source": "zenn"
     },
     {
-      "title": "Claude Codeの日本語入力が荒ぶる問題がWezTerm Nightlyビルドで解決した",
-      "url": "https://zenn.dev/nuresen/articles/claude-code-ime-wezterm",
-      "publishedAt": "Sun, 19 Jul 2026 06:35:08 GMT",
+      "title": "Hekireki というツールを作りました",
+      "url": "https://zenn.dev/mini_bg_pro_n/articles/d2c5d965ac068a",
+      "publishedAt": "Sun, 19 Jul 2026 07:18:00 GMT",
       "source": "zenn"
     },
     {
@@ -37,21 +73,15 @@
       "source": "zenn"
     },
     {
+      "title": "Git のマージ方法について改めて整理する",
+      "url": "https://zenn.dev/okuda0715tech/articles/bdab4588d93286",
+      "publishedAt": "Sun, 19 Jul 2026 02:17:33 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "趣味でサーバを触り始めた人のおうちラボ紹介 基本サービスや構築・管理方法について",
       "url": "https://zenn.dev/pkkudo/articles/homelab-overview-hlv5",
       "publishedAt": "Sun, 19 Jul 2026 01:21:57 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Google Search Console APIを使ってSEO改善を自動化する",
-      "url": "https://zenn.dev/asoventure/articles/2026-07-19-gsc-api-seo-automation",
-      "publishedAt": "Sun, 19 Jul 2026 01:00:33 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "関数型まつり2026参加記",
-      "url": "https://zenn.dev/konn/articles/2026-07-13-fp-matsuri-2026",
-      "publishedAt": "Sat, 18 Jul 2026 16:50:00 GMT",
       "source": "zenn"
     },
     {
@@ -73,12 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "オープンLLMをLambdaで動かしてみる",
-      "url": "https://zenn.dev/edash_tech_blog/articles/528ab6bd044c35",
-      "publishedAt": "Sat, 18 Jul 2026 03:00:52 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AIに「レビューして」はもう古い？「敵対的検証」のすすめ",
       "url": "https://zenn.dev/loglass/articles/6aa18c80496ec6",
       "publishedAt": "Fri, 17 Jul 2026 05:56:17 GMT",
@@ -94,30 +118,6 @@
       "title": "E2Eテストをユニットテスト並みの実行時間に — Playwright並列化とGitHub Actionsチューニングの実践",
       "url": "https://zenn.dev/berry_blog/articles/39392e1da7ca71",
       "publishedAt": "Fri, 17 Jul 2026 04:54:22 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "DELETE したはずの行が SELECT で返り続ける ときに何を疑うか",
-      "url": "https://zenn.dev/dress_code/articles/15659114e7f21c",
-      "publishedAt": "Thu, 16 Jul 2026 09:00:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "SQL MCP Server が GA したらしい",
-      "url": "https://zenn.dev/microsoft/articles/1113250e1e63dc",
-      "publishedAt": "Thu, 16 Jul 2026 04:43:35 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Codeが化けた。今使っている3つのプラグイン+標準機能の活用法",
-      "url": "https://zenn.dev/sonicmoov/articles/8712598f532b18",
-      "publishedAt": "Wed, 15 Jul 2026 09:00:13 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "一人前のエンジニアなら、PRでコメントをもらうな。",
-      "url": "https://zenn.dev/headwaters/articles/72c39ad735038d",
-      "publishedAt": "Tue, 14 Jul 2026 13:17:16 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-20T02:26:08.403Z"
+  "updatedAt": "2026-07-21T02:04:42.630Z"
 }
