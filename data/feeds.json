@@ -1,6 +1,36 @@
 {
   "zenn": [
     {
+      "title": "Claude Codeを2時間おきに回してVS Code拡張mdエディタを育てるLoop Engineering実践",
+      "url": "https://zenn.dev/green_tea/articles/e39e3726a449c9",
+      "publishedAt": "Tue, 21 Jul 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Unity CLI でAIエージェントにゲームを作らせてみた",
+      "url": "https://zenn.dev/tkada/articles/1ba97707dee14a",
+      "publishedAt": "Tue, 21 Jul 2026 02:47:18 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "フロントエンドに広がりつつある OpenTelemetry：Browser SDK の現在地",
+      "url": "https://zenn.dev/cybozu_frontend/articles/opentelemetry-browser-frontend",
+      "publishedAt": "Tue, 21 Jul 2026 00:56:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "自社のレビュー履歴からAIコードレビュアーをつくる方法",
+      "url": "https://zenn.dev/estie/articles/f0f114389662ba",
+      "publishedAt": "Tue, 21 Jul 2026 00:45:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIの評価を報酬にする強化学習は何をしているのか — GRPOの1ステップを数字で追う",
+      "url": "https://zenn.dev/takkuhiro/articles/eval-as-reward-rl-mechanics",
+      "publishedAt": "Mon, 20 Jul 2026 22:00:08 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Async React時代の宣言的UI 3: useActionStateでユーザーの操作を妨げないUXを作る",
       "url": "https://zenn.dev/uhyo/articles/async-react-action-queue",
       "publishedAt": "Mon, 20 Jul 2026 05:29:51 GMT",
@@ -31,12 +61,6 @@
       "source": "zenn"
     },
     {
-      "title": "tokioからフルスタックWebフレームワークtopcoatが出た",
-      "url": "https://zenn.dev/hiiraginil/articles/9c62603c4b37ed",
-      "publishedAt": "Sun, 19 Jul 2026 09:44:09 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "ゴールまで自走するだけではない？——ループエンジニアリングの本質はどこにあるのか",
       "url": "https://zenn.dev/r_kaga/articles/a27a3879dd3ce4",
       "publishedAt": "Sun, 19 Jul 2026 07:48:51 GMT",
@@ -61,24 +85,6 @@
       "source": "zenn"
     },
     {
-      "title": "codexの独自用語乱立･曖昧問題への対策",
-      "url": "https://zenn.dev/u1/articles/codex-referent-before-label",
-      "publishedAt": "Sun, 19 Jul 2026 04:23:22 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ImportLintの紹介: import専門の高速なリンター",
-      "url": "https://zenn.dev/uhyo/articles/import-lint-intro",
-      "publishedAt": "Sun, 19 Jul 2026 03:46:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Git のマージ方法について改めて整理する",
-      "url": "https://zenn.dev/okuda0715tech/articles/bdab4588d93286",
-      "publishedAt": "Sun, 19 Jul 2026 02:17:33 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "趣味でサーバを触り始めた人のおうちラボ紹介 基本サービスや構築・管理方法について",
       "url": "https://zenn.dev/pkkudo/articles/homelab-overview-hlv5",
       "publishedAt": "Sun, 19 Jul 2026 01:21:57 GMT",
@@ -97,9 +103,9 @@
       "source": "zenn"
     },
     {
-      "title": "AIでがんがん書く時代の「きれいなコード」の守り方 — ESLint+SonarJS / jscpd / knip をCIに置く",
-      "url": "https://zenn.dev/singularity/articles/clean-code-ci-for-ai-era",
-      "publishedAt": "Sat, 18 Jul 2026 06:13:37 GMT",
+      "title": "サクッと始めるAIワークフロー構築【Jinba】",
+      "url": "https://zenn.dev/umi_mori/books/ai-workflow-jinba",
+      "publishedAt": "Fri, 17 Jul 2026 09:23:55 GMT",
       "source": "zenn"
     },
     {
@@ -112,12 +118,6 @@
       "title": "GitHub Release 作成をパッケージリリースのトリガーにするな！",
       "url": "https://zenn.dev/yumemi_inc/articles/github-release-not-a-publish-trigger",
       "publishedAt": "Fri, 17 Jul 2026 05:22:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "E2Eテストをユニットテスト並みの実行時間に — Playwright並列化とGitHub Actionsチューニングの実践",
-      "url": "https://zenn.dev/berry_blog/articles/39392e1da7ca71",
-      "publishedAt": "Fri, 17 Jul 2026 04:54:22 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-21T02:04:42.630Z"
+  "updatedAt": "2026-07-22T02:02:53.456Z"
 }
