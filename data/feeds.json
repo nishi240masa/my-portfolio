@@ -1,6 +1,42 @@
 {
   "zenn": [
     {
+      "title": "Souther - ドメインモデルをスラスラ書けることを追い求めた最果てのJVM言語",
+      "url": "https://zenn.dev/kawasima/articles/souther-essentials",
+      "publishedAt": "Wed, 22 Jul 2026 09:36:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "WebエディタのTab問題について調べてみた",
+      "url": "https://zenn.dev/cybozu_frontend/articles/contenteditable-tab",
+      "publishedAt": "Wed, 22 Jul 2026 03:36:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Rust 1.97.0で変わったmanglingの仕組みについて",
+      "url": "https://zenn.dev/estie/articles/f310f04c5fe5cc",
+      "publishedAt": "Wed, 22 Jul 2026 03:00:22 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Rust に書き直さなくても C 言語をメモリ安全にできる Fil-C を試した",
+      "url": "https://zenn.dev/mattn/articles/cace8c5a00b9cc",
+      "publishedAt": "Wed, 22 Jul 2026 00:54:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "月18万行のコーディングを走り切った話",
+      "url": "https://zenn.dev/innovation/articles/98142c37004f21",
+      "publishedAt": "Tue, 21 Jul 2026 06:00:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "エンジニアの成果、結局どう測ればいいのか",
+      "url": "https://zenn.dev/awesome_kou/articles/engineer-performance-metrics",
+      "publishedAt": "Tue, 21 Jul 2026 03:07:03 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Claude Codeを2時間おきに回してVS Code拡張mdエディタを育てるLoop Engineering実践",
       "url": "https://zenn.dev/green_tea/articles/e39e3726a449c9",
       "publishedAt": "Tue, 21 Jul 2026 02:50:05 GMT",
@@ -25,21 +61,15 @@
       "source": "zenn"
     },
     {
-      "title": "AIの評価を報酬にする強化学習は何をしているのか — GRPOの1ステップを数字で追う",
-      "url": "https://zenn.dev/takkuhiro/articles/eval-as-reward-rl-mechanics",
-      "publishedAt": "Mon, 20 Jul 2026 22:00:08 GMT",
+      "title": "【Obsidian】既存のAIサブスクだけでメモを整理する環境を作った",
+      "url": "https://zenn.dev/peishim/articles/a10faeabae7c09",
+      "publishedAt": "Mon, 20 Jul 2026 23:40:08 GMT",
       "source": "zenn"
     },
     {
       "title": "Async React時代の宣言的UI 3: useActionStateでユーザーの操作を妨げないUXを作る",
       "url": "https://zenn.dev/uhyo/articles/async-react-action-queue",
       "publishedAt": "Mon, 20 Jul 2026 05:29:51 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Linuxのディレクトリ配置ルール（FHS）超入門",
-      "url": "https://zenn.dev/juth/articles/9dc12f2621e2c1",
-      "publishedAt": "Mon, 20 Jul 2026 02:18:03 GMT",
       "source": "zenn"
     },
     {
@@ -61,21 +91,9 @@
       "source": "zenn"
     },
     {
-      "title": "ゴールまで自走するだけではない？——ループエンジニアリングの本質はどこにあるのか",
-      "url": "https://zenn.dev/r_kaga/articles/a27a3879dd3ce4",
-      "publishedAt": "Sun, 19 Jul 2026 07:48:51 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "1-bit LLM「Bonsai」活用ガイド — 1.15GB で動く 8B モデルをローカルで使い倒す",
       "url": "https://zenn.dev/tkou15/articles/bonsai-1bit-llm-guide",
       "publishedAt": "Sun, 19 Jul 2026 07:35:46 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Hekireki というツールを作りました",
-      "url": "https://zenn.dev/mini_bg_pro_n/articles/d2c5d965ac068a",
-      "publishedAt": "Sun, 19 Jul 2026 07:18:00 GMT",
       "source": "zenn"
     },
     {
@@ -91,33 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "AWSのBilling障害の対応への反省点",
-      "url": "https://zenn.dev/blue_jam/articles/08b31e29699b56",
-      "publishedAt": "Sat, 18 Jul 2026 15:21:40 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "ループエンジニアリングの次は本当に「グラフ」なのか考えてみた",
       "url": "https://zenn.dev/jodycraft/articles/dfe38e73e1ef8a",
       "publishedAt": "Sat, 18 Jul 2026 13:56:58 GMT",
       "source": "zenn"
     },
     {
-      "title": "サクッと始めるAIワークフロー構築【Jinba】",
-      "url": "https://zenn.dev/umi_mori/books/ai-workflow-jinba",
-      "publishedAt": "Fri, 17 Jul 2026 09:23:55 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AIに「レビューして」はもう古い？「敵対的検証」のすすめ",
       "url": "https://zenn.dev/loglass/articles/6aa18c80496ec6",
       "publishedAt": "Fri, 17 Jul 2026 05:56:17 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GitHub Release 作成をパッケージリリースのトリガーにするな！",
-      "url": "https://zenn.dev/yumemi_inc/articles/github-release-not-a-publish-trigger",
-      "publishedAt": "Fri, 17 Jul 2026 05:22:08 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-22T02:02:53.456Z"
+  "updatedAt": "2026-07-23T02:09:51.406Z"
 }
