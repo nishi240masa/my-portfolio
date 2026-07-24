@@ -1,6 +1,36 @@
 {
   "zenn": [
     {
+      "title": "Go 1.27 から uuid 実装がサポートされる！ので個人的に気になった議論とその着地をまとめてみた",
+      "url": "https://zenn.dev/layerx/articles/f7124d4e761c1f",
+      "publishedAt": "Thu, 23 Jul 2026 06:03:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Go の設計、どこまでやる？〜小さく作って、壊さず育てる〜",
+      "url": "https://zenn.dev/135yshr/books/go-service-design",
+      "publishedAt": "Thu, 23 Jul 2026 03:08:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "設計を、技術の話から始めない",
+      "url": "https://zenn.dev/team_lab/articles/31ec1e630ab28b",
+      "publishedAt": "Thu, 23 Jul 2026 02:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "開発しているだけで進捗が更新される。Linear × Claude Code × GitHubで作る開発フロー",
+      "url": "https://zenn.dev/explaza/articles/500ded8ea67252",
+      "publishedAt": "Thu, 23 Jul 2026 00:54:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Palantir Foundryのオントロジーをミニマムに再現したOSSを実測検証した",
+      "url": "https://zenn.dev/mskbhd/articles/lab-198-gura105-operational-ontology-o",
+      "publishedAt": "Wed, 22 Jul 2026 11:01:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Souther - ドメインモデルをスラスラ書けることを追い求めた最果てのJVM言語",
       "url": "https://zenn.dev/kawasima/articles/souther-essentials",
       "publishedAt": "Wed, 22 Jul 2026 09:36:32 GMT",
@@ -22,6 +52,12 @@
       "title": "Rust に書き直さなくても C 言語をメモリ安全にできる Fil-C を試した",
       "url": "https://zenn.dev/mattn/articles/cace8c5a00b9cc",
       "publishedAt": "Wed, 22 Jul 2026 00:54:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "LLMの評価を性能に変える3つの行き先",
+      "url": "https://zenn.dev/takkuhiro/articles/eval-to-improvement-survey",
+      "publishedAt": "Tue, 21 Jul 2026 22:20:05 GMT",
       "source": "zenn"
     },
     {
@@ -61,12 +97,6 @@
       "source": "zenn"
     },
     {
-      "title": "【Obsidian】既存のAIサブスクだけでメモを整理する環境を作った",
-      "url": "https://zenn.dev/peishim/articles/a10faeabae7c09",
-      "publishedAt": "Mon, 20 Jul 2026 23:40:08 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Async React時代の宣言的UI 3: useActionStateでユーザーの操作を妨げないUXを作る",
       "url": "https://zenn.dev/uhyo/articles/async-react-action-queue",
       "publishedAt": "Mon, 20 Jul 2026 05:29:51 GMT",
@@ -89,36 +119,6 @@
       "url": "https://zenn.dev/ncdc/articles/6c8eabde83cf0a",
       "publishedAt": "Sun, 19 Jul 2026 09:49:11 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "1-bit LLM「Bonsai」活用ガイド — 1.15GB で動く 8B モデルをローカルで使い倒す",
-      "url": "https://zenn.dev/tkou15/articles/bonsai-1bit-llm-guide",
-      "publishedAt": "Sun, 19 Jul 2026 07:35:46 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ChatGPTで始める衛星画像処理入門",
-      "url": "https://zenn.dev/syu_tan/books/chatgpt-satellite-image-intro",
-      "publishedAt": "Sun, 19 Jul 2026 05:29:55 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "趣味でサーバを触り始めた人のおうちラボ紹介 基本サービスや構築・管理方法について",
-      "url": "https://zenn.dev/pkkudo/articles/homelab-overview-hlv5",
-      "publishedAt": "Sun, 19 Jul 2026 01:21:57 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ループエンジニアリングの次は本当に「グラフ」なのか考えてみた",
-      "url": "https://zenn.dev/jodycraft/articles/dfe38e73e1ef8a",
-      "publishedAt": "Sat, 18 Jul 2026 13:56:58 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIに「レビューして」はもう古い？「敵対的検証」のすすめ",
-      "url": "https://zenn.dev/loglass/articles/6aa18c80496ec6",
-      "publishedAt": "Fri, 17 Jul 2026 05:56:17 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-23T02:09:51.406Z"
+  "updatedAt": "2026-07-24T02:05:58.100Z"
 }
