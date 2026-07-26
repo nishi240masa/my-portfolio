@@ -1,9 +1,45 @@
 {
   "zenn": [
     {
+      "title": "放置していた旧環境で見つけたReact2Shell攻撃の実態",
+      "url": "https://zenn.dev/munenick/articles/b507a9848b6fdd",
+      "publishedAt": "Sat, 25 Jul 2026 08:27:52 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "クオンツはテクニカル分析を寄与度分解の中で見ている",
+      "url": "https://zenn.dev/gamella/articles/7e1af53f19d94d",
+      "publishedAt": "Sat, 25 Jul 2026 01:46:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ドメイン駆動設計から、ドメイン駆動開発プロセスの時代へ",
+      "url": "https://zenn.dev/manalink_dev/articles/domain-driven-development-process",
+      "publishedAt": "Fri, 24 Jul 2026 09:45:31 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI時代のエンジニアリングマネージャーのあり方｜外部品質編 〜品質の可視化を、現場と経営をつなぐ形にするまで〜",
+      "url": "https://zenn.dev/loglass/articles/ef099b123153cf",
+      "publishedAt": "Fri, 24 Jul 2026 04:40:27 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Terraform / Kubernetes の構築で、初心者がよく指摘されるポイントのまとめ",
+      "url": "https://zenn.dev/scalar_sol_blog/articles/6fa517a84cb7ff",
+      "publishedAt": "Fri, 24 Jul 2026 01:05:30 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ターミナルを自作したら、1日のコミット数が500を超えて、生産性がバグった話",
       "url": "https://zenn.dev/singularity/articles/diy-terminal-500-commits",
       "publishedAt": "Thu, 23 Jul 2026 20:55:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "2bitに量子化したKimi K2.7 CodeにMac Studio 1台で$69,875を稼いでもらった",
+      "url": "https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local",
+      "publishedAt": "Thu, 23 Jul 2026 12:35:05 GMT",
       "source": "zenn"
     },
     {
@@ -43,27 +79,9 @@
       "source": "zenn"
     },
     {
-      "title": "WebエディタのTab問題について調べてみた",
-      "url": "https://zenn.dev/cybozu_frontend/articles/contenteditable-tab",
-      "publishedAt": "Wed, 22 Jul 2026 03:36:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Rust 1.97.0で変わったmanglingの仕組みについて",
-      "url": "https://zenn.dev/estie/articles/f310f04c5fe5cc",
-      "publishedAt": "Wed, 22 Jul 2026 03:00:22 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Rust に書き直さなくても C 言語をメモリ安全にできる Fil-C を試した",
       "url": "https://zenn.dev/mattn/articles/cace8c5a00b9cc",
       "publishedAt": "Wed, 22 Jul 2026 00:54:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "月18万行のコーディングを走り切った話",
-      "url": "https://zenn.dev/innovation/articles/98142c37004f21",
-      "publishedAt": "Tue, 21 Jul 2026 06:00:07 GMT",
       "source": "zenn"
     },
     {
@@ -85,9 +103,9 @@
       "source": "zenn"
     },
     {
-      "title": "自社のレビュー履歴からAIコードレビュアーをつくる方法",
-      "url": "https://zenn.dev/estie/articles/f0f114389662ba",
-      "publishedAt": "Tue, 21 Jul 2026 00:45:05 GMT",
+      "title": "【Obsidian】既存のAIサブスクだけでメモを整理する環境を作った",
+      "url": "https://zenn.dev/peishim/articles/a10faeabae7c09",
+      "publishedAt": "Mon, 20 Jul 2026 23:40:08 GMT",
       "source": "zenn"
     },
     {
@@ -100,24 +118,6 @@
       "title": "仕様駆動開発で起こる「仕様とコードのズレ」をハッシュで決定的に検出するツールを作った",
       "url": "https://zenn.dev/mrmtsntr/articles/artgraph-spec-code-drift",
       "publishedAt": "Sun, 19 Jul 2026 22:19:55 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "自宅でサーバーを建てたいエンジニアにおすすめの構成",
-      "url": "https://zenn.dev/joeee/articles/048addcc0c2ce6",
-      "publishedAt": "Sun, 19 Jul 2026 11:27:11 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "検索画面のUI設計で、バックエンドエンジニアが早めに口出しすべき3つのこと",
-      "url": "https://zenn.dev/ncdc/articles/6c8eabde83cf0a",
-      "publishedAt": "Sun, 19 Jul 2026 09:49:11 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "1-bit LLM「Bonsai」活用ガイド — 1.15GB で動く 8B モデルをローカルで使い倒す",
-      "url": "https://zenn.dev/tkou15/articles/bonsai-1bit-llm-guide",
-      "publishedAt": "Sun, 19 Jul 2026 07:35:46 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-25T02:05:06.204Z"
+  "updatedAt": "2026-07-26T02:09:56.741Z"
 }
