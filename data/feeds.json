@@ -1,6 +1,30 @@
 {
   "zenn": [
     {
+      "title": "【速報】Opus 5、React習熟度ベンチマークで余裕のFable 5超え",
+      "url": "https://zenn.dev/uhyo/articles/react-profession-bench-14",
+      "publishedAt": "Sun, 26 Jul 2026 09:19:46 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Opus 5では今までのプロンプトが逆効果に。「検証して」を消して「簡潔に」と書くべし。公式プロンプトガイドを読み解く",
+      "url": "https://zenn.dev/little_hand_s/articles/72646a09f49d2a",
+      "publishedAt": "Sun, 26 Jul 2026 03:40:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Opus5が思考が浅いように感じる問題への対策",
+      "url": "https://zenn.dev/u1/articles/claude5-rules-collapse-and-fix",
+      "publishedAt": "Sun, 26 Jul 2026 03:01:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "バックテストで良い戦略を見つけた後にbotterが最初にやるべき残差分析",
+      "url": "https://zenn.dev/gamella/articles/5a7496f7ca7771",
+      "publishedAt": "Sun, 26 Jul 2026 02:05:26 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "放置していた旧環境で見つけたReact2Shell攻撃の実態",
       "url": "https://zenn.dev/munenick/articles/b507a9848b6fdd",
       "publishedAt": "Sat, 25 Jul 2026 08:27:52 GMT",
@@ -37,15 +61,9 @@
       "source": "zenn"
     },
     {
-      "title": "2bitに量子化したKimi K2.7 CodeにMac Studio 1台で$69,875を稼いでもらった",
-      "url": "https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local",
-      "publishedAt": "Thu, 23 Jul 2026 12:35:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ソフトウェア設計は、「誰がどこまで考えるか」を決める仕事である - 変数名からDDD、DB設計、マイクロサービス、組織構造までを同じ枠組みで",
-      "url": "https://zenn.dev/kanaria007/articles/c392cbd1c1fc21",
-      "publishedAt": "Thu, 23 Jul 2026 09:00:06 GMT",
+      "title": "Astroで日英ブログを作って分かった5つの実装パターン",
+      "url": "https://zenn.dev/akari1106/articles/ea85f0a245bb8b",
+      "publishedAt": "Thu, 23 Jul 2026 14:15:58 GMT",
       "source": "zenn"
     },
     {
@@ -91,12 +109,6 @@
       "source": "zenn"
     },
     {
-      "title": "Claude Codeを2時間おきに回してVS Code拡張mdエディタを育てるLoop Engineering実践",
-      "url": "https://zenn.dev/green_tea/articles/e39e3726a449c9",
-      "publishedAt": "Tue, 21 Jul 2026 02:50:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "フロントエンドに広がりつつある OpenTelemetry：Browser SDK の現在地",
       "url": "https://zenn.dev/cybozu_frontend/articles/opentelemetry-browser-frontend",
       "publishedAt": "Tue, 21 Jul 2026 00:56:04 GMT",
@@ -106,18 +118,6 @@
       "title": "【Obsidian】既存のAIサブスクだけでメモを整理する環境を作った",
       "url": "https://zenn.dev/peishim/articles/a10faeabae7c09",
       "publishedAt": "Mon, 20 Jul 2026 23:40:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Async React時代の宣言的UI 3: useActionStateでユーザーの操作を妨げないUXを作る",
-      "url": "https://zenn.dev/uhyo/articles/async-react-action-queue",
-      "publishedAt": "Mon, 20 Jul 2026 05:29:51 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "仕様駆動開発で起こる「仕様とコードのズレ」をハッシュで決定的に検出するツールを作った",
-      "url": "https://zenn.dev/mrmtsntr/articles/artgraph-spec-code-drift",
-      "publishedAt": "Sun, 19 Jul 2026 22:19:55 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-26T02:09:56.741Z"
+  "updatedAt": "2026-07-27T02:23:13.825Z"
 }
