@@ -1,9 +1,57 @@
 {
   "zenn": [
     {
+      "title": "ステージング環境をセルフサービス化しチームの開発速度を向上させた方法",
+      "url": "https://zenn.dev/fusic/articles/83c6b9a1e7c7d0",
+      "publishedAt": "Mon, 27 Jul 2026 09:46:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "「Simple Made Easy」の観点から、UI/UXはどうあるべきか",
+      "url": "https://zenn.dev/pksha/articles/6cdf19e5fe8065",
+      "publishedAt": "Mon, 27 Jul 2026 07:22:43 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【2026年版】MIXI 新卒向け技術研修を公開しました。",
+      "url": "https://zenn.dev/mixi/articles/fd62f8ddc178f6",
+      "publishedAt": "Mon, 27 Jul 2026 04:26:35 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "RAGの検索評価について調査してみた ── 評価指標とデータセットの選び方",
+      "url": "https://zenn.dev/data_and_ai/articles/e8a0daa9b9fd4c",
+      "publishedAt": "Mon, 27 Jul 2026 03:41:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "最近の仕事の流れ",
+      "url": "https://zenn.dev/kimuchan/articles/bc8e98682f8594",
+      "publishedAt": "Mon, 27 Jul 2026 00:31:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "1日500コミットは、もう読めない ── だからコードレビューをやめた",
+      "url": "https://zenn.dev/singularity/articles/stopped-reviewing-my-code",
+      "publishedAt": "Sun, 26 Jul 2026 20:06:28 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "スマホでつくるセカンドブレイン（Android・Obsidian・Termux・Claude・ChatGPTによる知識管理）",
+      "url": "https://zenn.dev/szgk/articles/76f54d039d9a30",
+      "publishedAt": "Sun, 26 Jul 2026 16:36:23 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "【速報】Opus 5、React習熟度ベンチマークで余裕のFable 5超え",
       "url": "https://zenn.dev/uhyo/articles/react-profession-bench-14",
       "publishedAt": "Sun, 26 Jul 2026 09:19:46 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "「ソフトウェアアーキテクチャの基礎」を読んで設計判断の引き出しが増えた",
+      "url": "https://zenn.dev/raamenwakamatu/articles/software-architecture-fundamentals-review",
+      "publishedAt": "Sun, 26 Jul 2026 03:47:06 GMT",
       "source": "zenn"
     },
     {
@@ -19,9 +67,9 @@
       "source": "zenn"
     },
     {
-      "title": "バックテストで良い戦略を見つけた後にbotterが最初にやるべき残差分析",
-      "url": "https://zenn.dev/gamella/articles/5a7496f7ca7771",
-      "publishedAt": "Sun, 26 Jul 2026 02:05:26 GMT",
+      "title": "複数のGitリポジトリを一元的に管理できる管理ツールを作った",
+      "url": "https://zenn.dev/nekogakure/articles/50e3f441b6c1f3",
+      "publishedAt": "Sun, 26 Jul 2026 00:19:33 GMT",
       "source": "zenn"
     },
     {
@@ -37,18 +85,6 @@
       "source": "zenn"
     },
     {
-      "title": "ドメイン駆動設計から、ドメイン駆動開発プロセスの時代へ",
-      "url": "https://zenn.dev/manalink_dev/articles/domain-driven-development-process",
-      "publishedAt": "Fri, 24 Jul 2026 09:45:31 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI時代のエンジニアリングマネージャーのあり方｜外部品質編 〜品質の可視化を、現場と経営をつなぐ形にするまで〜",
-      "url": "https://zenn.dev/loglass/articles/ef099b123153cf",
-      "publishedAt": "Fri, 24 Jul 2026 04:40:27 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Terraform / Kubernetes の構築で、初心者がよく指摘されるポイントのまとめ",
       "url": "https://zenn.dev/scalar_sol_blog/articles/6fa517a84cb7ff",
       "publishedAt": "Fri, 24 Jul 2026 01:05:30 GMT",
@@ -58,18 +94,6 @@
       "title": "ターミナルを自作したら、1日のコミット数が500を超えて、生産性がバグった話",
       "url": "https://zenn.dev/singularity/articles/diy-terminal-500-commits",
       "publishedAt": "Thu, 23 Jul 2026 20:55:48 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Astroで日英ブログを作って分かった5つの実装パターン",
-      "url": "https://zenn.dev/akari1106/articles/ea85f0a245bb8b",
-      "publishedAt": "Thu, 23 Jul 2026 14:15:58 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "受託小規模向けの技術選定と考えたこと",
-      "url": "https://zenn.dev/fukke/articles/20260723_nextjs-structure",
-      "publishedAt": "Thu, 23 Jul 2026 08:02:36 GMT",
       "source": "zenn"
     },
     {
@@ -95,30 +119,6 @@
       "url": "https://zenn.dev/explaza/articles/500ded8ea67252",
       "publishedAt": "Thu, 23 Jul 2026 00:54:00 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "Rust に書き直さなくても C 言語をメモリ安全にできる Fil-C を試した",
-      "url": "https://zenn.dev/mattn/articles/cace8c5a00b9cc",
-      "publishedAt": "Wed, 22 Jul 2026 00:54:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "エンジニアの成果、結局どう測ればいいのか",
-      "url": "https://zenn.dev/awesome_kou/articles/engineer-performance-metrics",
-      "publishedAt": "Tue, 21 Jul 2026 03:07:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "フロントエンドに広がりつつある OpenTelemetry：Browser SDK の現在地",
-      "url": "https://zenn.dev/cybozu_frontend/articles/opentelemetry-browser-frontend",
-      "publishedAt": "Tue, 21 Jul 2026 00:56:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【Obsidian】既存のAIサブスクだけでメモを整理する環境を作った",
-      "url": "https://zenn.dev/peishim/articles/a10faeabae7c09",
-      "publishedAt": "Mon, 20 Jul 2026 23:40:08 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-27T02:23:13.825Z"
+  "updatedAt": "2026-07-28T01:58:31.247Z"
 }
