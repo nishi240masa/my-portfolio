@@ -1,6 +1,18 @@
 {
   "zenn": [
     {
+      "title": "GitHubにスタックプルリクエストが登場。gh stackでPRを分割して積み上げよう",
+      "url": "https://zenn.dev/ubie_dev/articles/gh-stack-introduction",
+      "publishedAt": "Fri, 31 Jul 2026 13:33:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "メテオフォール開発",
+      "url": "https://zenn.dev/hisaju01/books/meteorfall-development",
+      "publishedAt": "Fri, 31 Jul 2026 06:16:08 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "生成AIにおけるHTML/画像出力の必要性と改善案としてのRHW(reviewable-html-workbench)の紹介",
       "url": "https://zenn.dev/u1/articles/rhw-reviewable-html-workbench",
       "publishedAt": "Thu, 30 Jul 2026 12:16:48 GMT",
@@ -28,12 +40,6 @@
       "title": "MCPの大型アップデート（2026-07-28）で何が変わったか —— TypeScript SDK v2で試す",
       "url": "https://zenn.dev/komlock_lab/articles/mcp-stateless-spec-2026",
       "publishedAt": "Wed, 29 Jul 2026 14:05:30 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "agent-browserはもう古い？ Web調査をコマンドに変えるOpenCLI",
-      "url": "https://zenn.dev/nasubikun/articles/opencli-web-research",
-      "publishedAt": "Wed, 29 Jul 2026 09:40:25 GMT",
       "source": "zenn"
     },
     {
@@ -109,12 +115,6 @@
       "source": "zenn"
     },
     {
-      "title": "Feature-Sliced Design 実践ガイド",
-      "url": "https://zenn.dev/norman6464/books/fsd-migration",
-      "publishedAt": "Sun, 26 Jul 2026 11:34:50 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "「ソフトウェアアーキテクチャの基礎」を読んで設計判断の引き出しが増えた",
       "url": "https://zenn.dev/raamenwakamatu/articles/software-architecture-fundamentals-review",
       "publishedAt": "Sun, 26 Jul 2026 03:47:06 GMT",
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-07-31T02:10:27.695Z"
+  "updatedAt": "2026-08-01T02:11:26.790Z"
 }
