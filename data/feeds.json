@@ -1,9 +1,21 @@
 {
   "zenn": [
     {
+      "title": "Kimi K3を441GBに枝刈りして、Mac Studio 1台で動かした",
+      "url": "https://zenn.dev/hellohazime/articles/kimi_k3_reap640_512gb_mac",
+      "publishedAt": "Sun, 02 Aug 2026 00:43:07 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "AI フレンドリーな CLI を開発するテクニック",
       "url": "https://zenn.dev/shunsuke_suzuki/articles/make-cli-ai-friendly",
       "publishedAt": "Sat, 01 Aug 2026 01:35:46 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ローカルタスク管理アプリを設計してみた",
+      "url": "https://zenn.dev/headwaters/articles/76f20490b76952",
+      "publishedAt": "Fri, 31 Jul 2026 23:36:46 GMT",
       "source": "zenn"
     },
     {
@@ -49,15 +61,15 @@
       "source": "zenn"
     },
     {
-      "title": "【Claude Code】planモードはもう使っていない",
-      "url": "https://zenn.dev/notahotel/articles/0c28638945aa32",
-      "publishedAt": "Wed, 29 Jul 2026 00:37:17 GMT",
+      "title": "GPT-5.6とBlender MCPで、多少マシな3Dモデリングをさせるまで",
+      "url": "https://zenn.dev/test_myname/articles/gpt-5-6-blender-mcp-modeling",
+      "publishedAt": "Wed, 29 Jul 2026 00:57:38 GMT",
       "source": "zenn"
     },
     {
-      "title": "自分で作るクラウド競技",
-      "url": "https://zenn.dev/bull/books/cloud-competition",
-      "publishedAt": "Wed, 29 Jul 2026 00:15:14 GMT",
+      "title": "【Claude Code】planモードはもう使っていない",
+      "url": "https://zenn.dev/notahotel/articles/0c28638945aa32",
+      "publishedAt": "Wed, 29 Jul 2026 00:37:17 GMT",
       "source": "zenn"
     },
     {
@@ -107,18 +119,6 @@
       "url": "https://zenn.dev/kimuchan/articles/bc8e98682f8594",
       "publishedAt": "Mon, 27 Jul 2026 00:31:05 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "エンジニアの習熟度は、トークン消費量として露呈していく",
-      "url": "https://zenn.dev/kaji_kaji/articles/token-management-as-ai-proficiency",
-      "publishedAt": "Mon, 27 Jul 2026 00:00:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "「ソフトウェアアーキテクチャの基礎」を読んで設計判断の引き出しが増えた",
-      "url": "https://zenn.dev/raamenwakamatu/articles/software-architecture-fundamentals-review",
-      "publishedAt": "Sun, 26 Jul 2026 03:47:06 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-02T02:08:36.907Z"
+  "updatedAt": "2026-08-03T02:10:51.499Z"
 }
