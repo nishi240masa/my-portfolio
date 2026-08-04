@@ -1,9 +1,63 @@
 {
   "zenn": [
     {
+      "title": "Web 標準動向 2026年7月版",
+      "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202607",
+      "publishedAt": "Mon, 03 Aug 2026 08:25:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オントロジーで AI に業務知識を渡す — AWS の OSS「Context Ontology Accelerator」を試してみた",
+      "url": "https://zenn.dev/aws_japan/articles/context-ontology-accelerator-deploy",
+      "publishedAt": "Mon, 03 Aug 2026 05:26:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Herdr で止まらず、精度の高い開発を進める工夫 ─ intent-cli で意図をもとに開発する",
+      "url": "https://zenn.dev/jtechjapan_pub/articles/intent-cli-herdr-orchestration",
+      "publishedAt": "Mon, 03 Aug 2026 05:21:53 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "UnityのDIは本当に必要か：Zenject継続・Reflex新規採用・VContainer比較の判断軸",
+      "url": "https://zenn.dev/gamedev_toollab/articles/945a5084be2a38",
+      "publishedAt": "Mon, 03 Aug 2026 01:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "アーキテクチャに限らず意思決定を全部残す「ADR（Any Decision Record）」という文化",
+      "url": "https://zenn.dev/dress_code/articles/c73500ae73361c",
+      "publishedAt": "Mon, 03 Aug 2026 00:00:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オリジン・CORS・セッションを基礎から理解する",
+      "url": "https://zenn.dev/owade/articles/cors-session-origin-guide",
+      "publishedAt": "Sun, 02 Aug 2026 13:51:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ある日エンジニアが突然無職になってしまったら？ — 離職インシデント対応ランブック",
+      "url": "https://zenn.dev/tsukuboshi/articles/engineer-unemployment-runbook",
+      "publishedAt": "Sun, 02 Aug 2026 07:13:50 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude CodeのSkillsは「手順書」だったので、/article コマンドを作ってみた",
+      "url": "https://zenn.dev/osakayakyu/articles/e6aa9835c04d73",
+      "publishedAt": "Sun, 02 Aug 2026 03:15:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Kimi K3を441GBに枝刈りして、Mac Studio 1台で動かした",
       "url": "https://zenn.dev/hellohazime/articles/kimi_k3_reap640_512gb_mac",
       "publishedAt": "Sun, 02 Aug 2026 00:43:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GDBで始めるアセンブリと解析",
+      "url": "https://zenn.dev/juck28/articles/091c07869aba28",
+      "publishedAt": "Sat, 01 Aug 2026 13:34:19 GMT",
       "source": "zenn"
     },
     {
@@ -49,21 +103,9 @@
       "source": "zenn"
     },
     {
-      "title": "GitHub Actionsのコストが増えているなら、Namespaceを使えばいいじゃない",
-      "url": "https://zenn.dev/aircloset/articles/6b47018589df0f",
-      "publishedAt": "Wed, 29 Jul 2026 23:52:26 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "MCPの大型アップデート（2026-07-28）で何が変わったか —— TypeScript SDK v2で試す",
       "url": "https://zenn.dev/komlock_lab/articles/mcp-stateless-spec-2026",
       "publishedAt": "Wed, 29 Jul 2026 14:05:30 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GPT-5.6とBlender MCPで、多少マシな3Dモデリングをさせるまで",
-      "url": "https://zenn.dev/test_myname/articles/gpt-5-6-blender-mcp-modeling",
-      "publishedAt": "Wed, 29 Jul 2026 00:57:38 GMT",
       "source": "zenn"
     },
     {
@@ -76,48 +118,6 @@
       "title": "AI時代に感じた危機感と、エンジニアがこれから考えるべきこと",
       "url": "https://zenn.dev/nabewata/articles/8cef1bd4cbae3f",
       "publishedAt": "Tue, 28 Jul 2026 12:24:59 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ソフトウェアエンジニアとして視野を広げるためのブックガイド",
-      "url": "https://zenn.dev/shotaro_tsuji/articles/091517e89ab17d",
-      "publishedAt": "Tue, 28 Jul 2026 11:03:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "TypeScript 7 時代の Vue.js ツールチェーン Vize を実プロダクトで検証した",
-      "url": "https://zenn.dev/uniquevision/articles/4359e64b17b028",
-      "publishedAt": "Tue, 28 Jul 2026 10:11:01 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【決着】Claude CodeとCodexの設定ファイルを同期させる (みんな仲良く)",
-      "url": "https://zenn.dev/explaza/articles/20f7f41cff8428",
-      "publishedAt": "Tue, 28 Jul 2026 04:40:29 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【速報】Kimi-K3 を Day0 デプロイ。2.8T モデルは NVIDIA B300 x8 の 1 ノードで動くのか",
-      "url": "https://zenn.dev/fixstars/articles/kimi-k3-benchmark",
-      "publishedAt": "Mon, 27 Jul 2026 23:19:53 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "「Simple Made Easy」の観点から、UI/UXはどうあるべきか",
-      "url": "https://zenn.dev/pksha/articles/6cdf19e5fe8065",
-      "publishedAt": "Mon, 27 Jul 2026 07:22:43 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【2026年版】MIXI 新卒向け技術研修を公開しました。",
-      "url": "https://zenn.dev/mixi/articles/fd62f8ddc178f6",
-      "publishedAt": "Mon, 27 Jul 2026 04:26:35 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "最近の開発の流れ",
-      "url": "https://zenn.dev/kimuchan/articles/bc8e98682f8594",
-      "publishedAt": "Mon, 27 Jul 2026 00:31:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-03T02:10:51.499Z"
+  "updatedAt": "2026-08-04T01:56:39.571Z"
 }
