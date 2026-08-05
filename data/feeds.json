@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "Microsoft 謹製 デスクトップアプリ「Skill Recorder」で業務効率化スキル（SKILL.md）の作成が捗る？",
+      "url": "https://zenn.dev/benjuwan/articles/c2ba48e7662f92",
+      "publishedAt": "Tue, 04 Aug 2026 04:57:19 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "生成AIの品質保証をどう設計する？ ― 「全部QAで見る」をやめて、機械とAIと人に分けた話",
+      "url": "https://zenn.dev/wn_engineering/articles/95911ca28a7b1f",
+      "publishedAt": "Tue, 04 Aug 2026 03:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ROS 2 ハンズオン — 環境構築から自作ノード・自律走行まで",
+      "url": "https://zenn.dev/kimushun1101/books/ros2-handson",
+      "publishedAt": "Tue, 04 Aug 2026 01:08:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Rust のテストを実行するとき、裏側で何が起きているか",
+      "url": "https://zenn.dev/estie/articles/882e14dcad0d46",
+      "publishedAt": "Tue, 04 Aug 2026 01:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【RAG】話題の米国AIベンチャーで実践される「社内ナレッジ」管理",
+      "url": "https://zenn.dev/knowledgesense/articles/7c1a8f7720b119",
+      "publishedAt": "Tue, 04 Aug 2026 00:02:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIエージェント向けのツールを、MCPではなくCLIとして作った — 設計の3原則",
+      "url": "https://zenn.dev/codatum/articles/80b99faba75704",
+      "publishedAt": "Mon, 03 Aug 2026 23:02:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Web を iOS に乗せると仕様書に載っていない WebKit にボコボコにされる",
+      "url": "https://zenn.dev/tamat_llc/articles/ios-webkit-invisible-specs",
+      "publishedAt": "Mon, 03 Aug 2026 10:23:25 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Web 標準動向 2026年7月版",
       "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202607",
       "publishedAt": "Mon, 03 Aug 2026 08:25:48 GMT",
@@ -43,6 +85,12 @@
       "source": "zenn"
     },
     {
+      "title": "育てて学ぶ はじめての自作プログラミング言語",
+      "url": "https://zenn.dev/kb84tkhr/books/learning-by-growing-language",
+      "publishedAt": "Sun, 02 Aug 2026 06:22:58 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Claude CodeのSkillsは「手順書」だったので、/article コマンドを作ってみた",
       "url": "https://zenn.dev/osakayakyu/articles/e6aa9835c04d73",
       "publishedAt": "Sun, 02 Aug 2026 03:15:05 GMT",
@@ -71,54 +119,6 @@
       "url": "https://zenn.dev/headwaters/articles/76f20490b76952",
       "publishedAt": "Fri, 31 Jul 2026 23:36:46 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "GitHubにスタック型プルリクエストが登場。gh stackでPRを分割して積み上げよう",
-      "url": "https://zenn.dev/ubie_dev/articles/gh-stack-introduction",
-      "publishedAt": "Fri, 31 Jul 2026 13:33:10 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "メテオフォール開発",
-      "url": "https://zenn.dev/hisaju01/books/meteorfall-development",
-      "publishedAt": "Fri, 31 Jul 2026 06:16:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Web Streams API 入門 ― 基本概念から実践まで",
-      "url": "https://zenn.dev/cybozu_frontend/articles/web-streams-api-guide",
-      "publishedAt": "Thu, 30 Jul 2026 23:57:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Copilot Chat（Microsoft 365）の会話を Markdown に保存・エクスポートする方法（拡張機能不要）",
-      "url": "https://zenn.dev/dxclab/articles/bdc3935d10706c",
-      "publishedAt": "Thu, 30 Jul 2026 09:19:02 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "0.5くらいから始めるPersonal Knowledge Base 構築実践",
-      "url": "https://zenn.dev/mkj/articles/claudian-orchestra-build_20260720",
-      "publishedAt": "Thu, 30 Jul 2026 08:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "MCPの大型アップデート（2026-07-28）で何が変わったか —— TypeScript SDK v2で試す",
-      "url": "https://zenn.dev/komlock_lab/articles/mcp-stateless-spec-2026",
-      "publishedAt": "Wed, 29 Jul 2026 14:05:30 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【Claude Code】planモードはもう使っていない",
-      "url": "https://zenn.dev/notahotel/articles/0c28638945aa32",
-      "publishedAt": "Wed, 29 Jul 2026 00:37:17 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI時代に感じた危機感と、エンジニアがこれから考えるべきこと",
-      "url": "https://zenn.dev/nabewata/articles/8cef1bd4cbae3f",
-      "publishedAt": "Tue, 28 Jul 2026 12:24:59 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-04T01:56:39.571Z"
+  "updatedAt": "2026-08-05T01:55:51.672Z"
 }
