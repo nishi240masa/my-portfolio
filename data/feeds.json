@@ -1,6 +1,36 @@
 {
   "zenn": [
     {
+      "title": "gpt-5.6-sol の high に「ウルトラ」と入力して「ソウル」と話させる技術",
+      "url": "https://zenn.dev/microsoft/articles/agent-framework-ultra-soul",
+      "publishedAt": "Wed, 05 Aug 2026 11:19:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Code の「無駄」を可視化するツール cclens を作った",
+      "url": "https://zenn.dev/lambdalisue/articles/introduce-cclens",
+      "publishedAt": "Wed, 05 Aug 2026 06:37:39 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "散らばった議論を LLM-Wiki でフル活用する AI 時代のデザインシステムのカタチ",
+      "url": "https://zenn.dev/cybozu_frontend/articles/llm-wiki-for-design-systems",
+      "publishedAt": "Wed, 05 Aug 2026 03:00:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "タイムボクシングのすすめ",
+      "url": "https://zenn.dev/tokium_dev/articles/timeboxing-design-and-practice",
+      "publishedAt": "Wed, 05 Aug 2026 01:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "プロンプトエンジニアリングのすすめかた",
+      "url": "https://zenn.dev/nrs/articles/70db94beb7b76d",
+      "publishedAt": "Tue, 04 Aug 2026 10:40:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Microsoft 謹製 デスクトップアプリ「Skill Recorder」で業務効率化スキル（SKILL.md）の作成が捗る？",
       "url": "https://zenn.dev/benjuwan/articles/c2ba48e7662f92",
       "publishedAt": "Tue, 04 Aug 2026 04:57:19 GMT",
@@ -10,6 +40,12 @@
       "title": "生成AIの品質保証をどう設計する？ ― 「全部QAで見る」をやめて、機械とAIと人に分けた話",
       "url": "https://zenn.dev/wn_engineering/articles/95911ca28a7b1f",
       "publishedAt": "Tue, 04 Aug 2026 03:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "バックエンドエンジニアがQAを1年やって思ったこと――役割の前に、人がいる",
+      "url": "https://zenn.dev/knowledgework/articles/2f100e296b60d4",
+      "publishedAt": "Tue, 04 Aug 2026 02:48:55 GMT",
       "source": "zenn"
     },
     {
@@ -37,6 +73,12 @@
       "source": "zenn"
     },
     {
+      "title": "AI家臣団を解散して、影武者を一人だけ残した　兵法書と訓練記録",
+      "url": "https://zenn.dev/shio_shoppaize/books/kagemusha-book",
+      "publishedAt": "Mon, 03 Aug 2026 20:34:35 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Web を iOS に乗せると仕様書に載っていない WebKit にボコボコにされる",
       "url": "https://zenn.dev/tamat_llc/articles/ios-webkit-invisible-specs",
       "publishedAt": "Mon, 03 Aug 2026 10:23:25 GMT",
@@ -61,12 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "UnityのDIは本当に必要か：Zenject継続・Reflex新規採用・VContainer比較の判断軸",
-      "url": "https://zenn.dev/gamedev_toollab/articles/945a5084be2a38",
-      "publishedAt": "Mon, 03 Aug 2026 01:00:06 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "アーキテクチャに限らず意思決定を全部残す「ADR（Any Decision Record）」という文化",
       "url": "https://zenn.dev/dress_code/articles/c73500ae73361c",
       "publishedAt": "Mon, 03 Aug 2026 00:00:10 GMT",
@@ -82,42 +118,6 @@
       "title": "ある日エンジニアが突然無職になってしまったら？ — 離職インシデント対応ランブック",
       "url": "https://zenn.dev/tsukuboshi/articles/engineer-unemployment-runbook",
       "publishedAt": "Sun, 02 Aug 2026 07:13:50 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "育てて学ぶ はじめての自作プログラミング言語",
-      "url": "https://zenn.dev/kb84tkhr/books/learning-by-growing-language",
-      "publishedAt": "Sun, 02 Aug 2026 06:22:58 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude CodeのSkillsは「手順書」だったので、/article コマンドを作ってみた",
-      "url": "https://zenn.dev/osakayakyu/articles/e6aa9835c04d73",
-      "publishedAt": "Sun, 02 Aug 2026 03:15:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Kimi K3を441GBに枝刈りして、Mac Studio 1台で動かした",
-      "url": "https://zenn.dev/hellohazime/articles/kimi_k3_reap640_512gb_mac",
-      "publishedAt": "Sun, 02 Aug 2026 00:43:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GDBで始めるアセンブリと解析",
-      "url": "https://zenn.dev/juck28/articles/091c07869aba28",
-      "publishedAt": "Sat, 01 Aug 2026 13:34:19 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI フレンドリーな CLI を開発するテクニック",
-      "url": "https://zenn.dev/shunsuke_suzuki/articles/make-cli-ai-friendly",
-      "publishedAt": "Sat, 01 Aug 2026 01:35:46 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ローカルタスク管理アプリを設計してみた",
-      "url": "https://zenn.dev/headwaters/articles/76f20490b76952",
-      "publishedAt": "Fri, 31 Jul 2026 23:36:46 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-05T01:55:51.672Z"
+  "updatedAt": "2026-08-06T01:59:23.475Z"
 }
