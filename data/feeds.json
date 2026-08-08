@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "楽観ロックの実装でおさえたいポイントと、よくあるしくじり",
+      "url": "https://zenn.dev/levtech/articles/how-to-concrete-optimistic-lock",
+      "publishedAt": "Fri, 07 Aug 2026 03:03:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "手を動かしてStacked pull requestのgh stackを理解してみた",
+      "url": "https://zenn.dev/kesin11/articles/20260806_stacked_pr",
+      "publishedAt": "Thu, 06 Aug 2026 23:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Kaggle ROGIIコンペ振り返りー192nd Place Solution",
+      "url": "https://zenn.dev/fusic/articles/240bd206835c53",
+      "publishedAt": "Thu, 06 Aug 2026 22:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "58% の Pull Request を AI が承認するようになった",
+      "url": "https://zenn.dev/she_techblog/articles/937836550dfdf3",
+      "publishedAt": "Thu, 06 Aug 2026 21:10:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "自宅RTX 5090にvLLM+Open WebUI のローカルLLMサーバーを立てて Tailnet 経由でスマホから使う",
+      "url": "https://zenn.dev/kaerururu/articles/2b2a82ba6f3ba2",
+      "publishedAt": "Thu, 06 Aug 2026 11:31:31 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "面白くない自作パズルをAIに8,000回プレイさせたら原因がわかった！",
+      "url": "https://zenn.dev/xtone/articles/masshiro-ai-playtest",
+      "publishedAt": "Thu, 06 Aug 2026 10:27:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "LLM Wikiパターンの標準化 OKF(Open Knowledge Format)",
+      "url": "https://zenn.dev/finatext/articles/2ea88e4b1c2e5b",
+      "publishedAt": "Thu, 06 Aug 2026 02:00:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "DESIGN.md を置くと、どこまで「いい感じ」になるのか — 74件を測って確かめた",
       "url": "https://zenn.dev/ait/articles/google-design-md-measured",
       "publishedAt": "Wed, 05 Aug 2026 18:49:06 GMT",
@@ -16,12 +58,6 @@
       "title": "脆弱性を作り込まないために、Claude公式「Security Guidance Plugin」を導入した話",
       "url": "https://zenn.dev/rakko_inc/articles/claude-code-security-guidance-intro",
       "publishedAt": "Wed, 05 Aug 2026 09:25:00 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "SkillをGitHub Copilotで\"育てる\" — 実証的プロンプト改善の実践レポート",
-      "url": "https://zenn.dev/aiforall/articles/cb36b724e20a43",
-      "publishedAt": "Wed, 05 Aug 2026 08:23:13 GMT",
       "source": "zenn"
     },
     {
@@ -43,33 +79,15 @@
       "source": "zenn"
     },
     {
-      "title": "散らばった議論を LLM-Wiki でフル活用する AI 時代のデザインシステムのカタチ",
-      "url": "https://zenn.dev/cybozu_frontend/articles/llm-wiki-for-design-systems",
-      "publishedAt": "Wed, 05 Aug 2026 03:00:09 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "プロンプトエンジニアリングのすすめかた",
-      "url": "https://zenn.dev/nrs/articles/70db94beb7b76d",
-      "publishedAt": "Tue, 04 Aug 2026 10:40:05 GMT",
+      "title": "タイムボクシングのすすめ",
+      "url": "https://zenn.dev/tokium_dev/articles/timeboxing-design-and-practice",
+      "publishedAt": "Wed, 05 Aug 2026 01:00:05 GMT",
       "source": "zenn"
     },
     {
       "title": "Microsoft 謹製 デスクトップアプリ「Skill Recorder」で業務効率化スキル（SKILL.md）の作成が捗る？",
       "url": "https://zenn.dev/benjuwan/articles/c2ba48e7662f92",
       "publishedAt": "Tue, 04 Aug 2026 04:57:19 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "生成AIの品質保証をどう設計する？ ― 「全部QAで見る」をやめて、機械とAIと人に分けた話",
-      "url": "https://zenn.dev/wn_engineering/articles/95911ca28a7b1f",
-      "publishedAt": "Tue, 04 Aug 2026 03:00:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "バックエンドエンジニアがQAを1年やって思ったこと――役割の前に、人がいる",
-      "url": "https://zenn.dev/knowledgework/articles/2f100e296b60d4",
-      "publishedAt": "Tue, 04 Aug 2026 02:48:55 GMT",
       "source": "zenn"
     },
     {
@@ -91,33 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "AIエージェント向けのツールを、MCPではなくCLIとして作った — 設計の3原則",
-      "url": "https://zenn.dev/codatum/articles/80b99faba75704",
-      "publishedAt": "Mon, 03 Aug 2026 23:02:09 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AI家臣団を解散して、影武者を一人だけ残した　兵法書と訓練記録",
       "url": "https://zenn.dev/shio_shoppaize/books/kagemusha-book",
       "publishedAt": "Mon, 03 Aug 2026 20:34:35 GMT",
       "source": "zenn"
     },
     {
-      "title": "Web 標準動向 2026年7月版",
-      "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202607",
-      "publishedAt": "Mon, 03 Aug 2026 08:25:48 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "オントロジーで AI に業務知識を渡す — AWS の OSS「Context Ontology Accelerator」を試してみた",
       "url": "https://zenn.dev/aws_japan/articles/context-ontology-accelerator-deploy",
       "publishedAt": "Mon, 03 Aug 2026 05:26:48 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "アーキテクチャに限らず意思決定を全部残す「ADR（Any Decision Record）」という文化",
-      "url": "https://zenn.dev/dress_code/articles/c73500ae73361c",
-      "publishedAt": "Mon, 03 Aug 2026 00:00:10 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-07T02:21:53.413Z"
+  "updatedAt": "2026-08-08T01:07:39.137Z"
 }
