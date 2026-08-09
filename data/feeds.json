@@ -1,21 +1,27 @@
 {
   "zenn": [
     {
+      "title": "Redditのヘッジファンド、クオンツトピックをGrokタスクで毎週自動収集する",
+      "url": "https://zenn.dev/gamella/articles/1fc2949daf99de",
+      "publishedAt": "Sat, 08 Aug 2026 01:45:28 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "社内MCPをCloudflare AccessとCloudflare Workersでつくる",
+      "url": "https://zenn.dev/pipipipipi/articles/661b28da670728",
+      "publishedAt": "Fri, 07 Aug 2026 09:29:59 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "楽観ロックの実装でおさえたいポイントと、よくあるしくじり",
       "url": "https://zenn.dev/levtech/articles/how-to-concrete-optimistic-lock",
       "publishedAt": "Fri, 07 Aug 2026 03:03:06 GMT",
       "source": "zenn"
     },
     {
-      "title": "手を動かしてStacked pull requestのgh stackを理解してみた",
-      "url": "https://zenn.dev/kesin11/articles/20260806_stacked_pr",
-      "publishedAt": "Thu, 06 Aug 2026 23:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Kaggle ROGIIコンペ振り返りー192nd Place Solution",
-      "url": "https://zenn.dev/fusic/articles/240bd206835c53",
-      "publishedAt": "Thu, 06 Aug 2026 22:00:05 GMT",
+      "title": "自作BIツール × DWHで挑むデータの民主化",
+      "url": "https://zenn.dev/finatext/articles/crest-bi-dwh-data-democratization",
+      "publishedAt": "Fri, 07 Aug 2026 02:00:39 GMT",
       "source": "zenn"
     },
     {
@@ -55,12 +61,6 @@
       "source": "zenn"
     },
     {
-      "title": "脆弱性を作り込まないために、Claude公式「Security Guidance Plugin」を導入した話",
-      "url": "https://zenn.dev/rakko_inc/articles/claude-code-security-guidance-intro",
-      "publishedAt": "Wed, 05 Aug 2026 09:25:00 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "仕様書から保証台帳へ、GDD（保証駆動開発）のすすめ",
       "url": "https://zenn.dev/yktsnet/articles/202608-guarantee-driven-development",
       "publishedAt": "Wed, 05 Aug 2026 07:42:28 GMT",
@@ -91,33 +91,33 @@
       "source": "zenn"
     },
     {
-      "title": "ROS 2 ハンズオン — 環境構築から自作ノード・自律走行まで",
-      "url": "https://zenn.dev/kimushun1101/books/ros2-handson",
-      "publishedAt": "Tue, 04 Aug 2026 01:08:42 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Rust のテストを実行するとき、裏側で何が起きているか",
-      "url": "https://zenn.dev/estie/articles/882e14dcad0d46",
-      "publishedAt": "Tue, 04 Aug 2026 01:00:06 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "【RAG】話題の米国AIベンチャーで実践される「社内ナレッジ」管理",
       "url": "https://zenn.dev/knowledgesense/articles/7c1a8f7720b119",
       "publishedAt": "Tue, 04 Aug 2026 00:02:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "AI家臣団を解散して、影武者を一人だけ残した　兵法書と訓練記録",
-      "url": "https://zenn.dev/shio_shoppaize/books/kagemusha-book",
-      "publishedAt": "Mon, 03 Aug 2026 20:34:35 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "オントロジーで AI に業務知識を渡す — AWS の OSS「Context Ontology Accelerator」を試してみた",
       "url": "https://zenn.dev/aws_japan/articles/context-ontology-accelerator-deploy",
       "publishedAt": "Mon, 03 Aug 2026 05:26:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "アーキテクチャに限らず意思決定を全部残す「ADR（Any Decision Record）」という文化",
+      "url": "https://zenn.dev/dress_code/articles/c73500ae73361c",
+      "publishedAt": "Mon, 03 Aug 2026 00:00:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オリジン・CORS・セッションを基礎から理解する",
+      "url": "https://zenn.dev/owade/articles/cors-session-origin-guide",
+      "publishedAt": "Sun, 02 Aug 2026 13:51:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ある日エンジニアが突然無職になってしまったら？ — 離職インシデント対応ランブック",
+      "url": "https://zenn.dev/tsukuboshi/articles/engineer-unemployment-runbook",
+      "publishedAt": "Sun, 02 Aug 2026 07:13:50 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-08T01:07:39.137Z"
+  "updatedAt": "2026-08-09T01:12:31.104Z"
 }
