@@ -1,27 +1,51 @@
 {
   "zenn": [
     {
-      "title": "Redditのヘッジファンド、クオンツトピックをGrokタスクで毎週自動収集する",
-      "url": "https://zenn.dev/gamella/articles/1fc2949daf99de",
-      "publishedAt": "Sat, 08 Aug 2026 01:45:28 GMT",
+      "title": "UKIさん、Hohetoさんの「勝てる戦略は誰が負けてくれるかを説明できる」をクオンツ視点で読み解く",
+      "url": "https://zenn.dev/gamella/articles/d5ad80722d01ae",
+      "publishedAt": "Sun, 09 Aug 2026 02:01:16 GMT",
       "source": "zenn"
     },
     {
-      "title": "社内MCPをCloudflare AccessとCloudflare Workersでつくる",
-      "url": "https://zenn.dev/pipipipipi/articles/661b28da670728",
-      "publishedAt": "Fri, 07 Aug 2026 09:29:59 GMT",
+      "title": "Raspberry Pi 5でClaude Codeを動かす",
+      "url": "https://zenn.dev/gsy0911/articles/a4dc76f0639576",
+      "publishedAt": "Sat, 08 Aug 2026 13:14:38 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "C# 15+の新DIパターン: 内部はinterfaceで疎結合、公開APIはunionで型の許容範囲を制御",
+      "url": "https://zenn.dev/inuinu/articles/csharp15-new-di-interface-union-closed",
+      "publishedAt": "Sat, 08 Aug 2026 13:09:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Code で「ループエンジニアリング」を実践してみた",
+      "url": "https://zenn.dev/tetsu_don/articles/e40b95dfc726ac",
+      "publishedAt": "Sat, 08 Aug 2026 04:39:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "経費精算アプリもExcelも捨てる。Claude Desktop（MCP）＋マネーフォワードAPIで経理を完全自動化した話",
+      "url": "https://zenn.dev/yuichirominato/articles/dc8cf3915f1c6f",
+      "publishedAt": "Sat, 08 Aug 2026 02:14:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cloudflare Walletsは何を提供するのか",
+      "url": "https://zenn.dev/komlock_lab/articles/cloudflare-wallets-agent-payments",
+      "publishedAt": "Fri, 07 Aug 2026 09:26:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "[Claude Code] AIの説明が「それっぽいだけ」で終わる問題を、Skill設計で解決した話",
+      "url": "https://zenn.dev/ncdc/articles/56d60cb79319b2",
+      "publishedAt": "Fri, 07 Aug 2026 09:18:18 GMT",
       "source": "zenn"
     },
     {
       "title": "楽観ロックの実装でおさえたいポイントと、よくあるしくじり",
       "url": "https://zenn.dev/levtech/articles/how-to-concrete-optimistic-lock",
       "publishedAt": "Fri, 07 Aug 2026 03:03:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "自作BIツール × DWHで挑むデータの民主化",
-      "url": "https://zenn.dev/finatext/articles/crest-bi-dwh-data-democratization",
-      "publishedAt": "Fri, 07 Aug 2026 02:00:39 GMT",
       "source": "zenn"
     },
     {
@@ -34,12 +58,6 @@
       "title": "自宅RTX 5090にvLLM+Open WebUI のローカルLLMサーバーを立てて Tailnet 経由でスマホから使う",
       "url": "https://zenn.dev/kaerururu/articles/2b2a82ba6f3ba2",
       "publishedAt": "Thu, 06 Aug 2026 11:31:31 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "面白くない自作パズルをAIに8,000回プレイさせたら原因がわかった！",
-      "url": "https://zenn.dev/xtone/articles/masshiro-ai-playtest",
-      "publishedAt": "Thu, 06 Aug 2026 10:27:14 GMT",
       "source": "zenn"
     },
     {
@@ -64,12 +82,6 @@
       "title": "仕様書から保証台帳へ、GDD（保証駆動開発）のすすめ",
       "url": "https://zenn.dev/yktsnet/articles/202608-guarantee-driven-development",
       "publishedAt": "Wed, 05 Aug 2026 07:42:28 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Code の「無駄」を可視化するツール cclens を作った",
-      "url": "https://zenn.dev/lambdalisue/articles/introduce-cclens",
-      "publishedAt": "Wed, 05 Aug 2026 06:37:39 GMT",
       "source": "zenn"
     },
     {
@@ -107,18 +119,6 @@
       "url": "https://zenn.dev/dress_code/articles/c73500ae73361c",
       "publishedAt": "Mon, 03 Aug 2026 00:00:10 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "オリジン・CORS・セッションを基礎から理解する",
-      "url": "https://zenn.dev/owade/articles/cors-session-origin-guide",
-      "publishedAt": "Sun, 02 Aug 2026 13:51:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ある日エンジニアが突然無職になってしまったら？ — 離職インシデント対応ランブック",
-      "url": "https://zenn.dev/tsukuboshi/articles/engineer-unemployment-runbook",
-      "publishedAt": "Sun, 02 Aug 2026 07:13:50 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-09T01:12:31.104Z"
+  "updatedAt": "2026-08-10T01:14:21.170Z"
 }
