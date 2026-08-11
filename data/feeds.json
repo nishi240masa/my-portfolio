@@ -1,6 +1,36 @@
 {
   "zenn": [
     {
+      "title": "Agent Plugins 1.0.0 は何を標準化し、何を標準化しなかったのか",
+      "url": "https://zenn.dev/aws_japan/articles/agent-plugins-1-0-deep-dive",
+      "publishedAt": "Mon, 10 Aug 2026 09:06:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "型の表現力はタダ: Rustのニッチ最適化を追う【第3部: コンパイラ内部を読む】",
+      "url": "https://zenn.dev/fast/articles/44f261437d706c",
+      "publishedAt": "Mon, 10 Aug 2026 04:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "CAPMの使い方",
+      "url": "https://zenn.dev/ageonsen/articles/bae0be293199f7",
+      "publishedAt": "Sun, 09 Aug 2026 22:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cloudflare OSをVRAM 8GBのゲーミングPCで動かしたら、三目並べ1個に5ラウンドかかった話",
+      "url": "https://zenn.dev/akari1106/articles/20109e62a4b8b7",
+      "publishedAt": "Sun, 09 Aug 2026 13:16:54 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "自分専用の仕事用デスクトップアプリを作って自分に適した情報網を作ろう",
+      "url": "https://zenn.dev/nana/articles/9d2f3c85ef3692",
+      "publishedAt": "Sun, 09 Aug 2026 04:49:15 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "UKIさん、Hohetoさんの「勝てる戦略は誰が負けてくれるかを説明できる」をクオンツ視点で読み解く",
       "url": "https://zenn.dev/gamella/articles/d5ad80722d01ae",
       "publishedAt": "Sun, 09 Aug 2026 02:01:16 GMT",
@@ -31,12 +61,6 @@
       "source": "zenn"
     },
     {
-      "title": "Cloudflare Walletsは何を提供するのか",
-      "url": "https://zenn.dev/komlock_lab/articles/cloudflare-wallets-agent-payments",
-      "publishedAt": "Fri, 07 Aug 2026 09:26:26 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "[Claude Code] AIの説明が「それっぽいだけ」で終わる問題を、Skill設計で解決した話",
       "url": "https://zenn.dev/ncdc/articles/56d60cb79319b2",
       "publishedAt": "Fri, 07 Aug 2026 09:18:18 GMT",
@@ -52,12 +76,6 @@
       "title": "58% の Pull Request を AI が承認するようになった",
       "url": "https://zenn.dev/she_techblog/articles/937836550dfdf3",
       "publishedAt": "Thu, 06 Aug 2026 21:10:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "自宅RTX 5090にvLLM+Open WebUI のローカルLLMサーバーを立てて Tailnet 経由でスマホから使う",
-      "url": "https://zenn.dev/kaerururu/articles/2b2a82ba6f3ba2",
-      "publishedAt": "Thu, 06 Aug 2026 11:31:31 GMT",
       "source": "zenn"
     },
     {
@@ -91,12 +109,6 @@
       "source": "zenn"
     },
     {
-      "title": "タイムボクシングのすすめ",
-      "url": "https://zenn.dev/tokium_dev/articles/timeboxing-design-and-practice",
-      "publishedAt": "Wed, 05 Aug 2026 01:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Microsoft 謹製 デスクトップアプリ「Skill Recorder」で業務効率化スキル（SKILL.md）の作成が捗る？",
       "url": "https://zenn.dev/benjuwan/articles/c2ba48e7662f92",
       "publishedAt": "Tue, 04 Aug 2026 04:57:19 GMT",
@@ -106,18 +118,6 @@
       "title": "【RAG】話題の米国AIベンチャーで実践される「社内ナレッジ」管理",
       "url": "https://zenn.dev/knowledgesense/articles/7c1a8f7720b119",
       "publishedAt": "Tue, 04 Aug 2026 00:02:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "オントロジーで AI に業務知識を渡す — AWS の OSS「Context Ontology Accelerator」を試してみた",
-      "url": "https://zenn.dev/aws_japan/articles/context-ontology-accelerator-deploy",
-      "publishedAt": "Mon, 03 Aug 2026 05:26:48 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "アーキテクチャに限らず意思決定を全部残す「ADR（Any Decision Record）」という文化",
-      "url": "https://zenn.dev/dress_code/articles/c73500ae73361c",
-      "publishedAt": "Mon, 03 Aug 2026 00:00:10 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-10T01:14:21.170Z"
+  "updatedAt": "2026-08-11T01:13:00.723Z"
 }
