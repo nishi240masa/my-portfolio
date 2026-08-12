@@ -1,9 +1,81 @@
 {
   "zenn": [
     {
+      "title": "macOSでメモリを使い続けるCursorUIViewServiceを無効化する",
+      "url": "https://zenn.dev/discus0434/articles/disable-cursoruiviewservice-macos",
+      "publishedAt": "Tue, 11 Aug 2026 06:21:45 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "中古サーバ用GPUでローカルLLM環境を作る試算（MI50 / P40 / P100 / V100 / CMP 170HX）",
+      "url": "https://zenn.dev/phpmyadmin/articles/used-server-gpu-local-llm",
+      "publishedAt": "Tue, 11 Aug 2026 05:19:22 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "BM25を使用してCodexのトークンの消費を30%抑える",
+      "url": "https://zenn.dev/knowledgesense/articles/9e55a3bb67729c",
+      "publishedAt": "Tue, 11 Aug 2026 01:08:19 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "1日500コミットを日常にするツールを作りました ── これを使えばだれでも余裕です",
+      "url": "https://zenn.dev/singularity/articles/ever-better-pm2",
+      "publishedAt": "Mon, 10 Aug 2026 23:47:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "N+1 問題を、発行される SQL を数えて理解する",
+      "url": "https://zenn.dev/mtmtdack/articles/2026-08-11-n-plus-one-counting-queries",
+      "publishedAt": "Mon, 10 Aug 2026 16:17:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "レンタルサーバーを作ってみた話と、これから作りたいもの",
+      "url": "https://zenn.dev/techfish4/articles/0c502382253a4e",
+      "publishedAt": "Mon, 10 Aug 2026 15:43:49 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "曖昧に使っていたAI周りの言葉を理解する",
+      "url": "https://zenn.dev/yoshipon_tech/articles/a51bbfcc068c1f",
+      "publishedAt": "Mon, 10 Aug 2026 15:10:24 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ドメインモデル図がすぐ古くなるので、Storybookっぽくコードと関連付けて見れるようにしてみた",
+      "url": "https://zenn.dev/dress_code/articles/34f18afe1464e8",
+      "publishedAt": "Mon, 10 Aug 2026 14:59:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cloudflareは16年間ずっと同じことをしている。「通り道を支配する」という設計思想を知る",
+      "url": "https://zenn.dev/akari1106/articles/9d2abbc63a4abb",
+      "publishedAt": "Mon, 10 Aug 2026 14:43:33 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Agent Plugins 1.0.0 は何を標準化し、何を標準化しなかったのか",
       "url": "https://zenn.dev/aws_japan/articles/agent-plugins-1-0-deep-dive",
       "publishedAt": "Mon, 10 Aug 2026 09:06:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Proxmox VEでAMD SEV-SNPを試してみる",
+      "url": "https://zenn.dev/ciffelia/articles/pve-amd-sec-snp",
+      "publishedAt": "Mon, 10 Aug 2026 06:44:56 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "え?DB側から外部サイトにアクセスさせるSQL Injection?ラボで見てみる攻撃のパターン",
+      "url": "https://zenn.dev/knowledgework/articles/29b2b09ac70350",
+      "publishedAt": "Mon, 10 Aug 2026 06:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "CLI 上の Claude Code で Computer Use を再現する（追加課金ゼロ、441 行のエージェント）",
+      "url": "https://zenn.dev/tokium_dev/articles/gui-agent-zero-extra-cost",
+      "publishedAt": "Mon, 10 Aug 2026 04:59:12 GMT",
       "source": "zenn"
     },
     {
@@ -13,9 +85,9 @@
       "source": "zenn"
     },
     {
-      "title": "CAPMの使い方",
-      "url": "https://zenn.dev/ageonsen/articles/bae0be293199f7",
-      "publishedAt": "Sun, 09 Aug 2026 22:00:05 GMT",
+      "title": "Next.js + Cloudflareで「サボる」ためのWebツール集を個人開発した",
+      "url": "https://zenn.dev/ikuosaito1989/articles/47a9b4d4177d87",
+      "publishedAt": "Mon, 10 Aug 2026 01:59:52 GMT",
       "source": "zenn"
     },
     {
@@ -37,18 +109,6 @@
       "source": "zenn"
     },
     {
-      "title": "Raspberry Pi 5でClaude Codeを動かす",
-      "url": "https://zenn.dev/gsy0911/articles/a4dc76f0639576",
-      "publishedAt": "Sat, 08 Aug 2026 13:14:38 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "C# 15+の新DIパターン: 内部はinterfaceで疎結合、公開APIはunionで型の許容範囲を制御",
-      "url": "https://zenn.dev/inuinu/articles/csharp15-new-di-interface-union-closed",
-      "publishedAt": "Sat, 08 Aug 2026 13:09:58 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Claude Code で「ループエンジニアリング」を実践してみた",
       "url": "https://zenn.dev/tetsu_don/articles/e40b95dfc726ac",
       "publishedAt": "Sat, 08 Aug 2026 04:39:01 GMT",
@@ -58,66 +118,6 @@
       "title": "経費精算アプリもExcelも捨てる。Claude Desktop（MCP）＋マネーフォワードAPIで経理を完全自動化した話",
       "url": "https://zenn.dev/yuichirominato/articles/dc8cf3915f1c6f",
       "publishedAt": "Sat, 08 Aug 2026 02:14:37 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "[Claude Code] AIの説明が「それっぽいだけ」で終わる問題を、Skill設計で解決した話",
-      "url": "https://zenn.dev/ncdc/articles/56d60cb79319b2",
-      "publishedAt": "Fri, 07 Aug 2026 09:18:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "楽観ロックの実装でおさえたいポイントと、よくあるしくじり",
-      "url": "https://zenn.dev/levtech/articles/how-to-concrete-optimistic-lock",
-      "publishedAt": "Fri, 07 Aug 2026 03:03:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "58% の Pull Request を AI が承認するようになった",
-      "url": "https://zenn.dev/she_techblog/articles/937836550dfdf3",
-      "publishedAt": "Thu, 06 Aug 2026 21:10:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "LLM Wikiパターンの標準化 OKF(Open Knowledge Format)",
-      "url": "https://zenn.dev/finatext/articles/2ea88e4b1c2e5b",
-      "publishedAt": "Thu, 06 Aug 2026 02:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "DESIGN.md を置くと、どこまで「いい感じ」になるのか — 74件を測って確かめた",
-      "url": "https://zenn.dev/ait/articles/google-design-md-measured",
-      "publishedAt": "Wed, 05 Aug 2026 18:49:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "gpt-5.6-sol の high に「ウルトラ」と入力して「ソウル」と話させる技術",
-      "url": "https://zenn.dev/microsoft/articles/agent-framework-ultra-soul",
-      "publishedAt": "Wed, 05 Aug 2026 11:19:01 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "仕様書から保証台帳へ、GDD（保証駆動開発）のすすめ",
-      "url": "https://zenn.dev/yktsnet/articles/202608-guarantee-driven-development",
-      "publishedAt": "Wed, 05 Aug 2026 07:42:28 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude が書く長いコメントは、Claude 自身の役に立っていなかった",
-      "url": "https://zenn.dev/uzu_tech/articles/86a2ef05a7d649",
-      "publishedAt": "Wed, 05 Aug 2026 03:00:10 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Microsoft 謹製 デスクトップアプリ「Skill Recorder」で業務効率化スキル（SKILL.md）の作成が捗る？",
-      "url": "https://zenn.dev/benjuwan/articles/c2ba48e7662f92",
-      "publishedAt": "Tue, 04 Aug 2026 04:57:19 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【RAG】話題の米国AIベンチャーで実践される「社内ナレッジ」管理",
-      "url": "https://zenn.dev/knowledgesense/articles/7c1a8f7720b119",
-      "publishedAt": "Tue, 04 Aug 2026 00:02:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-11T01:13:00.723Z"
+  "updatedAt": "2026-08-12T01:20:41.316Z"
 }
