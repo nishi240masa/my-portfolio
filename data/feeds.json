@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "ナレッジワークにおけるAI活用をベースとしたQAプロセスの最適化",
+      "url": "https://zenn.dev/knowledgework/articles/2114d46c201da3",
+      "publishedAt": "Wed, 12 Aug 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "iOSアプリ審査が遅くなってない？フィードバックを送る方法",
+      "url": "https://zenn.dev/solar/articles/8216ba86515aa5",
+      "publishedAt": "Wed, 12 Aug 2026 01:28:30 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "共催テックイベント運営入門 as 採用広報",
+      "url": "https://zenn.dev/tbpgr/books/d7eb07b518e467",
+      "publishedAt": "Wed, 12 Aug 2026 00:23:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Chromium(V8)のArray.prototype.copyWithinを最大約450倍高速化した",
+      "url": "https://zenn.dev/dinii/articles/a272b7c3b60ab8",
+      "publishedAt": "Wed, 12 Aug 2026 00:01:18 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【WSL2 & GitHub】Windowsで開発用の環境を作る手順書",
+      "url": "https://zenn.dev/teru_gift/articles/61dbef1333c9c9",
+      "publishedAt": "Tue, 11 Aug 2026 16:19:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Next.js BFFの認証を考察して、シンプルにする方法を考える",
+      "url": "https://zenn.dev/naofumik/articles/4fdfcbb5cf083e",
+      "publishedAt": "Tue, 11 Aug 2026 14:12:33 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "なぜAIで作業を効率化しても、給料が上がらないのか？",
+      "url": "https://zenn.dev/karamage/articles/976a5f8fb0f876",
+      "publishedAt": "Tue, 11 Aug 2026 09:09:53 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "macOSでメモリを使い続けるCursorUIViewServiceを無効化する",
       "url": "https://zenn.dev/discus0434/articles/disable-cursoruiviewservice-macos",
       "publishedAt": "Tue, 11 Aug 2026 06:21:45 GMT",
@@ -13,15 +55,15 @@
       "source": "zenn"
     },
     {
-      "title": "BM25を使用してCodexのトークンの消費を30%抑える",
-      "url": "https://zenn.dev/knowledgesense/articles/9e55a3bb67729c",
-      "publishedAt": "Tue, 11 Aug 2026 01:08:19 GMT",
+      "title": "Webサービスの終わらせ方",
+      "url": "https://zenn.dev/kibe/articles/df74c2e9fe76b6",
+      "publishedAt": "Tue, 11 Aug 2026 04:05:00 GMT",
       "source": "zenn"
     },
     {
-      "title": "1日500コミットを日常にするツールを作りました ── これを使えばだれでも余裕です",
-      "url": "https://zenn.dev/singularity/articles/ever-better-pm2",
-      "publishedAt": "Mon, 10 Aug 2026 23:47:57 GMT",
+      "title": "BM25を使用してCodexのトークンの消費を30%抑える",
+      "url": "https://zenn.dev/knowledgesense/articles/9e55a3bb67729c",
+      "publishedAt": "Tue, 11 Aug 2026 01:08:19 GMT",
       "source": "zenn"
     },
     {
@@ -61,33 +103,9 @@
       "source": "zenn"
     },
     {
-      "title": "Proxmox VEでAMD SEV-SNPを試してみる",
-      "url": "https://zenn.dev/ciffelia/articles/pve-amd-sec-snp",
-      "publishedAt": "Mon, 10 Aug 2026 06:44:56 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "え?DB側から外部サイトにアクセスさせるSQL Injection?ラボで見てみる攻撃のパターン",
-      "url": "https://zenn.dev/knowledgework/articles/29b2b09ac70350",
-      "publishedAt": "Mon, 10 Aug 2026 06:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "CLI 上の Claude Code で Computer Use を再現する（追加課金ゼロ、441 行のエージェント）",
       "url": "https://zenn.dev/tokium_dev/articles/gui-agent-zero-extra-cost",
       "publishedAt": "Mon, 10 Aug 2026 04:59:12 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "型の表現力はタダ: Rustのニッチ最適化を追う【第3部: コンパイラ内部を読む】",
-      "url": "https://zenn.dev/fast/articles/44f261437d706c",
-      "publishedAt": "Mon, 10 Aug 2026 04:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Next.js + Cloudflareで「サボる」ためのWebツール集を個人開発した",
-      "url": "https://zenn.dev/ikuosaito1989/articles/47a9b4d4177d87",
-      "publishedAt": "Mon, 10 Aug 2026 01:59:52 GMT",
       "source": "zenn"
     },
     {
@@ -97,27 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "自分専用の仕事用デスクトップアプリを作って自分に適した情報網を作ろう",
-      "url": "https://zenn.dev/nana/articles/9d2f3c85ef3692",
-      "publishedAt": "Sun, 09 Aug 2026 04:49:15 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "UKIさん、Hohetoさんの「勝てる戦略は誰が負けてくれるかを説明できる」をクオンツ視点で読み解く",
       "url": "https://zenn.dev/gamella/articles/d5ad80722d01ae",
       "publishedAt": "Sun, 09 Aug 2026 02:01:16 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Code で「ループエンジニアリング」を実践してみた",
-      "url": "https://zenn.dev/tetsu_don/articles/e40b95dfc726ac",
-      "publishedAt": "Sat, 08 Aug 2026 04:39:01 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "経費精算アプリもExcelも捨てる。Claude Desktop（MCP）＋マネーフォワードAPIで経理を完全自動化した話",
-      "url": "https://zenn.dev/yuichirominato/articles/dc8cf3915f1c6f",
-      "publishedAt": "Sat, 08 Aug 2026 02:14:37 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-12T01:20:41.316Z"
+  "updatedAt": "2026-08-13T01:22:07.111Z"
 }
