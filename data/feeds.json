@@ -1,15 +1,39 @@
 {
   "zenn": [
     {
+      "title": "AIエージェントと進めるソフトウェア開発",
+      "url": "https://zenn.dev/hako_hako/books/nexus-product-new-development",
+      "publishedAt": "Thu, 13 Aug 2026 08:10:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "続・貧者のアークテクチャ：Next.js + Cloudflare Workers + Turso 本番運用で踏んだ罠ぜんぶ",
+      "url": "https://zenn.dev/nabettu/articles/a964f988e7cc75",
+      "publishedAt": "Thu, 13 Aug 2026 05:44:16 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "同じRust製のBiomeとOxlintで、なぜ速度差が大きいのか",
+      "url": "https://zenn.dev/estie/articles/64b80da2fbf175",
+      "publishedAt": "Thu, 13 Aug 2026 03:00:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude がテキストに電子透かしを入れ始めたので、LLM ウォーターマーキングの仕組みを調べた",
+      "url": "https://zenn.dev/hellorusk/articles/3328866ca9e922",
+      "publishedAt": "Wed, 12 Aug 2026 08:52:20 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ナレッジワークにおけるAI活用をベースとしたQAプロセスの最適化",
       "url": "https://zenn.dev/knowledgework/articles/2114d46c201da3",
       "publishedAt": "Wed, 12 Aug 2026 02:50:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "iOSアプリ審査が遅くなってない？フィードバックを送る方法",
-      "url": "https://zenn.dev/solar/articles/8216ba86515aa5",
-      "publishedAt": "Wed, 12 Aug 2026 01:28:30 GMT",
+      "title": "【Go】Dockerfile に air は不要？ Use Compose Watch を前提にしたコンテナ構築",
+      "url": "https://zenn.dev/otakakot/articles/693a8367fd5f01",
+      "publishedAt": "Wed, 12 Aug 2026 01:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -25,15 +49,9 @@
       "source": "zenn"
     },
     {
-      "title": "【WSL2 & GitHub】Windowsで開発用の環境を作る手順書",
-      "url": "https://zenn.dev/teru_gift/articles/61dbef1333c9c9",
-      "publishedAt": "Tue, 11 Aug 2026 16:19:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Next.js BFFの認証を考察して、シンプルにする方法を考える",
-      "url": "https://zenn.dev/naofumik/articles/4fdfcbb5cf083e",
-      "publishedAt": "Tue, 11 Aug 2026 14:12:33 GMT",
+      "title": "自宅サーバーではじめる ローカルLLM入門 第1巻 基礎・構築編",
+      "url": "https://zenn.dev/murasanlab/books/dcf7ed4826a797",
+      "publishedAt": "Tue, 11 Aug 2026 12:25:59 GMT",
       "source": "zenn"
     },
     {
@@ -73,6 +91,12 @@
       "source": "zenn"
     },
     {
+      "title": "Claude Code に「同じ指摘を二度させない」仕組みを hook で作った",
+      "url": "https://zenn.dev/nozomi720/articles/claude_code_hooks_feedback",
+      "publishedAt": "Mon, 10 Aug 2026 16:10:41 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "レンタルサーバーを作ってみた話と、これから作りたいもの",
       "url": "https://zenn.dev/techfish4/articles/0c502382253a4e",
       "publishedAt": "Mon, 10 Aug 2026 15:43:49 GMT",
@@ -95,30 +119,6 @@
       "url": "https://zenn.dev/akari1106/articles/9d2abbc63a4abb",
       "publishedAt": "Mon, 10 Aug 2026 14:43:33 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "Agent Plugins 1.0.0 は何を標準化し、何を標準化しなかったのか",
-      "url": "https://zenn.dev/aws_japan/articles/agent-plugins-1-0-deep-dive",
-      "publishedAt": "Mon, 10 Aug 2026 09:06:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "CLI 上の Claude Code で Computer Use を再現する（追加課金ゼロ、441 行のエージェント）",
-      "url": "https://zenn.dev/tokium_dev/articles/gui-agent-zero-extra-cost",
-      "publishedAt": "Mon, 10 Aug 2026 04:59:12 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Cloudflare OSをVRAM 8GBのゲーミングPCで動かしたら、三目並べ1個に5ラウンドかかった話",
-      "url": "https://zenn.dev/akari1106/articles/20109e62a4b8b7",
-      "publishedAt": "Sun, 09 Aug 2026 13:16:54 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "UKIさん、Hohetoさんの「勝てる戦略は誰が負けてくれるかを説明できる」をクオンツ視点で読み解く",
-      "url": "https://zenn.dev/gamella/articles/d5ad80722d01ae",
-      "publishedAt": "Sun, 09 Aug 2026 02:01:16 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-13T01:22:07.111Z"
+  "updatedAt": "2026-08-14T01:22:00.408Z"
 }
