@@ -1,6 +1,12 @@
 {
   "zenn": [
     {
+      "title": "Databricks の Declarative Automation Bundles を用いた機械学習データセット作成基盤の構築",
+      "url": "https://zenn.dev/colum2131/articles/46b5560dce0e3a",
+      "publishedAt": "Fri, 14 Aug 2026 09:00:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "AIエージェントと進めるソフトウェア開発",
       "url": "https://zenn.dev/hako_hako/books/nexus-product-new-development",
       "publishedAt": "Thu, 13 Aug 2026 08:10:07 GMT",
@@ -19,6 +25,12 @@
       "source": "zenn"
     },
     {
+      "title": "なぜAI時代にGoが最適な言語なのか",
+      "url": "https://zenn.dev/iwatsukayura/articles/google-go-ai",
+      "publishedAt": "Wed, 12 Aug 2026 13:05:44 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Claude がテキストに電子透かしを入れ始めたので、LLM ウォーターマーキングの仕組みを調べた",
       "url": "https://zenn.dev/hellorusk/articles/3328866ca9e922",
       "publishedAt": "Wed, 12 Aug 2026 08:52:20 GMT",
@@ -28,12 +40,6 @@
       "title": "ナレッジワークにおけるAI活用をベースとしたQAプロセスの最適化",
       "url": "https://zenn.dev/knowledgework/articles/2114d46c201da3",
       "publishedAt": "Wed, 12 Aug 2026 02:50:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【Go】Dockerfile に air は不要？ Use Compose Watch を前提にしたコンテナ構築",
-      "url": "https://zenn.dev/otakakot/articles/693a8367fd5f01",
-      "publishedAt": "Wed, 12 Aug 2026 01:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -113,12 +119,6 @@
       "url": "https://zenn.dev/dress_code/articles/34f18afe1464e8",
       "publishedAt": "Mon, 10 Aug 2026 14:59:48 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "Cloudflareは16年間ずっと同じことをしている。「通り道を支配する」という設計思想を知る",
-      "url": "https://zenn.dev/akari1106/articles/9d2abbc63a4abb",
-      "publishedAt": "Mon, 10 Aug 2026 14:43:33 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-14T01:22:00.408Z"
+  "updatedAt": "2026-08-15T00:52:42.829Z"
 }
