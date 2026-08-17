@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "AI エージェントの「認可疲れ」に効く処方箋 : 理論から実装まで",
+      "url": "https://zenn.dev/aws_japan/articles/2b62886aa8735e",
+      "publishedAt": "Sun, 16 Aug 2026 13:18:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "MacBook Air M5 RAM32GBで実用的なローカルLLMを探す 生成速度測定編",
+      "url": "https://zenn.dev/koki_n22/articles/493f85b9f875ca",
+      "publishedAt": "Sun, 16 Aug 2026 07:19:18 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "botterのためのKaggle金融予測コンペの設計史",
+      "url": "https://zenn.dev/gamella/articles/f5e6bddab37c8d",
+      "publishedAt": "Sun, 16 Aug 2026 04:43:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "なぜ、ITの職場において低スキル者を排除することが成功のために重要だと誰も言わないのか？",
+      "url": "https://zenn.dev/pdfractal/articles/c7af0a168c0552",
+      "publishedAt": "Sat, 15 Aug 2026 13:23:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Jujutsu (jj) のつらみ Git前提の世界とAIコーディングエージェント",
+      "url": "https://zenn.dev/rozurozu/articles/20260815_jujutsu_tsurami",
+      "publishedAt": "Sat, 15 Aug 2026 08:41:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "42日でバックエンドエンジニアの基礎を完全に理解する #8 - インデックスと検索高速化",
+      "url": "https://zenn.dev/kipcop/articles/b42-go-08-index",
+      "publishedAt": "Sat, 15 Aug 2026 06:01:15 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "デスクトップUIフレームワーク15種のメモリ使用量計測",
+      "url": "https://zenn.dev/mizugeeks/articles/1019cf2353d343",
+      "publishedAt": "Sat, 15 Aug 2026 03:10:07 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "我々は富豪プログラミングをしていた。Cloudflare Workersで実装はどう変わるか",
       "url": "https://zenn.dev/rdlabo/articles/cloudflare-workers-after-rich-programming",
       "publishedAt": "Fri, 14 Aug 2026 20:40:24 GMT",
@@ -16,12 +58,6 @@
       "title": "5ヶ月育てたClaude CodeのCLAUDE.md/skills/rulesをOpus 5向けにClaude自身に棚卸しさせた",
       "url": "https://zenn.dev/koki_n22/articles/986f61d16989cb",
       "publishedAt": "Fri, 14 Aug 2026 10:51:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Databricks の Declarative Automation Bundles を用いた機械学習データセット作成基盤の構築",
-      "url": "https://zenn.dev/colum2131/articles/46b5560dce0e3a",
-      "publishedAt": "Fri, 14 Aug 2026 09:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -73,12 +109,6 @@
       "source": "zenn"
     },
     {
-      "title": "共催テックイベント運営入門 as 採用広報",
-      "url": "https://zenn.dev/tbpgr/books/d7eb07b518e467",
-      "publishedAt": "Wed, 12 Aug 2026 00:23:03 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "macOSでメモリを使い続けるCursorUIViewServiceを無効化する",
       "url": "https://zenn.dev/discus0434/articles/disable-cursoruiviewservice-macos",
       "publishedAt": "Tue, 11 Aug 2026 06:21:45 GMT",
@@ -88,36 +118,6 @@
       "title": "中古サーバ用GPUでローカルLLM環境を作る試算（MI50 / P40 / P100 / V100 / CMP 170HX）",
       "url": "https://zenn.dev/phpmyadmin/articles/used-server-gpu-local-llm",
       "publishedAt": "Tue, 11 Aug 2026 05:19:22 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Webサービスの終わらせ方",
-      "url": "https://zenn.dev/kibe/articles/df74c2e9fe76b6",
-      "publishedAt": "Tue, 11 Aug 2026 04:05:00 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "BM25を使用してCodexのトークンの消費を30%抑える",
-      "url": "https://zenn.dev/knowledgesense/articles/9e55a3bb67729c",
-      "publishedAt": "Tue, 11 Aug 2026 01:08:19 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Code に「同じ指摘を二度させない」仕組みを hook で作った",
-      "url": "https://zenn.dev/nozomi720/articles/claude_code_hooks_feedback",
-      "publishedAt": "Mon, 10 Aug 2026 16:10:41 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "レンタルサーバーを作ってみた話と、これから作りたいもの",
-      "url": "https://zenn.dev/techfish4/articles/0c502382253a4e",
-      "publishedAt": "Mon, 10 Aug 2026 15:43:49 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "曖昧に使っていたAI周りの言葉を理解する",
-      "url": "https://zenn.dev/yoshipon_tech/articles/a51bbfcc068c1f",
-      "publishedAt": "Mon, 10 Aug 2026 15:10:24 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-16T00:55:47.718Z"
+  "updatedAt": "2026-08-17T00:53:49.148Z"
 }
