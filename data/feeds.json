@@ -1,6 +1,24 @@
 {
   "zenn": [
     {
+      "title": "Rust製のマルチプラットフォーム開発フレームワーク「Whisker」を作りました",
+      "url": "https://zenn.dev/itome/articles/e087c6d11d0bd2",
+      "publishedAt": "Tue, 18 Aug 2026 00:00:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Markdownノートを日本語で全文検索できるCLI「mikke」を作った",
+      "url": "https://zenn.dev/kimushun1101/articles/mikke-markdown-search-cli",
+      "publishedAt": "Mon, 17 Aug 2026 21:01:59 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIエージェントはなぜテストを握り潰すのか ― 報酬エンジニアリングのすすめ",
+      "url": "https://zenn.dev/ito/articles/6b042aa27d65bc",
+      "publishedAt": "Mon, 17 Aug 2026 13:31:03 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Webサービスのスクショ付きガイドブックをPlaywright + LLMで自動生成・更新できるようにした",
       "url": "https://zenn.dev/dev_commune/articles/acb91817341f8f",
       "publishedAt": "Mon, 17 Aug 2026 09:25:27 GMT",
@@ -13,9 +31,21 @@
       "source": "zenn"
     },
     {
+      "title": "Google Workspace StudioとGemini Notebookで社内問い合わせサポートBotを作った",
+      "url": "https://zenn.dev/tsukulink/articles/2026-08-workspace-studio-support-bot",
+      "publishedAt": "Mon, 17 Aug 2026 01:13:19 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "RDS Proxyを導入して、数ヶ月で撤去した話",
       "url": "https://zenn.dev/dress_code/articles/da536c39873876",
       "publishedAt": "Mon, 17 Aug 2026 00:00:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ネットワークエンジニアのためのデータ表現詳解",
+      "url": "https://zenn.dev/moko_nw/books/au_dataex_01",
+      "publishedAt": "Sun, 16 Aug 2026 22:37:14 GMT",
       "source": "zenn"
     },
     {
@@ -28,6 +58,12 @@
       "title": "攻撃手法から学ぶ OAuth セキュリティベストプラクティス",
       "url": "https://zenn.dev/hidebike712/books/oauth-attacks-and-bcp",
       "publishedAt": "Sun, 16 Aug 2026 18:37:30 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Fable 5 が教えてくれた FastEnum の高速化テクニック (4) - 文字列に対する switch 文での比較",
+      "url": "https://zenn.dev/xin9le/articles/a537775e87b814",
+      "publishedAt": "Sun, 16 Aug 2026 15:58:41 GMT",
       "source": "zenn"
     },
     {
@@ -55,15 +91,9 @@
       "source": "zenn"
     },
     {
-      "title": "botterのためのKaggle金融予測コンペの設計史",
-      "url": "https://zenn.dev/gamella/articles/f5e6bddab37c8d",
-      "publishedAt": "Sun, 16 Aug 2026 04:43:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Jujutsu (jj) のつらみ Git前提の世界とAIコーディングエージェント",
-      "url": "https://zenn.dev/rozurozu/articles/20260815_jujutsu_tsurami",
-      "publishedAt": "Sat, 15 Aug 2026 08:41:37 GMT",
+      "title": "MacBook Air M5 RAM32GBで実用的なローカルLLMを探す 生成速度測定編",
+      "url": "https://zenn.dev/koki_n22/articles/493f85b9f875ca",
+      "publishedAt": "Sun, 16 Aug 2026 07:19:18 GMT",
       "source": "zenn"
     },
     {
@@ -79,45 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "概念設計が、その後のコードの命運を左右する",
-      "url": "https://zenn.dev/takeshi_teshima/articles/bae79b2f0f97be",
-      "publishedAt": "Fri, 14 Aug 2026 13:00:27 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Databricks の Declarative Automation Bundles を用いた機械学習データセット作成基盤の構築",
-      "url": "https://zenn.dev/turing_motors/articles/46b5560dce0e3a",
-      "publishedAt": "Fri, 14 Aug 2026 09:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "お金がないけどAIコーディングしたい",
-      "url": "https://zenn.dev/dev_jp/articles/da537a095f13da",
-      "publishedAt": "Fri, 14 Aug 2026 00:35:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIエージェントと進めるソフトウェア開発",
-      "url": "https://zenn.dev/hako_hako/books/nexus-product-new-development",
-      "publishedAt": "Thu, 13 Aug 2026 08:10:07 GMT",
+      "title": "5ヶ月育てたClaude CodeのCLAUDE.md/skills/rulesをOpus 5向けにClaude自身に棚卸しさせた",
+      "url": "https://zenn.dev/koki_n22/articles/986f61d16989cb",
+      "publishedAt": "Fri, 14 Aug 2026 10:51:20 GMT",
       "source": "zenn"
     },
     {
       "title": "メール確認コードを不要にする Email Verification Protocol (EVP)",
       "url": "https://zenn.dev/tkou15/articles/email-verification-protocol",
       "publishedAt": "Thu, 13 Aug 2026 06:27:09 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "続・貧者のアークテクチャ：Next.js + Cloudflare Workers + Turso 本番運用で踏んだ罠ぜんぶ",
-      "url": "https://zenn.dev/nabettu/articles/a964f988e7cc75",
-      "publishedAt": "Thu, 13 Aug 2026 05:44:16 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "同じRust製のBiomeとOxlintで、なぜ速度差が大きいのか",
-      "url": "https://zenn.dev/estie/articles/64b80da2fbf175",
-      "publishedAt": "Thu, 13 Aug 2026 03:00:09 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-18T00:52:36.693Z"
+  "updatedAt": "2026-08-19T00:53:14.164Z"
 }
