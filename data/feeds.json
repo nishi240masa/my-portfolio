@@ -1,6 +1,66 @@
 {
   "zenn": [
     {
+      "title": "ゆっくりと学ぶ TanStack Start",
+      "url": "https://zenn.dev/417/books/tanstack-start-principles",
+      "publishedAt": "Wed, 19 Aug 2026 05:18:13 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cursorを使ってデザイナーがハンドコーディングでデザインシステムを作ってみた",
+      "url": "https://zenn.dev/pksha/articles/e5c8f9b2a41d73",
+      "publishedAt": "Wed, 19 Aug 2026 02:38:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "世界最大？Google Fonts 全部入りフォントを作ってみた",
+      "url": "https://zenn.dev/fjktkm/articles/95ec94e1c2ab38",
+      "publishedAt": "Wed, 19 Aug 2026 02:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ローカルLLM編成が単独のフロンティアAIを超えた日",
+      "url": "https://zenn.dev/nrs/articles/b920540a64e1a1",
+      "publishedAt": "Tue, 18 Aug 2026 11:42:49 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "設定1つでDatabricksの課金を半分にした話",
+      "url": "https://zenn.dev/genda_jp/articles/databricks-autostop-1min-api",
+      "publishedAt": "Tue, 18 Aug 2026 05:31:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AWS の新ポリシー言語 Dogwood を試す",
+      "url": "https://zenn.dev/exwzd/articles/20260813-dogwood-agent-policy",
+      "publishedAt": "Tue, 18 Aug 2026 04:07:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Codeに見せない技術: AIに入力できないデータを分析する",
+      "url": "https://zenn.dev/green_tea/articles/a994964786cb4f",
+      "publishedAt": "Tue, 18 Aug 2026 02:55:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "コーディングエージェントが実装するUIの品質を上げるためにやったこと",
+      "url": "https://zenn.dev/moshjp/articles/39972d023f0440",
+      "publishedAt": "Tue, 18 Aug 2026 01:00:20 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "YAML 1枚で開発エージェントチームを動かす — 開発基盤に Docker Agent を採用した話",
+      "url": "https://zenn.dev/xtm_blog/articles/b9993fe1d72b17",
+      "publishedAt": "Tue, 18 Aug 2026 01:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "DMARC 集計レポートを Claude Code で分解して p=reject に到達するまで",
+      "url": "https://zenn.dev/finatext/articles/0d1e6dd99ec34d",
+      "publishedAt": "Tue, 18 Aug 2026 00:29:01 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Rust製のマルチプラットフォーム開発フレームワーク「Whisker」を作りました",
       "url": "https://zenn.dev/itome/articles/e087c6d11d0bd2",
       "publishedAt": "Tue, 18 Aug 2026 00:00:08 GMT",
@@ -22,12 +82,6 @@
       "title": "Webサービスのスクショ付きガイドブックをPlaywright + LLMで自動生成・更新できるようにした",
       "url": "https://zenn.dev/dev_commune/articles/acb91817341f8f",
       "publishedAt": "Mon, 17 Aug 2026 09:25:27 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "セキュリティ・キャンプ 2026 ネクスト 応募課題晒し",
-      "url": "https://zenn.dev/n4mlz/articles/fec8711345dd70",
-      "publishedAt": "Mon, 17 Aug 2026 04:50:21 GMT",
       "source": "zenn"
     },
     {
@@ -61,63 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "Claude Fable 5 が教えてくれた FastEnum の高速化テクニック (4) - 文字列に対する switch 文での比較",
-      "url": "https://zenn.dev/xin9le/articles/a537775e87b814",
-      "publishedAt": "Sun, 16 Aug 2026 15:58:41 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Qwen3.8 27B に Reasoning Effort を実装してみる",
-      "url": "https://zenn.dev/shogo0x2e/articles/qwen38-27b-stop-overthinking",
-      "publishedAt": "Sun, 16 Aug 2026 14:39:24 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AI エージェントの「認可疲れ」に効く処方箋 : 理論から実装まで",
       "url": "https://zenn.dev/aws_japan/articles/2b62886aa8735e",
       "publishedAt": "Sun, 16 Aug 2026 13:18:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Code の hook で作る「書いたら直る」ループ — 日本語明晰化プラグインを題材に",
-      "url": "https://zenn.dev/bamboo_nova/articles/ee2fbc5daf4f45",
-      "publishedAt": "Sun, 16 Aug 2026 12:45:09 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Hello, Solid 2.0 ! —— use() も startTransition もない Async React !?",
-      "url": "https://zenn.dev/r1013t/articles/37669abac10840",
-      "publishedAt": "Sun, 16 Aug 2026 09:47:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "MacBook Air M5 RAM32GBで実用的なローカルLLMを探す 生成速度測定編",
-      "url": "https://zenn.dev/koki_n22/articles/493f85b9f875ca",
-      "publishedAt": "Sun, 16 Aug 2026 07:19:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "42日でバックエンドエンジニアの基礎を完全に理解する #8 - インデックスと検索高速化",
-      "url": "https://zenn.dev/kipcop/articles/b42-go-08-index",
-      "publishedAt": "Sat, 15 Aug 2026 06:01:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "デスクトップUIフレームワーク15種のメモリ使用量計測",
-      "url": "https://zenn.dev/mizugeeks/articles/1019cf2353d343",
-      "publishedAt": "Sat, 15 Aug 2026 03:10:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "5ヶ月育てたClaude CodeのCLAUDE.md/skills/rulesをOpus 5向けにClaude自身に棚卸しさせた",
-      "url": "https://zenn.dev/koki_n22/articles/986f61d16989cb",
-      "publishedAt": "Fri, 14 Aug 2026 10:51:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "メール確認コードを不要にする Email Verification Protocol (EVP)",
-      "url": "https://zenn.dev/tkou15/articles/email-verification-protocol",
-      "publishedAt": "Thu, 13 Aug 2026 06:27:09 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-19T00:53:14.164Z"
+  "updatedAt": "2026-08-20T00:52:36.809Z"
 }
