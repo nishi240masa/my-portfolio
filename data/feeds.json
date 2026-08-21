@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "Type-Aware を Stable にし、React Compiler の lint も載せた",
+      "url": "https://zenn.dev/dress_code/articles/2b2832d66b883b",
+      "publishedAt": "Thu, 20 Aug 2026 03:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "QAエンジニアが実践型Webセキュリティ試験『BSCP』に合格するまで",
+      "url": "https://zenn.dev/knowledgework/articles/197309c80efb28",
+      "publishedAt": "Thu, 20 Aug 2026 03:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI Agentに社内知識をオンボーディングする：SkillsとEvalの設計",
+      "url": "https://zenn.dev/mkj/articles/aad5698672aef3",
+      "publishedAt": "Thu, 20 Aug 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "encoding/json/v2 に至る14年",
+      "url": "https://zenn.dev/ymotongpoo/books/go-json-v2-history",
+      "publishedAt": "Thu, 20 Aug 2026 01:42:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Structured Playwright —— 継続性から設計するE2Eテストの4層構造とハーネス",
+      "url": "https://zenn.dev/mov_ish/articles/structured-playwright-e2e",
+      "publishedAt": "Wed, 19 Aug 2026 09:20:53 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "時相論理の形式仕様の Quint を使って、denoland/celld の二重 writer バグを見つけた",
+      "url": "https://zenn.dev/mizchi/articles/quint-application-modeling",
+      "publishedAt": "Wed, 19 Aug 2026 07:44:30 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "NGワードリストに「死ね」が入っていなかったので自分で作った",
+      "url": "https://zenn.dev/zentaroimai/articles/9d6e786a2e6eec",
+      "publishedAt": "Wed, 19 Aug 2026 07:38:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ゆっくりと学ぶ TanStack Start",
       "url": "https://zenn.dev/417/books/tanstack-start-principles",
       "publishedAt": "Wed, 19 Aug 2026 05:18:13 GMT",
@@ -22,12 +64,6 @@
       "title": "ローカルLLM編成が単独のフロンティアAIを超えた日",
       "url": "https://zenn.dev/nrs/articles/b920540a64e1a1",
       "publishedAt": "Tue, 18 Aug 2026 11:42:49 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "設定1つでDatabricksの課金を半分にした話",
-      "url": "https://zenn.dev/genda_jp/articles/databricks-autostop-1min-api",
-      "publishedAt": "Tue, 18 Aug 2026 05:31:42 GMT",
       "source": "zenn"
     },
     {
@@ -55,12 +91,6 @@
       "source": "zenn"
     },
     {
-      "title": "DMARC 集計レポートを Claude Code で分解して p=reject に到達するまで",
-      "url": "https://zenn.dev/finatext/articles/0d1e6dd99ec34d",
-      "publishedAt": "Tue, 18 Aug 2026 00:29:01 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Rust製のマルチプラットフォーム開発フレームワーク「Whisker」を作りました",
       "url": "https://zenn.dev/itome/articles/e087c6d11d0bd2",
       "publishedAt": "Tue, 18 Aug 2026 00:00:08 GMT",
@@ -85,39 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "Google Workspace StudioとGemini Notebookで社内問い合わせサポートBotを作った",
-      "url": "https://zenn.dev/tsukulink/articles/2026-08-workspace-studio-support-bot",
-      "publishedAt": "Mon, 17 Aug 2026 01:13:19 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "RDS Proxyを導入して、数ヶ月で撤去した話",
-      "url": "https://zenn.dev/dress_code/articles/da536c39873876",
-      "publishedAt": "Mon, 17 Aug 2026 00:00:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ネットワークエンジニアのためのデータ表現詳解",
-      "url": "https://zenn.dev/moko_nw/books/au_dataex_01",
-      "publishedAt": "Sun, 16 Aug 2026 22:37:14 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Codexを効率よく使う方法（ChatGPT + GitHub）",
       "url": "https://zenn.dev/aun_phonogram/articles/3f8c1a7b5d902e",
       "publishedAt": "Sun, 16 Aug 2026 22:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "攻撃手法から学ぶ OAuth セキュリティベストプラクティス",
-      "url": "https://zenn.dev/hidebike712/books/oauth-attacks-and-bcp",
-      "publishedAt": "Sun, 16 Aug 2026 18:37:30 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI エージェントの「認可疲れ」に効く処方箋 : 理論から実装まで",
-      "url": "https://zenn.dev/aws_japan/articles/2b62886aa8735e",
-      "publishedAt": "Sun, 16 Aug 2026 13:18:26 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-20T00:52:36.809Z"
+  "updatedAt": "2026-08-21T00:56:10.869Z"
 }
