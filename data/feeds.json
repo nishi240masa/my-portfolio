@@ -1,9 +1,27 @@
 {
   "zenn": [
     {
-      "title": "Type-Aware を Stable にし、React Compiler の lint も載せた",
-      "url": "https://zenn.dev/dress_code/articles/2b2832d66b883b",
-      "publishedAt": "Thu, 20 Aug 2026 03:00:05 GMT",
+      "title": "或るログ研究者",
+      "url": "https://zenn.dev/dmikurube/articles/a-logresearch-er",
+      "publishedAt": "Fri, 21 Aug 2026 10:04:23 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "claude のメモリを棚卸しする",
+      "url": "https://zenn.dev/cureapp/articles/c1e963064d05fd",
+      "publishedAt": "Fri, 21 Aug 2026 04:28:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "発信力の増幅機としてのLLM",
+      "url": "https://zenn.dev/watany/articles/8809b00df25dab",
+      "publishedAt": "Fri, 21 Aug 2026 03:40:35 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "TypeScript が JavaScript になるまで",
+      "url": "https://zenn.dev/onclimb/articles/ts-to-js-pipeline-onclimb",
+      "publishedAt": "Fri, 21 Aug 2026 00:30:05 GMT",
       "source": "zenn"
     },
     {
@@ -67,12 +85,6 @@
       "source": "zenn"
     },
     {
-      "title": "AWS の新ポリシー言語 Dogwood を試す",
-      "url": "https://zenn.dev/exwzd/articles/20260813-dogwood-agent-policy",
-      "publishedAt": "Tue, 18 Aug 2026 04:07:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Claude Codeに見せない技術: AIに入力できないデータを分析する",
       "url": "https://zenn.dev/green_tea/articles/a994964786cb4f",
       "publishedAt": "Tue, 18 Aug 2026 02:55:05 GMT",
@@ -82,12 +94,6 @@
       "title": "コーディングエージェントが実装するUIの品質を上げるためにやったこと",
       "url": "https://zenn.dev/moshjp/articles/39972d023f0440",
       "publishedAt": "Tue, 18 Aug 2026 01:00:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "YAML 1枚で開発エージェントチームを動かす — 開発基盤に Docker Agent を採用した話",
-      "url": "https://zenn.dev/xtm_blog/articles/b9993fe1d72b17",
-      "publishedAt": "Tue, 18 Aug 2026 01:00:06 GMT",
       "source": "zenn"
     },
     {
@@ -113,12 +119,6 @@
       "url": "https://zenn.dev/dev_commune/articles/acb91817341f8f",
       "publishedAt": "Mon, 17 Aug 2026 09:25:27 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "Codexを効率よく使う方法（ChatGPT + GitHub）",
-      "url": "https://zenn.dev/aun_phonogram/articles/3f8c1a7b5d902e",
-      "publishedAt": "Sun, 16 Aug 2026 22:30:05 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-21T00:56:10.869Z"
+  "updatedAt": "2026-08-22T00:52:42.528Z"
 }
