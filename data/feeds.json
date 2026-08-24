@@ -1,15 +1,45 @@
 {
   "zenn": [
     {
+      "title": "初めてカンファレンス運営をやってみたぞい！ PyCon JP 2026",
+      "url": "https://zenn.dev/kannna5296/articles/2026-08-22-pyconjp2026-quick-report",
+      "publishedAt": "Sun, 23 Aug 2026 04:12:30 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "C#において、例外を使うべきか戻り値にすべきか、迷わなくなる基準",
+      "url": "https://zenn.dev/biwacoder/articles/fbbf12f755f5d8",
+      "publishedAt": "Sun, 23 Aug 2026 04:02:52 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "家族で使うAIエージェントのDiscord運用",
+      "url": "https://zenn.dev/kimushun1101/articles/family-ai-agents-on-discord",
+      "publishedAt": "Sat, 22 Aug 2026 22:28:03 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "オーバーナイトプレミアムに関連した価格ドライバー特徴量の話",
       "url": "https://zenn.dev/gamella/articles/8e2f9873169db6",
       "publishedAt": "Sat, 22 Aug 2026 11:39:58 GMT",
       "source": "zenn"
     },
     {
+      "title": "Claude Code のデスクトップ操作、内蔵の computer-use ではなく Windows-MCP を使っている理由",
+      "url": "https://zenn.dev/marvelousu/articles/windows-mcp-vs-computer-use",
+      "publishedAt": "Sat, 22 Aug 2026 08:27:40 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "RTX 5090でFreeTokenを試してみた。35Bでは不要、120B級MoEでは話が変わる",
       "url": "https://zenn.dev/holy_fox/articles/53b82eed45f956",
       "publishedAt": "Sat, 22 Aug 2026 07:44:27 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Go 1.27のhttptest.NewTestServerをAPIクライアントのテストで使ってみて分かったこと",
+      "url": "https://zenn.dev/catatsuy/articles/8e8dbf6afd1196",
+      "publishedAt": "Sat, 22 Aug 2026 05:43:56 GMT",
       "source": "zenn"
     },
     {
@@ -31,15 +61,21 @@
       "source": "zenn"
     },
     {
+      "title": "リポジトリにロジックは書くな！",
+      "url": "https://zenn.dev/more_tech_blog/articles/76af481ab3816d",
+      "publishedAt": "Fri, 21 Aug 2026 09:30:55 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "claude のメモリを棚卸しする",
       "url": "https://zenn.dev/cureapp/articles/c1e963064d05fd",
       "publishedAt": "Fri, 21 Aug 2026 04:28:26 GMT",
       "source": "zenn"
     },
     {
-      "title": "発信力の増幅機としてのLLM",
-      "url": "https://zenn.dev/watany/articles/8809b00df25dab",
-      "publishedAt": "Fri, 21 Aug 2026 03:40:35 GMT",
+      "title": "gRPC / Connect / HTTP/2 を完全に理解したい",
+      "url": "https://zenn.dev/loglass/articles/grpc-connect-http2-for-rest-devs",
+      "publishedAt": "Fri, 21 Aug 2026 04:02:16 GMT",
       "source": "zenn"
     },
     {
@@ -83,42 +119,6 @@
       "url": "https://zenn.dev/417/books/tanstack-start-principles",
       "publishedAt": "Wed, 19 Aug 2026 05:18:13 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "世界最大？Google Fonts 全部入りフォントを作ってみた",
-      "url": "https://zenn.dev/fjktkm/articles/95ec94e1c2ab38",
-      "publishedAt": "Wed, 19 Aug 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ローカルLLM編成が単独のフロンティアAIを超えた日",
-      "url": "https://zenn.dev/nrs/articles/b920540a64e1a1",
-      "publishedAt": "Tue, 18 Aug 2026 11:42:49 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "コーディングエージェントが実装するUIの品質を上げるためにやったこと",
-      "url": "https://zenn.dev/moshjp/articles/39972d023f0440",
-      "publishedAt": "Tue, 18 Aug 2026 01:00:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Rust製のマルチプラットフォーム開発フレームワーク「Whisker」を作りました",
-      "url": "https://zenn.dev/itome/articles/e087c6d11d0bd2",
-      "publishedAt": "Tue, 18 Aug 2026 00:00:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Markdownノートを日本語で全文検索できるCLI「mikke」を作った",
-      "url": "https://zenn.dev/kimushun1101/articles/mikke-markdown-search-cli",
-      "publishedAt": "Mon, 17 Aug 2026 21:01:59 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIエージェントはなぜテストを握り潰すのか ― 報酬エンジニアリングのすすめ",
-      "url": "https://zenn.dev/ito/articles/6b042aa27d65bc",
-      "publishedAt": "Mon, 17 Aug 2026 13:31:03 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-23T00:56:49.049Z"
+  "updatedAt": "2026-08-24T00:54:54.471Z"
 }
