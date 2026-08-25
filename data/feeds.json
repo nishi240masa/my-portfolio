@@ -1,27 +1,69 @@
 {
   "zenn": [
     {
-      "title": "初めてカンファレンス運営をやってみたぞい！ PyCon JP 2026",
-      "url": "https://zenn.dev/kannna5296/articles/2026-08-22-pyconjp2026-quick-report",
-      "publishedAt": "Sun, 23 Aug 2026 04:12:30 GMT",
+      "title": "最近育てているフロントエンド開発用テンプレートの話",
+      "url": "https://zenn.dev/newt_st21/articles/next-template-2026",
+      "publishedAt": "Mon, 24 Aug 2026 12:23:26 GMT",
       "source": "zenn"
     },
     {
-      "title": "C#において、例外を使うべきか戻り値にすべきか、迷わなくなる基準",
-      "url": "https://zenn.dev/biwacoder/articles/fbbf12f755f5d8",
-      "publishedAt": "Sun, 23 Aug 2026 04:02:52 GMT",
+      "title": "Claude Designを使ったポスター制作について",
+      "url": "https://zenn.dev/kaiyo/articles/65f98a5abadac5",
+      "publishedAt": "Mon, 24 Aug 2026 10:25:38 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "動かして理解するOpenTelemetry",
+      "url": "https://zenn.dev/simplex/articles/c24bd2788f5831",
+      "publishedAt": "Mon, 24 Aug 2026 07:18:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "あなたのHTML資料には、魂が込められていますか？",
+      "url": "https://zenn.dev/tokium_dev/articles/html-shiryo-ni-tamashii",
+      "publishedAt": "Mon, 24 Aug 2026 07:06:24 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "MITRE ATT&CK の7つの戦術からみた AWS のセキュリティに関するイベント",
+      "url": "https://zenn.dev/cscloud_blog/articles/b42eeb86af4d06",
+      "publishedAt": "Mon, 24 Aug 2026 02:56:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIでイベントカタログを279件自動生成し、成果物の検証を設計した話",
+      "url": "https://zenn.dev/tribeau/articles/d7cd180e53f719",
+      "publishedAt": "Mon, 24 Aug 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "デザイナーが作る仕様駆動型デザインシステム",
+      "url": "https://zenn.dev/katsumata/articles/014affaeb272d00aeae6",
+      "publishedAt": "Mon, 24 Aug 2026 01:39:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "お前のループエンジニアリングは間違っている",
+      "url": "https://zenn.dev/t_hayashi/articles/20ec8fbebbeabb",
+      "publishedAt": "Mon, 24 Aug 2026 00:53:59 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Ctrl+C でプログラムが止まる仕組みを調べた",
+      "url": "https://zenn.dev/wakame_atsushi/articles/05a74885eb963d",
+      "publishedAt": "Sun, 23 Aug 2026 12:34:45 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Goのポインタに抵抗を感じていた理由",
+      "url": "https://zenn.dev/ncdc/articles/661804f1bb2f95",
+      "publishedAt": "Sun, 23 Aug 2026 06:51:06 GMT",
       "source": "zenn"
     },
     {
       "title": "家族で使うAIエージェントのDiscord運用",
       "url": "https://zenn.dev/kimushun1101/articles/family-ai-agents-on-discord",
       "publishedAt": "Sat, 22 Aug 2026 22:28:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "オーバーナイトプレミアムに関連した価格ドライバー特徴量の話",
-      "url": "https://zenn.dev/gamella/articles/8e2f9873169db6",
-      "publishedAt": "Sat, 22 Aug 2026 11:39:58 GMT",
       "source": "zenn"
     },
     {
@@ -40,12 +82,6 @@
       "title": "Go 1.27のhttptest.NewTestServerをAPIクライアントのテストで使ってみて分かったこと",
       "url": "https://zenn.dev/catatsuy/articles/8e8dbf6afd1196",
       "publishedAt": "Sat, 22 Aug 2026 05:43:56 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "React 19.3 browser() APIの使いみち～FUNSTACK Routerの場合～",
-      "url": "https://zenn.dev/uhyo/articles/react-use-browser-usage",
-      "publishedAt": "Fri, 21 Aug 2026 13:52:58 GMT",
       "source": "zenn"
     },
     {
@@ -79,45 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "最近のIntel CPUは複数の連続する即値加減算命令をフュージョンする",
-      "url": "https://zenn.dev/herumi/articles/add-imm-fusion",
-      "publishedAt": "Fri, 21 Aug 2026 02:06:35 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "TypeScript が JavaScript になるまで",
       "url": "https://zenn.dev/onclimb/articles/ts-to-js-pipeline-onclimb",
       "publishedAt": "Fri, 21 Aug 2026 00:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI Agentに社内知識をオンボーディングする：SkillsとEvalの設計",
-      "url": "https://zenn.dev/mkj/articles/aad5698672aef3",
-      "publishedAt": "Thu, 20 Aug 2026 02:50:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "encoding/json/v2 に至る14年",
-      "url": "https://zenn.dev/ymotongpoo/books/go-json-v2-history",
-      "publishedAt": "Thu, 20 Aug 2026 01:42:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "時相論理の形式仕様の Quint を使って、denoland/celld の二重 writer バグを見つけた",
-      "url": "https://zenn.dev/mizchi/articles/quint-application-modeling",
-      "publishedAt": "Wed, 19 Aug 2026 07:44:30 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "NGワードリストに「死ね」が入っていなかったので自分で作った",
-      "url": "https://zenn.dev/zentaroimai/articles/9d6e786a2e6eec",
-      "publishedAt": "Wed, 19 Aug 2026 07:38:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ゆっくりと学ぶ TanStack Start",
-      "url": "https://zenn.dev/417/books/tanstack-start-principles",
-      "publishedAt": "Wed, 19 Aug 2026 05:18:13 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-24T00:54:54.471Z"
+  "updatedAt": "2026-08-25T00:54:42.081Z"
 }
