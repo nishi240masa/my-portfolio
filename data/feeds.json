@@ -1,27 +1,51 @@
 {
   "zenn": [
     {
+      "title": "DMM Sprint Go に参加してきました🌟",
+      "url": "https://zenn.dev/s0nmy/articles/85761a4d31c8c2",
+      "publishedAt": "Wed, 26 Aug 2026 12:38:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ローカルでの開発やめませんか？Claude Code / Cursorで開発の8割をクラウドに移した話",
+      "url": "https://zenn.dev/sc30gsw/articles/953334f11df507",
+      "publishedAt": "Wed, 26 Aug 2026 11:58:18 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIエージェントは夜に夢を見て記憶を整理する — Perplexity Brainの設計と最小実装",
+      "url": "https://zenn.dev/uguisu_blog/articles/c553bcbf119ce4",
+      "publishedAt": "Wed, 26 Aug 2026 07:21:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Secrets Managerのシークレットはどんな粒度で分けるべき？",
+      "url": "https://zenn.dev/genda_jp/articles/e7e831636a769d",
+      "publishedAt": "Wed, 26 Aug 2026 03:34:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI10並列で開発したら事故りかけた。貸せ、worktreeはこうやる",
+      "url": "https://zenn.dev/ceres_tech_blog/articles/8cb3ce7bc4c937",
+      "publishedAt": "Wed, 26 Aug 2026 02:44:11 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "メッシュグラデーションをSVGで「真面目に」近似する",
+      "url": "https://zenn.dev/yayo1/articles/ffd14050214f52",
+      "publishedAt": "Tue, 25 Aug 2026 09:11:34 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "マイクロサービス間の認可伝搬をどう解くか？独自実装と IETF Transaction Tokens を見比べてみた",
       "url": "https://zenn.dev/layerx/articles/e01465a15e79c2",
       "publishedAt": "Tue, 25 Aug 2026 05:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "【Ansible✕Cisco】ネットワーク自動化に入門してみた",
-      "url": "https://zenn.dev/bababa/articles/60fc1ae03317ac",
-      "publishedAt": "Tue, 25 Aug 2026 04:30:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "エントロピーの形",
-      "url": "https://zenn.dev/phykm/articles/ef569369159f47",
-      "publishedAt": "Tue, 25 Aug 2026 03:50:54 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "状態空間モデルにおけるFilteringとSmoothingの違いを理解する",
-      "url": "https://zenn.dev/ca_kagglers/articles/ssm-filtering-smoothing",
-      "publishedAt": "Tue, 25 Aug 2026 02:04:16 GMT",
+      "title": "減らない分岐は、指示ではなく型のせいだった",
+      "url": "https://zenn.dev/dress_code/articles/loose-types-and-dead-branches",
+      "publishedAt": "Tue, 25 Aug 2026 02:30:05 GMT",
       "source": "zenn"
     },
     {
@@ -43,27 +67,15 @@
       "source": "zenn"
     },
     {
-      "title": "Bitgetの異常価格で1800万損したが、fableと共闘して取り戻せた話",
-      "url": "https://zenn.dev/kobao/articles/0638f3976c6ef8",
-      "publishedAt": "Mon, 24 Aug 2026 23:42:53 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "kqueueを使ったwebサーバーを作ってみる",
-      "url": "https://zenn.dev/chikina/articles/cad667e78ad5d7",
-      "publishedAt": "Mon, 24 Aug 2026 22:37:37 GMT",
+      "title": "AIは回せば回すほど凄いのか ―「常時稼働」という設計の敗北",
+      "url": "https://zenn.dev/eggletric/articles/4ea81df765fb66",
+      "publishedAt": "Mon, 24 Aug 2026 22:20:05 GMT",
       "source": "zenn"
     },
     {
       "title": "最近育てているフロントエンド開発用テンプレートの話",
       "url": "https://zenn.dev/newt_st21/articles/next-template-2026",
       "publishedAt": "Mon, 24 Aug 2026 12:23:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Designを使ったポスター制作について",
-      "url": "https://zenn.dev/kaiyo/articles/65f98a5abadac5",
-      "publishedAt": "Mon, 24 Aug 2026 10:25:38 GMT",
       "source": "zenn"
     },
     {
@@ -97,12 +109,6 @@
       "source": "zenn"
     },
     {
-      "title": "家族で使うAIエージェントのDiscord運用",
-      "url": "https://zenn.dev/kimushun1101/articles/family-ai-agents-on-discord",
-      "publishedAt": "Sat, 22 Aug 2026 22:28:03 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "RTX 5090でFreeTokenを試してみた。35Bでは不要、120B級MoEでは話が変わる",
       "url": "https://zenn.dev/holy_fox/articles/53b82eed45f956",
       "publishedAt": "Sat, 22 Aug 2026 07:44:27 GMT",
@@ -112,12 +118,6 @@
       "title": "或るログ研究者",
       "url": "https://zenn.dev/dmikurube/articles/a-logresearch-er",
       "publishedAt": "Fri, 21 Aug 2026 10:04:23 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Microsoft Entra ID アプリケーション開発入門",
-      "url": "https://zenn.dev/karamem0/books/505df6779ec89a",
-      "publishedAt": "Fri, 21 Aug 2026 09:39:00 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-26T00:55:27.096Z"
+  "updatedAt": "2026-08-27T06:40:29.814Z"
 }
