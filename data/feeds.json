@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "MacBook Pro 128GB でローカル LLM がついに実用になった ─ Qwen3.8 Flash Next 実測",
+      "url": "https://zenn.dev/jtechjapan_pub/articles/local-llm-qwen-flash-next-eval",
+      "publishedAt": "Thu, 27 Aug 2026 20:06:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Kaggler流のプロダクト開発入門！",
+      "url": "https://zenn.dev/elith/articles/609498a4109ad2",
+      "publishedAt": "Thu, 27 Aug 2026 09:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "RTX 5090 + RAM 128GBでQwen3.8-Flash-Nextをllama.cppで動かしてみた",
+      "url": "https://zenn.dev/holy_fox/articles/04887ff8177b87",
+      "publishedAt": "Thu, 27 Aug 2026 06:47:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Code の承認待ちを見逃さないために、光る Clawd を机に置いた",
+      "url": "https://zenn.dev/lincwell_inc/articles/79092d88245748",
+      "publishedAt": "Thu, 27 Aug 2026 01:00:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ローカル AWS エミュレータで Terraform を検証する",
+      "url": "https://zenn.dev/edash_tech_blog/articles/0ea5ab1ef9a751",
+      "publishedAt": "Thu, 27 Aug 2026 00:03:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "並行開発に Orca がめちゃ便利",
+      "url": "https://zenn.dev/rhosokawa/articles/d0a958c17c2820",
+      "publishedAt": "Wed, 26 Aug 2026 15:39:54 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "日本語配列の磁気式キーボードを基板からフルスクラッチしてみた",
+      "url": "https://zenn.dev/aniki_maker/articles/33d1dc45604537",
+      "publishedAt": "Wed, 26 Aug 2026 14:35:58 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "DMM Sprint Go に参加してきました🌟",
       "url": "https://zenn.dev/s0nmy/articles/85761a4d31c8c2",
       "publishedAt": "Wed, 26 Aug 2026 12:38:01 GMT",
@@ -13,21 +55,9 @@
       "source": "zenn"
     },
     {
-      "title": "AIエージェントは夜に夢を見て記憶を整理する — Perplexity Brainの設計と最小実装",
-      "url": "https://zenn.dev/uguisu_blog/articles/c553bcbf119ce4",
-      "publishedAt": "Wed, 26 Aug 2026 07:21:17 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Secrets Managerのシークレットはどんな粒度で分けるべき？",
       "url": "https://zenn.dev/genda_jp/articles/e7e831636a769d",
       "publishedAt": "Wed, 26 Aug 2026 03:34:37 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI10並列で開発したら事故りかけた。貸せ、worktreeはこうやる",
-      "url": "https://zenn.dev/ceres_tech_blog/articles/8cb3ce7bc4c937",
-      "publishedAt": "Wed, 26 Aug 2026 02:44:11 GMT",
       "source": "zenn"
     },
     {
@@ -37,27 +67,21 @@
       "source": "zenn"
     },
     {
+      "title": "「AIの民主化」を日本で言い出した身として、そろそろ本当に「民主化」をやめたい話",
+      "url": "https://zenn.dev/miogawa/articles/1170543905ebe0",
+      "publishedAt": "Tue, 25 Aug 2026 07:44:31 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "マイクロサービス間の認可伝搬をどう解くか？独自実装と IETF Transaction Tokens を見比べてみた",
       "url": "https://zenn.dev/layerx/articles/e01465a15e79c2",
       "publishedAt": "Tue, 25 Aug 2026 05:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "減らない分岐は、指示ではなく型のせいだった",
-      "url": "https://zenn.dev/dress_code/articles/loose-types-and-dead-branches",
-      "publishedAt": "Tue, 25 Aug 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "オンコール手当の相場を50社分調べて、1社も見つからなかった話",
       "url": "https://zenn.dev/cscloud_blog/articles/e0ea529d061906",
       "publishedAt": "Tue, 25 Aug 2026 01:27:28 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "敵対的検証をLLMコードレビューで試すと何が起きるのか",
-      "url": "https://zenn.dev/knowledgesense/articles/0cb441713c9fee",
-      "publishedAt": "Tue, 25 Aug 2026 01:13:08 GMT",
       "source": "zenn"
     },
     {
@@ -79,12 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "動かして理解するOpenTelemetry",
-      "url": "https://zenn.dev/simplex/articles/c24bd2788f5831",
-      "publishedAt": "Mon, 24 Aug 2026 07:18:58 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "あなたのHTML資料には、魂が込められていますか？",
       "url": "https://zenn.dev/tokium_dev/articles/html-shiryo-ni-tamashii",
       "publishedAt": "Mon, 24 Aug 2026 07:06:24 GMT",
@@ -97,27 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "Ctrl+C でプログラムが止まる仕組みを調べた",
-      "url": "https://zenn.dev/wakame_atsushi/articles/05a74885eb963d",
-      "publishedAt": "Sun, 23 Aug 2026 12:34:45 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "現場で困らないためのGit入門",
-      "url": "https://zenn.dev/hidetzu/books/git-practical-guide",
-      "publishedAt": "Sun, 23 Aug 2026 03:23:32 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "RTX 5090でFreeTokenを試してみた。35Bでは不要、120B級MoEでは話が変わる",
       "url": "https://zenn.dev/holy_fox/articles/53b82eed45f956",
       "publishedAt": "Sat, 22 Aug 2026 07:44:27 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "或るログ研究者",
-      "url": "https://zenn.dev/dmikurube/articles/a-logresearch-er",
-      "publishedAt": "Fri, 21 Aug 2026 10:04:23 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-08-27T06:40:29.814Z"
+  "updatedAt": "2026-08-28T08:30:28.291Z"
 }
