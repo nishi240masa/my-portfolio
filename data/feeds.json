@@ -1,9 +1,75 @@
 {
   "zenn": [
     {
-      "title": "Android の OIDC ログインは Auth Tab を使おう",
-      "url": "https://zenn.dev/tick_taku/articles/ae1383e1b70a80",
-      "publishedAt": "Mon, 31 Aug 2026 08:04:55 GMT",
+      "title": "社内限定サービスの認証を Google Workspace でサクッと作る",
+      "url": "https://zenn.dev/dress_code/articles/6134e6bd5e46c6",
+      "publishedAt": "Tue, 01 Sep 2026 10:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "OOMKill の犯人は CPU だった：GOGC と GOMEMLIMIT を実測で設計し直す",
+      "url": "https://zenn.dev/reality_tech/articles/f6305331bccee0",
+      "publishedAt": "Tue, 01 Sep 2026 09:12:59 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Google提唱の「SKILL.state」について。プロンプトに型の概念を導入",
+      "url": "https://zenn.dev/knowledgesense/articles/ad123283bdea26",
+      "publishedAt": "Tue, 01 Sep 2026 08:46:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Web 標準動向 2026年8月版",
+      "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202608",
+      "publishedAt": "Tue, 01 Sep 2026 08:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "PRレビューもエラー調査も定額で自動化する、Claude Codeのroutine活用実例",
+      "url": "https://zenn.dev/atamaplus/articles/6be03483c0110b",
+      "publishedAt": "Tue, 01 Sep 2026 07:50:31 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Kiro に野良 MCP を繋がせない。AWS Agent Registry × Kiro for Enterprise で配布を統制する",
+      "url": "https://zenn.dev/aws_japan/articles/agent-registry-kiro-governance",
+      "publishedAt": "Tue, 01 Sep 2026 02:17:59 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "社内アプリをもっと気軽に届けたい — 開発者とともに育てるPlatformづくり",
+      "url": "https://zenn.dev/simplex/articles/0ce703ef0b877c",
+      "publishedAt": "Tue, 01 Sep 2026 01:19:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "会話セッションを邪魔せずに Claude Code / Codex / Cursor を外部イベントで動かすCLIの作り方まとめ",
+      "url": "https://zenn.dev/coji/articles/artifactshare-preview-claude-codex-cursor",
+      "publishedAt": "Tue, 01 Sep 2026 01:03:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "無音で文字起こしすると「ご視聴ありがとうございました」になる理由を検証",
+      "url": "https://zenn.dev/trtd56/articles/994f43aebd2057",
+      "publishedAt": "Tue, 01 Sep 2026 00:39:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIエージェントの品質、どう測る？ Google ADKの評価機能を使い倒す",
+      "url": "https://zenn.dev/phper8080/articles/91ffb94fe75b45",
+      "publishedAt": "Mon, 31 Aug 2026 15:16:23 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "小学校の夏休みの宿題をプロジェクトマネジメントしてみた",
+      "url": "https://zenn.dev/nextbeat/articles/8f5d24529caea6",
+      "publishedAt": "Mon, 31 Aug 2026 11:01:11 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "なりすましメール送ってみた - SPF / DKIM / DMARC の歴史と仕組み",
+      "url": "https://zenn.dev/kitacom_blog/articles/20260828-mail-auth",
+      "publishedAt": "Mon, 31 Aug 2026 08:11:19 GMT",
       "source": "zenn"
     },
     {
@@ -13,33 +79,9 @@
       "source": "zenn"
     },
     {
-      "title": "創作の主体は、人間だった。 - 初音ミクのお誕生日なので TextAlive App API を使ってみた -",
-      "url": "https://zenn.dev/tokium_dev/articles/textalive-miku-2026",
-      "publishedAt": "Mon, 31 Aug 2026 03:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "202608個人的claude code設定",
       "url": "https://zenn.dev/kawarimidoll/articles/d3f1a7542de71a",
       "publishedAt": "Mon, 31 Aug 2026 02:30:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "128GB の Mac で Qwen3.8 Flash Next をどう動かすか ─ 3つのランタイムを実測で比べた",
-      "url": "https://zenn.dev/jtechjapan_pub/articles/qwen-flash-next-runtime-comparison",
-      "publishedAt": "Mon, 31 Aug 2026 01:17:39 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "iOS26のCATiledLayerでクラッシュする条件と回避方法",
-      "url": "https://zenn.dev/photoruction_bl/articles/203b7eec8ba0d6",
-      "publishedAt": "Mon, 31 Aug 2026 01:00:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ホンマでっかSRE勉強会 #2を開催しました！",
-      "url": "https://zenn.dev/tk3fftk/articles/1f85c78bbcaf72",
-      "publishedAt": "Mon, 31 Aug 2026 01:00:00 GMT",
       "source": "zenn"
     },
     {
@@ -61,27 +103,9 @@
       "source": "zenn"
     },
     {
-      "title": "OpenTelemetry Collectorでテレメトリーデータの欠損を防ぐためのいくつかの方法",
-      "url": "https://zenn.dev/taxin/articles/otel-resiliency",
-      "publishedAt": "Sun, 30 Aug 2026 05:46:51 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "自作npmパッケージにマルウェアを公開されたときにやったこと",
       "url": "https://zenn.dev/7nohe/articles/npm-malware-incident-response",
       "publishedAt": "Sat, 29 Aug 2026 15:49:58 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "SPFとDKIMとDMARCの役割の違いを整理する",
-      "url": "https://zenn.dev/rickysb527/articles/spf-dkim-dmarc-roles",
-      "publishedAt": "Sat, 29 Aug 2026 14:36:39 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GPUを燃やさないために - RTX 5090にパワーリミットをかけると、性能はどれだけ落ち、どれだけ冷えるのか -",
-      "url": "https://zenn.dev/holy_fox/articles/572083c130ce46",
-      "publishedAt": "Sat, 29 Aug 2026 03:52:52 GMT",
       "source": "zenn"
     },
     {
@@ -91,33 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "「Enterで送信」は滅びよ ~ IME誤爆に疲れたので、チャットの送信に修飾キーを必須にした ~",
-      "url": "https://zenn.dev/safie_inc/articles/ee72b837e4a5f1",
-      "publishedAt": "Fri, 28 Aug 2026 04:23:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "肥大化し続けるCLAUDE.md",
-      "url": "https://zenn.dev/tokium_dev/articles/claude-md-keeps-growing",
-      "publishedAt": "Fri, 28 Aug 2026 00:00:09 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Claude Code の承認待ちを見逃さないために、光る Clawd を机に置いた",
       "url": "https://zenn.dev/lincwell_inc/articles/79092d88245748",
       "publishedAt": "Thu, 27 Aug 2026 01:00:01 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ローカル AWS エミュレータで Terraform を検証する",
-      "url": "https://zenn.dev/edash_tech_blog/articles/0ea5ab1ef9a751",
-      "publishedAt": "Thu, 27 Aug 2026 00:03:42 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "並行開発に Orca がめちゃ便利",
-      "url": "https://zenn.dev/rhosokawa/articles/d0a958c17c2820",
-      "publishedAt": "Wed, 26 Aug 2026 15:39:54 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-01T03:03:44.695Z"
+  "updatedAt": "2026-09-02T02:23:50.484Z"
 }
