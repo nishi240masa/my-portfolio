@@ -1,15 +1,51 @@
 {
   "zenn": [
     {
+      "title": "ECS デプロイパイプラインと構成管理を GitHub Actionsと ecspresso に移行しました",
+      "url": "https://zenn.dev/mybest_dev/articles/2cd71bc64ad380",
+      "publishedAt": "Wed, 02 Sep 2026 09:00:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIエージェント時代にデータサイエンティストは生き残れるのか",
+      "url": "https://zenn.dev/miogawa/articles/09bed306fc615a",
+      "publishedAt": "Wed, 02 Sep 2026 08:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Chainguardに学ぶセキュアなコンテナイメージの作り方",
+      "url": "https://zenn.dev/ymotongpoo/books/chainguard-image-toolchain",
+      "publishedAt": "Wed, 02 Sep 2026 05:25:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "テスト見積もりは掛け算2つで出せる",
+      "url": "https://zenn.dev/bitkey_dev/articles/test-estimation-formula",
+      "publishedAt": "Wed, 02 Sep 2026 02:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI前提のプロダクト開発組織を目指して、minneの2026年の現在地",
+      "url": "https://zenn.dev/pepabo/articles/minne-ai-native-org-2026",
+      "publishedAt": "Wed, 02 Sep 2026 01:44:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Tauriのアプリケーションでダークモードを実装する",
+      "url": "https://zenn.dev/ayaextech_fill/articles/tauri-application-dark-mode",
+      "publishedAt": "Tue, 01 Sep 2026 17:33:07 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "社内限定サービスの認証を Google Workspace でサクッと作る",
       "url": "https://zenn.dev/dress_code/articles/6134e6bd5e46c6",
       "publishedAt": "Tue, 01 Sep 2026 10:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "OOMKill の犯人は CPU だった：GOGC と GOMEMLIMIT を実測で設計し直す",
-      "url": "https://zenn.dev/reality_tech/articles/f6305331bccee0",
-      "publishedAt": "Tue, 01 Sep 2026 09:12:59 GMT",
+      "title": "Rust の ORM 選定に新しい選択肢は来るか？ Toasty を使ってみる",
+      "url": "https://zenn.dev/uniquevision/articles/345368d3188b98",
+      "publishedAt": "Tue, 01 Sep 2026 09:31:23 GMT",
       "source": "zenn"
     },
     {
@@ -31,18 +67,6 @@
       "source": "zenn"
     },
     {
-      "title": "Kiro に野良 MCP を繋がせない。AWS Agent Registry × Kiro for Enterprise で配布を統制する",
-      "url": "https://zenn.dev/aws_japan/articles/agent-registry-kiro-governance",
-      "publishedAt": "Tue, 01 Sep 2026 02:17:59 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "社内アプリをもっと気軽に届けたい — 開発者とともに育てるPlatformづくり",
-      "url": "https://zenn.dev/simplex/articles/0ce703ef0b877c",
-      "publishedAt": "Tue, 01 Sep 2026 01:19:36 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "会話セッションを邪魔せずに Claude Code / Codex / Cursor を外部イベントで動かすCLIの作り方まとめ",
       "url": "https://zenn.dev/coji/articles/artifactshare-preview-claude-codex-cursor",
       "publishedAt": "Tue, 01 Sep 2026 01:03:04 GMT",
@@ -55,21 +79,9 @@
       "source": "zenn"
     },
     {
-      "title": "AIエージェントの品質、どう測る？ Google ADKの評価機能を使い倒す",
-      "url": "https://zenn.dev/phper8080/articles/91ffb94fe75b45",
-      "publishedAt": "Mon, 31 Aug 2026 15:16:23 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "小学校の夏休みの宿題をプロジェクトマネジメントしてみた",
-      "url": "https://zenn.dev/nextbeat/articles/8f5d24529caea6",
-      "publishedAt": "Mon, 31 Aug 2026 11:01:11 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "なりすましメール送ってみた - SPF / DKIM / DMARC の歴史と仕組み",
-      "url": "https://zenn.dev/kitacom_blog/articles/20260828-mail-auth",
-      "publishedAt": "Mon, 31 Aug 2026 08:11:19 GMT",
+      "title": "トークン2000分の1——オントロジー×ナレッジグラフでClaude Codeの推測を消す",
+      "url": "https://zenn.dev/helloworld/articles/bcaea69f58eae5",
+      "publishedAt": "Mon, 31 Aug 2026 22:00:08 GMT",
       "source": "zenn"
     },
     {
@@ -107,18 +119,6 @@
       "url": "https://zenn.dev/7nohe/articles/npm-malware-incident-response",
       "publishedAt": "Sat, 29 Aug 2026 15:49:58 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "AIに丸投げしないで理解するためのAI開発手法（2026年8月現在）",
-      "url": "https://zenn.dev/avaintelligence/articles/dont-outsource-understanding-to-ai",
-      "publishedAt": "Fri, 28 Aug 2026 05:55:30 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Code の承認待ちを見逃さないために、光る Clawd を机に置いた",
-      "url": "https://zenn.dev/lincwell_inc/articles/79092d88245748",
-      "publishedAt": "Thu, 27 Aug 2026 01:00:01 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-02T02:23:50.484Z"
+  "updatedAt": "2026-09-03T02:30:35.938Z"
 }
