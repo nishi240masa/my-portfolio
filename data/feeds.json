@@ -1,6 +1,30 @@
 {
   "zenn": [
     {
+      "title": "Ubiquiti UniFi の管理者ページを Microsoft Entra ID からシングルサインオンするための設定メモ",
+      "url": "https://zenn.dev/shimosyan/articles/af959e573ffd18",
+      "publishedAt": "Thu, 03 Sep 2026 09:17:12 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Prisma v7 移行のつまづきポイントと、importを安全に置き換えた話",
+      "url": "https://zenn.dev/dress_code/articles/b9a34a1a55fd95",
+      "publishedAt": "Thu, 03 Sep 2026 00:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "シャドーAIエージェントはログがないと止められない（TrendAI Spark 2026 仙台 参加レポ）",
+      "url": "https://zenn.dev/nexta_/articles/d0b88ea83ee861",
+      "publishedAt": "Wed, 02 Sep 2026 23:55:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Kaggle Pokémon TCG AI Battle Challenge ポケカコンペ振り返りーメダルなし",
+      "url": "https://zenn.dev/fusic/articles/4b6e8eb23c0363",
+      "publishedAt": "Wed, 02 Sep 2026 11:59:49 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ECS デプロイパイプラインと構成管理を GitHub Actionsと ecspresso に移行しました",
       "url": "https://zenn.dev/mybest_dev/articles/2cd71bc64ad380",
       "publishedAt": "Wed, 02 Sep 2026 09:00:32 GMT",
@@ -19,21 +43,15 @@
       "source": "zenn"
     },
     {
+      "title": "Claude Code のトークン節約でやっている 9 つのこと — 起動 7 万トークンの内訳と計測つき",
+      "url": "https://zenn.dev/activecore/articles/claude-code-resident-cost",
+      "publishedAt": "Wed, 02 Sep 2026 04:54:11 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "テスト見積もりは掛け算2つで出せる",
       "url": "https://zenn.dev/bitkey_dev/articles/test-estimation-formula",
       "publishedAt": "Wed, 02 Sep 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI前提のプロダクト開発組織を目指して、minneの2026年の現在地",
-      "url": "https://zenn.dev/pepabo/articles/minne-ai-native-org-2026",
-      "publishedAt": "Wed, 02 Sep 2026 01:44:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Tauriのアプリケーションでダークモードを実装する",
-      "url": "https://zenn.dev/ayaextech_fill/articles/tauri-application-dark-mode",
-      "publishedAt": "Tue, 01 Sep 2026 17:33:07 GMT",
       "source": "zenn"
     },
     {
@@ -85,12 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "個人向け Coding Agent サブスクリプションのコストパフォーマンス比較",
-      "url": "https://zenn.dev/kimuson/articles/compare-ai-subscription-20260818",
-      "publishedAt": "Mon, 31 Aug 2026 04:50:01 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "202608個人的claude code設定",
       "url": "https://zenn.dev/kawarimidoll/articles/d3f1a7542de71a",
       "publishedAt": "Mon, 31 Aug 2026 02:30:18 GMT",
@@ -106,18 +118,6 @@
       "title": "「ページのトップへ戻るボタン」はなぜ非推奨か",
       "url": "https://zenn.dev/masahiko888/articles/91c9a1e354aacb",
       "publishedAt": "Sun, 30 Aug 2026 14:22:43 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "TypeScript ライブラリとして動作する組版エンジン minitype を公開しました",
-      "url": "https://zenn.dev/inaniwaudon/articles/62f1def4bad627",
-      "publishedAt": "Sun, 30 Aug 2026 12:21:31 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "自作npmパッケージにマルウェアを公開されたときにやったこと",
-      "url": "https://zenn.dev/7nohe/articles/npm-malware-incident-response",
-      "publishedAt": "Sat, 29 Aug 2026 15:49:58 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-03T02:30:35.938Z"
+  "updatedAt": "2026-09-04T02:26:46.913Z"
 }
