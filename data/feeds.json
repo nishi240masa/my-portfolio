@@ -1,15 +1,39 @@
 {
   "zenn": [
     {
+      "title": "[OpenTelemetry] Go のコンパイル時計装において、ctx 伝搬なしで span を紐づける仕組みについて調べた",
+      "url": "https://zenn.dev/ntk221/articles/34cbb95272720f",
+      "publishedAt": "Sat, 05 Sep 2026 05:20:31 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "CとGoの生成コードを読む ― アセンブリから見る言語設計の違い",
+      "url": "https://zenn.dev/saku0512/books/3735de8d0aa09f",
+      "publishedAt": "Sat, 05 Sep 2026 01:33:15 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "AIでチーム感が薄れたSREチームで始めた、AIによる週次チーム評価",
       "url": "https://zenn.dev/hubble/articles/ee2f962e0a69f1",
       "publishedAt": "Fri, 04 Sep 2026 03:57:56 GMT",
       "source": "zenn"
     },
     {
+      "title": "ループエンジニアリング（ralph loop）で業務システムのUIを一新してみた",
+      "url": "https://zenn.dev/sompojapan_dx/articles/846c6038fee45d",
+      "publishedAt": "Fri, 04 Sep 2026 03:11:20 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "TanStack Virtual を使ってみた話",
       "url": "https://zenn.dev/geekplus/articles/b5f1757e2869ef",
       "publishedAt": "Fri, 04 Sep 2026 00:03:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "WSL 用ターミナルは noctty が良いぞ — PR を 4 本マージしてもらって分かったこと",
+      "url": "https://zenn.dev/nanasess/articles/noctty-wsl-terminal-contribution",
+      "publishedAt": "Thu, 03 Sep 2026 23:33:44 GMT",
       "source": "zenn"
     },
     {
@@ -25,21 +49,9 @@
       "source": "zenn"
     },
     {
-      "title": "プッシュ通知を「無理やり許可させない」ために、表現も実装も選び直した話",
-      "url": "https://zenn.dev/wn_engineering/articles/4f914e97053eac",
-      "publishedAt": "Thu, 03 Sep 2026 03:00:07 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "ルールではなくskillに指示を書くことで、Claudeのコメントを減らせた",
       "url": "https://zenn.dev/uzu_tech/articles/58a84a9346b910",
       "publishedAt": "Thu, 03 Sep 2026 03:00:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ECS デプロイパイプラインと構成管理を GitHub Actionsと ecspresso に移行しました",
-      "url": "https://zenn.dev/mybest_dev/articles/2cd71bc64ad380",
-      "publishedAt": "Wed, 02 Sep 2026 09:00:32 GMT",
       "source": "zenn"
     },
     {
@@ -107,18 +119,6 @@
       "url": "https://zenn.dev/kawarimidoll/articles/d3f1a7542de71a",
       "publishedAt": "Mon, 31 Aug 2026 02:30:18 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "PR の概要や動作確認結果を HTML で共有するのに、zip 不要の GitHub Actions Artifact がちょうどよかった",
-      "url": "https://zenn.dev/she_techblog/articles/github-actions-artifact-no-zip",
-      "publishedAt": "Mon, 31 Aug 2026 00:00:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "「ページのトップへ戻るボタン」はなぜ非推奨か",
-      "url": "https://zenn.dev/masahiko888/articles/91c9a1e354aacb",
-      "publishedAt": "Sun, 30 Aug 2026 14:22:43 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-05T02:27:41.006Z"
+  "updatedAt": "2026-09-06T02:24:09.863Z"
 }
