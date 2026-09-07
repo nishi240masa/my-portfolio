@@ -1,6 +1,54 @@
 {
   "zenn": [
     {
+      "title": "初学者がRustに触れて感じたこと",
+      "url": "https://zenn.dev/darkcat666/articles/c2a19b874900ab",
+      "publishedAt": "Sun, 06 Sep 2026 12:09:30 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GitHub の権限管理を Terraform 化すると体験がよかった",
+      "url": "https://zenn.dev/dev_commune/articles/github-terraform-permission-management",
+      "publishedAt": "Sun, 06 Sep 2026 11:50:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "B2Bプロダクト設計入門 - 小さなチームでも作れるエンタープライズ対応のSaaS設計",
+      "url": "https://zenn.dev/kusuke/books/cd983c465bc175",
+      "publishedAt": "Sun, 06 Sep 2026 11:28:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ルービックキューブを一撃で解く専用LLMを作った",
+      "url": "https://zenn.dev/issei_y/articles/4178a603322b8e",
+      "publishedAt": "Sun, 06 Sep 2026 10:48:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GPT-2-likeからQwen2-likeへの実験：第3回 絶対位置EmbeddingをRoPEに変える",
+      "url": "https://zenn.dev/yyamamot/articles/gpt2-to-qwen2-03-rope",
+      "publishedAt": "Sun, 06 Sep 2026 06:45:34 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "個人PCのClaude Codeの設定ファイルと、設定の動機を一部紹介します",
+      "url": "https://zenn.dev/yuki82511988/articles/45a5a464514ac1",
+      "publishedAt": "Sun, 06 Sep 2026 01:32:12 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Code の Rules が発火しないのは、Claude が Read ツールを使っていないから",
+      "url": "https://zenn.dev/odacchi/articles/claude-code-rules-read-tool",
+      "publishedAt": "Sat, 05 Sep 2026 20:36:54 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "単一特徴量でロング・ショートを組むとき、相関の高いペアを選ぶ理由",
+      "url": "https://zenn.dev/gamella/articles/2b0d84fd597da3",
+      "publishedAt": "Sat, 05 Sep 2026 10:40:24 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "[OpenTelemetry] Go のコンパイル時計装において、ctx 伝搬なしで span を紐づける仕組みについて調べた",
       "url": "https://zenn.dev/ntk221/articles/34cbb95272720f",
       "publishedAt": "Sat, 05 Sep 2026 05:20:31 GMT",
@@ -13,12 +61,6 @@
       "source": "zenn"
     },
     {
-      "title": "AIでチーム感が薄れたSREチームで始めた、AIによる週次チーム評価",
-      "url": "https://zenn.dev/hubble/articles/ee2f962e0a69f1",
-      "publishedAt": "Fri, 04 Sep 2026 03:57:56 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "ループエンジニアリング（ralph loop）で業務システムのUIを一新してみた",
       "url": "https://zenn.dev/sompojapan_dx/articles/846c6038fee45d",
       "publishedAt": "Fri, 04 Sep 2026 03:11:20 GMT",
@@ -28,12 +70,6 @@
       "title": "TanStack Virtual を使ってみた話",
       "url": "https://zenn.dev/geekplus/articles/b5f1757e2869ef",
       "publishedAt": "Fri, 04 Sep 2026 00:03:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "WSL 用ターミナルは noctty が良いぞ — PR を 4 本マージしてもらって分かったこと",
-      "url": "https://zenn.dev/nanasess/articles/noctty-wsl-terminal-contribution",
-      "publishedAt": "Thu, 03 Sep 2026 23:33:44 GMT",
       "source": "zenn"
     },
     {
@@ -73,51 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "Rust の ORM 選定に新しい選択肢は来るか？ Toasty を使ってみる",
-      "url": "https://zenn.dev/uniquevision/articles/345368d3188b98",
-      "publishedAt": "Tue, 01 Sep 2026 09:31:23 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Google提唱の「SKILL.state」について。プロンプトに型の概念を導入",
       "url": "https://zenn.dev/knowledgesense/articles/ad123283bdea26",
       "publishedAt": "Tue, 01 Sep 2026 08:46:36 GMT",
       "source": "zenn"
     },
     {
-      "title": "Web 標準動向 2026年8月版",
-      "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202608",
-      "publishedAt": "Tue, 01 Sep 2026 08:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "PRレビューもエラー調査も定額で自動化する、Claude Codeのroutine活用実例",
       "url": "https://zenn.dev/atamaplus/articles/6be03483c0110b",
       "publishedAt": "Tue, 01 Sep 2026 07:50:31 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "会話セッションを邪魔せずに Claude Code / Codex / Cursor を外部イベントで動かすCLIの作り方まとめ",
-      "url": "https://zenn.dev/coji/articles/artifactshare-preview-claude-codex-cursor",
-      "publishedAt": "Tue, 01 Sep 2026 01:03:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "無音で文字起こしすると「ご視聴ありがとうございました」になる理由を検証",
-      "url": "https://zenn.dev/trtd56/articles/994f43aebd2057",
-      "publishedAt": "Tue, 01 Sep 2026 00:39:17 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "トークン2000分の1——オントロジー×ナレッジグラフでClaude Codeの推測を消す",
-      "url": "https://zenn.dev/helloworld/articles/bcaea69f58eae5",
-      "publishedAt": "Mon, 31 Aug 2026 22:00:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "202608個人的claude code設定",
-      "url": "https://zenn.dev/kawarimidoll/articles/d3f1a7542de71a",
-      "publishedAt": "Mon, 31 Aug 2026 02:30:18 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-06T02:24:09.863Z"
+  "updatedAt": "2026-09-07T02:21:01.251Z"
 }
