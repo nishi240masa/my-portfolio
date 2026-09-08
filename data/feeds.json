@@ -1,15 +1,75 @@
 {
   "zenn": [
     {
-      "title": "初学者がRustに触れて感じたこと",
-      "url": "https://zenn.dev/darkcat666/articles/c2a19b874900ab",
-      "publishedAt": "Sun, 06 Sep 2026 12:09:30 GMT",
+      "title": "Astra時代のコードファースト3Dモデリング",
+      "url": "https://zenn.dev/koher/articles/code-first-3d-modeling",
+      "publishedAt": "Mon, 07 Sep 2026 12:10:26 GMT",
       "source": "zenn"
     },
     {
-      "title": "GitHub の権限管理を Terraform 化すると体験がよかった",
-      "url": "https://zenn.dev/dev_commune/articles/github-terraform-permission-management",
-      "publishedAt": "Sun, 06 Sep 2026 11:50:58 GMT",
+      "title": "Snowflake App RuntimeがGAになったので、Public Previewからの差分を追いかけてみた（＆簡単に触ってみた）",
+      "url": "https://zenn.dev/s_uema2/articles/03fdaa7ea13770",
+      "publishedAt": "Mon, 07 Sep 2026 11:54:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "DatabricksのServerlessで複数CPUアーキテクチャに対応して起動時間を遅くしない [2026年9月7日時点]",
+      "url": "https://zenn.dev/turing_motors/articles/71a4dd39e0654c",
+      "publishedAt": "Mon, 07 Sep 2026 09:00:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ドメインモデル貧血症はなぜ生まれるのか — Decision パターンで DDD トリレンマを解く",
+      "url": "https://zenn.dev/tellernovel_inc/articles/0193eb68cabb6e",
+      "publishedAt": "Mon, 07 Sep 2026 03:03:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【XP祭り2026】エンジニアにコミュ力を求めるな、と言われて頷いた",
+      "url": "https://zenn.dev/nexta_/articles/51fdb6f774d1ca",
+      "publishedAt": "Mon, 07 Sep 2026 02:32:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "WebエンジニアのためのReact Native + NativeWind v5事始め — Webの常識が通用しない18のポイント",
+      "url": "https://zenn.dev/my_vision/articles/2bbf47bb0db842",
+      "publishedAt": "Mon, 07 Sep 2026 01:17:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Astraのリリースに合わせてAGENTS.mdを修正するなら「request_user_input」も使って体験良くチューニングしよう",
+      "url": "https://zenn.dev/cureapp/articles/9dd3298ce84b47",
+      "publishedAt": "Mon, 07 Sep 2026 00:10:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "HTMLを社内共有するサービスを、コードを読まずに作る - 1人で25万行を回す自動運用の記録",
+      "url": "https://zenn.dev/coji/articles/solo-software-factory-without-reading-code",
+      "publishedAt": "Mon, 07 Sep 2026 00:05:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "テストを生成するな、信頼を生成しろ",
+      "url": "https://zenn.dev/nakurei/articles/generate-trust-not-tests",
+      "publishedAt": "Mon, 07 Sep 2026 00:00:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "RustでWebフロントとモバイルの複雑なドメインロジックを共通化する（UniFFI + WASM）",
+      "url": "https://zenn.dev/rick2200/articles/16ee74ef2464b8",
+      "publishedAt": "Sun, 06 Sep 2026 23:55:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "不具合はCIに刻もう。「Red-Green Stacked PR」のすすめ",
+      "url": "https://zenn.dev/bmth/articles/red-green-stacked-pr",
+      "publishedAt": "Sun, 06 Sep 2026 16:01:18 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "初学者がRustに触れて感じたこと",
+      "url": "https://zenn.dev/darkcat666/articles/c2a19b874900ab",
+      "publishedAt": "Sun, 06 Sep 2026 12:09:30 GMT",
       "source": "zenn"
     },
     {
@@ -20,44 +80,26 @@
     },
     {
       "title": "ルービックキューブを一撃で解く専用LLMを作った",
-      "url": "https://zenn.dev/issei_y/articles/4178a603322b8e",
+      "url": "https://zenn.dev/turing_motors/articles/4178a603322b8e",
       "publishedAt": "Sun, 06 Sep 2026 10:48:04 GMT",
       "source": "zenn"
     },
     {
-      "title": "GPT-2-likeからQwen2-likeへの実験：第3回 絶対位置EmbeddingをRoPEに変える",
-      "url": "https://zenn.dev/yyamamot/articles/gpt2-to-qwen2-03-rope",
-      "publishedAt": "Sun, 06 Sep 2026 06:45:34 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "個人PCのClaude Codeの設定ファイルと、設定の動機を一部紹介します",
-      "url": "https://zenn.dev/yuki82511988/articles/45a5a464514ac1",
-      "publishedAt": "Sun, 06 Sep 2026 01:32:12 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Code の Rules が発火しないのは、Claude が Read ツールを使っていないから",
-      "url": "https://zenn.dev/odacchi/articles/claude-code-rules-read-tool",
-      "publishedAt": "Sat, 05 Sep 2026 20:36:54 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "単一特徴量でロング・ショートを組むとき、相関の高いペアを選ぶ理由",
-      "url": "https://zenn.dev/gamella/articles/2b0d84fd597da3",
-      "publishedAt": "Sat, 05 Sep 2026 10:40:24 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "[OpenTelemetry] Go のコンパイル時計装において、ctx 伝搬なしで span を紐づける仕組みについて調べた",
-      "url": "https://zenn.dev/ntk221/articles/34cbb95272720f",
-      "publishedAt": "Sat, 05 Sep 2026 05:20:31 GMT",
+      "title": "代数的エフェクト指向 Flix は、次世代 ORM の夢を見るか",
+      "url": "https://zenn.dev/ababup1192/articles/0c29f21fe1ab8f",
+      "publishedAt": "Sun, 06 Sep 2026 03:01:05 GMT",
       "source": "zenn"
     },
     {
       "title": "CとGoの生成コードを読む ― アセンブリから見る言語設計の違い",
       "url": "https://zenn.dev/saku0512/books/3735de8d0aa09f",
       "publishedAt": "Sat, 05 Sep 2026 01:33:15 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "RTX 5060 Ti 16GBでローカルLLM(Qwen3.8 27B)にもう一度挑んだ話",
+      "url": "https://zenn.dev/yumeno/articles/rtx5060ti-qwen38-ollama-context-tuning",
+      "publishedAt": "Fri, 04 Sep 2026 07:50:51 GMT",
       "source": "zenn"
     },
     {
@@ -76,48 +118,6 @@
       "title": "お母さん！僕、日記をドメインに書くことにしたの",
       "url": "https://zenn.dev/pepabo/articles/fd7a61e75f3dcc",
       "publishedAt": "Thu, 03 Sep 2026 23:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIに「中学生でもわかるように1枚のHTMLで図解して」が、複雑なコードを読む前の最良の準備運動かも",
-      "url": "https://zenn.dev/yesodco/articles/ed0eb2f6b7621a",
-      "publishedAt": "Thu, 03 Sep 2026 06:02:10 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ルールではなくskillに指示を書くことで、Claudeのコメントを減らせた",
-      "url": "https://zenn.dev/uzu_tech/articles/58a84a9346b910",
-      "publishedAt": "Thu, 03 Sep 2026 03:00:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Chainguardに学ぶセキュアなコンテナイメージの作り方",
-      "url": "https://zenn.dev/ymotongpoo/books/chainguard-image-toolchain",
-      "publishedAt": "Wed, 02 Sep 2026 05:25:32 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "テスト見積もりは掛け算2つで出せる",
-      "url": "https://zenn.dev/bitkey_dev/articles/test-estimation-formula",
-      "publishedAt": "Wed, 02 Sep 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "社内限定サービスの認証を Google Workspace でサクッと作る",
-      "url": "https://zenn.dev/dress_code/articles/6134e6bd5e46c6",
-      "publishedAt": "Tue, 01 Sep 2026 10:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Google提唱の「SKILL.state」について。プロンプトに型の概念を導入",
-      "url": "https://zenn.dev/knowledgesense/articles/ad123283bdea26",
-      "publishedAt": "Tue, 01 Sep 2026 08:46:36 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "PRレビューもエラー調査も定額で自動化する、Claude Codeのroutine活用実例",
-      "url": "https://zenn.dev/atamaplus/articles/6be03483c0110b",
-      "publishedAt": "Tue, 01 Sep 2026 07:50:31 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-07T02:21:01.251Z"
+  "updatedAt": "2026-09-08T02:33:32.861Z"
 }
