@@ -1,21 +1,51 @@
 {
   "zenn": [
     {
+      "title": "1,500人のカメラマンに社内NotionのQAエージェントを提供した話",
+      "url": "https://zenn.dev/lovegraph/articles/ce6cb80756e3ca",
+      "publishedAt": "Tue, 08 Sep 2026 08:00:19 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Herdr × git worktree × Claude Codeの相性がいい話",
+      "url": "https://zenn.dev/gemcook/articles/herdr-worktree-parallel",
+      "publishedAt": "Tue, 08 Sep 2026 06:20:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "モバイルアプリ開発でもエージェントループを回したい！React Nativeで計画から検証・PRまで任せる",
+      "url": "https://zenn.dev/tellernovel_inc/articles/57b223dd4b8f5d",
+      "publishedAt": "Tue, 08 Sep 2026 05:40:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "立ち上げ期の技術広報が見たDroidKaigi 2026 ブースフロア",
+      "url": "https://zenn.dev/trustdock/articles/f57af053bdbed4",
+      "publishedAt": "Tue, 08 Sep 2026 05:30:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "React 19移行で学んだpnpmの依存関係解決の仕組み",
+      "url": "https://zenn.dev/yamatechi/articles/vite-monorepo-react-dedupe",
+      "publishedAt": "Tue, 08 Sep 2026 03:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Kaggleコンペ紹介：AI Agent Security - Multi-Step Tool Attacks",
+      "url": "https://zenn.dev/mkj/articles/fad8adf0586665",
+      "publishedAt": "Tue, 08 Sep 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Techはすぐに追ったほうがいい",
+      "url": "https://zenn.dev/myuron/articles/3c09e7e697d9de",
+      "publishedAt": "Tue, 08 Sep 2026 01:43:14 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Astra時代のコードファースト3Dモデリング",
       "url": "https://zenn.dev/koher/articles/code-first-3d-modeling",
       "publishedAt": "Mon, 07 Sep 2026 12:10:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Snowflake App RuntimeがGAになったので、Public Previewからの差分を追いかけてみた（＆簡単に触ってみた）",
-      "url": "https://zenn.dev/s_uema2/articles/03fdaa7ea13770",
-      "publishedAt": "Mon, 07 Sep 2026 11:54:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "DatabricksのServerlessで複数CPUアーキテクチャに対応して起動時間を遅くしない [2026年9月7日時点]",
-      "url": "https://zenn.dev/turing_motors/articles/71a4dd39e0654c",
-      "publishedAt": "Mon, 07 Sep 2026 09:00:08 GMT",
       "source": "zenn"
     },
     {
@@ -55,21 +85,9 @@
       "source": "zenn"
     },
     {
-      "title": "RustでWebフロントとモバイルの複雑なドメインロジックを共通化する（UniFFI + WASM）",
-      "url": "https://zenn.dev/rick2200/articles/16ee74ef2464b8",
-      "publishedAt": "Sun, 06 Sep 2026 23:55:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "不具合はCIに刻もう。「Red-Green Stacked PR」のすすめ",
       "url": "https://zenn.dev/bmth/articles/red-green-stacked-pr",
       "publishedAt": "Sun, 06 Sep 2026 16:01:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "初学者がRustに触れて感じたこと",
-      "url": "https://zenn.dev/darkcat666/articles/c2a19b874900ab",
-      "publishedAt": "Sun, 06 Sep 2026 12:09:30 GMT",
       "source": "zenn"
     },
     {
@@ -82,12 +100,6 @@
       "title": "ルービックキューブを一撃で解く専用LLMを作った",
       "url": "https://zenn.dev/turing_motors/articles/4178a603322b8e",
       "publishedAt": "Sun, 06 Sep 2026 10:48:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "代数的エフェクト指向 Flix は、次世代 ORM の夢を見るか",
-      "url": "https://zenn.dev/ababup1192/articles/0c29f21fe1ab8f",
-      "publishedAt": "Sun, 06 Sep 2026 03:01:05 GMT",
       "source": "zenn"
     },
     {
@@ -106,18 +118,6 @@
       "title": "ループエンジニアリング（ralph loop）で業務システムのUIを一新してみた",
       "url": "https://zenn.dev/sompojapan_dx/articles/846c6038fee45d",
       "publishedAt": "Fri, 04 Sep 2026 03:11:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "TanStack Virtual を使ってみた話",
-      "url": "https://zenn.dev/geekplus/articles/b5f1757e2869ef",
-      "publishedAt": "Fri, 04 Sep 2026 00:03:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "お母さん！僕、日記をドメインに書くことにしたの",
-      "url": "https://zenn.dev/pepabo/articles/fd7a61e75f3dcc",
-      "publishedAt": "Thu, 03 Sep 2026 23:30:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-08T02:33:32.861Z"
+  "updatedAt": "2026-09-09T02:34:55.735Z"
 }
