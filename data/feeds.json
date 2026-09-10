@@ -1,9 +1,57 @@
 {
   "zenn": [
     {
-      "title": "1,500人のカメラマンに社内NotionのQAエージェントを提供した話",
-      "url": "https://zenn.dev/lovegraph/articles/ce6cb80756e3ca",
-      "publishedAt": "Tue, 08 Sep 2026 08:00:19 GMT",
+      "title": "Agent Skillは振る舞いとナレッジを分けて設計する",
+      "url": "https://zenn.dev/socialplus/articles/f5d9e28470eb99",
+      "publishedAt": "Wed, 09 Sep 2026 10:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "YANSでスポンサーしてきた",
+      "url": "https://zenn.dev/ivry/articles/a3f5cce6b9a7e0",
+      "publishedAt": "Wed, 09 Sep 2026 09:36:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "プロジェクトマネジメントの教科書（内製チーム向け）",
+      "url": "https://zenn.dev/tan_go238/books/project-management-textbook",
+      "publishedAt": "Wed, 09 Sep 2026 05:24:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cluster Autoscaler から Karpenter へ移行して分かったこと",
+      "url": "https://zenn.dev/socialplus/articles/dc1ceeb1e42edc",
+      "publishedAt": "Wed, 09 Sep 2026 01:09:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "LLMのトークン効率化で気をつけたいことまとめ",
+      "url": "https://zenn.dev/ml_bear/articles/e5cc1047cba176",
+      "publishedAt": "Wed, 09 Sep 2026 00:31:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "モブプロにAIを加えたら人間には疲れる仕事だけが残ったので、AI前提の役割分担を模索している",
+      "url": "https://zenn.dev/lincwell_inc/articles/fddaae539e6e9c",
+      "publishedAt": "Wed, 09 Sep 2026 00:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "最近のClaude Code Desktop、使いやすさマシマシです！",
+      "url": "https://zenn.dev/goat_eat_any/articles/claude-code-desktop-app",
+      "publishedAt": "Tue, 08 Sep 2026 17:21:45 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Amazon Bedrock 料金が一定額を超えたら使用不可にする仕組みを作ってみた",
+      "url": "https://zenn.dev/hatose/articles/ebc0dd996b2cbd",
+      "publishedAt": "Tue, 08 Sep 2026 15:07:33 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "今 font-family 設定するなら sans-serif か system-ui だけ設定しておけばよくね説",
+      "url": "https://zenn.dev/chot/articles/6adfacabe8f317",
+      "publishedAt": "Tue, 08 Sep 2026 07:21:15 GMT",
       "source": "zenn"
     },
     {
@@ -19,21 +67,9 @@
       "source": "zenn"
     },
     {
-      "title": "立ち上げ期の技術広報が見たDroidKaigi 2026 ブースフロア",
-      "url": "https://zenn.dev/trustdock/articles/f57af053bdbed4",
-      "publishedAt": "Tue, 08 Sep 2026 05:30:07 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "React 19移行で学んだpnpmの依存関係解決の仕組み",
-      "url": "https://zenn.dev/yamatechi/articles/vite-monorepo-react-dedupe",
+      "url": "https://zenn.dev/dress_code/articles/vite-monorepo-react-dedupe",
       "publishedAt": "Tue, 08 Sep 2026 03:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Kaggleコンペ紹介：AI Agent Security - Multi-Step Tool Attacks",
-      "url": "https://zenn.dev/mkj/articles/fad8adf0586665",
-      "publishedAt": "Tue, 08 Sep 2026 02:50:05 GMT",
       "source": "zenn"
     },
     {
@@ -55,21 +91,9 @@
       "source": "zenn"
     },
     {
-      "title": "【XP祭り2026】エンジニアにコミュ力を求めるな、と言われて頷いた",
-      "url": "https://zenn.dev/nexta_/articles/51fdb6f774d1ca",
-      "publishedAt": "Mon, 07 Sep 2026 02:32:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "WebエンジニアのためのReact Native + NativeWind v5事始め — Webの常識が通用しない18のポイント",
       "url": "https://zenn.dev/my_vision/articles/2bbf47bb0db842",
       "publishedAt": "Mon, 07 Sep 2026 01:17:48 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Astraのリリースに合わせてAGENTS.mdを修正するなら「request_user_input」も使って体験良くチューニングしよう",
-      "url": "https://zenn.dev/cureapp/articles/9dd3298ce84b47",
-      "publishedAt": "Mon, 07 Sep 2026 00:10:42 GMT",
       "source": "zenn"
     },
     {
@@ -95,30 +119,6 @@
       "url": "https://zenn.dev/kusuke/books/cd983c465bc175",
       "publishedAt": "Sun, 06 Sep 2026 11:28:36 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "ルービックキューブを一撃で解く専用LLMを作った",
-      "url": "https://zenn.dev/turing_motors/articles/4178a603322b8e",
-      "publishedAt": "Sun, 06 Sep 2026 10:48:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "CとGoの生成コードを読む ― アセンブリから見る言語設計の違い",
-      "url": "https://zenn.dev/saku0512/books/3735de8d0aa09f",
-      "publishedAt": "Sat, 05 Sep 2026 01:33:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "RTX 5060 Ti 16GBでローカルLLM(Qwen3.8 27B)にもう一度挑んだ話",
-      "url": "https://zenn.dev/yumeno/articles/rtx5060ti-qwen38-ollama-context-tuning",
-      "publishedAt": "Fri, 04 Sep 2026 07:50:51 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ループエンジニアリング（ralph loop）で業務システムのUIを一新してみた",
-      "url": "https://zenn.dev/sompojapan_dx/articles/846c6038fee45d",
-      "publishedAt": "Fri, 04 Sep 2026 03:11:20 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-09T02:34:55.735Z"
+  "updatedAt": "2026-09-10T02:36:33.258Z"
 }
