@@ -1,15 +1,45 @@
 {
   "zenn": [
     {
-      "title": "Agent Skillは振る舞いとナレッジを分けて設計する",
-      "url": "https://zenn.dev/socialplus/articles/f5d9e28470eb99",
-      "publishedAt": "Wed, 09 Sep 2026 10:00:05 GMT",
+      "title": "良いAIの行動、メモ",
+      "url": "https://zenn.dev/imaimai17468/articles/4fe1531b71929b",
+      "publishedAt": "Thu, 10 Sep 2026 04:38:52 GMT",
       "source": "zenn"
     },
     {
-      "title": "YANSでスポンサーしてきた",
-      "url": "https://zenn.dev/ivry/articles/a3f5cce6b9a7e0",
-      "publishedAt": "Wed, 09 Sep 2026 09:36:55 GMT",
+      "title": "メモリに載らないGROUP BYをDuckDBはどう処理するのか",
+      "url": "https://zenn.dev/loglass/articles/7c140c6689d8c2",
+      "publishedAt": "Thu, 10 Sep 2026 01:42:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ドメインモデル実装におけるトリレンマに対するSoutherの回答",
+      "url": "https://zenn.dev/kawasima/articles/souther-ddd-trilemma",
+      "publishedAt": "Thu, 10 Sep 2026 01:11:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Nuxt.js から Next.js へ ── フロントエンド技術リプレイスにおけるハーネスエンジニアリングと理解負債",
+      "url": "https://zenn.dev/mediba/articles/7d0d7d70678546",
+      "publishedAt": "Wed, 09 Sep 2026 23:49:11 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "なぜエージェントハーネスで開発パイプラインを作っているのか",
+      "url": "https://zenn.dev/xtm_blog/articles/689d035440c0ae",
+      "publishedAt": "Wed, 09 Sep 2026 23:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GPT-6 Astra x Unityでゲームを作る",
+      "url": "https://zenn.dev/tkada/articles/d0c31e6533fb62",
+      "publishedAt": "Wed, 09 Sep 2026 14:30:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Agent Skillは振る舞いとナレッジを分けて設計する",
+      "url": "https://zenn.dev/socialplus/articles/f5d9e28470eb99",
+      "publishedAt": "Wed, 09 Sep 2026 10:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -19,21 +49,9 @@
       "source": "zenn"
     },
     {
-      "title": "Cluster Autoscaler から Karpenter へ移行して分かったこと",
-      "url": "https://zenn.dev/socialplus/articles/dc1ceeb1e42edc",
-      "publishedAt": "Wed, 09 Sep 2026 01:09:17 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "LLMのトークン効率化で気をつけたいことまとめ",
       "url": "https://zenn.dev/ml_bear/articles/e5cc1047cba176",
       "publishedAt": "Wed, 09 Sep 2026 00:31:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "モブプロにAIを加えたら人間には疲れる仕事だけが残ったので、AI前提の役割分担を模索している",
-      "url": "https://zenn.dev/lincwell_inc/articles/fddaae539e6e9c",
-      "publishedAt": "Wed, 09 Sep 2026 00:30:05 GMT",
       "source": "zenn"
     },
     {
@@ -67,12 +85,6 @@
       "source": "zenn"
     },
     {
-      "title": "React 19移行で学んだpnpmの依存関係解決の仕組み",
-      "url": "https://zenn.dev/dress_code/articles/vite-monorepo-react-dedupe",
-      "publishedAt": "Tue, 08 Sep 2026 03:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Techはすぐに追ったほうがいい",
       "url": "https://zenn.dev/myuron/articles/3c09e7e697d9de",
       "publishedAt": "Tue, 08 Sep 2026 01:43:14 GMT",
@@ -91,12 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "WebエンジニアのためのReact Native + NativeWind v5事始め — Webの常識が通用しない18のポイント",
-      "url": "https://zenn.dev/my_vision/articles/2bbf47bb0db842",
-      "publishedAt": "Mon, 07 Sep 2026 01:17:48 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "HTMLを社内共有するサービスを、コードを読まずに作る - 1人で25万行を回す自動運用の記録",
       "url": "https://zenn.dev/coji/articles/solo-software-factory-without-reading-code",
       "publishedAt": "Mon, 07 Sep 2026 00:05:00 GMT",
@@ -112,12 +118,6 @@
       "title": "不具合はCIに刻もう。「Red-Green Stacked PR」のすすめ",
       "url": "https://zenn.dev/bmth/articles/red-green-stacked-pr",
       "publishedAt": "Sun, 06 Sep 2026 16:01:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "B2Bプロダクト設計入門 - 小さなチームでも作れるエンタープライズ対応のSaaS設計",
-      "url": "https://zenn.dev/kusuke/books/cd983c465bc175",
-      "publishedAt": "Sun, 06 Sep 2026 11:28:36 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-10T02:36:33.258Z"
+  "updatedAt": "2026-09-11T02:30:09.979Z"
 }
