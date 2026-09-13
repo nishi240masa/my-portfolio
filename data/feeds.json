@@ -1,6 +1,18 @@
 {
   "zenn": [
     {
+      "title": "クロスプラットフォーム開発が解決するコスト、解決しないコスト",
+      "url": "https://zenn.dev/nkzn/articles/cross-platform-development-costs-2026",
+      "publishedAt": "Sat, 12 Sep 2026 14:05:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "デカルト積問題って知っとるか〜？　気軽にJOINでメモリ爆発するアレのヤバさ実測すぞ！",
+      "url": "https://zenn.dev/levtech/articles/cartesian-product-doctrine-orm",
+      "publishedAt": "Fri, 11 Sep 2026 02:45:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "単体テストの実行時間を6割程度削減してみた",
       "url": "https://zenn.dev/dress_code/articles/5dd5de5020d9ef",
       "publishedAt": "Fri, 11 Sep 2026 02:30:05 GMT",
@@ -16,12 +28,6 @@
       "title": "【VRChat/Udon】世界最速のC#コンパイラを開発した話",
       "url": "https://zenn.dev/bea4dev/articles/b7684e8d4c838e",
       "publishedAt": "Thu, 10 Sep 2026 10:19:23 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "良いAIの行動、メモ",
-      "url": "https://zenn.dev/imaimai17468/articles/4fe1531b71929b",
-      "publishedAt": "Thu, 10 Sep 2026 04:38:52 GMT",
       "source": "zenn"
     },
     {
@@ -85,9 +91,9 @@
       "source": "zenn"
     },
     {
-      "title": "今 font-family 設定するなら sans-serif か system-ui だけ設定しておけばよくね説",
-      "url": "https://zenn.dev/chot/articles/6adfacabe8f317",
-      "publishedAt": "Tue, 08 Sep 2026 07:21:15 GMT",
+      "title": "Amazon Bedrock 料金が一定額を超えたら使用不可にする仕組みを作ってみた",
+      "url": "https://zenn.dev/hatose/articles/ebc0dd996b2cbd",
+      "publishedAt": "Tue, 08 Sep 2026 15:07:33 GMT",
       "source": "zenn"
     },
     {
@@ -103,21 +109,15 @@
       "source": "zenn"
     },
     {
+      "title": "Astra時代のコードファースト3Dモデリング",
+      "url": "https://zenn.dev/koher/articles/code-first-3d-modeling",
+      "publishedAt": "Mon, 07 Sep 2026 12:10:26 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ドメインモデル貧血症はなぜ生まれるのか — Decision パターンで DDD トリレンマを解く",
       "url": "https://zenn.dev/tellernovel_inc/articles/0193eb68cabb6e",
       "publishedAt": "Mon, 07 Sep 2026 03:03:17 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "HTMLを社内共有するサービスを、コードを読まずに作る - 1人で25万行を回す自動運用の記録",
-      "url": "https://zenn.dev/coji/articles/solo-software-factory-without-reading-code",
-      "publishedAt": "Mon, 07 Sep 2026 00:05:00 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "テストを生成するな、信頼を生成しろ",
-      "url": "https://zenn.dev/nakurei/articles/generate-trust-not-tests",
-      "publishedAt": "Mon, 07 Sep 2026 00:00:07 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-12T02:38:44.044Z"
+  "updatedAt": "2026-09-13T02:37:06.112Z"
 }
