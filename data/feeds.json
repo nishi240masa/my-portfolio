@@ -1,9 +1,51 @@
 {
   "zenn": [
     {
+      "title": "フィールドレポート 法律事務所の今",
+      "url": "https://zenn.dev/fdsa/articles/37db858e04678e",
+      "publishedAt": "Sun, 13 Sep 2026 04:45:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "読書メモ『強化学習を学びたい人が最初に読む本』",
+      "url": "https://zenn.dev/morim34/articles/85994d7b38603b",
+      "publishedAt": "Sun, 13 Sep 2026 03:58:50 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "2026年に多くのシストレの戦略のアルファが消えた件について",
+      "url": "https://zenn.dev/gamella/articles/6bd6e5ab9e88bc",
+      "publishedAt": "Sun, 13 Sep 2026 03:37:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "重みは学習するのか、測るのか。ハエの脳が問い直すAIのつくり方",
+      "url": "https://zenn.dev/1amageek/articles/fly-connectome-and-ai",
+      "publishedAt": "Sun, 13 Sep 2026 03:19:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "トークンをケチってレビューをローカルLLMにやらせた話",
+      "url": "https://zenn.dev/k_motoki/articles/11de0ba46dd1ee",
+      "publishedAt": "Sun, 13 Sep 2026 02:42:44 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "クロスプラットフォーム開発が解決するコスト、解決しないコスト",
       "url": "https://zenn.dev/nkzn/articles/cross-platform-development-costs-2026",
       "publishedAt": "Sat, 12 Sep 2026 14:05:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Go Conference 2026に参加してきました！！",
+      "url": "https://zenn.dev/tayu99_make/articles/d0afc5ce232058",
+      "publishedAt": "Sat, 12 Sep 2026 12:11:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AWSアプリ開発の初手が変わる？ Nx Plugin for AWSは何を自動化し、何を人に残すのか",
+      "url": "https://zenn.dev/aws_japan/articles/nx-plugin-for-aws-nx-explained",
+      "publishedAt": "Sat, 12 Sep 2026 06:13:22 GMT",
       "source": "zenn"
     },
     {
@@ -31,12 +73,6 @@
       "source": "zenn"
     },
     {
-      "title": "GPT-6 Astraは何を待ち、いつ指示を取り込むのか — async tool callingとmid-turn steeringを実測",
-      "url": "https://zenn.dev/peoplex_blog/articles/65768c769de4b0",
-      "publishedAt": "Thu, 10 Sep 2026 03:14:11 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "メモリに載らないGROUP BYをDuckDBはどう処理するのか",
       "url": "https://zenn.dev/loglass/articles/7c140c6689d8c2",
       "publishedAt": "Thu, 10 Sep 2026 01:42:07 GMT",
@@ -46,6 +82,12 @@
       "title": "ドメインモデル実装におけるトリレンマに対するSoutherの回答",
       "url": "https://zenn.dev/kawasima/articles/souther-ddd-trilemma",
       "publishedAt": "Thu, 10 Sep 2026 01:11:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "境界を強い型にして実装をシンプルにしよう",
+      "url": "https://zenn.dev/my_vision/articles/29d90ef97f162e",
+      "publishedAt": "Thu, 10 Sep 2026 00:06:52 GMT",
       "source": "zenn"
     },
     {
@@ -61,63 +103,21 @@
       "source": "zenn"
     },
     {
-      "title": "GPT-6 Astra x Unityでゲームを作る",
-      "url": "https://zenn.dev/tkada/articles/d0c31e6533fb62",
-      "publishedAt": "Wed, 09 Sep 2026 14:30:32 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Agent Skillは振る舞いとナレッジを分けて設計する",
       "url": "https://zenn.dev/socialplus/articles/f5d9e28470eb99",
       "publishedAt": "Wed, 09 Sep 2026 10:00:05 GMT",
       "source": "zenn"
     },
     {
+      "title": "AIエージェントの評価と品質保証 — 「動く」を「信頼できる」に変える検収の技術",
+      "url": "https://zenn.dev/hampen2929/books/ai-agent-evaluation-guide",
+      "publishedAt": "Wed, 09 Sep 2026 09:09:18 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "プロジェクトマネジメントの教科書（内製チーム向け）",
       "url": "https://zenn.dev/tan_go238/books/project-management-textbook",
       "publishedAt": "Wed, 09 Sep 2026 05:24:57 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "LLMのトークン効率化で気をつけたいことまとめ",
-      "url": "https://zenn.dev/ml_bear/articles/e5cc1047cba176",
-      "publishedAt": "Wed, 09 Sep 2026 00:31:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "最近のClaude Code Desktop、使いやすさマシマシです！",
-      "url": "https://zenn.dev/goat_eat_any/articles/claude-code-desktop-app",
-      "publishedAt": "Tue, 08 Sep 2026 17:21:45 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Amazon Bedrock 料金が一定額を超えたら使用不可にする仕組みを作ってみた",
-      "url": "https://zenn.dev/hatose/articles/ebc0dd996b2cbd",
-      "publishedAt": "Tue, 08 Sep 2026 15:07:33 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Herdr × git worktree × Claude Codeの相性がいい話",
-      "url": "https://zenn.dev/gemcook/articles/herdr-worktree-parallel",
-      "publishedAt": "Tue, 08 Sep 2026 06:20:57 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Techはすぐに追ったほうがいい",
-      "url": "https://zenn.dev/myuron/articles/3c09e7e697d9de",
-      "publishedAt": "Tue, 08 Sep 2026 01:43:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Astra時代のコードファースト3Dモデリング",
-      "url": "https://zenn.dev/koher/articles/code-first-3d-modeling",
-      "publishedAt": "Mon, 07 Sep 2026 12:10:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ドメインモデル貧血症はなぜ生まれるのか — Decision パターンで DDD トリレンマを解く",
-      "url": "https://zenn.dev/tellernovel_inc/articles/0193eb68cabb6e",
-      "publishedAt": "Mon, 07 Sep 2026 03:03:17 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-13T02:37:06.112Z"
+  "updatedAt": "2026-09-14T02:52:45.093Z"
 }
