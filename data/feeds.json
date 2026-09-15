@@ -1,6 +1,72 @@
 {
   "zenn": [
     {
+      "title": "Fragment Refsのずるい使い方",
+      "url": "https://zenn.dev/uhyo/articles/react-fragment-refs-hack",
+      "publishedAt": "Mon, 14 Sep 2026 14:26:13 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【ベイズ推定】相手のことを答えると「本当に欲しそうなプレゼント」を当てにいく『欲しいもの.com』を作った",
+      "url": "https://zenn.dev/aucccchi/articles/hoshiimono-bayes-gift-diagnosis",
+      "publishedAt": "Mon, 14 Sep 2026 14:13:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ローカルLLMにレビューさせていた話の続報（前回の構成、実は動いていませんでした）",
+      "url": "https://zenn.dev/k_motoki/articles/ef60bbbc0ad7ec",
+      "publishedAt": "Mon, 14 Sep 2026 05:16:45 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AWS Lambda の90分タイムアウト検証",
+      "url": "https://zenn.dev/aws_japan/articles/lambda-90-minutes-timeout",
+      "publishedAt": "Mon, 14 Sep 2026 04:25:24 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Go Conference 2026 行ってきました",
+      "url": "https://zenn.dev/kyash/articles/gocon-2026-participation-report",
+      "publishedAt": "Mon, 14 Sep 2026 04:14:53 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "「なんとなくノベルティ」を卒業する、技術カンファレンスブースの企画法",
+      "url": "https://zenn.dev/knowledgework/articles/f9a2aa046d8317",
+      "publishedAt": "Mon, 14 Sep 2026 03:00:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Datadog DBM、動いてはいたが正しく動いてはいなかった 〜サイドカー構成からスタンドアロン Agent へ〜",
+      "url": "https://zenn.dev/lincwell_inc/articles/f6aac70530691d",
+      "publishedAt": "Mon, 14 Sep 2026 02:47:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AWS SSM Agent の脆弱性(CVE-2026-89049) の被害があったかどうかを CloudTrail で確認する方法",
+      "url": "https://zenn.dev/cscloud_blog/articles/4d6e13b853109e",
+      "publishedAt": "Mon, 14 Sep 2026 01:30:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "React Compiler を Babel なしで入れて、useMemo を書くか迷うのをやめた",
+      "url": "https://zenn.dev/hacobu/articles/2f58be1f62bcf8",
+      "publishedAt": "Mon, 14 Sep 2026 01:10:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "フロントエンドカンファレンス福岡 2026 に学生として参加しました！",
+      "url": "https://zenn.dev/pkmiya/articles/319288dd708107",
+      "publishedAt": "Sun, 13 Sep 2026 23:38:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "private な GitHub Pages に独自ドメインを当てるときに気をつけること",
+      "url": "https://zenn.dev/genda_jp/articles/11abdf42c756e8",
+      "publishedAt": "Sun, 13 Sep 2026 23:30:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "フィールドレポート 法律事務所の今",
       "url": "https://zenn.dev/fdsa/articles/37db858e04678e",
       "publishedAt": "Sun, 13 Sep 2026 04:45:48 GMT",
@@ -37,18 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "Go Conference 2026に参加してきました！！",
-      "url": "https://zenn.dev/tayu99_make/articles/d0afc5ce232058",
-      "publishedAt": "Sat, 12 Sep 2026 12:11:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AWSアプリ開発の初手が変わる？ Nx Plugin for AWSは何を自動化し、何を人に残すのか",
-      "url": "https://zenn.dev/aws_japan/articles/nx-plugin-for-aws-nx-explained",
-      "publishedAt": "Sat, 12 Sep 2026 06:13:22 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "デカルト積問題って知っとるか〜？　気軽にJOINでメモリ爆発するアレのヤバさ実測すぞ！",
       "url": "https://zenn.dev/levtech/articles/cartesian-product-doctrine-orm",
       "publishedAt": "Fri, 11 Sep 2026 02:45:05 GMT",
@@ -64,60 +118,6 @@
       "title": "OpenTelemetry eBPF Instrumentationの舞台裏",
       "url": "https://zenn.dev/ymotongpoo/books/go-ebpf-primer",
       "publishedAt": "Fri, 11 Sep 2026 02:01:34 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【VRChat/Udon】世界最速のC#コンパイラを開発した話",
-      "url": "https://zenn.dev/bea4dev/articles/b7684e8d4c838e",
-      "publishedAt": "Thu, 10 Sep 2026 10:19:23 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "メモリに載らないGROUP BYをDuckDBはどう処理するのか",
-      "url": "https://zenn.dev/loglass/articles/7c140c6689d8c2",
-      "publishedAt": "Thu, 10 Sep 2026 01:42:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ドメインモデル実装におけるトリレンマに対するSoutherの回答",
-      "url": "https://zenn.dev/kawasima/articles/souther-ddd-trilemma",
-      "publishedAt": "Thu, 10 Sep 2026 01:11:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "境界を強い型にして実装をシンプルにしよう",
-      "url": "https://zenn.dev/my_vision/articles/29d90ef97f162e",
-      "publishedAt": "Thu, 10 Sep 2026 00:06:52 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Nuxt.js から Next.js へ ── フロントエンド技術リプレイスにおけるハーネスエンジニアリングと理解負債",
-      "url": "https://zenn.dev/mediba/articles/7d0d7d70678546",
-      "publishedAt": "Wed, 09 Sep 2026 23:49:11 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "なぜエージェントハーネスで開発パイプラインを作っているのか",
-      "url": "https://zenn.dev/xtm_blog/articles/689d035440c0ae",
-      "publishedAt": "Wed, 09 Sep 2026 23:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Agent Skillは振る舞いとナレッジを分けて設計する",
-      "url": "https://zenn.dev/socialplus/articles/f5d9e28470eb99",
-      "publishedAt": "Wed, 09 Sep 2026 10:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIエージェントの評価と品質保証 — 「動く」を「信頼できる」に変える検収の技術",
-      "url": "https://zenn.dev/hampen2929/books/ai-agent-evaluation-guide",
-      "publishedAt": "Wed, 09 Sep 2026 09:09:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "プロジェクトマネジメントの教科書（内製チーム向け）",
-      "url": "https://zenn.dev/tan_go238/books/project-management-textbook",
-      "publishedAt": "Wed, 09 Sep 2026 05:24:57 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-14T02:52:45.093Z"
+  "updatedAt": "2026-09-15T02:55:16.846Z"
 }
