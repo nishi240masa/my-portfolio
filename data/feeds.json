@@ -1,15 +1,63 @@
 {
   "zenn": [
     {
+      "title": "1日の開発の流れをスキル化してみたら、想像以上に快適だった",
+      "url": "https://zenn.dev/tenkei/articles/9f8921926bb003",
+      "publishedAt": "Tue, 15 Sep 2026 09:15:12 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Code Meetup Japan #7 参加レポート",
+      "url": "https://zenn.dev/flagxs/articles/7a9178c94cc27b",
+      "publishedAt": "Tue, 15 Sep 2026 06:56:34 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【Kaggle】ポケカコンペ振り返り(455th/6807th)🥉",
+      "url": "https://zenn.dev/nwn/articles/a21aba4208e601",
+      "publishedAt": "Tue, 15 Sep 2026 06:23:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Grafana BeylaとOpenTelemetry eBPF Instrumentation（OBI）の差分は何か",
+      "url": "https://zenn.dev/ymotongpoo/articles/20260916-beyla-obi-diff",
+      "publishedAt": "Tue, 15 Sep 2026 06:00:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【DDD】モノリスを分割するサブドメイン特定法",
+      "url": "https://zenn.dev/trefac/articles/97e79f3841bbb3",
+      "publishedAt": "Tue, 15 Sep 2026 01:29:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "かつて数学を学んでいたエンジニアがAIと数学について思うこと",
+      "url": "https://zenn.dev/339/articles/8efd1f1baec355",
+      "publishedAt": "Mon, 14 Sep 2026 23:51:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "社内AI ハッカソン、意外と盛り上がりました",
+      "url": "https://zenn.dev/edash_tech_blog/articles/a8b316340d017c",
+      "publishedAt": "Mon, 14 Sep 2026 23:50:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Google Chat × Claude Agent SDK × AWS Lambdaで「事業部向けのAIエージェント」を作った話",
+      "url": "https://zenn.dev/wwwave/articles/50f7450f5d13bf",
+      "publishedAt": "Mon, 14 Sep 2026 22:00:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Fragment Refsのずるい使い方",
       "url": "https://zenn.dev/uhyo/articles/react-fragment-refs-hack",
       "publishedAt": "Mon, 14 Sep 2026 14:26:13 GMT",
       "source": "zenn"
     },
     {
-      "title": "【ベイズ推定】相手のことを答えると「本当に欲しそうなプレゼント」を当てにいく『欲しいもの.com』を作った",
-      "url": "https://zenn.dev/aucccchi/articles/hoshiimono-bayes-gift-diagnosis",
-      "publishedAt": "Mon, 14 Sep 2026 14:13:58 GMT",
+      "title": "Kubbで理想のfetchクライアントを作りたいっ！！",
+      "url": "https://zenn.dev/chot/articles/kubb-custom-fetch-client",
+      "publishedAt": "Mon, 14 Sep 2026 08:53:27 GMT",
       "source": "zenn"
     },
     {
@@ -19,27 +67,15 @@
       "source": "zenn"
     },
     {
+      "title": "SendGridからAmazon SESに移行してコストを削減する",
+      "url": "https://zenn.dev/team_zenn/articles/sendgrid-to-ses-cost-reduction",
+      "publishedAt": "Mon, 14 Sep 2026 05:15:10 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "AWS Lambda の90分タイムアウト検証",
       "url": "https://zenn.dev/aws_japan/articles/lambda-90-minutes-timeout",
       "publishedAt": "Mon, 14 Sep 2026 04:25:24 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Go Conference 2026 行ってきました",
-      "url": "https://zenn.dev/kyash/articles/gocon-2026-participation-report",
-      "publishedAt": "Mon, 14 Sep 2026 04:14:53 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "「なんとなくノベルティ」を卒業する、技術カンファレンスブースの企画法",
-      "url": "https://zenn.dev/knowledgework/articles/f9a2aa046d8317",
-      "publishedAt": "Mon, 14 Sep 2026 03:00:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Datadog DBM、動いてはいたが正しく動いてはいなかった 〜サイドカー構成からスタンドアロン Agent へ〜",
-      "url": "https://zenn.dev/lincwell_inc/articles/f6aac70530691d",
-      "publishedAt": "Mon, 14 Sep 2026 02:47:10 GMT",
       "source": "zenn"
     },
     {
@@ -67,24 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "フィールドレポート 法律事務所の今",
-      "url": "https://zenn.dev/fdsa/articles/37db858e04678e",
-      "publishedAt": "Sun, 13 Sep 2026 04:45:48 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "読書メモ『強化学習を学びたい人が最初に読む本』",
-      "url": "https://zenn.dev/morim34/articles/85994d7b38603b",
-      "publishedAt": "Sun, 13 Sep 2026 03:58:50 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "2026年に多くのシストレの戦略のアルファが消えた件について",
-      "url": "https://zenn.dev/gamella/articles/6bd6e5ab9e88bc",
-      "publishedAt": "Sun, 13 Sep 2026 03:37:06 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "重みは学習するのか、測るのか。ハエの脳が問い直すAIのつくり方",
       "url": "https://zenn.dev/1amageek/articles/fly-connectome-and-ai",
       "publishedAt": "Sun, 13 Sep 2026 03:19:04 GMT",
@@ -100,24 +118,6 @@
       "title": "クロスプラットフォーム開発が解決するコスト、解決しないコスト",
       "url": "https://zenn.dev/nkzn/articles/cross-platform-development-costs-2026",
       "publishedAt": "Sat, 12 Sep 2026 14:05:10 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "デカルト積問題って知っとるか〜？　気軽にJOINでメモリ爆発するアレのヤバさ実測すぞ！",
-      "url": "https://zenn.dev/levtech/articles/cartesian-product-doctrine-orm",
-      "publishedAt": "Fri, 11 Sep 2026 02:45:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "単体テストの実行時間を6割程度削減してみた",
-      "url": "https://zenn.dev/dress_code/articles/5dd5de5020d9ef",
-      "publishedAt": "Fri, 11 Sep 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "OpenTelemetry eBPF Instrumentationの舞台裏",
-      "url": "https://zenn.dev/ymotongpoo/books/go-ebpf-primer",
-      "publishedAt": "Fri, 11 Sep 2026 02:01:34 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-15T02:55:16.846Z"
+  "updatedAt": "2026-09-16T02:50:50.540Z"
 }
