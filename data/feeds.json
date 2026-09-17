@@ -1,15 +1,45 @@
 {
   "zenn": [
     {
-      "title": "1日の開発の流れをスキル化してみたら、想像以上に快適だった",
-      "url": "https://zenn.dev/tenkei/articles/9f8921926bb003",
-      "publishedAt": "Tue, 15 Sep 2026 09:15:12 GMT",
+      "title": "AI開発チームの作り方と育て方 — マルチエージェント開発組織の設計と運用",
+      "url": "https://zenn.dev/hampen2929/books/ai-dev-team-guide",
+      "publishedAt": "Wed, 16 Sep 2026 09:54:07 GMT",
       "source": "zenn"
     },
     {
-      "title": "Claude Code Meetup Japan #7 参加レポート",
-      "url": "https://zenn.dev/flagxs/articles/7a9178c94cc27b",
-      "publishedAt": "Tue, 15 Sep 2026 06:56:34 GMT",
+      "title": "LLMにWikiを書かせて半年、一番役に立った画面はLLMの文章を使っていなかった",
+      "url": "https://zenn.dev/rescuenow/articles/5aa26aebd7ae78",
+      "publishedAt": "Wed, 16 Sep 2026 07:00:04 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Expo SDK 58 Betaの変更点まとめ",
+      "url": "https://zenn.dev/tellernovel_inc/articles/5b4b947db4f2cd",
+      "publishedAt": "Wed, 16 Sep 2026 03:28:22 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Next.js の Proxy(旧 Middleware) で redirect すると relative URL になる",
+      "url": "https://zenn.dev/chot/articles/nextjs-proxy-redirect",
+      "publishedAt": "Wed, 16 Sep 2026 02:47:39 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GitHub Copilot app を使いこなす",
+      "url": "https://zenn.dev/skmkzyk/books/github-copilot-app-guide",
+      "publishedAt": "Tue, 15 Sep 2026 14:16:56 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "バイブコーディングで GUI が壊れていく理由とその対策プロンプト",
+      "url": "https://zenn.dev/nrs/articles/9ba91aea587bf5",
+      "publishedAt": "Tue, 15 Sep 2026 12:37:56 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "1日の開発の流れをスキル化してみたら、想像以上に快適だった",
+      "url": "https://zenn.dev/tenkei/articles/9f8921926bb003",
+      "publishedAt": "Tue, 15 Sep 2026 09:15:12 GMT",
       "source": "zenn"
     },
     {
@@ -19,15 +49,27 @@
       "source": "zenn"
     },
     {
-      "title": "Grafana BeylaとOpenTelemetry eBPF Instrumentation（OBI）の差分は何か",
-      "url": "https://zenn.dev/ymotongpoo/articles/20260916-beyla-obi-diff",
-      "publishedAt": "Tue, 15 Sep 2026 06:00:04 GMT",
+      "title": "gherkin と skills でエージェントがブラウザを操作してテストする",
+      "url": "https://zenn.dev/sonicmoov/articles/57a9c2d0d281b5",
+      "publishedAt": "Tue, 15 Sep 2026 06:21:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "自動テストが0件の現場で、人の確認を減らす側に倒した話",
+      "url": "https://zenn.dev/ceres_tech_blog/articles/09aa8e17762d7e",
+      "publishedAt": "Tue, 15 Sep 2026 06:02:40 GMT",
       "source": "zenn"
     },
     {
       "title": "【DDD】モノリスを分割するサブドメイン特定法",
       "url": "https://zenn.dev/trefac/articles/97e79f3841bbb3",
       "publishedAt": "Tue, 15 Sep 2026 01:29:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "SKILL.md を良くする技術。AIのブレをなくす。",
+      "url": "https://zenn.dev/knowledgesense/articles/9adf1e9b17ffd6",
+      "publishedAt": "Tue, 15 Sep 2026 00:49:37 GMT",
       "source": "zenn"
     },
     {
@@ -43,9 +85,9 @@
       "source": "zenn"
     },
     {
-      "title": "Google Chat × Claude Agent SDK × AWS Lambdaで「事業部向けのAIエージェント」を作った話",
-      "url": "https://zenn.dev/wwwave/articles/50f7450f5d13bf",
-      "publishedAt": "Mon, 14 Sep 2026 22:00:05 GMT",
+      "title": "フロントエンドの仕様と実装を同じ言葉で書く ― 責務を機械的に突合し検証し続けるフロントエンド開発（要件定義〜実装・テスト）",
+      "url": "https://zenn.dev/2_daiki_ando/articles/53c34e071b5d69",
+      "publishedAt": "Mon, 14 Sep 2026 15:27:39 GMT",
       "source": "zenn"
     },
     {
@@ -55,21 +97,9 @@
       "source": "zenn"
     },
     {
-      "title": "Kubbで理想のfetchクライアントを作りたいっ！！",
-      "url": "https://zenn.dev/chot/articles/kubb-custom-fetch-client",
-      "publishedAt": "Mon, 14 Sep 2026 08:53:27 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "ローカルLLMにレビューさせていた話の続報（前回の構成、実は動いていませんでした）",
       "url": "https://zenn.dev/k_motoki/articles/ef60bbbc0ad7ec",
       "publishedAt": "Mon, 14 Sep 2026 05:16:45 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "SendGridからAmazon SESに移行してコストを削減する",
-      "url": "https://zenn.dev/team_zenn/articles/sendgrid-to-ses-cost-reduction",
-      "publishedAt": "Mon, 14 Sep 2026 05:15:10 GMT",
       "source": "zenn"
     },
     {
@@ -79,45 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "AWS SSM Agent の脆弱性(CVE-2026-89049) の被害があったかどうかを CloudTrail で確認する方法",
-      "url": "https://zenn.dev/cscloud_blog/articles/4d6e13b853109e",
-      "publishedAt": "Mon, 14 Sep 2026 01:30:42 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "React Compiler を Babel なしで入れて、useMemo を書くか迷うのをやめた",
       "url": "https://zenn.dev/hacobu/articles/2f58be1f62bcf8",
       "publishedAt": "Mon, 14 Sep 2026 01:10:32 GMT",
       "source": "zenn"
     },
     {
-      "title": "フロントエンドカンファレンス福岡 2026 に学生として参加しました！",
-      "url": "https://zenn.dev/pkmiya/articles/319288dd708107",
-      "publishedAt": "Sun, 13 Sep 2026 23:38:36 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "private な GitHub Pages に独自ドメインを当てるときに気をつけること",
       "url": "https://zenn.dev/genda_jp/articles/11abdf42c756e8",
       "publishedAt": "Sun, 13 Sep 2026 23:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "重みは学習するのか、測るのか。ハエの脳が問い直すAIのつくり方",
-      "url": "https://zenn.dev/1amageek/articles/fly-connectome-and-ai",
-      "publishedAt": "Sun, 13 Sep 2026 03:19:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "トークンをケチってレビューをローカルLLMにやらせた話",
-      "url": "https://zenn.dev/k_motoki/articles/11de0ba46dd1ee",
-      "publishedAt": "Sun, 13 Sep 2026 02:42:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "クロスプラットフォーム開発が解決するコスト、解決しないコスト",
-      "url": "https://zenn.dev/nkzn/articles/cross-platform-development-costs-2026",
-      "publishedAt": "Sat, 12 Sep 2026 14:05:10 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-16T02:50:50.540Z"
+  "updatedAt": "2026-09-17T02:55:02.538Z"
 }
