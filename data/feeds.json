@@ -1,21 +1,81 @@
 {
   "zenn": [
     {
+      "title": "jev 同士に五目並べで対戦させた",
+      "url": "https://zenn.dev/mizchi/articles/jev-plays-gomoku",
+      "publishedAt": "Thu, 17 Sep 2026 12:28:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "気軽にDGX Sparkでapt upgradeしたら壊れた話",
+      "url": "https://zenn.dev/alpha_omega/articles/3f3ea4d14a0234",
+      "publishedAt": "Thu, 17 Sep 2026 07:19:25 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "TypeSafeのJevを正しく驚く、それってLLMでできませんか？",
+      "url": "https://zenn.dev/nwn/articles/824026c76116e0",
+      "publishedAt": "Thu, 17 Sep 2026 06:56:15 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "dbt Charts触ってみた",
+      "url": "https://zenn.dev/churadata/articles/95b6008df65cff",
+      "publishedAt": "Thu, 17 Sep 2026 05:25:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "WebMCPを試してみた感想。フロントエンドの必須技術になりそうな予感。",
+      "url": "https://zenn.dev/chot/articles/268804cd6694ab",
+      "publishedAt": "Thu, 17 Sep 2026 04:12:12 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "1年半かけて育ててきたAI開発フロー",
+      "url": "https://zenn.dev/sprix_it/articles/db685b8fd6bffe",
+      "publishedAt": "Thu, 17 Sep 2026 03:42:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "128GB の Mac で DeepSeek V4.1 Flash は動いたが、開発には Flash Next と oMLX を選んだ",
+      "url": "https://zenn.dev/jtechjapan_pub/articles/deepseek-v41-vs-flash-next-m4max",
+      "publishedAt": "Thu, 17 Sep 2026 03:36:16 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Nullabilityの棚卸しと、NullAwayのプロダクションコード全体適用",
+      "url": "https://zenn.dev/nstock/articles/null-away-20260917",
+      "publishedAt": "Thu, 17 Sep 2026 02:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "作るものが決まらないのは、発想力のせいなのか？：AIハッカソンで優勝したときのアイデアの出し方",
+      "url": "https://zenn.dev/usen_ict/articles/a9051de6bf2b84",
+      "publishedAt": "Thu, 17 Sep 2026 00:00:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Playwrightの失敗サマリーからDatadogのトレースを探せるようにしてみた",
+      "url": "https://zenn.dev/layerx/articles/c835873212b601",
+      "publishedAt": "Thu, 17 Sep 2026 00:00:06 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "AI開発チームの作り方と育て方 — マルチエージェント開発組織の設計と運用",
       "url": "https://zenn.dev/hampen2929/books/ai-dev-team-guide",
       "publishedAt": "Wed, 16 Sep 2026 09:54:07 GMT",
       "source": "zenn"
     },
     {
-      "title": "LLMにWikiを書かせて半年、一番役に立った画面はLLMの文章を使っていなかった",
-      "url": "https://zenn.dev/rescuenow/articles/5aa26aebd7ae78",
-      "publishedAt": "Wed, 16 Sep 2026 07:00:04 GMT",
+      "title": "会議の録音から議事録を自動生成する仕組みを作って議事録を書く時間をなくした",
+      "url": "https://zenn.dev/assign/articles/7e0d3f65c20da9",
+      "publishedAt": "Wed, 16 Sep 2026 08:41:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "Expo SDK 58 Betaの変更点まとめ",
-      "url": "https://zenn.dev/tellernovel_inc/articles/5b4b947db4f2cd",
-      "publishedAt": "Wed, 16 Sep 2026 03:28:22 GMT",
+      "title": "LLMにWikiを書かせて半年、一番役に立った画面はLLMの文章を使っていなかった",
+      "url": "https://zenn.dev/rescuenow/articles/5aa26aebd7ae78",
+      "publishedAt": "Wed, 16 Sep 2026 07:00:04 GMT",
       "source": "zenn"
     },
     {
@@ -43,12 +103,6 @@
       "source": "zenn"
     },
     {
-      "title": "【Kaggle】ポケカコンペ振り返り(455th/6807th)🥉",
-      "url": "https://zenn.dev/nwn/articles/a21aba4208e601",
-      "publishedAt": "Tue, 15 Sep 2026 06:23:44 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "gherkin と skills でエージェントがブラウザを操作してテストする",
       "url": "https://zenn.dev/sonicmoov/articles/57a9c2d0d281b5",
       "publishedAt": "Tue, 15 Sep 2026 06:21:09 GMT",
@@ -61,63 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "【DDD】モノリスを分割するサブドメイン特定法",
-      "url": "https://zenn.dev/trefac/articles/97e79f3841bbb3",
-      "publishedAt": "Tue, 15 Sep 2026 01:29:55 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "SKILL.md を良くする技術。AIのブレをなくす。",
-      "url": "https://zenn.dev/knowledgesense/articles/9adf1e9b17ffd6",
-      "publishedAt": "Tue, 15 Sep 2026 00:49:37 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "かつて数学を学んでいたエンジニアがAIと数学について思うこと",
       "url": "https://zenn.dev/339/articles/8efd1f1baec355",
       "publishedAt": "Mon, 14 Sep 2026 23:51:17 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "社内AI ハッカソン、意外と盛り上がりました",
-      "url": "https://zenn.dev/edash_tech_blog/articles/a8b316340d017c",
-      "publishedAt": "Mon, 14 Sep 2026 23:50:17 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "フロントエンドの仕様と実装を同じ言葉で書く ― 責務を機械的に突合し検証し続けるフロントエンド開発（要件定義〜実装・テスト）",
-      "url": "https://zenn.dev/2_daiki_ando/articles/53c34e071b5d69",
-      "publishedAt": "Mon, 14 Sep 2026 15:27:39 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Fragment Refsのずるい使い方",
-      "url": "https://zenn.dev/uhyo/articles/react-fragment-refs-hack",
-      "publishedAt": "Mon, 14 Sep 2026 14:26:13 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ローカルLLMにレビューさせていた話の続報（前回の構成、実は動いていませんでした）",
-      "url": "https://zenn.dev/k_motoki/articles/ef60bbbc0ad7ec",
-      "publishedAt": "Mon, 14 Sep 2026 05:16:45 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AWS Lambda の90分タイムアウト検証",
-      "url": "https://zenn.dev/aws_japan/articles/lambda-90-minutes-timeout",
-      "publishedAt": "Mon, 14 Sep 2026 04:25:24 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "React Compiler を Babel なしで入れて、useMemo を書くか迷うのをやめた",
-      "url": "https://zenn.dev/hacobu/articles/2f58be1f62bcf8",
-      "publishedAt": "Mon, 14 Sep 2026 01:10:32 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "private な GitHub Pages に独自ドメインを当てるときに気をつけること",
-      "url": "https://zenn.dev/genda_jp/articles/11abdf42c756e8",
-      "publishedAt": "Sun, 13 Sep 2026 23:30:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-17T02:55:02.538Z"
+  "updatedAt": "2026-09-18T02:41:36.463Z"
 }
