@@ -1,15 +1,63 @@
 {
   "zenn": [
     {
+      "title": "既存の LLM が CPU なら、 Jev はその GPU 版みたいなやつ",
+      "url": "https://zenn.dev/mizchi/articles/jev-is-gpu-for-llms",
+      "publishedAt": "Fri, 18 Sep 2026 07:27:47 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cloudflare WorkersでJevを使ったら高速か検証してみた",
+      "url": "https://zenn.dev/henteko/articles/1d159d10413312",
+      "publishedAt": "Fri, 18 Sep 2026 07:23:34 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Jevでハーネスエンジニアリング",
+      "url": "https://zenn.dev/watany/articles/36e11a20ce3743",
+      "publishedAt": "Fri, 18 Sep 2026 02:16:33 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "全社に OpenCode + LiteLLM を導入してコストを抑えつつ AI 活用を進めている話",
+      "url": "https://zenn.dev/jtcc/articles/7e74fef42580a1",
+      "publishedAt": "Fri, 18 Sep 2026 00:08:15 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "認知負債の未来は？",
+      "url": "https://zenn.dev/kabeya/articles/future-of-cognitive-debt",
+      "publishedAt": "Thu, 17 Sep 2026 14:30:02 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "jev 同士に五目並べで対戦させた",
       "url": "https://zenn.dev/mizchi/articles/jev-plays-gomoku",
       "publishedAt": "Thu, 17 Sep 2026 12:28:36 GMT",
       "source": "zenn"
     },
     {
+      "title": "Xcodeのプロジェクト設定をJSONにする",
+      "url": "https://zenn.dev/d_date/articles/b1a7baa74b77da",
+      "publishedAt": "Thu, 17 Sep 2026 08:45:24 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "C# と Luaで何かやってみる (LMStudio&Python)",
+      "url": "https://zenn.dev/baleenstudio/articles/67ddfb62c4e2fb",
+      "publishedAt": "Thu, 17 Sep 2026 07:42:49 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "気軽にDGX Sparkでapt upgradeしたら壊れた話",
       "url": "https://zenn.dev/alpha_omega/articles/3f3ea4d14a0234",
       "publishedAt": "Thu, 17 Sep 2026 07:19:25 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI ネイティブなデータ分析基盤を作った話",
+      "url": "https://zenn.dev/pksha/articles/5a1dc6470019d6",
+      "publishedAt": "Thu, 17 Sep 2026 07:11:52 GMT",
       "source": "zenn"
     },
     {
@@ -37,27 +85,9 @@
       "source": "zenn"
     },
     {
-      "title": "128GB の Mac で DeepSeek V4.1 Flash は動いたが、開発には Flash Next と oMLX を選んだ",
-      "url": "https://zenn.dev/jtechjapan_pub/articles/deepseek-v41-vs-flash-next-m4max",
-      "publishedAt": "Thu, 17 Sep 2026 03:36:16 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Nullabilityの棚卸しと、NullAwayのプロダクションコード全体適用",
-      "url": "https://zenn.dev/nstock/articles/null-away-20260917",
-      "publishedAt": "Thu, 17 Sep 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "作るものが決まらないのは、発想力のせいなのか？：AIハッカソンで優勝したときのアイデアの出し方",
       "url": "https://zenn.dev/usen_ict/articles/a9051de6bf2b84",
       "publishedAt": "Thu, 17 Sep 2026 00:00:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Playwrightの失敗サマリーからDatadogのトレースを探せるようにしてみた",
-      "url": "https://zenn.dev/layerx/articles/c835873212b601",
-      "publishedAt": "Thu, 17 Sep 2026 00:00:06 GMT",
       "source": "zenn"
     },
     {
@@ -67,21 +97,9 @@
       "source": "zenn"
     },
     {
-      "title": "会議の録音から議事録を自動生成する仕組みを作って議事録を書く時間をなくした",
-      "url": "https://zenn.dev/assign/articles/7e0d3f65c20da9",
-      "publishedAt": "Wed, 16 Sep 2026 08:41:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "LLMにWikiを書かせて半年、一番役に立った画面はLLMの文章を使っていなかった",
       "url": "https://zenn.dev/rescuenow/articles/5aa26aebd7ae78",
       "publishedAt": "Wed, 16 Sep 2026 07:00:04 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Next.js の Proxy(旧 Middleware) で redirect すると relative URL になる",
-      "url": "https://zenn.dev/chot/articles/nextjs-proxy-redirect",
-      "publishedAt": "Wed, 16 Sep 2026 02:47:39 GMT",
       "source": "zenn"
     },
     {
@@ -100,24 +118,6 @@
       "title": "1日の開発の流れをスキル化してみたら、想像以上に快適だった",
       "url": "https://zenn.dev/tenkei/articles/9f8921926bb003",
       "publishedAt": "Tue, 15 Sep 2026 09:15:12 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "gherkin と skills でエージェントがブラウザを操作してテストする",
-      "url": "https://zenn.dev/sonicmoov/articles/57a9c2d0d281b5",
-      "publishedAt": "Tue, 15 Sep 2026 06:21:09 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "自動テストが0件の現場で、人の確認を減らす側に倒した話",
-      "url": "https://zenn.dev/ceres_tech_blog/articles/09aa8e17762d7e",
-      "publishedAt": "Tue, 15 Sep 2026 06:02:40 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "かつて数学を学んでいたエンジニアがAIと数学について思うこと",
-      "url": "https://zenn.dev/339/articles/8efd1f1baec355",
-      "publishedAt": "Mon, 14 Sep 2026 23:51:17 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-18T02:41:36.463Z"
+  "updatedAt": "2026-09-19T02:40:30.510Z"
 }
