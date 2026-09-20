@@ -1,6 +1,18 @@
 {
   "zenn": [
     {
+      "title": "就活用DirectX12アクションゲーム作成　第三十二回",
+      "url": "https://zenn.dev/seisei89628/articles/b505300dc8eaac",
+      "publishedAt": "Sat, 19 Sep 2026 00:34:29 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【2026/9/17最新アプデ】Claude Docs が登場！Slides・Design と合わせて触ってみた",
+      "url": "https://zenn.dev/canly/articles/7ac8cea14c20e8",
+      "publishedAt": "Fri, 18 Sep 2026 10:40:41 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "既存の LLM が CPU なら、 Jev はその GPU 版みたいなやつ",
       "url": "https://zenn.dev/mizchi/articles/jev-is-gpu-for-llms",
       "publishedAt": "Fri, 18 Sep 2026 07:27:47 GMT",
@@ -25,27 +37,21 @@
       "source": "zenn"
     },
     {
+      "title": "PRのCI稼働時間を7割削減した話",
+      "url": "https://zenn.dev/innovation/articles/e84f8ccca8e6da",
+      "publishedAt": "Fri, 18 Sep 2026 00:00:07 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "認知負債の未来は？",
       "url": "https://zenn.dev/kabeya/articles/future-of-cognitive-debt",
       "publishedAt": "Thu, 17 Sep 2026 14:30:02 GMT",
       "source": "zenn"
     },
     {
-      "title": "jev 同士に五目並べで対戦させた",
-      "url": "https://zenn.dev/mizchi/articles/jev-plays-gomoku",
-      "publishedAt": "Thu, 17 Sep 2026 12:28:36 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Xcodeのプロジェクト設定をJSONにする",
       "url": "https://zenn.dev/d_date/articles/b1a7baa74b77da",
       "publishedAt": "Thu, 17 Sep 2026 08:45:24 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "C# と Luaで何かやってみる (LMStudio&Python)",
-      "url": "https://zenn.dev/baleenstudio/articles/67ddfb62c4e2fb",
-      "publishedAt": "Thu, 17 Sep 2026 07:42:49 GMT",
       "source": "zenn"
     },
     {
@@ -64,12 +70,6 @@
       "title": "TypeSafeのJevを正しく驚く、それってLLMでできませんか？",
       "url": "https://zenn.dev/nwn/articles/824026c76116e0",
       "publishedAt": "Thu, 17 Sep 2026 06:56:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "dbt Charts触ってみた",
-      "url": "https://zenn.dev/churadata/articles/95b6008df65cff",
-      "publishedAt": "Thu, 17 Sep 2026 05:25:05 GMT",
       "source": "zenn"
     },
     {
@@ -97,12 +97,6 @@
       "source": "zenn"
     },
     {
-      "title": "LLMにWikiを書かせて半年、一番役に立った画面はLLMの文章を使っていなかった",
-      "url": "https://zenn.dev/rescuenow/articles/5aa26aebd7ae78",
-      "publishedAt": "Wed, 16 Sep 2026 07:00:04 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "GitHub Copilot app を使いこなす",
       "url": "https://zenn.dev/skmkzyk/books/github-copilot-app-guide",
       "publishedAt": "Tue, 15 Sep 2026 14:16:56 GMT",
@@ -118,6 +112,12 @@
       "title": "1日の開発の流れをスキル化してみたら、想像以上に快適だった",
       "url": "https://zenn.dev/tenkei/articles/9f8921926bb003",
       "publishedAt": "Tue, 15 Sep 2026 09:15:12 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "かつて数学を学んでいたエンジニアがAIと数学について思うこと",
+      "url": "https://zenn.dev/339/articles/8efd1f1baec355",
+      "publishedAt": "Mon, 14 Sep 2026 23:51:17 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-19T02:40:30.510Z"
+  "updatedAt": "2026-09-20T02:52:45.626Z"
 }
