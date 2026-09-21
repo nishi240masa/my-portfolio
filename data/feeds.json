@@ -1,9 +1,39 @@
 {
   "zenn": [
     {
-      "title": "就活用DirectX12アクションゲーム作成　第三十二回",
-      "url": "https://zenn.dev/seisei89628/articles/b505300dc8eaac",
-      "publishedAt": "Sat, 19 Sep 2026 00:34:29 GMT",
+      "title": "高速判断AI Jevのユースケースとオープン実装を雑にまとめる",
+      "url": "https://zenn.dev/karaage0703/articles/jev-use-cases-open-implementations",
+      "publishedAt": "Sun, 20 Sep 2026 07:59:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "jev-lint: コード中の命名やコメントが嘘になってないかを高速に確認",
+      "url": "https://zenn.dev/mizchi/articles/jev-lint-intro",
+      "publishedAt": "Sat, 19 Sep 2026 15:39:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Ternary Bonsai 2 27BをM1Pro・16GBで動かす",
+      "url": "https://zenn.dev/okame_rara/articles/bonsai_2_27b_m1",
+      "publishedAt": "Sat, 19 Sep 2026 15:05:52 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "新しい Amazon Bedrock AgentCore Runtime が利用可能に!!",
+      "url": "https://zenn.dev/aws_japan/articles/agentcore-runtime-v2-platform-version",
+      "publishedAt": "Sat, 19 Sep 2026 14:55:28 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Jevを、自然言語で分類基準を渡せる識別モデルとして使う",
+      "url": "https://zenn.dev/cybernetics/articles/4f3762bd470fc4",
+      "publishedAt": "Sat, 19 Sep 2026 04:29:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "MCP × Claude Code × BedrockでPlaywrightの自動化フローを構築",
+      "url": "https://zenn.dev/hirata_infosys/articles/598068e56ae342",
+      "publishedAt": "Fri, 18 Sep 2026 21:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -16,12 +46,6 @@
       "title": "既存の LLM が CPU なら、 Jev はその GPU 版みたいなやつ",
       "url": "https://zenn.dev/mizchi/articles/jev-is-gpu-for-llms",
       "publishedAt": "Fri, 18 Sep 2026 07:27:47 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Cloudflare WorkersでJevを使ったら高速か検証してみた",
-      "url": "https://zenn.dev/henteko/articles/1d159d10413312",
-      "publishedAt": "Fri, 18 Sep 2026 07:23:34 GMT",
       "source": "zenn"
     },
     {
@@ -49,12 +73,6 @@
       "source": "zenn"
     },
     {
-      "title": "Xcodeのプロジェクト設定をJSONにする",
-      "url": "https://zenn.dev/d_date/articles/b1a7baa74b77da",
-      "publishedAt": "Thu, 17 Sep 2026 08:45:24 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "気軽にDGX Sparkでapt upgradeしたら壊れた話",
       "url": "https://zenn.dev/alpha_omega/articles/3f3ea4d14a0234",
       "publishedAt": "Thu, 17 Sep 2026 07:19:25 GMT",
@@ -79,27 +97,9 @@
       "source": "zenn"
     },
     {
-      "title": "1年半かけて育ててきたAI開発フロー",
-      "url": "https://zenn.dev/sprix_it/articles/db685b8fd6bffe",
-      "publishedAt": "Thu, 17 Sep 2026 03:42:55 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "作るものが決まらないのは、発想力のせいなのか？：AIハッカソンで優勝したときのアイデアの出し方",
-      "url": "https://zenn.dev/usen_ict/articles/a9051de6bf2b84",
-      "publishedAt": "Thu, 17 Sep 2026 00:00:08 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AI開発チームの作り方と育て方 — マルチエージェント開発組織の設計と運用",
       "url": "https://zenn.dev/hampen2929/books/ai-dev-team-guide",
       "publishedAt": "Wed, 16 Sep 2026 09:54:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GitHub Copilot app を使いこなす",
-      "url": "https://zenn.dev/skmkzyk/books/github-copilot-app-guide",
-      "publishedAt": "Tue, 15 Sep 2026 14:16:56 GMT",
       "source": "zenn"
     },
     {
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-20T02:52:45.626Z"
+  "updatedAt": "2026-09-21T02:49:48.386Z"
 }
