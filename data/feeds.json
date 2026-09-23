@@ -1,6 +1,36 @@
 {
   "zenn": [
     {
+      "title": "BiomeにnoReactObjectTypeAsDefaultPropルールを実装して学んだこと",
+      "url": "https://zenn.dev/subaru_hello/articles/biome-rust-first-contribution",
+      "publishedAt": "Tue, 22 Sep 2026 09:53:21 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Pokémon GO Plus + を分解して、ポケモンスリープの睡眠計測を自動化する装置を作った",
+      "url": "https://zenn.dev/koichi73/articles/pokemon-go-plus-teardown-esp32",
+      "publishedAt": "Tue, 22 Sep 2026 09:17:48 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "C言語のコードをRustの中に書けるライブラリを作った",
+      "url": "https://zenn.dev/tanakh/articles/c-code-in-rust",
+      "publishedAt": "Tue, 22 Sep 2026 02:23:29 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Nextcloudを高速化するためにやったこと",
+      "url": "https://zenn.dev/fa0311/articles/3a56901bc0d1ba",
+      "publishedAt": "Mon, 21 Sep 2026 20:13:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ドメインの変換はHandlerとUseCaseのどちらでやるべきか",
+      "url": "https://zenn.dev/jisou/articles/b7e19c4a2d80f6",
+      "publishedAt": "Mon, 21 Sep 2026 10:35:13 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "C# Kaigi 2026 参加レポート!!",
       "url": "https://zenn.dev/prozolic/articles/3bb3f91f7408cc",
       "publishedAt": "Mon, 21 Sep 2026 10:24:08 GMT",
@@ -13,9 +43,9 @@
       "source": "zenn"
     },
     {
-      "title": "Ubieに入社していました",
-      "url": "https://zenn.dev/hagino3000/articles/b3278502b1f47b",
-      "publishedAt": "Mon, 21 Sep 2026 03:22:01 GMT",
+      "title": "ChatGPTにブラウザを操作させたら、自作のChrome拡張つきWebアプリは動いたか — 試して分かった境界線",
+      "url": "https://zenn.dev/zephris/articles/5c34ece0877187",
+      "publishedAt": "Mon, 21 Sep 2026 03:56:51 GMT",
       "source": "zenn"
     },
     {
@@ -31,27 +61,9 @@
       "source": "zenn"
     },
     {
-      "title": "Ternary Bonsai 2 27BをM1Pro・16GBで動かす",
-      "url": "https://zenn.dev/okame_rara/articles/bonsai_2_27b_m1",
-      "publishedAt": "Sat, 19 Sep 2026 15:05:52 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "新しい Amazon Bedrock AgentCore Runtime が利用可能に!!",
-      "url": "https://zenn.dev/aws_japan/articles/agentcore-runtime-v2-platform-version",
-      "publishedAt": "Sat, 19 Sep 2026 14:55:28 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "MCP × Claude Code × BedrockでPlaywrightの自動化フローを構築",
       "url": "https://zenn.dev/hirata_infosys/articles/598068e56ae342",
       "publishedAt": "Fri, 18 Sep 2026 21:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Mods 入門 | Claude Codeを自由にカスタマイズする",
-      "url": "https://zenn.dev/nogu66/articles/claude-code-function-hooks-claude-mods",
-      "publishedAt": "Fri, 18 Sep 2026 20:11:48 GMT",
       "source": "zenn"
     },
     {
@@ -70,12 +82,6 @@
       "title": "全社に OpenCode + LiteLLM を導入してコストを抑えつつ AI 活用を進めている話",
       "url": "https://zenn.dev/jtcc/articles/7e74fef42580a1",
       "publishedAt": "Fri, 18 Sep 2026 00:08:15 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "PRのCI稼働時間を7割削減した話",
-      "url": "https://zenn.dev/innovation/articles/e84f8ccca8e6da",
-      "publishedAt": "Fri, 18 Sep 2026 00:00:07 GMT",
       "source": "zenn"
     },
     {
@@ -109,15 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "1日の開発の流れをスキル化してみたら、想像以上に快適だった",
-      "url": "https://zenn.dev/tenkei/articles/9f8921926bb003",
-      "publishedAt": "Tue, 15 Sep 2026 09:15:12 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "かつて数学を学んでいたエンジニアがAIと数学について思うこと",
-      "url": "https://zenn.dev/339/articles/8efd1f1baec355",
-      "publishedAt": "Mon, 14 Sep 2026 23:51:17 GMT",
+      "title": "作るものが決まらないのは、発想力のせいなのか？：AIハッカソンで優勝したときのアイデアの出し方",
+      "url": "https://zenn.dev/usen_ict/articles/a9051de6bf2b84",
+      "publishedAt": "Thu, 17 Sep 2026 00:00:08 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-22T02:50:26.408Z"
+  "updatedAt": "2026-09-23T02:50:45.139Z"
 }
