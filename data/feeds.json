@@ -1,15 +1,57 @@
 {
   "zenn": [
     {
-      "title": "Claude Codeによる依存追加・更新に「調べてからユーザに聞いて」を挟むHookの紹介",
-      "url": "https://zenn.dev/sprix_it/articles/f3ef77c1d46554",
-      "publishedAt": "Thu, 24 Sep 2026 13:43:25 GMT",
+      "title": "Vercelの「インポートできます」メールは何を見て送られてくるのか 61リポジトリで確かめた",
+      "url": "https://zenn.dev/devuloper/articles/vercel_import_candidates_email",
+      "publishedAt": "Fri, 25 Sep 2026 12:04:47 GMT",
       "source": "zenn"
     },
     {
-      "title": "API ManagementのAIゲートウェイで飲み放題の居酒屋を作ってみた",
-      "url": "https://zenn.dev/microsoft/articles/4ab393616e91ec",
-      "publishedAt": "Thu, 24 Sep 2026 09:49:08 GMT",
+      "title": "Jevにゲームをやらせるな！LLMを蒸留してみよう！",
+      "url": "https://zenn.dev/nwn/articles/e49154653ecea9",
+      "publishedAt": "Fri, 25 Sep 2026 07:27:13 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "無料の技術イベントは、無料でつくられていない",
+      "url": "https://zenn.dev/sun_asterisk/articles/free-event-not-free",
+      "publishedAt": "Fri, 25 Sep 2026 04:47:50 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "情シス依頼の一次受付をAI Agentに任せるっきゅ！",
+      "url": "https://zenn.dev/mkj/articles/4477dd49091031",
+      "publishedAt": "Fri, 25 Sep 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "/claude-api prompt-audit で棚卸ししたら、Claude Opus 5.5 化で外れた設定がぞろぞろ出てきた",
+      "url": "https://zenn.dev/nanora/articles/20260925-claude-prompt-audit-opus55",
+      "publishedAt": "Fri, 25 Sep 2026 01:59:47 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ステートマシンでフォームの分岐を管理して失敗した (データから導出できる値を状態にすべきでない)",
+      "url": "https://zenn.dev/bita/articles/f1872707871b2c",
+      "publishedAt": "Fri, 25 Sep 2026 01:08:15 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "11年生本番データ飛ばす",
+      "url": "https://zenn.dev/ficilcom/articles/prod_db_reset_incident",
+      "publishedAt": "Fri, 25 Sep 2026 00:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Angular: プライベートフィールドの意味論再考",
+      "url": "https://zenn.dev/lacolaco/articles/angular-private-fields",
+      "publishedAt": "Thu, 24 Sep 2026 22:30:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "王の凱旋—Opus 5.5 React習熟度ベンチマーク—",
+      "url": "https://zenn.dev/uhyo/articles/react-profession-bench-17",
+      "publishedAt": "Thu, 24 Sep 2026 15:36:51 GMT",
       "source": "zenn"
     },
     {
@@ -22,12 +64,6 @@
       "title": "Claude Code クラウドセッション、使ってみて！",
       "url": "https://zenn.dev/goat_eat_any/articles/claude-code-cloud-sessions",
       "publishedAt": "Thu, 24 Sep 2026 07:27:32 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "RubyLLM 2.0 の新機能10選",
-      "url": "https://zenn.dev/takeyuwebinc/articles/4fd800c21ce84a",
-      "publishedAt": "Thu, 24 Sep 2026 06:56:13 GMT",
       "source": "zenn"
     },
     {
@@ -49,27 +85,9 @@
       "source": "zenn"
     },
     {
-      "title": "xcshareddata の Package.resolved を破棄しても大丈夫だった",
-      "url": "https://zenn.dev/d_date/articles/3fba56d5468365",
-      "publishedAt": "Wed, 23 Sep 2026 23:02:49 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Claude Codeで定期的にやっておきたい MEMORY.md の大掃除",
       "url": "https://zenn.dev/loglass/articles/f69996279763ab",
       "publishedAt": "Wed, 23 Sep 2026 23:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Snowflake管理のMCP serverでエンジニア以外の社員がClaude Desktopから簡単にデータを集計・分析できる環境を作る",
-      "url": "https://zenn.dev/fusic/articles/snowflake-managed-mcp-claude-desktop",
-      "publishedAt": "Wed, 23 Sep 2026 22:30:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GoでAIエージェントを作るならGenkitかADKか：Genkitから作り直して分かったこと",
-      "url": "https://zenn.dev/gopher/articles/adk-vs-genkit-design-philosophy",
-      "publishedAt": "Wed, 23 Sep 2026 22:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -97,27 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "Next.js vs TanStack Start の違いを10項目で検証してみた",
-      "url": "https://zenn.dev/643866/articles/48eae6e7b845f8",
-      "publishedAt": "Tue, 22 Sep 2026 09:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "分離できていない？並列開発で感じた VS Code と Cursor の違い",
-      "url": "https://zenn.dev/imkohenauser/articles/vscode-cursor-parallel-development",
-      "publishedAt": "Tue, 22 Sep 2026 09:18:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "C言語のコードをRustの中に書けるライブラリを作った",
       "url": "https://zenn.dev/tanakh/articles/c-code-in-rust",
       "publishedAt": "Tue, 22 Sep 2026 02:23:29 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Re: Vercel に Go サーバーを無料でデプロイできるんです！",
-      "url": "https://zenn.dev/otakakot/articles/14d162ea65f67d",
-      "publishedAt": "Mon, 21 Sep 2026 04:46:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-25T02:57:57.087Z"
+  "updatedAt": "2026-09-26T03:00:55.572Z"
 }
