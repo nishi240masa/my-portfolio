@@ -1,9 +1,21 @@
 {
   "zenn": [
     {
+      "title": "OpenTelemetryで作るセルフサービステレメトリー基盤",
+      "url": "https://zenn.dev/ymotongpoo/books/observability-platform-with-otel",
+      "publishedAt": "Fri, 25 Sep 2026 23:38:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Vercelの「インポートできます」メールは何を見て送られてくるのか 61リポジトリで確かめた",
       "url": "https://zenn.dev/devuloper/articles/vercel_import_candidates_email",
       "publishedAt": "Fri, 25 Sep 2026 12:04:47 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIに書かせても速くならないのは、AIを「手足」として使っているから。人が押さえるべき5つの判断ポイントと半自動ループの作り方",
+      "url": "https://zenn.dev/dotdtech_blog/articles/65d51bc72d7ee9",
+      "publishedAt": "Fri, 25 Sep 2026 09:35:29 GMT",
       "source": "zenn"
     },
     {
@@ -13,15 +25,15 @@
       "source": "zenn"
     },
     {
-      "title": "無料の技術イベントは、無料でつくられていない",
-      "url": "https://zenn.dev/sun_asterisk/articles/free-event-not-free",
-      "publishedAt": "Fri, 25 Sep 2026 04:47:50 GMT",
+      "title": "爆速になった Expo Modules 2.0 を全部試してみた",
+      "url": "https://zenn.dev/gemcook/articles/expo-modules-2-swift-macros-sdk57",
+      "publishedAt": "Fri, 25 Sep 2026 07:05:18 GMT",
       "source": "zenn"
     },
     {
-      "title": "情シス依頼の一次受付をAI Agentに任せるっきゅ！",
-      "url": "https://zenn.dev/mkj/articles/4477dd49091031",
-      "publishedAt": "Fri, 25 Sep 2026 02:50:05 GMT",
+      "title": "文章を返さないAI「Jev」を試してみた ── 社内問い合わせのエスカレーション先は判定できるか",
+      "url": "https://zenn.dev/yesodco/articles/yesod-jev-typesafe-inquiry-triage",
+      "publishedAt": "Fri, 25 Sep 2026 02:18:13 GMT",
       "source": "zenn"
     },
     {
@@ -43,12 +55,6 @@
       "source": "zenn"
     },
     {
-      "title": "Angular: プライベートフィールドの意味論再考",
-      "url": "https://zenn.dev/lacolaco/articles/angular-private-fields",
-      "publishedAt": "Thu, 24 Sep 2026 22:30:00 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "王の凱旋—Opus 5.5 React習熟度ベンチマーク—",
       "url": "https://zenn.dev/uhyo/articles/react-profession-bench-17",
       "publishedAt": "Thu, 24 Sep 2026 15:36:51 GMT",
@@ -67,21 +73,9 @@
       "source": "zenn"
     },
     {
-      "title": "会議・調査・資料作成をAgentに任せる：Microsoft環境で始めるプロジェクトLLM Wiki",
-      "url": "https://zenn.dev/mkj/articles/agent-native-project-work-with-llm-wiki",
-      "publishedAt": "Thu, 24 Sep 2026 02:50:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "自宅サーバーのススメ",
       "url": "https://zenn.dev/porters_tech/articles/b2282728b35397",
       "publishedAt": "Thu, 24 Sep 2026 01:00:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AWS DevOps Agent の堅牢性",
-      "url": "https://zenn.dev/cscloud_blog/articles/9968d12b332c03",
-      "publishedAt": "Thu, 24 Sep 2026 00:36:37 GMT",
       "source": "zenn"
     },
     {
@@ -97,6 +91,12 @@
       "source": "zenn"
     },
     {
+      "title": "AIソフトウェア工場の設計——要求から本番運用までをつなぐアーキテクチャ",
+      "url": "https://zenn.dev/hampen2929/books/ai-software-factory-architecture",
+      "publishedAt": "Wed, 23 Sep 2026 21:00:25 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Claude Opus 5.5によるピクセルアニメーション生成の検証",
       "url": "https://zenn.dev/peoplex_blog/articles/1bc5c181ad19f0",
       "publishedAt": "Wed, 23 Sep 2026 07:20:05 GMT",
@@ -109,15 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "みんなJevの話してる。やってないの俺だけ",
-      "url": "https://zenn.dev/unsoluble_sugar/articles/jev-system-one-model-intro",
-      "publishedAt": "Tue, 22 Sep 2026 13:11:24 GMT",
+      "title": "Opus 5.5とGPT-6 Solの使い分け：「どうしますか」が減った話",
+      "url": "https://zenn.dev/hjpotter1/articles/e1278d79045de9",
+      "publishedAt": "Wed, 23 Sep 2026 05:05:21 GMT",
       "source": "zenn"
     },
     {
-      "title": "C言語のコードをRustの中に書けるライブラリを作った",
-      "url": "https://zenn.dev/tanakh/articles/c-code-in-rust",
-      "publishedAt": "Tue, 22 Sep 2026 02:23:29 GMT",
+      "title": "みんなJevの話してる。やってないの俺だけ",
+      "url": "https://zenn.dev/unsoluble_sugar/articles/jev-system-one-model-intro",
+      "publishedAt": "Tue, 22 Sep 2026 13:11:24 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-26T03:00:55.572Z"
+  "updatedAt": "2026-09-27T03:06:21.817Z"
 }
