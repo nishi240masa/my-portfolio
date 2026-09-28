@@ -1,6 +1,42 @@
 {
   "zenn": [
     {
+      "title": "Kubernetes 1.37: SIG Appsの変更内容",
+      "url": "https://zenn.dev/musaprg/articles/kubernetes-changelog-1-37-sig-apps",
+      "publishedAt": "Sun, 27 Sep 2026 17:25:56 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "すこし踏み込む CancellationToken",
+      "url": "https://zenn.dev/poipoionigiri/articles/3826f7675d39fd",
+      "publishedAt": "Sun, 27 Sep 2026 11:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Platform Engineering Kaigi 2026 登壇資料まとめ",
+      "url": "https://zenn.dev/key60228/articles/d4f2591a42a876",
+      "publishedAt": "Sat, 26 Sep 2026 17:01:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cloudflare 上で Jev で作るほぼ0円運用可能な高品質なページ内検索",
+      "url": "https://zenn.dev/mazrean/articles/bd9b563ace18db",
+      "publishedAt": "Sat, 26 Sep 2026 11:26:39 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "人工知能と小説新人賞審査",
+      "url": "https://zenn.dev/enjoetoh/articles/ai-as-literary-judge",
+      "publishedAt": "Sat, 26 Sep 2026 06:53:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Gitのorphanブランチのつくりかた",
+      "url": "https://zenn.dev/yoichi/articles/git-create-orphan-branch",
+      "publishedAt": "Sat, 26 Sep 2026 02:18:57 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "OpenTelemetryで作るセルフサービステレメトリー基盤",
       "url": "https://zenn.dev/ymotongpoo/books/observability-platform-with-otel",
       "publishedAt": "Fri, 25 Sep 2026 23:38:05 GMT",
@@ -25,9 +61,9 @@
       "source": "zenn"
     },
     {
-      "title": "爆速になった Expo Modules 2.0 を全部試してみた",
-      "url": "https://zenn.dev/gemcook/articles/expo-modules-2-swift-macros-sdk57",
-      "publishedAt": "Fri, 25 Sep 2026 07:05:18 GMT",
+      "title": "HTTP/3 を知ったので Docker で動かして仕組みを確かめた",
+      "url": "https://zenn.dev/sonicmoov/articles/http3-hands-on",
+      "publishedAt": "Fri, 25 Sep 2026 04:23:57 GMT",
       "source": "zenn"
     },
     {
@@ -43,21 +79,9 @@
       "source": "zenn"
     },
     {
-      "title": "ステートマシンでフォームの分岐を管理して失敗した (データから導出できる値を状態にすべきでない)",
-      "url": "https://zenn.dev/bita/articles/f1872707871b2c",
-      "publishedAt": "Fri, 25 Sep 2026 01:08:15 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "11年生本番データ飛ばす",
       "url": "https://zenn.dev/ficilcom/articles/prod_db_reset_incident",
       "publishedAt": "Fri, 25 Sep 2026 00:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "王の凱旋—Opus 5.5 React習熟度ベンチマーク—",
-      "url": "https://zenn.dev/uhyo/articles/react-profession-bench-17",
-      "publishedAt": "Thu, 24 Sep 2026 15:36:51 GMT",
       "source": "zenn"
     },
     {
@@ -85,12 +109,6 @@
       "source": "zenn"
     },
     {
-      "title": "Opus 5.5にプロンプトを渡したら、解説アニメーション動画ができた",
-      "url": "https://zenn.dev/acntechjp/articles/178e40be12d347",
-      "publishedAt": "Wed, 23 Sep 2026 21:30:12 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AIソフトウェア工場の設計——要求から本番運用までをつなぐアーキテクチャ",
       "url": "https://zenn.dev/hampen2929/books/ai-software-factory-architecture",
       "publishedAt": "Wed, 23 Sep 2026 21:00:25 GMT",
@@ -100,24 +118,6 @@
       "title": "Claude Opus 5.5によるピクセルアニメーション生成の検証",
       "url": "https://zenn.dev/peoplex_blog/articles/1bc5c181ad19f0",
       "publishedAt": "Wed, 23 Sep 2026 07:20:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "競馬の論文 100 本を Jev で仕分けて、LLM と速度とコストを比べた",
-      "url": "https://zenn.dev/toshipon/articles/jev-paper-screening-vs-llm",
-      "publishedAt": "Wed, 23 Sep 2026 06:51:29 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Opus 5.5とGPT-6 Solの使い分け：「どうしますか」が減った話",
-      "url": "https://zenn.dev/hjpotter1/articles/e1278d79045de9",
-      "publishedAt": "Wed, 23 Sep 2026 05:05:21 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "みんなJevの話してる。やってないの俺だけ",
-      "url": "https://zenn.dev/unsoluble_sugar/articles/jev-system-one-model-intro",
-      "publishedAt": "Tue, 22 Sep 2026 13:11:24 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-27T03:06:21.817Z"
+  "updatedAt": "2026-09-28T03:03:26.869Z"
 }
