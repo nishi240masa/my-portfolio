@@ -1,15 +1,45 @@
 {
   "zenn": [
     {
+      "title": "Playwright Test Agents × GitHub Actions：E2E テスト生成・修復の自動化",
+      "url": "https://zenn.dev/sun_asterisk/articles/e9b50f09839def",
+      "publishedAt": "Mon, 28 Sep 2026 03:02:56 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "探索できる人は何をしているの？『Explore It!』を読んで",
+      "url": "https://zenn.dev/knowledgework/articles/6996274de49607",
+      "publishedAt": "Mon, 28 Sep 2026 03:00:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Kubernetes 1.37: SIG Appsの変更内容",
       "url": "https://zenn.dev/musaprg/articles/kubernetes-changelog-1-37-sig-apps",
       "publishedAt": "Sun, 27 Sep 2026 17:25:56 GMT",
       "source": "zenn"
     },
     {
+      "title": "そもそもClaude Codeのエフォートってなに？",
+      "url": "https://zenn.dev/goat_eat_any/articles/claude-code-effort-explained",
+      "publishedAt": "Sun, 27 Sep 2026 17:18:34 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "SOLID 原則と型の持つ責務",
+      "url": "https://zenn.dev/sator_imaging/articles/834240491191ec",
+      "publishedAt": "Sun, 27 Sep 2026 11:55:18 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "すこし踏み込む CancellationToken",
       "url": "https://zenn.dev/poipoionigiri/articles/3826f7675d39fd",
       "publishedAt": "Sun, 27 Sep 2026 11:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "VS Code の Claude Code 拡張機能、なんか更新多い…？",
+      "url": "https://zenn.dev/headwaters/articles/15875671106c54",
+      "publishedAt": "Sun, 27 Sep 2026 04:48:33 GMT",
       "source": "zenn"
     },
     {
@@ -28,12 +58,6 @@
       "title": "人工知能と小説新人賞審査",
       "url": "https://zenn.dev/enjoetoh/articles/ai-as-literary-judge",
       "publishedAt": "Sat, 26 Sep 2026 06:53:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Gitのorphanブランチのつくりかた",
-      "url": "https://zenn.dev/yoichi/articles/git-create-orphan-branch",
-      "publishedAt": "Sat, 26 Sep 2026 02:18:57 GMT",
       "source": "zenn"
     },
     {
@@ -67,12 +91,6 @@
       "source": "zenn"
     },
     {
-      "title": "文章を返さないAI「Jev」を試してみた ── 社内問い合わせのエスカレーション先は判定できるか",
-      "url": "https://zenn.dev/yesodco/articles/yesod-jev-typesafe-inquiry-triage",
-      "publishedAt": "Fri, 25 Sep 2026 02:18:13 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "/claude-api prompt-audit で棚卸ししたら、Claude Opus 5.5 化で外れた設定がぞろぞろ出てきた",
       "url": "https://zenn.dev/nanora/articles/20260925-claude-prompt-audit-opus55",
       "publishedAt": "Fri, 25 Sep 2026 01:59:47 GMT",
@@ -101,24 +119,6 @@
       "url": "https://zenn.dev/porters_tech/articles/b2282728b35397",
       "publishedAt": "Thu, 24 Sep 2026 01:00:06 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "Claude Codeで定期的にやっておきたい MEMORY.md の大掃除",
-      "url": "https://zenn.dev/loglass/articles/f69996279763ab",
-      "publishedAt": "Wed, 23 Sep 2026 23:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIソフトウェア工場の設計——要求から本番運用までをつなぐアーキテクチャ",
-      "url": "https://zenn.dev/hampen2929/books/ai-software-factory-architecture",
-      "publishedAt": "Wed, 23 Sep 2026 21:00:25 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Opus 5.5によるピクセルアニメーション生成の検証",
-      "url": "https://zenn.dev/peoplex_blog/articles/1bc5c181ad19f0",
-      "publishedAt": "Wed, 23 Sep 2026 07:20:05 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-28T03:03:26.869Z"
+  "updatedAt": "2026-09-29T03:42:42.408Z"
 }
