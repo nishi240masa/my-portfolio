@@ -1,6 +1,48 @@
 {
   "zenn": [
     {
+      "title": "Web 標準動向 2026年9月版",
+      "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202609",
+      "publishedAt": "Wed, 30 Sep 2026 09:00:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ヘキサゴナルアーキテクチャを実装レベルで確かめてみた（その1）ポート・アダプター・アプリケーションはコードではどうなるのか",
+      "url": "https://zenn.dev/aws_japan/articles/hexagonal-architecture-lambda-1",
+      "publishedAt": "Wed, 30 Sep 2026 01:04:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "新規プロダクトのバックエンド自動テスト戦略 ─UT 中心から API テスト中心へ─",
+      "url": "https://zenn.dev/canary_techblog/articles/348d976da70857",
+      "publishedAt": "Wed, 30 Sep 2026 00:45:25 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ゲーミングPC向けで LLMとデプロイ環境を最適化してみた話",
+      "url": "https://zenn.dev/knowledgework/articles/2691721311c2e4",
+      "publishedAt": "Wed, 30 Sep 2026 00:45:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "OpenAI DevDay 2026 発表まとめ",
+      "url": "https://zenn.dev/schroneko/articles/openai-devday-2026",
+      "publishedAt": "Tue, 29 Sep 2026 17:20:46 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "タイムズカーの不正アクセスで免許証画像が流出した人へ：考えられる被害と今日からできる対策",
+      "url": "https://zenn.dev/gzer0/articles/timescar-leak-countermeasures",
+      "publishedAt": "Tue, 29 Sep 2026 16:50:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "生命科学研究 × AI 活用ハンドブック",
+      "url": "https://zenn.dev/labcode/books/c4f81b6a2d9e37",
+      "publishedAt": "Tue, 29 Sep 2026 14:29:01 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Rustで作った自作OS「octox」がサンフランシスコ大学の教材になっていました",
       "url": "https://zenn.dev/o8vm/articles/3934806424cd85",
       "publishedAt": "Tue, 29 Sep 2026 09:00:05 GMT",
@@ -19,12 +61,6 @@
       "source": "zenn"
     },
     {
-      "title": "高校生がマネーフォワードの2weeksインターンに参加してきたので振り返り",
-      "url": "https://zenn.dev/ngstk/articles/d69408a046d831",
-      "publishedAt": "Tue, 29 Sep 2026 03:30:06 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Claude Code / Codexで「私のlimit、減りすぎ…？」と思ったときに見る記事",
       "url": "https://zenn.dev/tokium_dev/articles/ai-agent-usage-limit-long-sessions",
       "publishedAt": "Tue, 29 Sep 2026 03:00:09 GMT",
@@ -37,9 +73,9 @@
       "source": "zenn"
     },
     {
-      "title": "録音音声を扱うプロダクトでAIとテストするために初手で行った工夫と改善点",
-      "url": "https://zenn.dev/knowledgework/articles/96d88ab25da83f",
-      "publishedAt": "Tue, 29 Sep 2026 02:00:05 GMT",
+      "title": "テスト要求仕様（TRS）を書いてみたら、テスト設計が楽になった話",
+      "url": "https://zenn.dev/edash_tech_blog/articles/0d49bd338b64f0",
+      "publishedAt": "Tue, 29 Sep 2026 02:40:05 GMT",
       "source": "zenn"
     },
     {
@@ -73,51 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "Go 1.28でstring(int)周りの挙動が変わりそう",
-      "url": "https://zenn.dev/aqyuki/articles/go-proposal-3939",
-      "publishedAt": "Mon, 28 Sep 2026 07:26:11 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Playwright Test Agents × GitHub Actions：E2E テスト生成・修復の自動化",
-      "url": "https://zenn.dev/sun_asterisk/articles/e9b50f09839def",
-      "publishedAt": "Mon, 28 Sep 2026 03:02:56 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "探索できる人は何をしているの？『Explore It!』を読んで",
       "url": "https://zenn.dev/knowledgework/articles/6996274de49607",
       "publishedAt": "Mon, 28 Sep 2026 03:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "続・データサイエンティストのためのSkills:分析手法×診断可視化セット",
-      "url": "https://zenn.dev/green_tea/articles/55d2761106ee74",
-      "publishedAt": "Mon, 28 Sep 2026 02:50:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "VS Code の Claude Code 拡張機能、なんか更新多い…？",
-      "url": "https://zenn.dev/headwaters/articles/15875671106c54",
-      "publishedAt": "Sun, 27 Sep 2026 04:48:33 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Cloudflare 上で Jev で作るほぼ0円運用可能な高品質なページ内検索",
       "url": "https://zenn.dev/mazrean/articles/bd9b563ace18db",
       "publishedAt": "Sat, 26 Sep 2026 11:26:39 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "人工知能と小説新人賞審査",
-      "url": "https://zenn.dev/enjoetoh/articles/ai-as-literary-judge",
-      "publishedAt": "Sat, 26 Sep 2026 06:53:26 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "OpenTelemetryで作るセルフサービステレメトリー基盤",
-      "url": "https://zenn.dev/ymotongpoo/books/observability-platform-with-otel",
-      "publishedAt": "Fri, 25 Sep 2026 23:38:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-09-30T03:30:24.030Z"
+  "updatedAt": "2026-10-01T03:35:43.754Z"
 }
