@@ -1,6 +1,36 @@
 {
   "zenn": [
     {
+      "title": "Claude Code の使用量はどう数えられているのか ── Max 20x で実測した重みは API 料金表と違った",
+      "url": "https://zenn.dev/tksfjt1024/articles/25c0ab111c277c",
+      "publishedAt": "Thu, 01 Oct 2026 02:34:27 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オブザーバビリティのAIエージェントをどう評価するか",
+      "url": "https://zenn.dev/ymotongpoo/articles/20261001-agent-eval-loop",
+      "publishedAt": "Thu, 01 Oct 2026 00:00:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "terraform applyしたら、1ヶ月半前のコードが本番に出ていた",
+      "url": "https://zenn.dev/gonta_ganbareyo/articles/6256bf2008b2ef",
+      "publishedAt": "Wed, 30 Sep 2026 23:45:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI-Slopな日本語を構造レベルで読みやすくするSkill『yomiyasu（よみやす）』を作りました",
+      "url": "https://zenn.dev/algoartis/articles/0b1c731881b25c",
+      "publishedAt": "Wed, 30 Sep 2026 18:28:20 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "『構文解析のしくみ』が出版されました（出版にあたって宣伝と裏話）",
+      "url": "https://zenn.dev/kmizu/articles/2026-09-parser-book",
+      "publishedAt": "Wed, 30 Sep 2026 12:12:41 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Web 標準動向 2026年9月版",
       "url": "https://zenn.dev/cybozu_frontend/articles/web_standards_trends_202609",
       "publishedAt": "Wed, 30 Sep 2026 09:00:08 GMT",
@@ -31,12 +61,6 @@
       "source": "zenn"
     },
     {
-      "title": "タイムズカーの不正アクセスで免許証画像が流出した人へ：考えられる被害と今日からできる対策",
-      "url": "https://zenn.dev/gzer0/articles/timescar-leak-countermeasures",
-      "publishedAt": "Tue, 29 Sep 2026 16:50:08 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "生命科学研究 × AI 活用ハンドブック",
       "url": "https://zenn.dev/labcode/books/c4f81b6a2d9e37",
       "publishedAt": "Tue, 29 Sep 2026 14:29:01 GMT",
@@ -52,12 +76,6 @@
       "title": "AI 駆動開発で「設計」はどこに書くのか ― 振る舞いをテストで検証できる「仕様」にしてみる",
       "url": "https://zenn.dev/softbank/articles/6f98cf7c4ebfd3",
       "publishedAt": "Tue, 29 Sep 2026 07:02:41 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Cloudflare の CLI を wrangler から cf に移行する",
-      "url": "https://zenn.dev/sora_kumo/articles/cloudflare-to-cf",
-      "publishedAt": "Tue, 29 Sep 2026 04:43:50 GMT",
       "source": "zenn"
     },
     {
@@ -101,24 +119,6 @@
       "url": "https://zenn.dev/oukayuka/articles/15years-git-then-jujutsu",
       "publishedAt": "Mon, 28 Sep 2026 23:30:05 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "別会社の開発チームに AWS 環境を共有するのって大変だ",
-      "url": "https://zenn.dev/dress_code/articles/f89590d105ba5f",
-      "publishedAt": "Mon, 28 Sep 2026 10:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "探索できる人は何をしているの？『Explore It!』を読んで",
-      "url": "https://zenn.dev/knowledgework/articles/6996274de49607",
-      "publishedAt": "Mon, 28 Sep 2026 03:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Cloudflare 上で Jev で作るほぼ0円運用可能な高品質なページ内検索",
-      "url": "https://zenn.dev/mazrean/articles/bd9b563ace18db",
-      "publishedAt": "Sat, 26 Sep 2026 11:26:39 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-01T03:35:43.754Z"
+  "updatedAt": "2026-10-02T03:35:37.847Z"
 }
