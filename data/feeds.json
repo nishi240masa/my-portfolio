@@ -1,6 +1,90 @@
 {
   "zenn": [
     {
+      "title": "論文サマリ「腕運動の協調：実験的に確認された数学モデル」Flash and Hogan",
+      "url": "https://zenn.dev/zhidao/articles/2bbdf37363dec1",
+      "publishedAt": "Mon, 05 Oct 2026 23:02:21 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "「田中さんの代理で来ました」をIAMで検証可能にする",
+      "url": "https://zenn.dev/akring/articles/e3aa2d897bdbfe",
+      "publishedAt": "Mon, 05 Oct 2026 23:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "こんな時代だから Seasar2 を構築してみようか",
+      "url": "https://zenn.dev/tokium_dev/articles/4dbec90075dab0",
+      "publishedAt": "Mon, 05 Oct 2026 21:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ユーザー検索した作品名の人気キーワード機能",
+      "url": "https://zenn.dev/npm_tech/articles/c589433eb5ef52",
+      "publishedAt": "Mon, 05 Oct 2026 14:12:40 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ロボットモデルなしでアームを動かす — Claude × MCP で SO-101 を直接操作する",
+      "url": "https://zenn.dev/oggata/articles/0893726c1ebf3d",
+      "publishedAt": "Mon, 05 Oct 2026 12:19:36 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Desktop と ChatGPT デスクトップアプリを Amazon Bedrock 経由で Windows から使う",
+      "url": "https://zenn.dev/aws_japan/articles/claude-chatgpt-desktop-bedrock-windows-setup",
+      "publishedAt": "Mon, 05 Oct 2026 09:01:21 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "JevとClefを画像生成AIのプロダクトに組み込もう!",
+      "url": "https://zenn.dev/radius5/articles/20261004-j3v7cl3f",
+      "publishedAt": "Mon, 05 Oct 2026 08:26:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "仮想スレッドにしたら速くなる？ Java のスループットの上限を AWS で測った（後編：キャリアスレッドとイベントループのブロック）",
+      "url": "https://zenn.dev/ryotashi29/articles/java-concurrency-thread-blocking",
+      "publishedAt": "Mon, 05 Oct 2026 07:39:49 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オブジェクト指向UIデザインをAgent Skillにして、Claudeが作るUIはどう変わるかの検証",
+      "url": "https://zenn.dev/emuni/articles/ooui-agent-skill",
+      "publishedAt": "Mon, 05 Oct 2026 06:09:20 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "朝のあの時間だけEC2のキャパシティ予約したいんだよなあ",
+      "url": "https://zenn.dev/educom_tech/articles/e0445b9e5da82a",
+      "publishedAt": "Mon, 05 Oct 2026 06:01:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Traefikで、アプリのPodを0台にしてもメンテナンス画面を返したい！",
+      "url": "https://zenn.dev/gmomedia/articles/16068e12b530e1",
+      "publishedAt": "Mon, 05 Oct 2026 05:46:38 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "俺のAIプログラミング手法(2026/10/05)",
+      "url": "https://zenn.dev/mizchi/articles/ai-coding-loop-formal",
+      "publishedAt": "Mon, 05 Oct 2026 04:59:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GraphRAGをゼロから詳しく解説する【ナレッジグラフ・オントロジー】",
+      "url": "https://zenn.dev/tetsuro731/articles/6efe77a20b8c1c",
+      "publishedAt": "Mon, 05 Oct 2026 00:19:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "本当に「判断」していますか？",
+      "url": "https://zenn.dev/dyoshikawa/articles/do-you-desicion",
+      "publishedAt": "Sun, 04 Oct 2026 22:00:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "Claude Codeの「Claude Mods」とは？ 入れてみた3つのmodと、安全に入れる手順",
       "url": "https://zenn.dev/yoshihiko555/articles/ea2db6070058b3",
       "publishedAt": "Sun, 04 Oct 2026 17:22:57 GMT",
@@ -13,45 +97,9 @@
       "source": "zenn"
     },
     {
-      "title": "既存OSSのnginxをOpenRestyへ差し替え、Entra IDとアプリ内ユーザーを追跡できるログを作った話",
-      "url": "https://zenn.dev/gritio28tech/articles/7b48f4db2d2bfa",
-      "publishedAt": "Sun, 04 Oct 2026 12:34:49 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "PythonとCasADiで学ぶLie群上の最適化",
-      "url": "https://zenn.dev/takuya_fukatsu/articles/069f5b78d7597f",
-      "publishedAt": "Sun, 04 Oct 2026 08:35:06 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "JSONはシンプルで明快な仕様が魅力ですが、そんなJSONでも微妙な実装差異が生じる罠がいくつかあります。本稿はこうした機微を実装の比較を通",
       "url": "https://zenn.dev/qnighy/articles/json-ambiguity",
       "publishedAt": "Sun, 04 Oct 2026 08:18:23 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "VueUseのIssue対応記録: v-element-sizeの修正から見るResizeObserverの値をwatchする際の注意点",
-      "url": "https://zenn.dev/metasyntax/articles/vueuse-v-element-size-border-box",
-      "publishedAt": "Sun, 04 Oct 2026 08:04:33 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Key Vault参照は本当に得か — Terraform stateから秘密値を外す設計判断",
-      "url": "https://zenn.dev/kmryst/articles/azure-key-vault-terraform-state-design",
-      "publishedAt": "Sun, 04 Oct 2026 05:38:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【202610版】 Webアプリ開発初心者がKiroでAI駆動開発をしてみた",
-      "url": "https://zenn.dev/gob7ppcsvx/articles/ae6d8fc5ca495b",
-      "publishedAt": "Sun, 04 Oct 2026 02:59:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "データエンジニアの副業を1年やって辞めた話：スキルは思ったほど伸びず、時間は思った以上に失った",
-      "url": "https://zenn.dev/kyami/articles/97231d0de16f31",
-      "publishedAt": "Sat, 03 Oct 2026 01:46:00 GMT",
       "source": "zenn"
     },
     {
@@ -61,63 +109,15 @@
       "source": "zenn"
     },
     {
-      "title": "完全版 Claude Mods 入門 | Claude Codeを自由にカスタマイズする",
-      "url": "https://zenn.dev/nogu66/articles/claude-mods-complete-guide",
-      "publishedAt": "Thu, 01 Oct 2026 23:48:50 GMT",
+      "title": "AWSにログインする方法8選",
+      "url": "https://zenn.dev/aws_japan/articles/aws-login-methods",
+      "publishedAt": "Fri, 02 Oct 2026 04:16:06 GMT",
       "source": "zenn"
     },
     {
       "title": "glibc の strlen は文字列範囲外を読むことで高速に計算する",
       "url": "https://zenn.dev/peloeil/articles/glibc-strlen-2023",
       "publishedAt": "Thu, 01 Oct 2026 17:56:12 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "実務において敵対的レビューはどの程度有効なのか",
-      "url": "https://zenn.dev/edash_tech_blog/articles/4577f7d4780bef",
-      "publishedAt": "Thu, 01 Oct 2026 10:48:47 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【最新v1.0.6公開】AI-Slopな日本語を構造レベルで読みやすくするSkill『yomiyasu（よみやす）』を作りました",
-      "url": "https://zenn.dev/algoartis/articles/0b1c731881b25c",
-      "publishedAt": "Wed, 30 Sep 2026 18:28:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "OpenAI DevDay 2026 発表まとめ",
-      "url": "https://zenn.dev/schroneko/articles/openai-devday-2026",
-      "publishedAt": "Tue, 29 Sep 2026 17:20:46 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Rustで作った自作OS「octox」がサンフランシスコ大学の教材になっていました",
-      "url": "https://zenn.dev/o8vm/articles/3934806424cd85",
-      "publishedAt": "Tue, 29 Sep 2026 09:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "３分で読めるトランザクション設計のコツ",
-      "url": "https://zenn.dev/mconfjp/articles/transaction-action-order",
-      "publishedAt": "Tue, 29 Sep 2026 02:45:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "テスト要求仕様（TRS）を書いてみたら、テスト設計が楽になった話",
-      "url": "https://zenn.dev/edash_tech_blog/articles/0d49bd338b64f0",
-      "publishedAt": "Tue, 29 Sep 2026 02:40:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AI開発時代だからこそ、テストの役割を見つめ直す",
-      "url": "https://zenn.dev/ababup1192/articles/77b844dcfc1529",
-      "publishedAt": "Tue, 29 Sep 2026 01:00:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "目を醒ませ 僕らの信頼が生成AIに侵略されてるぞ",
-      "url": "https://zenn.dev/spookies/articles/e70b80a510f5e2",
-      "publishedAt": "Tue, 29 Sep 2026 01:00:08 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-05T03:32:04.990Z"
+  "updatedAt": "2026-10-06T04:20:05.226Z"
 }
