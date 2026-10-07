@@ -1,33 +1,69 @@
 {
   "zenn": [
     {
-      "title": "論文サマリ「腕運動の協調：実験的に確認された数学モデル」Flash and Hogan",
-      "url": "https://zenn.dev/zhidao/articles/2bbdf37363dec1",
-      "publishedAt": "Mon, 05 Oct 2026 23:02:21 GMT",
+      "title": "Googleマップの埋め込みは3経路ある — どれが無料で、どれが従量課金なのか",
+      "url": "https://zenn.dev/shunei/articles/google-maps-embed-billing",
+      "publishedAt": "Tue, 06 Oct 2026 14:48:40 GMT",
       "source": "zenn"
     },
     {
-      "title": "「田中さんの代理で来ました」をIAMで検証可能にする",
-      "url": "https://zenn.dev/akring/articles/e3aa2d897bdbfe",
-      "publishedAt": "Mon, 05 Oct 2026 23:00:05 GMT",
+      "title": "OOPとFPの使い分けを、図書館の貸出管理システム作って確かめてみた",
+      "url": "https://zenn.dev/satoru_o/articles/2804938058ab47",
+      "publishedAt": "Tue, 06 Oct 2026 14:38:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Keras入門　第４回　Kerasモデルの量子化(LiteRT)",
+      "url": "https://zenn.dev/hoshinagi1219/articles/6c2446701595cc",
+      "publishedAt": "Tue, 06 Oct 2026 13:23:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "LLMを使用した Web システムの単体テスト自動化について",
+      "url": "https://zenn.dev/shikamaru/articles/ef90e326ab8163",
+      "publishedAt": "Tue, 06 Oct 2026 12:00:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "時系列予測の第一歩？ OLTPとOLAP",
+      "url": "https://zenn.dev/neurogica/articles/a37c2fdb8bc0d4",
+      "publishedAt": "Tue, 06 Oct 2026 10:36:19 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "マーケティングエンジニア入門",
+      "url": "https://zenn.dev/kevin_namba/books/afe09c60f698e8",
+      "publishedAt": "Tue, 06 Oct 2026 09:00:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Mods で Claude Code のセッションごとに管理できるメモ帳を作った",
+      "url": "https://zenn.dev/yesodco/articles/da634d752874b2",
+      "publishedAt": "Tue, 06 Oct 2026 08:47:17 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GitHub Actionsのキャッシュがあふれるので、不要になった2種類を自動削除する",
+      "url": "https://zenn.dev/yesodco/articles/yesod-github-actions-cache-cleanup",
+      "publishedAt": "Tue, 06 Oct 2026 06:35:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "エージェントの記憶はどこに置くか —— Skills・AGENTS.md・引き継ぎノートをClaude CodeとIBM Bobで検証した",
+      "url": "https://zenn.dev/enterprise_ai/articles/b8856a49d7f6af",
+      "publishedAt": "Tue, 06 Oct 2026 05:59:59 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "漏洩ラッシュは本当にラッシュなのか 公的統計と公式発表で確かめてみた",
+      "url": "https://zenn.dev/tawachan/articles/japan-data-breach-rush-2026-statistics",
+      "publishedAt": "Tue, 06 Oct 2026 03:21:22 GMT",
       "source": "zenn"
     },
     {
       "title": "こんな時代だから Seasar2 を構築してみようか",
       "url": "https://zenn.dev/tokium_dev/articles/4dbec90075dab0",
       "publishedAt": "Mon, 05 Oct 2026 21:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ユーザー検索した作品名の人気キーワード機能",
-      "url": "https://zenn.dev/npm_tech/articles/c589433eb5ef52",
-      "publishedAt": "Mon, 05 Oct 2026 14:12:40 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ロボットモデルなしでアームを動かす — Claude × MCP で SO-101 を直接操作する",
-      "url": "https://zenn.dev/oggata/articles/0893726c1ebf3d",
-      "publishedAt": "Mon, 05 Oct 2026 12:19:36 GMT",
       "source": "zenn"
     },
     {
@@ -43,12 +79,6 @@
       "source": "zenn"
     },
     {
-      "title": "仮想スレッドにしたら速くなる？ Java のスループットの上限を AWS で測った（後編：キャリアスレッドとイベントループのブロック）",
-      "url": "https://zenn.dev/ryotashi29/articles/java-concurrency-thread-blocking",
-      "publishedAt": "Mon, 05 Oct 2026 07:39:49 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "オブジェクト指向UIデザインをAgent Skillにして、Claudeが作るUIはどう変わるかの検証",
       "url": "https://zenn.dev/emuni/articles/ooui-agent-skill",
       "publishedAt": "Mon, 05 Oct 2026 06:09:20 GMT",
@@ -61,15 +91,15 @@
       "source": "zenn"
     },
     {
-      "title": "Traefikで、アプリのPodを0台にしてもメンテナンス画面を返したい！",
-      "url": "https://zenn.dev/gmomedia/articles/16068e12b530e1",
-      "publishedAt": "Mon, 05 Oct 2026 05:46:38 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "俺のAIプログラミング手法(2026/10/05)",
       "url": "https://zenn.dev/mizchi/articles/ai-coding-loop-formal",
       "publishedAt": "Mon, 05 Oct 2026 04:59:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "技術ブログはゆるやかに衰退している",
+      "url": "https://zenn.dev/northward/articles/decline-of-tech-blogs",
+      "publishedAt": "Mon, 05 Oct 2026 00:40:05 GMT",
       "source": "zenn"
     },
     {
@@ -88,36 +118,6 @@
       "title": "Claude Codeの「Claude Mods」とは？ 入れてみた3つのmodと、安全に入れる手順",
       "url": "https://zenn.dev/yoshihiko555/articles/ea2db6070058b3",
       "publishedAt": "Sun, 04 Oct 2026 17:22:57 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Cloudflare の判定モデル Clef を Workers AI で触ってみた",
-      "url": "https://zenn.dev/akari1106/articles/b6d3180cc50dfe",
-      "publishedAt": "Sun, 04 Oct 2026 14:36:56 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "JSONはシンプルで明快な仕様が魅力ですが、そんなJSONでも微妙な実装差異が生じる罠がいくつかあります。本稿はこうした機微を実装の比較を通",
-      "url": "https://zenn.dev/qnighy/articles/json-ambiguity",
-      "publishedAt": "Sun, 04 Oct 2026 08:18:23 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【Cursor pstack】AIエージェントに開発を任せる環境をつくる ―月2,500件のPRを支えた開発基盤とは？",
-      "url": "https://zenn.dev/sc30gsw/books/080faba713547b",
-      "publishedAt": "Fri, 02 Oct 2026 13:19:46 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AWSにログインする方法8選",
-      "url": "https://zenn.dev/aws_japan/articles/aws-login-methods",
-      "publishedAt": "Fri, 02 Oct 2026 04:16:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "glibc の strlen は文字列範囲外を読むことで高速に計算する",
-      "url": "https://zenn.dev/peloeil/articles/glibc-strlen-2023",
-      "publishedAt": "Thu, 01 Oct 2026 17:56:12 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-06T04:20:05.226Z"
+  "updatedAt": "2026-10-07T03:46:19.392Z"
 }
