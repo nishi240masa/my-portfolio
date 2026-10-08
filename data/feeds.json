@@ -1,33 +1,45 @@
 {
   "zenn": [
     {
-      "title": "Googleマップの埋め込みは3経路ある — どれが無料で、どれが従量課金なのか",
-      "url": "https://zenn.dev/shunei/articles/google-maps-embed-billing",
-      "publishedAt": "Tue, 06 Oct 2026 14:48:40 GMT",
+      "title": "【三次元再構成入門】多視点の画像から3D空間を復元する仕組み - カメラパラメータとSfM",
+      "url": "https://zenn.dev/dalab/articles/9ba129c4647844",
+      "publishedAt": "Thu, 08 Oct 2026 00:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "OOPとFPの使い分けを、図書館の貸出管理システム作って確かめてみた",
-      "url": "https://zenn.dev/satoru_o/articles/2804938058ab47",
-      "publishedAt": "Tue, 06 Oct 2026 14:38:08 GMT",
+      "title": "Snowflake Agent Identity 徹底解説",
+      "url": "https://zenn.dev/finatext/articles/snowflake-agent-identity-introduction",
+      "publishedAt": "Wed, 07 Oct 2026 22:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "Keras入門　第４回　Kerasモデルの量子化(LiteRT)",
-      "url": "https://zenn.dev/hoshinagi1219/articles/6c2446701595cc",
-      "publishedAt": "Tue, 06 Oct 2026 13:23:05 GMT",
+      "title": "ホームラボの GPU ノードの監視環境を構築する",
+      "url": "https://zenn.dev/hyeonjae/articles/46d734a43c2c93",
+      "publishedAt": "Wed, 07 Oct 2026 14:04:11 GMT",
       "source": "zenn"
     },
     {
-      "title": "LLMを使用した Web システムの単体テスト自動化について",
-      "url": "https://zenn.dev/shikamaru/articles/ef90e326ab8163",
-      "publishedAt": "Tue, 06 Oct 2026 12:00:14 GMT",
+      "title": "1本の記事をテキストマイニングで読み解く：頻出語・TF-IDF・章節の語彙構造",
+      "url": "https://zenn.dev/tyasuakwa/articles/613c9d1f9834ce",
+      "publishedAt": "Wed, 07 Oct 2026 12:04:02 GMT",
       "source": "zenn"
     },
     {
-      "title": "時系列予測の第一歩？ OLTPとOLAP",
-      "url": "https://zenn.dev/neurogica/articles/a37c2fdb8bc0d4",
-      "publishedAt": "Tue, 06 Oct 2026 10:36:19 GMT",
+      "title": "CPUが2コアだとjestは終わらない — in-band実行とpendingのままのMutation",
+      "url": "https://zenn.dev/hopetekigozaru/articles/jest-ci-hang-2core-tanstack-query",
+      "publishedAt": "Wed, 07 Oct 2026 05:27:55 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "レビューの口伝を40ルールに棚卸ししてAIレビューに載せた",
+      "url": "https://zenn.dev/edash_tech_blog/articles/c52409a3d6fa12",
+      "publishedAt": "Wed, 07 Oct 2026 02:38:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "巨大 SQL を実行したら DB 負荷が高まったエンジニアの備忘録",
+      "url": "https://zenn.dev/ryoya_cre8tor/articles/0cdc8623498f11",
+      "publishedAt": "Wed, 07 Oct 2026 00:30:37 GMT",
       "source": "zenn"
     },
     {
@@ -55,21 +67,15 @@
       "source": "zenn"
     },
     {
-      "title": "漏洩ラッシュは本当にラッシュなのか 公的統計と公式発表で確かめてみた",
-      "url": "https://zenn.dev/tawachan/articles/japan-data-breach-rush-2026-statistics",
-      "publishedAt": "Tue, 06 Oct 2026 03:21:22 GMT",
+      "title": "嫌われるデザインの歴史",
+      "url": "https://zenn.dev/blackmose/articles/de0170a13be930",
+      "publishedAt": "Tue, 06 Oct 2026 04:17:02 GMT",
       "source": "zenn"
     },
     {
       "title": "こんな時代だから Seasar2 を構築してみようか",
       "url": "https://zenn.dev/tokium_dev/articles/4dbec90075dab0",
       "publishedAt": "Mon, 05 Oct 2026 21:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Desktop と ChatGPT デスクトップアプリを Amazon Bedrock 経由で Windows から使う",
-      "url": "https://zenn.dev/aws_japan/articles/claude-chatgpt-desktop-bedrock-windows-setup",
-      "publishedAt": "Mon, 05 Oct 2026 09:01:21 GMT",
       "source": "zenn"
     },
     {
@@ -82,12 +88,6 @@
       "title": "オブジェクト指向UIデザインをAgent Skillにして、Claudeが作るUIはどう変わるかの検証",
       "url": "https://zenn.dev/emuni/articles/ooui-agent-skill",
       "publishedAt": "Mon, 05 Oct 2026 06:09:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "朝のあの時間だけEC2のキャパシティ予約したいんだよなあ",
-      "url": "https://zenn.dev/educom_tech/articles/e0445b9e5da82a",
-      "publishedAt": "Mon, 05 Oct 2026 06:01:42 GMT",
       "source": "zenn"
     },
     {
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-07T03:46:19.392Z"
+  "updatedAt": "2026-10-08T04:00:25.861Z"
 }
