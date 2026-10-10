@@ -1,39 +1,39 @@
 {
   "zenn": [
     {
-      "title": "AIエージェントにMicrosoft Fabricを操作させる ― Fabric CLIとSkills for Fabric",
-      "url": "https://zenn.dev/headwaters/articles/12175106cd8c79",
-      "publishedAt": "Thu, 08 Oct 2026 23:00:05 GMT",
+      "title": "昔書いたRSpecのand_invokeの記事を最新のrspec-mocksで検証し直した",
+      "url": "https://zenn.dev/kyto64/articles/rspec-and-invoke-revisited",
+      "publishedAt": "Fri, 09 Oct 2026 12:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "Renovate の更新 PR を AI エージェントにレビューさせ、自動マージまでつなげる",
-      "url": "https://zenn.dev/greendrop/articles/2026-10-09-4664c51706f346",
-      "publishedAt": "Thu, 08 Oct 2026 22:00:05 GMT",
+      "title": "初AIコーディング記録：Brain第1世代でLinuxを動くようにした話",
+      "url": "https://zenn.dev/tnishinaga/articles/ee0b6cf4f8683d",
+      "publishedAt": "Fri, 09 Oct 2026 10:29:52 GMT",
       "source": "zenn"
     },
     {
-      "title": "半陽的微分代数方程式の解を微分する：VJP編",
-      "url": "https://zenn.dev/wheatear11/articles/c293bb49ad3ae7",
-      "publishedAt": "Thu, 08 Oct 2026 17:45:45 GMT",
+      "title": "AWS Cost ExplorerのAmazon Bedrock製品属性で、できることとできないことを確認してみた",
+      "url": "https://zenn.dev/fusic/articles/c34f48e0ab811e",
+      "publishedAt": "Fri, 09 Oct 2026 10:22:57 GMT",
       "source": "zenn"
     },
     {
-      "title": "有線が届かないデスクトップPCをWi-Fi化した話",
-      "url": "https://zenn.dev/ultrasupara/articles/7daaaf4f7aceed",
-      "publishedAt": "Thu, 08 Oct 2026 13:10:50 GMT",
+      "title": "暗号技術入門",
+      "url": "https://zenn.dev/loglass/articles/f00a7408b2cf0b",
+      "publishedAt": "Fri, 09 Oct 2026 08:39:02 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Slurm運用に慣れた私たちが、AWSのマネージドSlurm運用でつまずいた6つのこと",
+      "url": "https://zenn.dev/turing_motors/articles/hyperpod-again-part2-hyperpod-slurm",
+      "publishedAt": "Fri, 09 Oct 2026 07:23:46 GMT",
       "source": "zenn"
     },
     {
       "title": "Haiku 5.5 を機に Sonnet 以下で動かしていたサブエージェントを見直した",
       "url": "https://zenn.dev/genda_jp/articles/haiku-5-5-subagent-roles",
       "publishedAt": "Thu, 08 Oct 2026 11:42:21 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "「ELYZA-Thinking-1.0-llm-jp-4」シリーズの学習方法と評価結果",
-      "url": "https://zenn.dev/elyza/articles/79a3d4ed4be915",
-      "publishedAt": "Thu, 08 Oct 2026 09:03:14 GMT",
       "source": "zenn"
     },
     {
@@ -79,12 +79,6 @@
       "source": "zenn"
     },
     {
-      "title": "Mods で Claude Code のセッションごとに管理できるメモ帳を作った",
-      "url": "https://zenn.dev/yesodco/articles/da634d752874b2",
-      "publishedAt": "Tue, 06 Oct 2026 08:47:17 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "嫌われるデザインの歴史",
       "url": "https://zenn.dev/blackmose/articles/de0170a13be930",
       "publishedAt": "Tue, 06 Oct 2026 04:17:02 GMT",
@@ -106,6 +100,12 @@
       "title": "技術ブログはゆるやかに衰退している",
       "url": "https://zenn.dev/northward/articles/decline-of-tech-blogs",
       "publishedAt": "Mon, 05 Oct 2026 00:40:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GraphRAGをゼロから詳しく解説する【ナレッジグラフ・オントロジー】",
+      "url": "https://zenn.dev/tetsuro731/articles/6efe77a20b8c1c",
+      "publishedAt": "Mon, 05 Oct 2026 00:19:09 GMT",
       "source": "zenn"
     },
     {
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-09T04:05:10.402Z"
+  "updatedAt": "2026-10-10T03:50:29.771Z"
 }
