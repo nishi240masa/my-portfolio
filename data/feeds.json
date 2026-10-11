@@ -1,33 +1,33 @@
 {
   "zenn": [
     {
-      "title": "昔書いたRSpecのand_invokeの記事を最新のrspec-mocksで検証し直した",
-      "url": "https://zenn.dev/kyto64/articles/rspec-and-invoke-revisited",
-      "publishedAt": "Fri, 09 Oct 2026 12:00:05 GMT",
+      "title": "SQLite 本体にベクトル検索拡張 vec1 がやってきた",
+      "url": "https://zenn.dev/mattn/articles/6e9996319ac099",
+      "publishedAt": "Sat, 10 Oct 2026 17:16:42 GMT",
       "source": "zenn"
     },
     {
-      "title": "初AIコーディング記録：Brain第1世代でLinuxを動くようにした話",
-      "url": "https://zenn.dev/tnishinaga/articles/ee0b6cf4f8683d",
-      "publishedAt": "Fri, 09 Oct 2026 10:29:52 GMT",
+      "title": "2025 年 10 月から 2026 年 10 月までの Mozc に対する主な変更",
+      "url": "https://zenn.dev/komatsuh/articles/komatsuh_mozc_updates_from_2025_10",
+      "publishedAt": "Sat, 10 Oct 2026 14:30:00 GMT",
       "source": "zenn"
     },
     {
-      "title": "AWS Cost ExplorerのAmazon Bedrock製品属性で、できることとできないことを確認してみた",
-      "url": "https://zenn.dev/fusic/articles/c34f48e0ab811e",
-      "publishedAt": "Fri, 09 Oct 2026 10:22:57 GMT",
+      "title": "Claude Code Routines で Notion や Slack から AI に仕事を依頼できる仕組みを作った",
+      "url": "https://zenn.dev/terass_dev/articles/6e6562d54d5505",
+      "publishedAt": "Fri, 09 Oct 2026 02:47:29 GMT",
       "source": "zenn"
     },
     {
-      "title": "暗号技術入門",
-      "url": "https://zenn.dev/loglass/articles/f00a7408b2cf0b",
-      "publishedAt": "Fri, 09 Oct 2026 08:39:02 GMT",
+      "title": "AIエージェントにMicrosoft Fabricを操作させる ― Fabric CLIとSkills for Fabric",
+      "url": "https://zenn.dev/headwaters/articles/12175106cd8c79",
+      "publishedAt": "Thu, 08 Oct 2026 23:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "Slurm運用に慣れた私たちが、AWSのマネージドSlurm運用でつまずいた6つのこと",
-      "url": "https://zenn.dev/turing_motors/articles/hyperpod-again-part2-hyperpod-slurm",
-      "publishedAt": "Fri, 09 Oct 2026 07:23:46 GMT",
+      "title": "Renovate の更新 PR を AI エージェントにレビューさせ、自動マージまでつなげる",
+      "url": "https://zenn.dev/greendrop/articles/2026-10-09-4664c51706f346",
+      "publishedAt": "Thu, 08 Oct 2026 22:00:05 GMT",
       "source": "zenn"
     },
     {
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-10T03:50:29.771Z"
+  "updatedAt": "2026-10-11T03:24:12.629Z"
 }
