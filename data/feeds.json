@@ -1,9 +1,27 @@
 {
   "zenn": [
     {
+      "title": "Besu ローカル環境構築ハンズオン",
+      "url": "https://zenn.dev/komlock_lab/articles/besu-local-network-handson",
+      "publishedAt": "Sun, 11 Oct 2026 14:28:19 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIの文章を読みやすくするskillを作る（文の難しさの点数化＋構造化）",
+      "url": "https://zenn.dev/netetahito/articles/a3539e541b179c",
+      "publishedAt": "Sun, 11 Oct 2026 00:56:36 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "SQLite 本体にベクトル検索拡張 vec1 がやってきた",
       "url": "https://zenn.dev/mattn/articles/6e9996319ac099",
       "publishedAt": "Sat, 10 Oct 2026 17:16:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "React習熟度ベンチマークでHaiku 5.5が見せた底力",
+      "url": "https://zenn.dev/uhyo/articles/react-profession-bench-20",
+      "publishedAt": "Sat, 10 Oct 2026 14:35:53 GMT",
       "source": "zenn"
     },
     {
@@ -13,21 +31,21 @@
       "source": "zenn"
     },
     {
-      "title": "Claude Code Routines で Notion や Slack から AI に仕事を依頼できる仕組みを作った",
-      "url": "https://zenn.dev/terass_dev/articles/6e6562d54d5505",
-      "publishedAt": "Fri, 09 Oct 2026 02:47:29 GMT",
+      "title": "【速報】Claude の新機能 Claude Motion 早速使ってみた",
+      "url": "https://zenn.dev/branbran/articles/047821d64590f0",
+      "publishedAt": "Sat, 10 Oct 2026 04:13:09 GMT",
       "source": "zenn"
     },
     {
-      "title": "AIエージェントにMicrosoft Fabricを操作させる ― Fabric CLIとSkills for Fabric",
-      "url": "https://zenn.dev/headwaters/articles/12175106cd8c79",
-      "publishedAt": "Thu, 08 Oct 2026 23:00:05 GMT",
+      "title": "AIで浮いた時間を「もっと作る」に使っていませんか",
+      "url": "https://zenn.dev/idealog/articles/a3e9cf4299b1cf",
+      "publishedAt": "Fri, 09 Oct 2026 10:40:07 GMT",
       "source": "zenn"
     },
     {
-      "title": "Renovate の更新 PR を AI エージェントにレビューさせ、自動マージまでつなげる",
-      "url": "https://zenn.dev/greendrop/articles/2026-10-09-4664c51706f346",
-      "publishedAt": "Thu, 08 Oct 2026 22:00:05 GMT",
+      "title": "暗号技術入門",
+      "url": "https://zenn.dev/loglass/articles/f00a7408b2cf0b",
+      "publishedAt": "Fri, 09 Oct 2026 08:39:02 GMT",
       "source": "zenn"
     },
     {
@@ -49,39 +67,27 @@
       "source": "zenn"
     },
     {
-      "title": "【三次元再構成入門】多視点の画像から3D空間を復元する仕組み - カメラパラメータとSfM",
-      "url": "https://zenn.dev/dalab/articles/9ba129c4647844",
-      "publishedAt": "Thu, 08 Oct 2026 00:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Snowflake Agent Identity 徹底解説",
-      "url": "https://zenn.dev/finatext/articles/snowflake-agent-identity-introduction",
-      "publishedAt": "Wed, 07 Oct 2026 22:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "レビューの口伝を40ルールに棚卸ししてAIレビューに載せた",
       "url": "https://zenn.dev/edash_tech_blog/articles/c52409a3d6fa12",
       "publishedAt": "Wed, 07 Oct 2026 02:38:08 GMT",
       "source": "zenn"
     },
     {
-      "title": "巨大 SQL を実行したら DB 負荷が高まったエンジニアの備忘録",
-      "url": "https://zenn.dev/ryoya_cre8tor/articles/0cdc8623498f11",
-      "publishedAt": "Wed, 07 Oct 2026 00:30:37 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "マーケティングエンジニア入門",
-      "url": "https://zenn.dev/kevin_namba/books/afe09c60f698e8",
-      "publishedAt": "Tue, 06 Oct 2026 09:00:57 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "嫌われるデザインの歴史",
       "url": "https://zenn.dev/blackmose/articles/de0170a13be930",
       "publishedAt": "Tue, 06 Oct 2026 04:17:02 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "JevとClefを画像生成AIのプロダクトに組み込もう!",
+      "url": "https://zenn.dev/radius5/articles/20261004-j3v7cl3f",
+      "publishedAt": "Mon, 05 Oct 2026 08:26:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "オートパイロットは外せる人間を前提にしている — AI時代のエンジニア技能維持を航空業界に学ぶ",
+      "url": "https://zenn.dev/shimitaro/articles/eb45d8d63c7bd1",
+      "publishedAt": "Mon, 05 Oct 2026 08:06:00 GMT",
       "source": "zenn"
     },
     {
@@ -113,12 +119,6 @@
       "url": "https://zenn.dev/dyoshikawa/articles/do-you-desicion",
       "publishedAt": "Sun, 04 Oct 2026 22:00:05 GMT",
       "source": "zenn"
-    },
-    {
-      "title": "Claude Codeの「Claude Mods」とは？ 入れてみた3つのmodと、安全に入れる手順",
-      "url": "https://zenn.dev/yoshihiko555/articles/ea2db6070058b3",
-      "publishedAt": "Sun, 04 Oct 2026 17:22:57 GMT",
-      "source": "zenn"
     }
   ],
   "qiita": [
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-11T03:24:12.629Z"
+  "updatedAt": "2026-10-12T03:47:33.019Z"
 }
