@@ -1,27 +1,81 @@
 {
   "zenn": [
     {
-      "title": "Besu ローカル環境構築ハンズオン",
-      "url": "https://zenn.dev/komlock_lab/articles/besu-local-network-handson",
-      "publishedAt": "Sun, 11 Oct 2026 14:28:19 GMT",
+      "title": "LLM-jp-4 の公開CPT・SFTデータを読んでみた",
+      "url": "https://zenn.dev/yukito_lmlab/articles/llmjp4-public-data",
+      "publishedAt": "Mon, 12 Oct 2026 23:34:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "AIの文章を読みやすくするskillを作る（文の難しさの点数化＋構造化）",
-      "url": "https://zenn.dev/netetahito/articles/a3539e541b179c",
-      "publishedAt": "Sun, 11 Oct 2026 00:56:36 GMT",
+      "title": "PRコメントからKubernetesに訊く ~GitHub ActionsからA2Aエージェントをシークレットレスで繋ぐ~",
+      "url": "https://zenn.dev/hyeonjae/articles/secretless-a2a-github-actions-ja",
+      "publishedAt": "Mon, 12 Oct 2026 14:31:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Canton Network ローカル環境構築ハンズオン",
+      "url": "https://zenn.dev/komlock_lab/articles/canton-localnet-handson",
+      "publishedAt": "Mon, 12 Oct 2026 14:29:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【2026年版】Fateで理解するローカルLLMの選び方",
+      "url": "https://zenn.dev/akari1106/articles/3a050fde72159d",
+      "publishedAt": "Mon, 12 Oct 2026 13:17:13 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "whisperの文字起こしにJevで話者ラベルを付けようとしたら、Jevは要らなかった",
+      "url": "https://zenn.dev/ik11235/articles/whisper-jev-speaker-label",
+      "publishedAt": "Mon, 12 Oct 2026 10:30:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GitHub Pages の証明書失効で Error 526 になったので Cloudflare Pages へ移行した",
+      "url": "https://zenn.dev/unsoluble_sugar/articles/6a3fd085a60ec6",
+      "publishedAt": "Mon, 12 Oct 2026 09:43:09 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "中国製オープンウェイトモデルに、自社サービスの脆弱性を探させた",
+      "url": "https://zenn.dev/neurogica/articles/ef9ebaa4f3e9bd",
+      "publishedAt": "Mon, 12 Oct 2026 07:24:43 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ChatGPT dots のセットアップ",
+      "url": "https://zenn.dev/desktopgame/articles/866e19faf91e06",
+      "publishedAt": "Mon, 12 Oct 2026 05:01:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Amazon Bedrock の利用料金をユーザーごとに確認するダッシュボードを CUR 2.0 と Amazon Quick で作る",
+      "url": "https://zenn.dev/aws_japan/articles/aws-bedrock-cur2-user-cost-dashboard",
+      "publishedAt": "Mon, 12 Oct 2026 04:17:19 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "スロップ表現100連発",
+      "url": "https://zenn.dev/todesking/articles/5bc43f449ecdf6",
+      "publishedAt": "Mon, 12 Oct 2026 03:48:57 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "デザインハーネスを個人開発で組んだ — AI が作る画面のずれを止めるまで",
+      "url": "https://zenn.dev/yoshihiko555/articles/e9801e0ad1efb8",
+      "publishedAt": "Sun, 11 Oct 2026 04:30:22 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "GitLabを月500円で自社運用する 退役PCと「出島サーバ」の構成",
+      "url": "https://zenn.dev/miyanaga/articles/zenn-2026-10-11",
+      "publishedAt": "Sat, 10 Oct 2026 22:02:34 GMT",
       "source": "zenn"
     },
     {
       "title": "SQLite 本体にベクトル検索拡張 vec1 がやってきた",
       "url": "https://zenn.dev/mattn/articles/6e9996319ac099",
       "publishedAt": "Sat, 10 Oct 2026 17:16:42 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "React習熟度ベンチマークでHaiku 5.5が見せた底力",
-      "url": "https://zenn.dev/uhyo/articles/react-profession-bench-20",
-      "publishedAt": "Sat, 10 Oct 2026 14:35:53 GMT",
       "source": "zenn"
     },
     {
@@ -37,15 +91,15 @@
       "source": "zenn"
     },
     {
-      "title": "AIで浮いた時間を「もっと作る」に使っていませんか",
-      "url": "https://zenn.dev/idealog/articles/a3e9cf4299b1cf",
-      "publishedAt": "Fri, 09 Oct 2026 10:40:07 GMT",
+      "title": "検証 TinyGoでOpenTelemetryは使えるのか（2026年10月版）",
+      "url": "https://zenn.dev/ymotongpoo/books/tinygo-otel-esp32",
+      "publishedAt": "Sat, 10 Oct 2026 00:25:22 GMT",
       "source": "zenn"
     },
     {
-      "title": "暗号技術入門",
-      "url": "https://zenn.dev/loglass/articles/f00a7408b2cf0b",
-      "publishedAt": "Fri, 09 Oct 2026 08:39:02 GMT",
+      "title": "AIで浮いた時間を「もっと作る」に使っていませんか",
+      "url": "https://zenn.dev/idealog/articles/a3e9cf4299b1cf",
+      "publishedAt": "Fri, 09 Oct 2026 10:40:07 GMT",
       "source": "zenn"
     },
     {
@@ -64,60 +118,6 @@
       "title": "CSSの`text-box`で文字を上下中央に揃えたい",
       "url": "https://zenn.dev/chot/articles/be424332489e7a",
       "publishedAt": "Thu, 08 Oct 2026 06:20:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "レビューの口伝を40ルールに棚卸ししてAIレビューに載せた",
-      "url": "https://zenn.dev/edash_tech_blog/articles/c52409a3d6fa12",
-      "publishedAt": "Wed, 07 Oct 2026 02:38:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "嫌われるデザインの歴史",
-      "url": "https://zenn.dev/blackmose/articles/de0170a13be930",
-      "publishedAt": "Tue, 06 Oct 2026 04:17:02 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "JevとClefを画像生成AIのプロダクトに組み込もう!",
-      "url": "https://zenn.dev/radius5/articles/20261004-j3v7cl3f",
-      "publishedAt": "Mon, 05 Oct 2026 08:26:58 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "オートパイロットは外せる人間を前提にしている — AI時代のエンジニア技能維持を航空業界に学ぶ",
-      "url": "https://zenn.dev/shimitaro/articles/eb45d8d63c7bd1",
-      "publishedAt": "Mon, 05 Oct 2026 08:06:00 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "オブジェクト指向UIデザインをAgent Skillにして、Claudeが作るUIはどう変わるかの検証",
-      "url": "https://zenn.dev/emuni/articles/ooui-agent-skill",
-      "publishedAt": "Mon, 05 Oct 2026 06:09:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "俺のAIプログラミング手法(2026/10/05)",
-      "url": "https://zenn.dev/mizchi/articles/ai-coding-loop-formal",
-      "publishedAt": "Mon, 05 Oct 2026 04:59:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "技術ブログはゆるやかに衰退している",
-      "url": "https://zenn.dev/northward/articles/decline-of-tech-blogs",
-      "publishedAt": "Mon, 05 Oct 2026 00:40:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "GraphRAGをゼロから詳しく解説する【ナレッジグラフ・オントロジー】",
-      "url": "https://zenn.dev/tetsuro731/articles/6efe77a20b8c1c",
-      "publishedAt": "Mon, 05 Oct 2026 00:19:09 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "本当に「判断」していますか？",
-      "url": "https://zenn.dev/dyoshikawa/articles/do-you-desicion",
-      "publishedAt": "Sun, 04 Oct 2026 22:00:05 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-12T03:47:33.019Z"
+  "updatedAt": "2026-10-13T04:59:01.088Z"
 }
