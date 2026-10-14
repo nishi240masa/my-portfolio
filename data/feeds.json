@@ -1,33 +1,81 @@
 {
   "zenn": [
     {
+      "title": "画像は「言葉だけ」でどこまで送れるか――中間特徴とプロンプト再生成を比較した小規模検証",
+      "url": "https://zenn.dev/lube8163/articles/594bea1c0f8397",
+      "publishedAt": "Tue, 13 Oct 2026 17:58:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "話題の逆解析 MCP「REA」を Claude Code に隔離してつないだ——静的解析の A/B 試験と安全設計",
+      "url": "https://zenn.dev/keigoly/articles/8738d8d241b5a1",
+      "publishedAt": "Tue, 13 Oct 2026 17:54:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【Crackmes.one】x64dbgでパスワード解析",
+      "url": "https://zenn.dev/otinpan/articles/8557e9c3930540",
+      "publishedAt": "Tue, 13 Oct 2026 15:58:13 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "EmDash を pnpm の 7 日ルールで入れ直したら、つまずいたところ",
+      "url": "https://zenn.dev/n_tong/articles/5ea0a290d8923d",
+      "publishedAt": "Tue, 13 Oct 2026 14:56:02 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "SwiftDataのrollback()、iOS 27で黙って挙動が変わっていた",
+      "url": "https://zenn.dev/kzq/articles/swiftdata-rollback-ios27",
+      "publishedAt": "Tue, 13 Oct 2026 14:09:49 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI-DLC富山合宿に参加してみた",
+      "url": "https://zenn.dev/nuance/articles/ai-dlc-toyama-camp-2026",
+      "publishedAt": "Tue, 13 Oct 2026 09:32:44 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Azure SRE Agent から Azure SRE Agent を呼ぶときに認証エラーになる件",
+      "url": "https://zenn.dev/maaya8585/articles/b1160260c86805",
+      "publishedAt": "Tue, 13 Oct 2026 07:43:12 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "見えない原因に、統計学は何を言えるようになったか：交絡の歴史",
+      "url": "https://zenn.dev/takyas/articles/dd6bef15d2d5f0",
+      "publishedAt": "Tue, 13 Oct 2026 04:58:59 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "良いテストを書き、良いテストを見分ける ─『単体テストの考え方/使い方』のエッセンス",
+      "url": "https://zenn.dev/nexta_/articles/unit-testing-principles-essence",
+      "publishedAt": "Tue, 13 Oct 2026 02:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Next.js（Pages Router）+ react-i18next で多言語化を実装する",
+      "url": "https://zenn.dev/socialplus/articles/f363cdf24340cf",
+      "publishedAt": "Tue, 13 Oct 2026 00:44:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Flutter の in_app_purchase で買い切りの Pro を作る。iOS の復元は購入が無いと何も流れてこない",
+      "url": "https://zenn.dev/hk_work/articles/flutter-in-app-purchase-non-consumable",
+      "publishedAt": "Tue, 13 Oct 2026 00:26:58 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "dbtの「4層品質モデル」をTypeScript+クリーンアーキテクチャで例えてみる",
+      "url": "https://zenn.dev/ronnabyte/articles/c6a53615a9df56",
+      "publishedAt": "Tue, 13 Oct 2026 00:18:23 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "LLM-jp-4 の公開CPT・SFTデータを読んでみた",
       "url": "https://zenn.dev/yukito_lmlab/articles/llmjp4-public-data",
       "publishedAt": "Mon, 12 Oct 2026 23:34:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "PRコメントからKubernetesに訊く ~GitHub ActionsからA2Aエージェントをシークレットレスで繋ぐ~",
-      "url": "https://zenn.dev/hyeonjae/articles/secretless-a2a-github-actions-ja",
-      "publishedAt": "Mon, 12 Oct 2026 14:31:57 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Canton Network ローカル環境構築ハンズオン",
-      "url": "https://zenn.dev/komlock_lab/articles/canton-localnet-handson",
-      "publishedAt": "Mon, 12 Oct 2026 14:29:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【2026年版】Fateで理解するローカルLLMの選び方",
-      "url": "https://zenn.dev/akari1106/articles/3a050fde72159d",
-      "publishedAt": "Mon, 12 Oct 2026 13:17:13 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "whisperの文字起こしにJevで話者ラベルを付けようとしたら、Jevは要らなかった",
-      "url": "https://zenn.dev/ik11235/articles/whisper-jev-speaker-label",
-      "publishedAt": "Mon, 12 Oct 2026 10:30:01 GMT",
       "source": "zenn"
     },
     {
@@ -37,33 +85,21 @@
       "source": "zenn"
     },
     {
-      "title": "中国製オープンウェイトモデルに、自社サービスの脆弱性を探させた",
-      "url": "https://zenn.dev/neurogica/articles/ef9ebaa4f3e9bd",
-      "publishedAt": "Mon, 12 Oct 2026 07:24:43 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ChatGPT dots のセットアップ",
-      "url": "https://zenn.dev/desktopgame/articles/866e19faf91e06",
-      "publishedAt": "Mon, 12 Oct 2026 05:01:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Amazon Bedrock の利用料金をユーザーごとに確認するダッシュボードを CUR 2.0 と Amazon Quick で作る",
       "url": "https://zenn.dev/aws_japan/articles/aws-bedrock-cur2-user-cost-dashboard",
       "publishedAt": "Mon, 12 Oct 2026 04:17:19 GMT",
       "source": "zenn"
     },
     {
-      "title": "スロップ表現100連発",
-      "url": "https://zenn.dev/todesking/articles/5bc43f449ecdf6",
-      "publishedAt": "Mon, 12 Oct 2026 03:48:57 GMT",
+      "title": "モバイルアプリ開発でノートPCを持ち歩かなくなった話",
+      "url": "https://zenn.dev/yasi/articles/mobile-dev-from-phone-with-claude",
+      "publishedAt": "Mon, 12 Oct 2026 00:00:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "デザインハーネスを個人開発で組んだ — AI が作る画面のずれを止めるまで",
-      "url": "https://zenn.dev/yoshihiko555/articles/e9801e0ad1efb8",
-      "publishedAt": "Sun, 11 Oct 2026 04:30:22 GMT",
+      "title": "Raspberry Pi 4でMCPサーバを構築する(3)",
+      "url": "https://zenn.dev/drbobt1122/articles/blog26101101",
+      "publishedAt": "Sun, 11 Oct 2026 22:43:02 GMT",
       "source": "zenn"
     },
     {
@@ -79,45 +115,9 @@
       "source": "zenn"
     },
     {
-      "title": "2025 年 10 月から 2026 年 10 月までの Mozc に対する主な変更",
-      "url": "https://zenn.dev/komatsuh/articles/komatsuh_mozc_updates_from_2025_10",
-      "publishedAt": "Sat, 10 Oct 2026 14:30:00 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【速報】Claude の新機能 Claude Motion 早速使ってみた",
-      "url": "https://zenn.dev/branbran/articles/047821d64590f0",
-      "publishedAt": "Sat, 10 Oct 2026 04:13:09 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "検証 TinyGoでOpenTelemetryは使えるのか（2026年10月版）",
       "url": "https://zenn.dev/ymotongpoo/books/tinygo-otel-esp32",
       "publishedAt": "Sat, 10 Oct 2026 00:25:22 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIで浮いた時間を「もっと作る」に使っていませんか",
-      "url": "https://zenn.dev/idealog/articles/a3e9cf4299b1cf",
-      "publishedAt": "Fri, 09 Oct 2026 10:40:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Haiku 5.5 を機に Sonnet 以下で動かしていたサブエージェントを見直した",
-      "url": "https://zenn.dev/genda_jp/articles/haiku-5-5-subagent-roles",
-      "publishedAt": "Thu, 08 Oct 2026 11:42:21 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "若手エンジニアに必要だと感じた「AIを使う力」",
-      "url": "https://zenn.dev/muit_techblog/articles/6ea28887c79457",
-      "publishedAt": "Thu, 08 Oct 2026 08:29:40 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "CSSの`text-box`で文字を上下中央に揃えたい",
-      "url": "https://zenn.dev/chot/articles/be424332489e7a",
-      "publishedAt": "Thu, 08 Oct 2026 06:20:08 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-13T04:59:01.088Z"
+  "updatedAt": "2026-10-14T03:06:07.760Z"
 }
