@@ -1,9 +1,69 @@
 {
   "zenn": [
     {
-      "title": "【2026/10/8 アップデート】GuardDuty RDS Protectionのデータ流出・破壊の検出について調べた",
-      "url": "https://zenn.dev/aki42/articles/aws-20261008-guardduty-rds-data-activity",
-      "publishedAt": "Wed, 14 Oct 2026 15:56:29 GMT",
+      "title": "ICFPC2026 参加記",
+      "url": "https://zenn.dev/algoartis/articles/b5dd3c401d5dd4",
+      "publishedAt": "Thu, 15 Oct 2026 10:04:41 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【Salesforce】Agent Script入門｜Agentforceの従業員エージェントを作ってみた",
+      "url": "https://zenn.dev/actbe_tech/articles/57561ffebaf9ed",
+      "publishedAt": "Thu, 15 Oct 2026 09:00:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "xcrun xcodeproj で .xcodeproj をコマンドラインから編集する（Xcode 27.2）",
+      "url": "https://zenn.dev/d_date/articles/xcrun-xcodeproj-xcode27-2",
+      "publishedAt": "Thu, 15 Oct 2026 08:38:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "国産モデル sarashina3-mini は日本語の推敲で何を変えるのか？",
+      "url": "https://zenn.dev/algoartis/articles/03ca12150ccbee",
+      "publishedAt": "Thu, 15 Oct 2026 08:30:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "FFRI × NFLabs. Cybersecurity Challenge 2026 ゆるWriteup",
+      "url": "https://zenn.dev/juck28/articles/74c43f18838188",
+      "publishedAt": "Thu, 15 Oct 2026 07:47:43 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIを使えばドキュメント整備はいらない？いやいや、今こそ人間が動くときだ",
+      "url": "https://zenn.dev/atamaplus/articles/2c9538a721c613",
+      "publishedAt": "Thu, 15 Oct 2026 06:00:23 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "OpenTelemetryでStep Functions越しにtraceparentを引き回し、複数Lambdaを一つのトレースにつなぐ",
+      "url": "https://zenn.dev/boy_techblog/articles/connecting-trace-serverless",
+      "publishedAt": "Thu, 15 Oct 2026 03:59:10 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "jpstatで始めるe-Stat API入門",
+      "url": "https://zenn.dev/tyasuakwa/articles/3f6a1394323275",
+      "publishedAt": "Thu, 15 Oct 2026 03:10:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Akinatorで始めるAgentic RL ー タスク設計と初期検証  ー",
+      "url": "https://zenn.dev/mkj/articles/8e1da67da67f98",
+      "publishedAt": "Thu, 15 Oct 2026 02:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "レポ：mixi2のインターンに参加しました！",
+      "url": "https://zenn.dev/riochin/articles/mixi2-intern-2026",
+      "publishedAt": "Thu, 15 Oct 2026 02:09:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "改めて考える、AIエンジニアリングの今",
+      "url": "https://zenn.dev/r_kaga/articles/2fd185c50cea7c",
+      "publishedAt": "Wed, 14 Oct 2026 23:08:33 GMT",
       "source": "zenn"
     },
     {
@@ -13,27 +73,9 @@
       "source": "zenn"
     },
     {
-      "title": "【Node.js性能検証 #2】：Workerは増やすほど速くなるのか？ QPS・P99・キュー待ちから考える",
-      "url": "https://zenn.dev/jsonfoo/articles/aeb53698ef0a1a",
-      "publishedAt": "Wed, 14 Oct 2026 11:11:48 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【SWTT 2026】Snowflake Well-Architected Frameworkで実現する実践的なデータマネジメント",
-      "url": "https://zenn.dev/finatext/articles/swtt2026-snow-waf-datamanagement",
-      "publishedAt": "Wed, 14 Oct 2026 08:51:39 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "Gemini 4 Argonの日本語性能を検証してみた",
       "url": "https://zenn.dev/algoartis/articles/19bb1705ea4b16",
       "publishedAt": "Wed, 14 Oct 2026 08:22:28 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "就活用DirectX12アクションゲーム作成 第三十三回",
-      "url": "https://zenn.dev/seisei89628/articles/cd976e4c7d78c7",
-      "publishedAt": "Wed, 14 Oct 2026 06:06:40 GMT",
       "source": "zenn"
     },
     {
@@ -43,45 +85,9 @@
       "source": "zenn"
     },
     {
-      "title": "決定モデルの分類精度をKaggleの過去NLPコンペで検証する",
-      "url": "https://zenn.dev/trtd56/articles/a3a65631b5e773",
-      "publishedAt": "Wed, 14 Oct 2026 04:37:53 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "mobile_scanner で本の ISBN を読む。裏表紙の2段バーコードは両方 EAN-13 だった",
-      "url": "https://zenn.dev/hk_work/articles/mobile-scanner-isbn-barcode",
-      "publishedAt": "Wed, 14 Oct 2026 02:00:21 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "開発しながら同じPCでローカルLLMを動かしてみた話",
       "url": "https://zenn.dev/sumasate_tec/articles/test-local-llm",
       "publishedAt": "Wed, 14 Oct 2026 01:31:20 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Unityで立体物の衣装が変わるプロジェクションマッピングを試作した",
-      "url": "https://zenn.dev/m_tk/articles/e39b61a8136a29",
-      "publishedAt": "Wed, 14 Oct 2026 01:20:24 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Amazon BedrockとSageMakerのAIエージェントでOpenTelemetryの自動計装が行われる範囲",
-      "url": "https://zenn.dev/ymotongpoo/articles/20261014-bedrock-sagemaker-otel",
-      "publishedAt": "Wed, 14 Oct 2026 00:00:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Nimの引数パーサーにconfutilsを採用してみた",
-      "url": "https://zenn.dev/attakei/articles/introduce-nim-confutils",
-      "publishedAt": "Wed, 14 Oct 2026 00:00:07 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Rustのstrumでenumの管理が簡単になる【備忘】",
-      "url": "https://zenn.dev/echigo/articles/c527aaedfd021b",
-      "publishedAt": "Tue, 13 Oct 2026 23:00:06 GMT",
       "source": "zenn"
     },
     {
@@ -97,27 +103,21 @@
       "source": "zenn"
     },
     {
-      "title": "Lambda Web FunctionsでNext.jsアプリを爆速ホストしよう！",
-      "url": "https://zenn.dev/tosuri13/articles/64f17d8c75e147",
-      "publishedAt": "Tue, 13 Oct 2026 15:01:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "良いテストを書き、良いテストを見分ける ─『単体テストの考え方/使い方』のエッセンス",
       "url": "https://zenn.dev/nexta_/articles/unit-testing-principles-essence",
       "publishedAt": "Tue, 13 Oct 2026 02:30:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "モバイルアプリ開発でノートPCを持ち歩かなくなった話",
-      "url": "https://zenn.dev/yasi/articles/mobile-dev-from-phone-with-claude",
-      "publishedAt": "Mon, 12 Oct 2026 00:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "SQLite 本体にベクトル検索拡張 vec1 がやってきた",
       "url": "https://zenn.dev/mattn/articles/6e9996319ac099",
       "publishedAt": "Sat, 10 Oct 2026 17:16:42 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "WAF でブロックする前に確かめていること",
+      "url": "https://zenn.dev/azunyan/articles/7a105969d7d16c",
+      "publishedAt": "Sat, 10 Oct 2026 03:17:20 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-15T02:45:39.793Z"
+  "updatedAt": "2026-10-16T02:42:03.678Z"
 }
