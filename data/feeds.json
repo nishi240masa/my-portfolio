@@ -1,39 +1,57 @@
 {
   "zenn": [
     {
+      "title": "FreeBSD/Ubuntu サーバのセキュリティ強化",
+      "url": "https://zenn.dev/taroh/articles/ea4ce5256d0691",
+      "publishedAt": "Fri, 16 Oct 2026 20:08:26 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "MetaRoCE を読んで containerlab で動かしてみた",
+      "url": "https://zenn.dev/nanakanok/articles/b345cea4338851",
+      "publishedAt": "Fri, 16 Oct 2026 15:21:30 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ポートフォリオをVoidで作り直したので、Voidの来歴と中身を整理する",
+      "url": "https://zenn.dev/nkzn/articles/my-first-void",
+      "publishedAt": "Fri, 16 Oct 2026 14:10:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "LLMにとって書きやすい構文とは何か：`end` と `end func foo` を1,000回以上比べてみた",
+      "url": "https://zenn.dev/nextbeat/articles/2026-10-syntax-locality-llm",
+      "publishedAt": "Fri, 16 Oct 2026 03:00:24 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "技術書を年に数冊しか買わない自分に、O'Reillyのサブスク年$150は割に合うか（ACM経由で契約してMCPまで）",
+      "url": "https://zenn.dev/sonicmoov/articles/oreilly-subscription-acm",
+      "publishedAt": "Fri, 16 Oct 2026 02:53:28 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ベクトルDBを使わない「階層ナビゲーション型RAG」を作って、ベクトルDB版RAGと比較してみた",
+      "url": "https://zenn.dev/aiforall/articles/8e1803396534de",
+      "publishedAt": "Fri, 16 Oct 2026 02:30:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "有名 OSS が PR を閉じはじめた。何が起きていて、どう向き合うか",
+      "url": "https://zenn.dev/hand_dot/articles/ecb391d4322330",
+      "publishedAt": "Thu, 15 Oct 2026 23:00:05 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "ICFPC2026 参加記",
       "url": "https://zenn.dev/algoartis/articles/b5dd3c401d5dd4",
       "publishedAt": "Thu, 15 Oct 2026 10:04:41 GMT",
       "source": "zenn"
     },
     {
-      "title": "【Salesforce】Agent Script入門｜Agentforceの従業員エージェントを作ってみた",
-      "url": "https://zenn.dev/actbe_tech/articles/57561ffebaf9ed",
-      "publishedAt": "Thu, 15 Oct 2026 09:00:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "xcrun xcodeproj で .xcodeproj をコマンドラインから編集する（Xcode 27.2）",
-      "url": "https://zenn.dev/d_date/articles/xcrun-xcodeproj-xcode27-2",
-      "publishedAt": "Thu, 15 Oct 2026 08:38:00 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "国産モデル sarashina3-mini は日本語の推敲で何を変えるのか？",
       "url": "https://zenn.dev/algoartis/articles/03ca12150ccbee",
       "publishedAt": "Thu, 15 Oct 2026 08:30:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "FFRI × NFLabs. Cybersecurity Challenge 2026 ゆるWriteup",
-      "url": "https://zenn.dev/juck28/articles/74c43f18838188",
-      "publishedAt": "Thu, 15 Oct 2026 07:47:43 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AIを使えばドキュメント整備はいらない？いやいや、今こそ人間が動くときだ",
-      "url": "https://zenn.dev/atamaplus/articles/2c9538a721c613",
-      "publishedAt": "Thu, 15 Oct 2026 06:00:23 GMT",
       "source": "zenn"
     },
     {
@@ -46,6 +64,12 @@
       "title": "jpstatで始めるe-Stat API入門",
       "url": "https://zenn.dev/tyasuakwa/articles/3f6a1394323275",
       "publishedAt": "Thu, 15 Oct 2026 03:10:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【LocalLLM】Claude Codeの代わりになる？精度・同時人数・費用を検証",
+      "url": "https://zenn.dev/solvio/articles/6d374a9224327a",
+      "publishedAt": "Thu, 15 Oct 2026 02:56:38 GMT",
       "source": "zenn"
     },
     {
@@ -79,39 +103,15 @@
       "source": "zenn"
     },
     {
-      "title": "【備忘録】CSSのstickyで作る、せり上がりながら背景が見える演出",
-      "url": "https://zenn.dev/crayfisher_zari/articles/75619d5860f885",
-      "publishedAt": "Wed, 14 Oct 2026 05:59:58 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "開発しながら同じPCでローカルLLMを動かしてみた話",
-      "url": "https://zenn.dev/sumasate_tec/articles/test-local-llm",
-      "publishedAt": "Wed, 14 Oct 2026 01:31:20 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "『現場で役立つシステム設計の原則』を読んで学んだこと、実践したこと、これからやりたいこと",
       "url": "https://zenn.dev/wwwave/articles/38b8284f96bd9e",
       "publishedAt": "Tue, 13 Oct 2026 22:00:06 GMT",
       "source": "zenn"
     },
     {
-      "title": "話題の逆解析 MCP「REA」を Claude Code に隔離してつないだ——静的解析の A/B 試験と安全設計",
-      "url": "https://zenn.dev/keigoly/articles/8738d8d241b5a1",
-      "publishedAt": "Tue, 13 Oct 2026 17:54:44 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "良いテストを書き、良いテストを見分ける ─『単体テストの考え方/使い方』のエッセンス",
       "url": "https://zenn.dev/nexta_/articles/unit-testing-principles-essence",
       "publishedAt": "Tue, 13 Oct 2026 02:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "SQLite 本体にベクトル検索拡張 vec1 がやってきた",
-      "url": "https://zenn.dev/mattn/articles/6e9996319ac099",
-      "publishedAt": "Sat, 10 Oct 2026 17:16:42 GMT",
       "source": "zenn"
     },
     {
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-16T02:42:03.678Z"
+  "updatedAt": "2026-10-17T02:33:38.674Z"
 }
