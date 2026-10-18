@@ -1,21 +1,27 @@
 {
   "zenn": [
     {
-      "title": "FreeBSD/Ubuntu サーバのセキュリティ強化",
-      "url": "https://zenn.dev/taroh/articles/ea4ce5256d0691",
-      "publishedAt": "Fri, 16 Oct 2026 20:08:26 GMT",
+      "title": "生産計画を手を動かして学ぶ ― OSS の frePPLe で MRP・需要予測・CP-SAT まで",
+      "url": "https://zenn.dev/rkawajiri/books/frepple-tutorial-ja",
+      "publishedAt": "Sat, 17 Oct 2026 21:06:40 GMT",
       "source": "zenn"
     },
     {
-      "title": "MetaRoCE を読んで containerlab で動かしてみた",
-      "url": "https://zenn.dev/nanakanok/articles/b345cea4338851",
-      "publishedAt": "Fri, 16 Oct 2026 15:21:30 GMT",
+      "title": "論文サマリ「随意運動の制御と学習のための階層的ニューラルネットワークモデル」川人ら",
+      "url": "https://zenn.dev/zhidao/articles/63db6db6abe9c4",
+      "publishedAt": "Sat, 17 Oct 2026 11:22:21 GMT",
       "source": "zenn"
     },
     {
       "title": "ポートフォリオをVoidで作り直したので、Voidの来歴と中身を整理する",
       "url": "https://zenn.dev/nkzn/articles/my-first-void",
       "publishedAt": "Fri, 16 Oct 2026 14:10:37 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "コネクタも API も無いサービスを、Claude Code に操作させる",
+      "url": "https://zenn.dev/edash_tech_blog/articles/6250fc61ccf009",
+      "publishedAt": "Fri, 16 Oct 2026 09:19:08 GMT",
       "source": "zenn"
     },
     {
@@ -43,21 +49,9 @@
       "source": "zenn"
     },
     {
-      "title": "ICFPC2026 参加記",
-      "url": "https://zenn.dev/algoartis/articles/b5dd3c401d5dd4",
-      "publishedAt": "Thu, 15 Oct 2026 10:04:41 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "国産モデル sarashina3-mini は日本語の推敲で何を変えるのか？",
       "url": "https://zenn.dev/algoartis/articles/03ca12150ccbee",
       "publishedAt": "Thu, 15 Oct 2026 08:30:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "OpenTelemetryでStep Functions越しにtraceparentを引き回し、複数Lambdaを一つのトレースにつなぐ",
-      "url": "https://zenn.dev/boy_techblog/articles/connecting-trace-serverless",
-      "publishedAt": "Thu, 15 Oct 2026 03:59:10 GMT",
       "source": "zenn"
     },
     {
@@ -109,15 +103,21 @@
       "source": "zenn"
     },
     {
+      "title": "話題の逆解析 MCP「REA」を Claude Code に隔離してつないだ——静的解析の A/B 試験と安全設計",
+      "url": "https://zenn.dev/keigoly/articles/8738d8d241b5a1",
+      "publishedAt": "Tue, 13 Oct 2026 17:54:44 GMT",
+      "source": "zenn"
+    },
+    {
       "title": "良いテストを書き、良いテストを見分ける ─『単体テストの考え方/使い方』のエッセンス",
       "url": "https://zenn.dev/nexta_/articles/unit-testing-principles-essence",
       "publishedAt": "Tue, 13 Oct 2026 02:30:05 GMT",
       "source": "zenn"
     },
     {
-      "title": "WAF でブロックする前に確かめていること",
-      "url": "https://zenn.dev/azunyan/articles/7a105969d7d16c",
-      "publishedAt": "Sat, 10 Oct 2026 03:17:20 GMT",
+      "title": "Claude Codeに過去の会話を思い出させる",
+      "url": "https://zenn.dev/babarot/articles/claude-code-session-recall",
+      "publishedAt": "Mon, 12 Oct 2026 23:30:12 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-17T02:33:38.674Z"
+  "updatedAt": "2026-10-18T02:34:47.263Z"
 }
