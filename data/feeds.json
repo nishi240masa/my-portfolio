@@ -1,21 +1,87 @@
 {
   "zenn": [
     {
-      "title": "インライン編集UIを拡張性が高い形で実装した",
-      "url": "https://zenn.dev/numa_san/articles/50b847c58f0854",
-      "publishedAt": "Sun, 18 Oct 2026 15:13:54 GMT",
+      "title": "対象が広い事業・プロダクトが刺さる気がしない",
+      "url": "https://zenn.dev/fusa_bp/articles/broad-target-reaches-no-one",
+      "publishedAt": "Mon, 19 Oct 2026 17:05:28 GMT",
       "source": "zenn"
     },
     {
-      "title": "アプリケーションの自動テストとデプロイをCircleCIからGitHub Actionsに移行した",
-      "url": "https://zenn.dev/tsukulink/articles/fea41a6e4113cf",
-      "publishedAt": "Sun, 18 Oct 2026 15:00:05 GMT",
+      "title": "AIとコンテストに参加する",
+      "url": "https://zenn.dev/attgm/articles/d28df25b88254a",
+      "publishedAt": "Mon, 19 Oct 2026 13:42:44 GMT",
       "source": "zenn"
     },
     {
-      "title": "読書メモ『入門 継続的デリバリー』",
-      "url": "https://zenn.dev/95nm/articles/article_reading_cd",
-      "publishedAt": "Sun, 18 Oct 2026 10:16:10 GMT",
+      "title": "普段使いのWindows PCでNodeのサーバーを常駐させて踏んだ罠",
+      "url": "https://zenn.dev/matasuke_t/articles/bf784b79b29e86",
+      "publishedAt": "Mon, 19 Oct 2026 11:13:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Codeの会話を55分放っておいたら、272,422トークンが13,522に圧縮されていました ― アイドル圧縮の観測",
+      "url": "https://zenn.dev/ojisan_ai_lab/articles/claude-code-idle-compaction-20261019",
+      "publishedAt": "Mon, 19 Oct 2026 09:29:39 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Kaigi on Rails 2026 感想 ＆ OSTで「ファットモデル」の議論をしたよ！",
+      "url": "https://zenn.dev/progate/articles/b49c75fc6ab1ff",
+      "publishedAt": "Mon, 19 Oct 2026 05:38:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AWS Lambda Web FunctionsでImpossible Location検知の課題をまとめて解決！ + 昨今の攻撃への有効性",
+      "url": "https://zenn.dev/cscloud_blog/articles/f4ce99ffeb8ee3",
+      "publishedAt": "Mon, 19 Oct 2026 04:08:01 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI時代、配布するPythonコードをどう守るか: 難読化の実験と判断軸",
+      "url": "https://zenn.dev/pksha/articles/0f9c11d1daea2e",
+      "publishedAt": "Mon, 19 Oct 2026 03:19:32 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Codeでプロンプトインジェクションに備える",
+      "url": "https://zenn.dev/luxiar/articles/a341a2df29dcfe",
+      "publishedAt": "Mon, 19 Oct 2026 02:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "クエリキーも型安全に変換するユーティリティを作った",
+      "url": "https://zenn.dev/castingone_dev/articles/typesafe_query_key_converter",
+      "publishedAt": "Mon, 19 Oct 2026 00:59:06 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Codeのステップごとのレビューを既定から外した理由",
+      "url": "https://zenn.dev/ara_jlu/articles/per-task-review-dropped",
+      "publishedAt": "Mon, 19 Oct 2026 00:30:14 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "【UMP】同意を外部SDKに反映する【Tenjinを例に】",
+      "url": "https://zenn.dev/gameshitai/articles/f65544c1e5a7ea",
+      "publishedAt": "Mon, 19 Oct 2026 00:00:07 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "ドメインの境界を引くだけでは、業務はつながらない",
+      "url": "https://zenn.dev/dress_code/articles/4a76f1b88e360d",
+      "publishedAt": "Mon, 19 Oct 2026 00:00:00 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "個人で使うClaude Codeの権限設定についてざっくり見直してみた",
+      "url": "https://zenn.dev/takyshu98/articles/915702cf8c84f3",
+      "publishedAt": "Sun, 18 Oct 2026 23:00:08 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "「止まっている案件はどれ?」にSQLで答える。Snowflake Cortex AIで議事録を自動分類する",
+      "url": "https://zenn.dev/fusic/articles/snowflake-ai-parse-document-minutes",
+      "publishedAt": "Sun, 18 Oct 2026 22:30:05 GMT",
       "source": "zenn"
     },
     {
@@ -25,63 +91,15 @@
       "source": "zenn"
     },
     {
-      "title": "AI エージェントに個人の記憶を任せるときの、書かせない・漏らさない仕組み",
-      "url": "https://zenn.dev/ketoranger/articles/agent-memory-security",
-      "publishedAt": "Sun, 18 Oct 2026 05:06:44 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ClaudeにiOSシミュレーターのスクリーンショットを読ませるのをやめて、操作で増えるコンテキストを43%削減した",
-      "url": "https://zenn.dev/eai/articles/dont-let-agents-see-the-ios-sim-screen",
-      "publishedAt": "Sun, 18 Oct 2026 02:56:18 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AFM（Apple Foundation Models）を活用したテキストアドベンチャーゲームの開発【第2回】自由入力を台本の選択肢につなぐ",
-      "url": "https://zenn.dev/gritchbreed/articles/ced633f449178f",
-      "publishedAt": "Sun, 18 Oct 2026 02:35:56 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "MPC（モデル予測制御）専用ソルバーの歴史 ― プラントの分単位からマイクロ秒の組込み制御まで",
-      "url": "https://zenn.dev/takuya_fukatsu/articles/d66e570b929d19",
-      "publishedAt": "Sun, 18 Oct 2026 01:54:50 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "日本語の個人情報を Bedrock Guardrails, SDP, Presidio でマスキングして比較する",
-      "url": "https://zenn.dev/fusic/articles/a77ba348115364",
-      "publishedAt": "Sat, 17 Oct 2026 23:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "生産計画を手を動かして学ぶ ― OSS の frePPLe で MRP・需要予測・CP-SAT まで",
       "url": "https://zenn.dev/rkawajiri/books/frepple-tutorial-ja",
       "publishedAt": "Sat, 17 Oct 2026 21:06:40 GMT",
       "source": "zenn"
     },
     {
-      "title": "LLMエージェント基盤のシステム設計 #1 エージェントランタイム（Harness）",
-      "url": "https://zenn.dev/acntechjp/articles/2246165a4098c5",
-      "publishedAt": "Sat, 17 Oct 2026 00:00:05 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "ポートフォリオをVoidで作り直したので、Voidの来歴と中身を整理する",
       "url": "https://zenn.dev/nkzn/articles/my-first-void",
       "publishedAt": "Fri, 16 Oct 2026 14:10:37 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "コネクタも API も無いサービスを、Claude Code に操作させる",
-      "url": "https://zenn.dev/edash_tech_blog/articles/6250fc61ccf009",
-      "publishedAt": "Fri, 16 Oct 2026 09:19:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "LLMにとって書きやすい構文とは何か：`end` と `end func foo` を1,000回以上比べてみた",
-      "url": "https://zenn.dev/nextbeat/articles/2026-10-syntax-locality-llm",
-      "publishedAt": "Fri, 16 Oct 2026 03:00:24 GMT",
       "source": "zenn"
     },
     {
@@ -100,24 +118,6 @@
       "title": "有名 OSS が PR を閉じはじめた。何が起きていて、どう向き合うか",
       "url": "https://zenn.dev/hand_dot/articles/ecb391d4322330",
       "publishedAt": "Thu, 15 Oct 2026 23:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "国産モデル sarashina3-mini は日本語の推敲で何を変えるのか？",
-      "url": "https://zenn.dev/algoartis/articles/03ca12150ccbee",
-      "publishedAt": "Thu, 15 Oct 2026 08:30:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "改めて考える、AIエンジニアリングの今",
-      "url": "https://zenn.dev/r_kaga/articles/2fd185c50cea7c",
-      "publishedAt": "Wed, 14 Oct 2026 23:08:33 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "『現場で役立つシステム設計の原則』を読んで学んだこと、実践したこと、これからやりたいこと",
-      "url": "https://zenn.dev/wwwave/articles/38b8284f96bd9e",
-      "publishedAt": "Tue, 13 Oct 2026 22:00:06 GMT",
       "source": "zenn"
     }
   ],
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-19T02:48:28.491Z"
+  "updatedAt": "2026-10-20T02:58:59.367Z"
 }
