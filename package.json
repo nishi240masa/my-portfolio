@@ -57,7 +57,7 @@
     "@types/react-syntax-highlighter": "^15.5.7",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
     "@typescript-eslint/parser": "^8.20.0",
-    "emoji-regex": "10.4.0",
+    "emoji-regex": "11.0.0",
     "esbuild": "^0.25.12",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.5.28",
