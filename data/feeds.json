@@ -1,21 +1,75 @@
 {
   "zenn": [
     {
-      "title": "対象が広い事業・プロダクトが刺さる気がしない",
-      "url": "https://zenn.dev/fusa_bp/articles/broad-target-reaches-no-one",
-      "publishedAt": "Mon, 19 Oct 2026 17:05:28 GMT",
+      "title": "LINEに送った写真と音声メモを、自宅のPCが文字にしてくれるようにした",
+      "url": "https://zenn.dev/hilopon/articles/line-local-ai-photo-voice-capture",
+      "publishedAt": "Tue, 20 Oct 2026 14:37:43 GMT",
       "source": "zenn"
     },
     {
-      "title": "AIとコンテストに参加する",
-      "url": "https://zenn.dev/attgm/articles/d28df25b88254a",
-      "publishedAt": "Mon, 19 Oct 2026 13:42:44 GMT",
+      "title": "Go の依存管理は、最後は Google を信じるしかないのか？",
+      "url": "https://zenn.dev/shiro_kuma_san/articles/a83ae3d82d26dc",
+      "publishedAt": "Tue, 20 Oct 2026 05:30:07 GMT",
       "source": "zenn"
     },
     {
-      "title": "普段使いのWindows PCでNodeのサーバーを常駐させて踏んだ罠",
-      "url": "https://zenn.dev/matasuke_t/articles/bf784b79b29e86",
-      "publishedAt": "Mon, 19 Oct 2026 11:13:05 GMT",
+      "title": "Kaigi on Rails 2026 参加レポート",
+      "url": "https://zenn.dev/xtm_blog/articles/kaigi-on-rails-2026-xtm-report",
+      "publishedAt": "Tue, 20 Oct 2026 04:03:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AI にリバースエンジニアリングさせる REA を触って、持ち帰ったのは「証拠付きで進める」考え方でした",
+      "url": "https://zenn.dev/flinters_blog/articles/3b377ce568d676",
+      "publishedAt": "Tue, 20 Oct 2026 03:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Go 1.27 で追加された strings.CutLast を試す",
+      "url": "https://zenn.dev/gemcook/articles/f408cc6b1f75ec",
+      "publishedAt": "Tue, 20 Oct 2026 02:32:23 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Oxlint + Oxfmt で規約をコード化するモノレポ運用",
+      "url": "https://zenn.dev/reality_tech/articles/oxc-monorepo-20261006",
+      "publishedAt": "Tue, 20 Oct 2026 02:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Chromium(V8)のArray.prototype.fillを最大約7倍高速化した",
+      "url": "https://zenn.dev/dinii/articles/5b8edc7856c25b",
+      "publishedAt": "Tue, 20 Oct 2026 01:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "AIペネトレーションテストツール「Strix」を試してみた",
+      "url": "https://zenn.dev/turquoise123/articles/df481032f6b405",
+      "publishedAt": "Mon, 19 Oct 2026 23:08:03 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Claude Code で CI 待ち時間を 18 分から 4 分台に短縮する【GitHub Actions】",
+      "url": "https://zenn.dev/edash_tech_blog/articles/5b90aa33bd8d49",
+      "publishedAt": "Mon, 19 Oct 2026 23:00:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "MCPサーバーを理解してみる　さらに自作MCPサーバーを作ってみよう",
+      "url": "https://zenn.dev/mosayan/articles/mcp-server-001",
+      "publishedAt": "Mon, 19 Oct 2026 22:50:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "npm と比べて分かった Go の依存管理の「一番の違い」── go get の中身を 6 ステップで追う",
+      "url": "https://zenn.dev/shiro_kuma_san/articles/8abfbdacfeaa59",
+      "publishedAt": "Mon, 19 Oct 2026 22:15:05 GMT",
+      "source": "zenn"
+    },
+    {
+      "title": "Cloudflare + EmDash の自サイトを点検したら Server-Timing から内部情報が見えていた話",
+      "url": "https://zenn.dev/masaru21/articles/2100616bb5110d",
+      "publishedAt": "Mon, 19 Oct 2026 14:42:30 GMT",
       "source": "zenn"
     },
     {
@@ -25,45 +79,9 @@
       "source": "zenn"
     },
     {
-      "title": "Kaigi on Rails 2026 感想 ＆ OSTで「ファットモデル」の議論をしたよ！",
-      "url": "https://zenn.dev/progate/articles/b49c75fc6ab1ff",
-      "publishedAt": "Mon, 19 Oct 2026 05:38:03 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "AWS Lambda Web FunctionsでImpossible Location検知の課題をまとめて解決！ + 昨今の攻撃への有効性",
-      "url": "https://zenn.dev/cscloud_blog/articles/f4ce99ffeb8ee3",
-      "publishedAt": "Mon, 19 Oct 2026 04:08:01 GMT",
-      "source": "zenn"
-    },
-    {
       "title": "AI時代、配布するPythonコードをどう守るか: 難読化の実験と判断軸",
       "url": "https://zenn.dev/pksha/articles/0f9c11d1daea2e",
       "publishedAt": "Mon, 19 Oct 2026 03:19:32 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Codeでプロンプトインジェクションに備える",
-      "url": "https://zenn.dev/luxiar/articles/a341a2df29dcfe",
-      "publishedAt": "Mon, 19 Oct 2026 02:00:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "クエリキーも型安全に変換するユーティリティを作った",
-      "url": "https://zenn.dev/castingone_dev/articles/typesafe_query_key_converter",
-      "publishedAt": "Mon, 19 Oct 2026 00:59:06 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "Claude Codeのステップごとのレビューを既定から外した理由",
-      "url": "https://zenn.dev/ara_jlu/articles/per-task-review-dropped",
-      "publishedAt": "Mon, 19 Oct 2026 00:30:14 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "【UMP】同意を外部SDKに反映する【Tenjinを例に】",
-      "url": "https://zenn.dev/gameshitai/articles/f65544c1e5a7ea",
-      "publishedAt": "Mon, 19 Oct 2026 00:00:07 GMT",
       "source": "zenn"
     },
     {
@@ -76,18 +94,6 @@
       "title": "個人で使うClaude Codeの権限設定についてざっくり見直してみた",
       "url": "https://zenn.dev/takyshu98/articles/915702cf8c84f3",
       "publishedAt": "Sun, 18 Oct 2026 23:00:08 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "「止まっている案件はどれ?」にSQLで答える。Snowflake Cortex AIで議事録を自動分類する",
-      "url": "https://zenn.dev/fusic/articles/snowflake-ai-parse-document-minutes",
-      "publishedAt": "Sun, 18 Oct 2026 22:30:05 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "リトルの法則で考える障害時のキャパシティプランニング",
-      "url": "https://zenn.dev/rea9r/articles/littles-law-capacity-planning",
-      "publishedAt": "Sun, 18 Oct 2026 09:54:19 GMT",
       "source": "zenn"
     },
     {
@@ -106,12 +112,6 @@
       "title": "技術書を年に数冊しか買わない自分に、O'Reillyのサブスク年$150は割に合うか（ACM経由で契約してMCPまで）",
       "url": "https://zenn.dev/sonicmoov/articles/oreilly-subscription-acm",
       "publishedAt": "Fri, 16 Oct 2026 02:53:28 GMT",
-      "source": "zenn"
-    },
-    {
-      "title": "ベクトルDBを使わない「階層ナビゲーション型RAG」を作って、ベクトルDB版RAGと比較してみた",
-      "url": "https://zenn.dev/aiforall/articles/8e1803396534de",
-      "publishedAt": "Fri, 16 Oct 2026 02:30:05 GMT",
       "source": "zenn"
     },
     {
@@ -138,5 +138,5 @@
       "summary": "サンプルリポジトリ"
     }
   ],
-  "updatedAt": "2026-10-20T02:58:59.367Z"
+  "updatedAt": "2026-10-21T02:53:34.585Z"
 }
