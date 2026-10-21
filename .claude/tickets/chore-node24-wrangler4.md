@@ -32,6 +32,7 @@
 - `.github/workflows/*.yml` の `node-version: '20'` → `'24'` (test / e2e / lhci / deploy ×2 / feeds の全箇所)
 - `CLAUDE.md` の「Node >= 20 必須 / デフォルト shell は Node 18」記述を Node 24 前提に更新
 - `.claude/agents/pr-implementer.md` / `.claude/skills/impl-pr/SKILL.md` / `.claude/skills/wave/SKILL.md` の「Node 20」記述を Node 24 前提に更新 (レビュー指摘で追加)
+- `.claude/scripts/preflight.sh` (Node 判定を 推奨 24 / 最低 22.12 に) / `.claude/scripts/setup-worktree.sh` / `.claude/patterns/README.md` / `docs/PROGRESS.md` (環境説明・開発フロー手順の Node 記述のみ。過去 PR の履歴記録は当時の事実なので書き換えない) (レビュー指摘で追加)
 - `.claude/tickets/chore-node24-wrangler4.md` (本ファイル)
 - 依存更新で lint/型/build エラーが出た場合に限り最小限の src 修正可 (PR 本文に理由)
 
@@ -84,3 +85,5 @@ PR 本文に audit の before/after と残置 advisory を記載する。
 
 - wrangler 4.151.3 は `miniflare@5.20261019.1-beta` と (miniflare 経由で) `youch@4.1.0-beta.10` の beta 版を exact pin している。
   wrangler 側の判断のため本 PR では変えない。wrangler が stable 版 (miniflare / youch の非 beta) を pin した版を出したら追随して上げる。
+- `yarn install` で出る katex の resolution warning (`katex@0.18.10` が rehype-katex の要求 `^0.16.0` と不一致) は、
+  本 PR では扱わず別 ticket で整理する (rehype-katex 更新 or resolution の扱い見直し)。
