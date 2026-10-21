@@ -17,23 +17,26 @@ concurrency:
 
 permissions:
   contents: read
-  deployments: write
   pull-requests: write
 
 jobs:
   preview:
     # fork PR / Dependabot PR には CLOUDFLARE_* secrets が渡らないため skip。
+    # Dependabot 判定は PR 作成者で行う (github.actor は re-run / 人の push で変わるため)。
     # head が main (= production branch) の PR (main → develop の back-merge 等) は
     # --branch=main が Production デプロイになってしまうため skip (Production は deploy.yml のみ)
     if: >-
       github.event.pull_request.head.repo.full_name == github.repository &&
-      github.actor != 'dependabot[bot]' &&
+      github.event.pull_request.user.login != 'dependabot[bot]' &&
       github.head_ref != 'main'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
+        with:
+          # 後続 step で git push しないため、token を .git/config に残さない
+          persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v7
