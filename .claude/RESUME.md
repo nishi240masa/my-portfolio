@@ -107,7 +107,7 @@ gh pr merge $PR --auto --squash --delete-branch
 ## 困ったら
 
 - auto-merge 関連エラー: 2026-06-20 に有効化済み。`gh pr merge --auto --squash --delete-branch` が使える。即時 merge したい場合は `--auto` を外す
-- CF Pages CI が赤: 仕様。test と Vercel が pass なら無視可
+- PR の required check は `test` のみ (e2e / lhci の失敗は merge を阻まない)。Vercel は廃止済。`Cloudflare Pages` check が赤いのは CF Git 連携ビルドの残骸で無視可 (本番 deploy は main push 時の `deploy.yml` のみ)
 - conflict: 別 worktree で `git merge origin/develop` → fix → push
 - token 残量が 90% 接近: 停止サマリを出して止める
 

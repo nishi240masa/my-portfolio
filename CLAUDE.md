@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Next.js 15 (App Router) 製ポートフォリオサイト。Vercel (本番) + Cloudflare Pages (edge 検証) にデプロイ。
+Next.js 15 (App Router) 製ポートフォリオサイト。本番は **Cloudflare Pages** (`https://w3st.net`, project `west-portfolio`)。main への push で `.github/workflows/deploy.yml` が `yarn build:cf` → `wrangler pages deploy` する (CF Pages の Git 連携ビルドは使わない。Vercel ホスティングは廃止済)。
 
 ## 環境 (最初に必ず)
 
@@ -18,7 +18,7 @@ yarn dev          # 開発サーバ
 yarn lint         # eslint (src のみ)
 yarn test         # jest (--passWithNoTests 可)
 yarn build        # next build
-yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
+yarn build:cf     # Cloudflare Pages 向け (next-on-pages)。内部で `vercel build` を使うため devDep `vercel@47.0.4` は削除しない (ホスティングとしての Vercel は廃止済)
 ```
 
 ## Git / PR フロー
@@ -26,7 +26,7 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 - ベースブランチは **develop**。PR は `gh pr create --base develop`
 - コミットは **日本語 conventional commit** (`feat(seo): ...` 等)。`git -c commit.gpgsign=false commit` で署名スキップ
 - **auto-merge 有効**: `gh pr merge <num> --auto --squash --delete-branch` で CI green 待ちの自動マージ
-- required check は実質 `test` のみ。**CF Pages / e2e / lhci の失敗は merge を阻まない**
+- required check は実質 `test` のみ。**e2e / lhci / Cloudflare Pages (Git 連携ビルドの残骸。dashboard で OFF にすれば消える) の失敗は merge を阻まない**
 - 並列作業は worktree: `bash .claude/scripts/setup-worktree.sh <branch>` (`$REPO/../portfolio-wt/<slug>` に作成、node_modules は symlink 共有)
 - 1 PR = 1 ticket (`.claude/tickets/<branch-slug>.md`)。仕様は会話 context でなく ticket に書く
 

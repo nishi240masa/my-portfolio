@@ -46,6 +46,8 @@
 
 本番 (CF Pages) へのデプロイは **GitHub Actions の `.github/workflows/deploy.yml` のみ** で行う。
 
+> **Vercel ホスティングは廃止済** (2026-10)。本番・preview とも Vercel は使わない。`.vercel/output/static` は next-on-pages の出力 dir 名、devDependency `vercel@47.0.4` は next-on-pages が内部で `vercel build` を呼ぶためのもので、Vercel へのデプロイとは無関係 (削除しない)。
+
 - トリガ: `main` への push
 - 流れ: `test` job (lint + test + `yarn build`) → `deploy` job (`yarn build:cf` → `cloudflare/wrangler-action` で `wrangler pages deploy .vercel/output/static --project-name=west-portfolio`)
 - Node: `.nvmrc` (= `24`) + `actions/setup-node` の `check-latest: true` で常に 24.x 最新 patch (security fix 込み)

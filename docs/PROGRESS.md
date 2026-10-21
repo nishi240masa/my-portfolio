@@ -16,12 +16,13 @@
 
 - **Node**: 24 (`.nvmrc` SSOT。CI / deploy は `node-version-file: .nvmrc` + `check-latest: true` で 24.x 最新 patch を自動追随。ローカルは 24.22.1 (2026-10-21 security release) 以上)。`engines` は `>=22.12.0` (環境変数で PATH に Node 24.22.1 以上を入れる。例: `export PATH=~/.nodebrew/current/bin:$PATH`)
 - **Yarn**: 1.22.x
+- **ホスティング**: 本番は **Cloudflare Pages** (`https://w3st.net`, project `west-portfolio`) のみ。main push 時に `.github/workflows/deploy.yml` が `yarn build:cf` → `wrangler pages deploy`。**Vercel ホスティングは廃止** (devDep `vercel@47.0.4` は next-on-pages が内部で `vercel build` を使うため残す)
 - **auto-merge**: **有効化済** (2026-06-20)。`gh pr merge <num> --auto --squash --delete-branch` で CI green を待って自動マージ。直接 merge も可能 (`--auto` を外す)
 - **CI 必須 check**: `test` のみ実質的に required。`e2e` / `lhci` / `Cloudflare Pages` の失敗は merge を阻まない。※ `e2e` / `lhci` は #42 で build に `NEXT_PUBLIC_SITE_URL` を配線し build blocker を解消済 (それ以前は build 失敗で本体未実行だった)
 - **Cloudflare Pages CI** (旧: 常に失敗): Phase 2 (PR #28-#34) で全 dynamic route を edge runtime 化し、edge required list が空になったため **CF dashboard で secrets を設定すれば本番で PR preview が通る想定**。実 green 化は CF dashboard 側の設定後に確認。設定手順は [docs/CLOUDFLARE_PAGES_SETUP.md](./CLOUDFLARE_PAGES_SETUP.md)
 - **Worktree**: `$(git rev-parse --show-toplevel)/../portfolio-wt/<branch-slug>` に統一 (local/cloud 両対応のため。`/tmp/` は使わない)
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
-- **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。3 workflow で同一式に統一 = #42)。default は Vercel preview URL、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
+- **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。3 workflow で同一式に統一 = #42)。default は本番 canonical `https://w3st.net` (deploy.yml と統一)、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
 ## 完了 PR (develop 統合済 / 計 51 PR merged)
 
@@ -150,14 +151,7 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 
 ## 既知の問題 (Known Issues)
 
-- **Vercel preview deploy が systematically 失敗** (PR #28 / 2026-06-20 以降):
-  - コード自体は `yarn build` ローカル green、Vercel deploy のみ fail。
-  - 詳細ログ取得には `npx vercel inspect dpl_<id> --logs` が必要 (オーナー作業)。
-  - 仮説候補:
-    - `NEXT_PUBLIC_SITE_URL` 等の env が Vercel 側に未設定
-    - opengraph-image edge runtime と Vercel build target の互換性
-    - barrel 物理分割 (Phase 2a) 後のモジュール解決
-  - `test` job (GitHub Actions) と `build:cf` は green なので **merge は問題なし**。
+- ~~**Vercel preview deploy が systematically 失敗** (PR #28 / 2026-06-20 以降)~~ → **解消 (Vercel ホスティング廃止)**。本番は Cloudflare Pages に一本化済。GitHub 側で Vercel の GitHub App 連携を解除すれば PR の `Vercel` / `Vercel Preview Comments` check も消える (オーナー作業)。
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
@@ -221,6 +215,6 @@ gh pr merge <num> --auto --squash --delete-branch
 2. **別エージェントレビュー** (BLOCKER/MAJOR ≥1 件で REQUEST_CHANGES)。単一エージェント環境では [.claude/patterns/self-critique/SKILL.md](../.claude/patterns/self-critique/SKILL.md)
 3. **CI green + LGTM + non-CONFLICTING で merge** (3 条件)
 4. **conflict は PM (会話のメイン loop) が手動解消**: 別 worktree で `git merge origin/develop` → fix → push
-5. **CF Pages CI 失敗は無視**: `test` と Vercel が pass なら可
+5. **CF Pages CI 失敗は無視**: `test` が pass なら可 (Vercel は廃止済。PR の `Cloudflare Pages` check は Git 連携ビルドの残骸)
 6. **トークン残量 90% で停止**: 停止サマリ + 再開時の合言葉を残す
 7. **node_modules を絶対に commit しない**: `git add -A` の前に `git status --short` で確認、`my-portfolio/node_modules/` のような stray path が出ていたら掃除してから add
