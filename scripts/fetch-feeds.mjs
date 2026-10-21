@@ -24,12 +24,15 @@
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import {
-  MAX_ITEMS,
   resolveUsers,
   toZennItems,
   toQiitaItems,
   toGithubItems,
   filterOwnedExisting,
+  zennFeedUrl,
+  qiitaItemsUrl,
+  githubReposUrl,
+  formatFetchSummary,
 } from './feeds-lib.mjs';
 
 const USERS = resolveUsers(process.env);
@@ -63,19 +66,25 @@ async function safeFetchJson(url, init) {
   }
 }
 
+// fetch 関数は取得失敗時に null、成功時に FeedItem[] (0 件含む) を返す。
+// 「取得失敗」と「取得成功だが 0 件」をログで区別するため。
+
 async function fetchZenn(user) {
-  const xml = await safeFetchText(`https://zenn.dev/${encodeURIComponent(user)}/feed`, {
+  const xml = await safeFetchText(zennFeedUrl(user), {
     headers: { 'user-agent': 'portfolio-feeds-bot' },
   });
-  if (xml == null) return [];
+  if (xml == null) return null;
   return toZennItems(xml, user);
 }
 
 async function fetchQiita(user) {
-  const json = await safeFetchJson(
-    `https://qiita.com/api/v2/users/${encodeURIComponent(user)}/items?per_page=${MAX_ITEMS}`,
-    { headers: { 'user-agent': 'portfolio-feeds-bot' } },
-  );
+  const json = await safeFetchJson(qiitaItemsUrl(user), {
+    headers: { 'user-agent': 'portfolio-feeds-bot' },
+  });
+  if (!Array.isArray(json)) {
+    if (json != null) console.error(`[fetch-feeds] qiita: unexpected response (not an array)`);
+    return null;
+  }
   return toQiitaItems(json, user);
 }
 
@@ -85,10 +94,11 @@ async function fetchGithub(user) {
     'user-agent': 'portfolio-feeds-bot',
   };
   if (GITHUB_TOKEN) headers.authorization = `Bearer ${GITHUB_TOKEN}`;
-  const json = await safeFetchJson(
-    `https://api.github.com/users/${encodeURIComponent(user)}/repos?per_page=${MAX_ITEMS}&sort=updated`,
-    { headers },
-  );
+  const json = await safeFetchJson(githubReposUrl(user), { headers });
+  if (!Array.isArray(json)) {
+    if (json != null) console.error(`[fetch-feeds] github: unexpected response (not an array)`);
+    return null;
+  }
   return toGithubItems(json, user);
 }
 
@@ -114,7 +124,8 @@ async function main() {
   const existing = await loadExisting();
 
   const next = { zenn: [], qiita: [], github: [], updatedAt: new Date().toISOString() };
-  const failed = [];
+  // ログの並びを完了順でなく SERVICES 順に固定するため先にキーを作っておく
+  const results = Object.fromEntries(SERVICES.map(({ key }) => [key, 'pending']));
   await Promise.all(
     SERVICES.map(async ({ key, env, fetch: fetchItems }) => {
       const user = USERS[key];
@@ -122,25 +133,28 @@ async function main() {
         // ユーザー名未設定: 取得しない。既存値も引き継がず空配列にする
         // (他人のコンテンツを絶対に表示しないため)。
         console.log(`[fetch-feeds] skip ${key}: ${env} not set`);
+        results[key] = 'skipped';
         next[key] = [];
         return;
       }
       const items = await fetchItems(user);
-      if (items.length > 0) {
+      if (items != null && items.length > 0) {
+        results[key] = 'ok';
         next[key] = items;
         return;
       }
-      // 失敗 (または 0 件) は既存値を残す。ただし本人の URL のものだけ。
-      failed.push(key);
+      // 失敗 (null) または 0 件は既存値を残す。ただし本人の URL のものだけ。
+      // (挙動は両者同じ。ログだけ区別する)
+      results[key] = items == null ? 'failed' : 'empty';
       next[key] = filterOwnedExisting(existing[key], key, user);
     }),
   );
 
-  // どのサービスが今回 0 件で「既存値フォールバック」になったかを stderr に集約サマリ出力。
-  // CI ログから一目で「N services failed」を読み取れるようにする。
-  if (failed.length > 0) {
-    console.error(`[fetch-feeds] ${failed.length} services failed: ${failed.join(', ')}`);
-  }
+  // 既存値フォールバックになったサービスを集約サマリ出力。
+  // 取得失敗は stderr に「N services failed」、取得成功・0 件は stdout に別行で出す。
+  const summary = formatFetchSummary(results);
+  for (const line of summary.info) console.log(line);
+  for (const line of summary.error) console.error(line);
 
   await fs.mkdir(path.dirname(OUT_FILE), { recursive: true });
   await fs.writeFile(OUT_FILE, JSON.stringify(next, null, 2) + '\n', 'utf8');
