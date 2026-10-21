@@ -1,6 +1,6 @@
 # .claude/patterns/
 
-**本リポジトリ固有のパターン集** です。プロンプト例は本プロジェクトの慣習 (yarn / develop ベース / 日本語コミット / nodebrew 経由の Node 20) に最適化されています。
+**本リポジトリ固有のパターン集** です。プロンプト例は本プロジェクトの慣習 (yarn / develop ベース / 日本語コミット / nodebrew 経由の Node 24) に最適化されています。
 
 > 他プロジェクトに転用する場合は次の値を読み替えてください:
 > - `REPO_ROOT` (例: `/Users/k23087kk/src/my-portfolio`)
