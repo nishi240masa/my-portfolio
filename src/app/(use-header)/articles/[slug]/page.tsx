@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import TagList from '@/app/_components/design/Tags';
 import ArticleBody from './_components/ArticleBody';
 import { articleSchema, type Article } from '@/lib/schemas/article';
+import { canonicalPath, pageMetadata } from '@/lib/seo';
 import articlesData from '../../../../../data/articles.json';
 
 // data ソースは repositories barrel ではなく data/articles.json を静的 import で取り込み、
@@ -42,19 +43,20 @@ export async function generateMetadata({
   if (article == null) {
     return {
       title: '記事が見つかりません',
-      alternates: { canonical: `/articles/${slug}` },
+      alternates: { canonical: canonicalPath(`/articles/${slug}`) },
     };
   }
   return {
     title: article.title,
     description: article.summary,
-    alternates: { canonical: `/articles/${slug}` },
-    openGraph: {
-      title: article.title,
-      description: article.summary,
-      type: 'article',
-      publishedTime: article.publishedAt,
-    },
+    ...pageMetadata(`/articles/${slug}`, {
+      openGraph: {
+        title: article.title,
+        description: article.summary,
+        type: 'article',
+        publishedTime: article.publishedAt,
+      },
+    }),
   };
 }
 

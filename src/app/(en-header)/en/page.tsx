@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getLandingEn } from '@/lib/i18n';
+import { HREFLANG_LANGUAGES, pageMetadata } from '@/lib/seo';
 
 // runtime は Phase 2 で 'edge' に明示移行予定 (#28 レビュー応答):
 // `src/app/layout.tsx` が `profileRepo` 経由で repositories barrel に依存しているため、
@@ -9,24 +10,21 @@ import { getLandingEn } from '@/lib/i18n';
 // edge 互換性は確保済 (layout rework と合わせて runtime='edge' を明示する)。
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: 'west · Portfolio (EN)',
-  description:
-    'English summary of Masaki Nishio (west) — a backend-focused software engineer based in Japan.',
-  alternates: {
-    canonical: '/en',
-    languages: {
-      ja: '/',
-      en: '/en',
-      'x-default': '/',
-    },
-  },
+const seo = pageMetadata('/en', {
   openGraph: {
     locale: 'en_US',
     title: 'west · Portfolio (EN)',
     description:
       'English summary of Masaki Nishio (west) — a backend-focused software engineer based in Japan.',
   },
+});
+
+export const metadata: Metadata = {
+  title: 'west · Portfolio (EN)',
+  description:
+    'English summary of Masaki Nishio (west) — a backend-focused software engineer based in Japan.',
+  ...seo,
+  alternates: { ...seo.alternates, languages: HREFLANG_LANGUAGES },
 };
 
 export default async function EnLandingPage() {

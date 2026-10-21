@@ -61,6 +61,13 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: 'next-auth'
         update-types: ['version-update:semver-major']
-      # vercel は 47.0.4 固定 (@cloudflare/next-on-pages の peer が vercel <=47.0.4 のため)
+      # @types/node は実行環境 (.nvmrc = Node 24) の major に合わせる。Node 本体の major を上げる時に手動で追従
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # eslint-plugin-react-hooks v6+ は flat config / 新ルール (React Compiler 系) への移行が必要で単純 bump では CI が落ちる。
+      # 移行 ticket で手動対応するまで major を ignore
+      - dependency-name: 'eslint-plugin-react-hooks'
+        update-types: ['version-update:semver-major']
+      # vercel は exact 47.0.4 固定: @cloudflare/next-on-pages の peer が vercel >=30 <=47.0.4 のため patch も含め全 update を ignore
+      # (update-types 省略 = 全 update type)。解除条件: next-on-pages の peer 上限が上がる / next-on-pages から移行した時
       - dependency-name: 'vercel'
-        update-types: ['version-update:semver-major', 'version-update:semver-minor']

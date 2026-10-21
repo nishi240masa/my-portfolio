@@ -9,6 +9,10 @@ import {
   toQiitaItems,
   toGithubItems,
   filterOwnedExisting,
+  zennFeedUrl,
+  qiitaItemsUrl,
+  githubReposUrl,
+  formatFetchSummary,
 } from '../feeds-lib.mjs';
 
 const rss = (links) =>
@@ -129,5 +133,98 @@ describe('filterOwnedExisting', () => {
         'alice',
       ),
     ).toHaveLength(1);
+  });
+});
+
+describe('filterOwnedExisting (サービス別 / URL 形式)', () => {
+  it('Qiita: 本人の URL だけ残し、他人 / 別ホスト / http は落とす', () => {
+    const existing = [
+      { title: 'mine', url: 'https://qiita.com/alice/items/1', source: 'qiita' },
+      { title: 'mine-case', url: 'https://qiita.com/ALICE/items/2', source: 'qiita' },
+      { title: 'other', url: 'https://qiita.com/bob/items/3', source: 'qiita' },
+      { title: 'zenn-host', url: 'https://zenn.dev/alice/articles/4', source: 'qiita' },
+      { title: 'http', url: 'http://qiita.com/alice/items/5', source: 'qiita' },
+      { title: 'prefix', url: 'https://qiita.com/alice2/items/6', source: 'qiita' },
+      null,
+    ];
+    expect(filterOwnedExisting(existing, 'qiita', 'alice').map((i) => i.title)).toEqual([
+      'mine',
+      'mine-case',
+    ]);
+  });
+
+  it('末尾スラッシュなし URL (https://github.com/alice) も本人分として残す', () => {
+    const existing = [
+      { title: 'profile', url: 'https://github.com/alice', source: 'github' },
+      { title: 'zenn-profile', url: 'https://zenn.dev/alice', source: 'zenn' },
+      { title: 'other', url: 'https://github.com/bob', source: 'github' },
+    ];
+    expect(filterOwnedExisting(existing, 'github', 'alice').map((i) => i.title)).toEqual([
+      'profile',
+    ]);
+    expect(filterOwnedExisting(existing, 'zenn', 'alice').map((i) => i.title)).toEqual([
+      'zenn-profile',
+    ]);
+    expect(isOwnZennUrl('https://zenn.dev/alice', 'alice')).toBe(true);
+  });
+
+  it('未知の source / 配列でない入力は空', () => {
+    expect(filterOwnedExisting([{ url: 'https://qiita.com/alice/items/1' }], 'note', 'alice')).toEqual(
+      [],
+    );
+    expect(filterOwnedExisting(undefined, 'qiita', 'alice')).toEqual([]);
+  });
+});
+
+describe('特殊文字を含むユーザー名', () => {
+  it('URL builder はユーザー名を encodeURIComponent してパス 1 セグメントに閉じ込める', () => {
+    expect(zennFeedUrl('a/b?c#d')).toBe('https://zenn.dev/a%2Fb%3Fc%23d/feed');
+    expect(zennFeedUrl('山田')).toBe('https://zenn.dev/%E5%B1%B1%E7%94%B0/feed');
+    expect(qiitaItemsUrl('a/b')).toBe('https://qiita.com/api/v2/users/a%2Fb/items?per_page=20');
+    expect(githubReposUrl('a b')).toBe(
+      'https://api.github.com/users/a%20b/repos?per_page=20&sort=updated',
+    );
+    // パストラバーサル的な値でも別パスに抜けない
+    expect(new URL(zennFeedUrl('../trend')).pathname).toBe('/..%2Ftrend/feed');
+  });
+
+  it('Zenn: パーセントエンコードされた本人 URL は decode して一致判定する', () => {
+    const user = 'yamada_太郎';
+    const ownUrl = `https://zenn.dev/${encodeURIComponent(user)}/articles/a1`;
+    const items = toZennItems(rss([ownUrl, 'https://zenn.dev/yamada/articles/x']), user);
+    expect(items.map((i) => i.url)).toEqual([ownUrl]);
+  });
+
+  it('Zenn: 不正なパーセントエンコードは本人扱いしない', () => {
+    expect(isOwnZennUrl('https://zenn.dev/%E0%A4%A/articles/a', 'alice')).toBe(false);
+  });
+});
+
+describe('formatFetchSummary', () => {
+  it('0 件 (取得成功) と取得失敗を別の行で出す', () => {
+    expect(
+      formatFetchSummary({ zenn: 'empty', qiita: 'failed', github: 'ok' }),
+    ).toEqual({
+      info: ['[fetch-feeds] zenn: 0 items (fetched OK)'],
+      error: ['[fetch-feeds] 1 services failed: qiita'],
+    });
+  });
+
+  it('0 件だけなら failed 行は出さない', () => {
+    expect(formatFetchSummary({ zenn: 'empty', qiita: 'ok', github: 'skipped' })).toEqual({
+      info: ['[fetch-feeds] zenn: 0 items (fetched OK)'],
+      error: [],
+    });
+  });
+
+  it('複数失敗をまとめる / 全成功なら何も出さない', () => {
+    expect(formatFetchSummary({ zenn: 'failed', qiita: 'failed', github: 'ok' }).error).toEqual([
+      '[fetch-feeds] 2 services failed: zenn, qiita',
+    ]);
+    expect(formatFetchSummary({ zenn: 'ok', qiita: 'ok', github: 'ok' })).toEqual({
+      info: [],
+      error: [],
+    });
+    expect(formatFetchSummary(undefined)).toEqual({ info: [], error: [] });
   });
 });

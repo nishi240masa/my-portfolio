@@ -33,46 +33,19 @@ const nextConfig = {
     minimumCacheTTL: 86400,
     dangerouslyAllowSVG: false,
   },
-  // CF Pages Phase 2c: admin/api/admin ルートを edge runtime 化したことで、
-  // `@/lib/repositories` barrel が lazy import している JSON driver
-  // (`node:fs` / `node:path` 依存) を webpack edge ターゲットでも parse しよう
-  // とし、UnhandledSchemeError が出る。
-  //
-  // JSON driver は **edge では絶対に呼ばれない**前提 (本番は REPOSITORY_DRIVER=github
-  // 必須、edge は github driver のみ動作)。dynamic `await import()` chunk が
-  // bundle に含まれること自体は許容するが、edge runtime の webpack が
-  // `node:fs` / `node:path` を解決できずビルドが落ちるのを防ぐため、edge layer
-  // でのみ `node:*` スキームを externals として扱う。
-  //
-  // 結果: build 通過 / edge bundle には外部参照が残るが、cloudflare workers では
-  // 該当 module が解決できないため、もし json driver が誤って呼ばれた場合は明示的
-  // に runtime error となる (REPOSITORY_DRIVER=github が必須)。
-  webpack: (config, { nextRuntime, webpack }) => {
+  // 注: 以前は edge layer で `node:fs` / `node:path` を externals 扱いにしていたが、
+  // PR #79 で json driver を `process.env.NEXT_RUNTIME !== 'edge'` 定数分岐により
+  // edge bundle から除外したため不要になり削除した。edge bundle に node:fs が
+  // 戻っていないことは scripts/check-edge-bundle.mjs (CI test job) が検査する。
+  // edge build が node:fs の解決で落ちた場合は、externals を戻さず
+  // import 経路 (edge route → node 専用 module) を断つこと。
+  webpack: (config, { webpack }) => {
     if (feedsFileOverride) {
       config.plugins.push(
         new webpack.NormalModuleReplacementPlugin(/[\\/]data[\\/]feeds\.json$/, (resource) => {
           resource.request = feedsFileOverride;
         }),
       );
-    }
-    if (nextRuntime === 'edge') {
-      const existing = config.externals;
-      const externalsArr = Array.isArray(existing) ? existing : existing ? [existing] : [];
-      config.externals = [
-        ...externalsArr,
-        ({ request }, callback) => {
-          if (request === 'node:fs' || request === 'node:path') {
-            // commonjs 形式の外部参照として宣言する (実装は `commonjs ${request}`)。
-            // 注: Next.js は edge target 向けに一部 externals を ESM 形式に上書きする
-            // ことがあるが、ここで指定するのは webpack に対する宣言フォーマットであり、
-            // 最終的に edge layer の解決を諦めて参照だけ残す挙動は変わらない。
-            // runtime に到達した場合は workers が module を解決できず明示的に error
-            // となる経路となり、json driver が edge で呼ばれていないことを保証する。
-            return callback(null, 'commonjs ' + request);
-          }
-          return callback();
-        },
-      ];
     }
     return config;
   },

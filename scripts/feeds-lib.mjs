@@ -5,6 +5,21 @@
 
 export const MAX_ITEMS = 20;
 
+/** Zenn RSS の URL。ユーザー名は encodeURIComponent でパス 1 セグメントに閉じ込める。 */
+export function zennFeedUrl(user) {
+  return `https://zenn.dev/${encodeURIComponent(user)}/feed`;
+}
+
+/** Qiita ユーザー記事一覧 API の URL。 */
+export function qiitaItemsUrl(user) {
+  return `https://qiita.com/api/v2/users/${encodeURIComponent(user)}/items?per_page=${MAX_ITEMS}`;
+}
+
+/** GitHub ユーザーリポジトリ一覧 API の URL。 */
+export function githubReposUrl(user) {
+  return `https://api.github.com/users/${encodeURIComponent(user)}/repos?per_page=${MAX_ITEMS}&sort=updated`;
+}
+
 /**
  * env 値をユーザー名として正規化する。
  * undefined / null / 空文字 / 空白のみ は「未設定」として null を返す。
@@ -155,4 +170,23 @@ export function filterOwnedExisting(items, source, user) {
   const host = { zenn: 'zenn.dev', qiita: 'qiita.com', github: 'github.com' }[source];
   if (!host) return [];
   return items.filter((it) => it && isUnderUserPath(it.url, host, user));
+}
+
+/**
+ * 各サービスの取得結果からログ行を組み立てる。
+ * results: { [key]: 'ok' | 'empty' | 'failed' | 'skipped' }
+ *   - failed: HTTP エラー / ネットワークエラー / parse 失敗 / 想定外の形式
+ *   - empty : 取得は成功したが本人の項目が 0 件
+ * 「取得失敗」と「0 件」を同じ "failed" として出すと CI ログが紛らわしいため分けて出す。
+ * (どちらも既存値 fallback する点は呼び出し側で同じ)
+ * 戻り値: { info: string[], error: string[] } (info → stdout, error → stderr)
+ */
+export function formatFetchSummary(results) {
+  const entries = Object.entries(results ?? {});
+  const empty = entries.filter(([, s]) => s === 'empty').map(([k]) => k);
+  const failed = entries.filter(([, s]) => s === 'failed').map(([k]) => k);
+  const info = empty.map((k) => `[fetch-feeds] ${k}: 0 items (fetched OK)`);
+  const error =
+    failed.length > 0 ? [`[fetch-feeds] ${failed.length} services failed: ${failed.join(', ')}`] : [];
+  return { info, error };
 }
