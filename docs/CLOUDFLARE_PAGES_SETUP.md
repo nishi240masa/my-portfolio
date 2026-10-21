@@ -65,39 +65,45 @@ CF Pages の Git 連携ビルドは使わない (二重デプロイになり、�
 | `CLOUDFLARE_API_TOKEN` | CF API Token | **権限は Account / Cloudflare Pages / Edit のみ** (My Profile → API Tokens → Create Custom Token)。Zone 権限等は付けない |
 | `CLOUDFLARE_ACCOUNT_ID` | CF Account ID | dashboard 右サイドバー / Workers & Pages の Overview に表示 |
 
-## 必要な Cloudflare 環境変数 (Settings → Environment variables)
+## 必要な Cloudflare 環境変数 (runtime)
 
-Cloudflare Pages の dashboard で
-**Project "west-portfolio" → Settings → Environment variables** に登録する。
-**Production / Preview 両方に同じ値を入れる** (Preview を別 env にしたい場合は差分のみ調整)。
+`wrangler.toml` に `pages_build_output_dir` があるため、CF Pages の設定は **wrangler.toml が SSOT** で、dashboard では **Secret しか登録できない** (plain text 環境変数は `wrangler.toml` の `[vars]` が担う)。本プロジェクトの方針は以下:
 
-> デプロイを Actions (`wrangler pages deploy`) に一本化しても、以下の **runtime 環境変数** (`REPOSITORY_DRIVER` / `GITHUB_*` / `AUTH_*` / `ADMIN_EMAILS` / `NEXT_PUBLIC_SITE_URL`) は Edge Function (admin / API / auth) の実行時に参照されるため、**引き続き CF dashboard への登録が必要**。build 時の値は Actions 側で注入するが、runtime の値は dashboard が供給する。
+| 置き場所 | 変数 |
+| --- | --- |
+| `wrangler.toml` の `[vars]` | `REPOSITORY_DRIVER` **のみ** |
+| CF dashboard の **Secret** | 上記以外すべて (`GITHUB_OWNER` / `GITHUB_REPO` / `GITHUB_BRANCH` / `NEXT_PUBLIC_SITE_URL` / `GITHUB_TOKEN` / `AUTH_SECRET` / `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` / `ADMIN_EMAILS`) |
 
-> **重要 (wrangler.toml と dashboard の関係)**: `wrangler.toml` に `pages_build_output_dir` があるため、`wrangler pages deploy` 経由のデプロイでは **wrangler.toml が設定の SSOT** になる。CF の仕様上、この場合 dashboard の **plain text** 環境変数は `wrangler.toml` の `[vars]` で上書き / dashboard 上で編集不可になり得る (CF Pages の "Wrangler configuration file" 仕様)。一方 **Encrypt (secret) 指定の変数は wrangler.toml の影響を受けず dashboard の値が使われる**。そのため、`[vars]` に書かない runtime 値 (`GITHUB_OWNER` / `GITHUB_REPO` / `GITHUB_BRANCH` / `NEXT_PUBLIC_SITE_URL` 等) も確実に効かせるなら **Encrypt で登録するのが安全**。デプロイ後に Functions のログ / `/admin` の保存動作で値が届いていることを確認すること。
+- Secret は **Project "west-portfolio" → Settings → Variables and Secrets** で **Production / Preview の両方** に登録する。CLI なら (wrangler 4 の `pages secret put` は Production が対象で、Preview 指定オプションは無いため Preview は dashboard で登録):
+  ```bash
+  npx wrangler pages secret put <NAME> --project-name west-portfolio
+  ```
+- **`[vars]` と同名の Secret は作らない** (= `REPOSITORY_DRIVER` を Secret に登録しない)。同名だと値の出所が曖昧になる。
+- デプロイを Actions (`wrangler pages deploy`) に一本化しても、これらは Edge Function (admin / API / auth) の **実行時** に参照されるため、dashboard への登録は引き続き必要。
 
-### Plain text (非 secret)
-
-| 変数 | 値 (例) | 用途 |
-| --- | --- | --- |
-| `REPOSITORY_DRIVER` | `github` | **本番では必ず `github`**。`json` だと `node:fs` 起動で 500 (Phase 2d-1 の guard で明示的に throw)。`wrangler.toml` の `[vars]` で `github` を指定済 (wrangler deploy 時はこれが効く)。dashboard 上にも明示しておくと設定ファイル無しで deploy した場合の保険になる。 |
-| `GITHUB_OWNER` | `nishi240masa` | コミット先リポジトリ owner |
-| `GITHUB_REPO` | `my-portfolio` | コミット先リポジトリ名 |
-| `GITHUB_BRANCH` | `develop` (または `main`) | admin から書き込まれるコンテンツのコミット先ブランチ |
-| `NEXT_PUBLIC_SITE_URL` | `https://w3st.net` | canonical URL (metadataBase / robots / sitemap で使用) |
-
-> **`NODE_VERSION` は dashboard に登録しない**。CF の build image では `NODE_VERSION` が `.nvmrc` より優先されるため、登録すると `.nvmrc` (SSOT) と食い違う。そもそも build は Actions 側で行い、Git 連携ビルドは OFF にする (上記)。既に登録済みなら削除する。
-
-### Encrypt (secret)
+### `wrangler.toml` `[vars]`
 
 | 変数 | 値 | 用途 |
 | --- | --- | --- |
+| `REPOSITORY_DRIVER` | `github` | **本番では必ず `github`**。`json` だと `node:fs` 起動で 500 (Phase 2d-1 の guard で明示的に throw)。 |
+
+### dashboard Secret (Production / Preview 両方)
+
+| 変数 | 値 | 用途 |
+| --- | --- | --- |
+| `GITHUB_OWNER` | `nishi240masa` | コミット先リポジトリ owner |
+| `GITHUB_REPO` | `my-portfolio` | コミット先リポジトリ名 |
+| `GITHUB_BRANCH` | `main` (feeds bot と同じ。オーナー判断で `develop` も可) | admin から書き込まれるコンテンツのコミット先ブランチ |
+| `NEXT_PUBLIC_SITE_URL` | `https://w3st.net` | canonical URL (metadataBase / robots / sitemap で使用)。**`NEXT_PUBLIC_*` はビルド時にバンドルへ埋め込まれる** ため、本番ビルドでは `deploy.yml` の `env` (`vars.NEXT_PUBLIC_SITE_URL \|\| 'https://w3st.net'`) が効く。dashboard 側はサーバ実行時に `process.env` を読む経路の保険。 |
 | `GITHUB_TOKEN` | fine-grained PAT | `nishi240masa/my-portfolio` の **Contents: Read and write** 権限が必要。GitHub Settings → Developer settings → Personal access tokens → Fine-grained tokens から発行する。Classic PAT を使う場合は `repo` scope 全部。 |
 | `AUTH_SECRET` | `openssl rand -base64 32` の出力 | NextAuth v5 の署名キー |
 | `AUTH_GOOGLE_ID` | Google OAuth client ID | `/admin` ログイン用 |
 | `AUTH_GOOGLE_SECRET` | Google OAuth client secret | `/admin` ログイン用 |
 | `ADMIN_EMAILS` | `nishi240masa@gmail.com` (カンマ区切り) | `/admin` アクセス許可リスト |
 
-> **重要**: `GITHUB_TOKEN` などの secret は `wrangler.toml` の `[vars]` には **絶対に書かない**。`wrangler.toml` は public リポジトリにコミットされるため漏洩する。dashboard の Environment variables (Encrypt 指定) のみで管理する。
+> **重要**: secret は `wrangler.toml` の `[vars]` には **絶対に書かない**。`wrangler.toml` は public リポジトリにコミットされるため漏洩する。
+
+> **`NODE_VERSION` は dashboard に登録しない**。CF の build image では `NODE_VERSION` が `.nvmrc` より優先されるため、登録すると `.nvmrc` (SSOT) と食い違う。そもそも build は Actions 側で行い、Git 連携ビルドは OFF にする (上記)。既に登録済みなら削除する。
 
 ## Cloudflare dashboard 側で確認すべきビルド設定
 

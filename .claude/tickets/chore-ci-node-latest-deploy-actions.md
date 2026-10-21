@@ -33,21 +33,26 @@
 - `.github/dependabot.yml` (新規):
   - `github-actions` と `npm` (yarn v1 lockfile 対応) の 2 ecosystem、`target-branch: develop`、weekly
   - noise 抑制: minor/patch を group 化、`open-pull-requests-limit` を控えめに
-  - npm は Next / React / MUI / next-auth の **major** を ignore (フレームワーク major は別 ticket で手動判断)
+  - npm は Next / React / MUI / next-auth の **major** を ignore (フレームワーク major は別 ticket で手動判断。eslint-config-next / react-dom / @types/react(-dom) も同扱い)
+  - npm は `vercel` の **major / minor** も ignore (47.0.4 固定。`@cloudflare/next-on-pages` の peer が `vercel <=47.0.4` のため)
   - commit message は conventional (`chore(deps)` / `chore(ci)`) になるよう `commit-message.prefix` 設定
 - `.claude/scripts/preflight.sh`: 現行判定 (>= 24.22.1 ok / 24.0–24.22.0 warn) は維持。文言を「.nvmrc は 24 (CI は check-latest で最新 patch)」に合わせる
 - `docs/CLOUDFLARE_PAGES_SETUP.md`:
   - `NODE_VERSION` 行を削除し「dashboard に NODE_VERSION を登録しない (.nvmrc より優先されるため)」と明記
   - `NEXT_PUBLIC_SITE_URL` を `https://w3st.net` に
   - デプロイ経路: Actions 一本化、Git 連携の自動ビルドは OFF (Settings → Builds → Branch control) と明記。必要な GitHub Secrets (`CLOUDFLARE_API_TOKEN` = Account / Cloudflare Pages / Edit のみ、`CLOUDFLARE_ACCOUNT_ID`)
-  - CF dashboard の **runtime** 環境変数 (REPOSITORY_DRIVER / GITHUB_* / AUTH_* / ADMIN_EMAILS / NEXT_PUBLIC_SITE_URL) は引き続き必要な旨
+  - CF dashboard の **runtime** 環境変数は引き続き必要な旨。`pages_build_output_dir` により wrangler.toml が SSOT で dashboard は Secret のみ登録可能なため (2026-10-22 追記、オーナー判断):
+    - `REPOSITORY_DRIVER` のみ wrangler.toml `[vars]` (既存)
+    - それ以外 (GITHUB_OWNER / GITHUB_REPO / GITHUB_BRANCH / NEXT_PUBLIC_SITE_URL / GITHUB_TOKEN / AUTH_SECRET / AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET / ADMIN_EMAILS) は dashboard の **Secret** (または `wrangler pages secret put <NAME> --project-name west-portfolio`) に Production / Preview 両方登録
+    - `[vars]` と同名の Secret は作らない
+    - `NEXT_PUBLIC_SITE_URL` はビルド時埋め込みで、本番ビルドは deploy.yml の env が効く旨を明記
 - `CLAUDE.md` / `docs/PROGRESS.md` / `.claude/RESUME.md` の Node 記述: 「Node 24 (.nvmrc) + CI は check-latest で最新 patch、ローカルは 24.22.1 以上」に更新
 - `.claude/tickets/chore-ci-node-latest-deploy-actions.md` (本ファイル)
 
 ## 禁止事項
 
 - `package.json` / `yarn.lock` / src の変更
-- `wrangler.toml` の変更
+- `wrangler.toml` の変更 (runtime env は `[vars]` に足さず Secret で登録する方針。2026-10-22 オーナー判断で確定)
 - `deploy.yml` のトリガ・job 構成の変更 (setup-node の `check-latest` 追加のみ)
 
 ## 検証
