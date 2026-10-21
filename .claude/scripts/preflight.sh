@@ -57,7 +57,7 @@ if command -v node >/dev/null 2>&1; then
   NODE_MINOR=$(echo "$NODE_V" | sed -E 's/^v[0-9]+\.([0-9]+).*/\1/')
   NODE_PATCH=$(echo "$NODE_V" | sed -E 's/^v[0-9]+\.[0-9]+\.([0-9]+).*/\1/')
   print_kv "node" "$NODE_V"
-  # 推奨 = 24.22.1 以上 (.nvmrc SSOT / CI。2026-10-21 security release)
+  # 推奨 = 24.22.1 以上 (2026-10-21 security release)。.nvmrc は 24 (CI は check-latest で最新 patch)
   # 最低 = package.json engines (>=22.12.0)
   # NODE_MAJOR / NODE_MINOR / NODE_PATCH が空 or 非数字を含む場合は不正扱い
   case "$NODE_MAJOR.$NODE_MINOR.$NODE_PATCH" in
@@ -71,11 +71,11 @@ if command -v node >/dev/null 2>&1; then
       else NODE_OK=no; fi ;;
   esac
   if [ "$NODE_OK" = "yes" ]; then
-    print_ok "node >= 24.22.1 (.nvmrc / CI と一致)"
+    print_ok "node >= 24.22.1 (.nvmrc は 24 / CI は check-latest で最新 patch)"
   elif [ "$NODE_OK" = "unpatched" ]; then
-    print_warn "node 24 だが < 24.22.1 (2026-10-21 security fix 未適用。.nvmrc は 24.22.1)"
+    print_warn "node 24 だが < 24.22.1 (2026-10-21 security fix 未適用。.nvmrc は 24 (CI は check-latest で最新 patch))"
   elif [ "$NODE_OK" = "min" ]; then
-    print_warn "node >= 22.12 (engines は満たすが推奨は 24.22.1。.nvmrc / CI は 24.22.1)"
+    print_warn "node >= 22.12 (engines は満たすが推奨は 24.22.1 以上。.nvmrc は 24 (CI は check-latest で最新 patch))"
   else
     print_err "node < 22.12 (この repo は engines >=22.12.0、推奨は Node 24.22.1)"
     print_notice "PATH に Node 24.22.1 以上を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
