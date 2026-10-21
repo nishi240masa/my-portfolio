@@ -1,0 +1,28 @@
+{
+  "zenn": [
+    {
+      "title": "E2E fixture: Zenn 記事",
+      "url": "https://zenn.dev/nishi240masa/articles/e2e-fixture",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "source": "zenn"
+    }
+  ],
+  "qiita": [
+    {
+      "title": "E2E fixture: Qiita 記事",
+      "url": "https://qiita.com/nishi240masa/items/e2e-fixture",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "source": "qiita"
+    }
+  ],
+  "github": [
+    {
+      "title": "nishi240masa/e2e-fixture",
+      "url": "https://github.com/nishi240masa/e2e-fixture",
+      "publishedAt": "2026-01-01T00:00:00Z",
+      "source": "github",
+      "summary": "E2E fixture リポジトリ"
+    }
+  ],
+  "updatedAt": "2026-01-01T00:00:00Z"
+}

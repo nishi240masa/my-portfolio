@@ -1,4 +1,16 @@
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
+
+// e2e 専用: FEEDS_FILE が指定された時だけ、/journal が静的 import する
+// data/feeds.json (bot が日次更新する本番データ) を指定ファイルに差し替える。
+// playwright.config.ts の webServer.env からのみ設定され、本番 build (未設定) は不変。
+const feedsFileOverride = process.env.FEEDS_FILE
+  ? path.resolve(process.cwd(), process.env.FEEDS_FILE)
+  : null;
+if (feedsFileOverride && !existsSync(feedsFileOverride)) {
+  throw new Error(`FEEDS_FILE not found: ${feedsFileOverride}`);
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -35,7 +47,14 @@ const nextConfig = {
   // 結果: build 通過 / edge bundle には外部参照が残るが、cloudflare workers では
   // 該当 module が解決できないため、もし json driver が誤って呼ばれた場合は明示的
   // に runtime error となる (REPOSITORY_DRIVER=github が必須)。
-  webpack: (config, { nextRuntime }) => {
+  webpack: (config, { nextRuntime, webpack }) => {
+    if (feedsFileOverride) {
+      config.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(/[\\/]data[\\/]feeds\.json$/, (resource) => {
+          resource.request = feedsFileOverride;
+        }),
+      );
+    }
     if (nextRuntime === 'edge') {
       const existing = config.externals;
       const externalsArr = Array.isArray(existing) ? existing : existing ? [existing] : [];

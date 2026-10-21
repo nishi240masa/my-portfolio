@@ -62,6 +62,9 @@ test.describe('article detail (fixture)', () => {
 });
 
 test.describe('journal cards (fixture)', () => {
+  // /journal は data/feeds.json (bot が日次更新する本番データ) を静的 import するが、
+  // e2e では playwright.config.ts の webServer.env (FEEDS_FILE) により
+  // tests/e2e/fixtures/feeds.json へ差し替えて build する。本番データには依存しない。
   test('GET /journal renders at least one card per source', async ({ page }) => {
     const response = await page.goto('/journal');
     expect(response?.status(), 'status for /journal').toBeLessThan(400);
@@ -70,5 +73,11 @@ test.describe('journal cards (fixture)', () => {
     await expect(cards.first()).toBeVisible({ timeout: 15_000 });
     const count = await cards.count();
     expect(count, 'journal card count').toBeGreaterThanOrEqual(3);
+    for (const source of ['zenn.dev', 'qiita.com', 'github.com']) {
+      await expect(
+        page.locator(`a.card[href^="https://${source}/"]`),
+        `card for ${source}`,
+      ).not.toHaveCount(0);
+    }
   });
 });
