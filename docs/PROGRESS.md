@@ -14,19 +14,21 @@
 
 ## 環境上の固定事項 (必ず守る)
 
-- **Node**: 24 (`.nvmrc` SSOT。CI / deploy は `node-version-file: .nvmrc` + `check-latest: true` で 24.x 最新 patch を自動追随。ローカルは 24.22.1 (2026-10-21 security release) 以上)。`engines` は `>=22.12.0` (環境変数で PATH に Node 24.22.1 以上を入れる。例: `export PATH=~/.nodebrew/current/bin:$PATH`)
+- **Node**: 24 (`.nvmrc` = `24` が SSOT)。CI / deploy / preview は `node-version-file: .nvmrc` + `check-latest: true` で 24.x 最新 patch を自動追随 (#64)。ローカルは **24.22.1 (2026-10-21 security release) 以上** (例: `export PATH="$HOME/.nodebrew/current/bin:$PATH"`)。`package.json` の `engines` は `>=22.12.0` (wrangler 4 の >=22 と katex 経由の commander 15 の >=22.12 という依存の実制約に合わせた最低ライン。実行環境の SSOT は `.nvmrc`)
 - **Yarn**: 1.22.x
-- **ホスティング**: 本番は **Cloudflare Pages** (`https://w3st.net`, project `west-portfolio`) のみ。main push 時に `.github/workflows/deploy.yml` が `yarn build:cf` → `wrangler pages deploy`。**Vercel ホスティングは廃止** (devDep `vercel@47.0.4` は next-on-pages が内部で `vercel build` を使うため残す)
+- **ホスティング**: 本番は **Cloudflare Pages** (`https://w3st.net`, project `west-portfolio`) のみ。main push 時に `.github/workflows/deploy.yml` が `yarn build:cf` → `wrangler pages deploy` (#59 / #64)。PR ごとの Preview は `.github/workflows/preview.yml` (#67 / #84 でハードニング)。**Vercel ホスティングは廃止** (#65)。devDep `vercel` は `@cloudflare/next-on-pages` が内部で `vercel build` を使うため **`47.0.4` に exact 固定** (next-on-pages の peer 上限。Dependabot でも全 update を ignore)
+- **CF Pages の Git 連携ビルド**: Production / Preview とも **OFF** (デプロイは GitHub Actions に一本化)。CF dashboard の Production Secrets は登録済み
+- **Dependabot**: 週次 (月曜 09:00 JST)、**develop 向け**。minor/patch は ecosystem ごとに group 化。フレームワーク major・`@types/node` major (Node 24 に合わせる)・`eslint-plugin-react-hooks` major・`vercel` (全 update) は ignore (#64 / #85)
+- **リリース**: develop → main は **merge commit** で取り込む (squash すると次回 release で conflict する)。release PR (#55 / #57 / #61 / #66 / #81) は main 向け
 - **auto-merge**: **有効化済** (2026-06-20)。`gh pr merge <num> --auto --squash --delete-branch` で CI green を待って自動マージ。直接 merge も可能 (`--auto` を外す)
-- **CI 必須 check**: `test` のみ実質的に required。`e2e` / `lhci` / `Cloudflare Pages` の失敗は merge を阻まない。※ `e2e` / `lhci` は #42 で build に `NEXT_PUBLIC_SITE_URL` を配線し build blocker を解消済 (それ以前は build 失敗で本体未実行だった)
-- **Cloudflare Pages CI** (旧: 常に失敗): Phase 2 (PR #28-#34) で全 dynamic route を edge runtime 化し、edge required list が空になったため **CF dashboard で secrets を設定すれば本番で PR preview が通る想定**。実 green 化は CF dashboard 側の設定後に確認。設定手順は [docs/CLOUDFLARE_PAGES_SETUP.md](./CLOUDFLARE_PAGES_SETUP.md)
+- **CI 必須 check**: `test` のみ実質的に required (`test` job で `scripts/check-edge-bundle.mjs` による edge bundle の `node:fs` 混入検査も実行 = #79)。`e2e` / `lhci` / preview の失敗は merge を阻まない。※ develop には branch protection が無く、required check 完了前に merge され得る (Follow-up 参照)
 - **Worktree**: `$(git rev-parse --show-toplevel)/../portfolio-wt/<branch-slug>` に統一 (local/cloud 両対応のため。`/tmp/` は使わない)
 - **node_modules**: 各 worktree で `ln -sfn $REPO/node_modules node_modules` の symlink で共有 (yarn install は repo ルートで1回だけ)
-- **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。3 workflow で同一式に統一 = #42)。default は本番 canonical `https://w3st.net` (deploy.yml と統一)、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
+- **CI 環境変数**: `test.yml` / `e2e.yml` / `lhci.yml` / `deploy.yml` の build step に `NEXT_PUBLIC_SITE_URL` が渡る (jsonld の prod 必須。#42 / #56)。default は本番 canonical `https://w3st.net`、上書きは GitHub Variables の `NEXT_PUBLIC_SITE_URL` で
 
-## 完了 PR (develop 統合済 / 計 51 PR merged)
+## 完了 PR (develop 統合済 / 計 76 PR merged)
 
-> 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は merged の実数 (#1-#26, #28-#39 = 38) を SSOT とする。
+> 番号の歯抜けについて: **#27 は CLOSED (merged されず)**。#28-#32 は #27 で計画していた admin/api edge 化を Phase 2a/2b/2c に再分割したもの。merge 数の累計は **develop 向け** merged の実数 (#1-#26, #28-#54, #56, #58-#60, #62-#65, #67-#72, #76-#80, #82-#85 = 76) を SSOT とする。**main 向け release PR (#55 / #57 / #61 / #66 / #81) は累計に含めない** (取り込み元の develop PR と二重計上になるため)。**#73 / #74 / #75 は Dependabot PR で CLOSED (merged されず)**。
 
 ### Layer 0 — 基盤 (7 PR)
 
@@ -63,7 +65,7 @@
 | #25 | a11y(skill) | A11y | DanIndicator labelledby narrow + years 空時 `'(0/6, )'` 末尾カンマ防御 + dark mode hairline-strong コントラスト (WCAG 1.4.11) |
 | #26 | refactor(admin) | UX/DRY | AdminForm 4 Editor の重複 useEffect を `useAutoDismissOnSuccess(state)` カスタムフックへ集約 |
 
-### プロセス基盤 (12 PR)
+### プロセス基盤 (15 PR)
 
 | # | PR | 担当領域 | 説明 |
 |---|---|---|---|
@@ -79,6 +81,9 @@
 | #40 | docs(progress) | プロセス | #33/#35-#39 反映 (累計 38 PR merged 時点 / CF Pages Epic コード側完了 / skills 整備) |
 | #46 | docs(progress) | プロセス | #40-#45 反映 (累計 44 PR merged 時点 / e2e スイート健全化 3 系統解消) |
 | #47 | chore(claude) | プロセス | `.claude/agents/` にサブエージェント定義 pr-implementer / pr-critic 新設 (/wave から参照、pr-critic は Edit/Write なし) + CLAUDE.md にオーケストレーション原則を明文化 |
+| #48 | docs(progress) | プロセス | #47 反映 (サブエージェント定義とオーケストレーション原則) |
+| #54 | docs(progress) | プロセス | #49-#53 反映 (受託営業ツール化 wave / 累計 51 PR merged 時点の表記) |
+| #58 | chore(claude) | プロセス | サブエージェントの model を agent 定義 frontmatter に固定 (pr-implementer = opus / pr-critic = sonnet) |
 
 ### CF Pages Epic — Phase 1 / 2a-2d (8 PR)
 
@@ -123,11 +128,56 @@
 | #52 | feat(content) | コンテンツ誠実性 | 制作物 id:1/2/3/5 に caseStudy (問・工・果) を投入し一覧カードに problem 要約表示。実施していない id:4 (Design System) を削除、id:5 を個人検証として誠実化 (40%/30% の根拠なし数値と Bckend typo を除去) — いずれもオーナー確認済みの事実に基づく |
 | #53 | fix(seo) | SEO | sitemap に /services と /contact を追加 (wave follow-up) |
 
+### 本番リリース + deploy 修正 (2026-07-19, 2 PR)
+
+> main 向け release PR: **#55** (受託営業ツール化 + e2e 健全化 + CF Pages Epic ほか) / **#57** (#56 追随)。release PR は累計に含めない。
+
+| # | PR | 担当領域 | 説明 |
+|---|---|---|---|
+| #56 | fix(ci) | CI/デプロイ | deploy.yml の build に `NEXT_PUBLIC_SITE_URL` を配線 (本番 deploy 恒常 fail の真因) |
+| #59 | fix(ci) | CI/デプロイ | deploy 先 CF Pages プロジェクト名を `west-portfolio` に修正 (wrangler.toml と整合) |
+
+### 依存脆弱性解消 + 実行環境・デプロイ基盤刷新 wave (2026-10-21〜22, 11 PR)
+
+> 契機: yarn audit の脆弱性 (next-auth / esbuild ほか) 解消を起点に、Node 24 統一・CF デプロイの GitHub Actions 一本化・Vercel 廃止・本番 /admin/login 500 の解消までを実施。main 向け release PR: **#61** (#58-#60) / **#66** (#62-#65) / **#81** (#67, #77-#80)。**#82-#85 は develop のみで main 未反映**。
+
+| # | PR | 担当領域 | 説明 |
+|---|---|---|---|
+| #60 | chore(deps) | 依存/セキュリティ | yarn audit の脆弱性を解消 (next-auth beta.32 / resolutions 等) |
+| #62 | chore(deps) | 依存/環境 | Node 24 に統一し wrangler 4 へ更新 (esbuild advisory 解消) |
+| #63 | chore(ci) | CI/環境 | Node を 24.22.1 (2026-10-21 security release) に固定 |
+| #64 | chore(ci) | CI/デプロイ | Node 24 最新 patch を `check-latest` で自動追随 + CF デプロイを Actions に一本化 + Dependabot 導入 |
+| #65 | chore | デプロイ/docs | Vercel ホスティングを廃止し Cloudflare Pages に一本化 (docs / CI の参照整理) |
+| #67 | ci(preview) | CI/デプロイ | PR ごとの CF Pages Preview デプロイを GitHub Actions (`preview.yml`) に移行 |
+| #77 | fix(feeds) | コンテンツ | ユーザー名未設定時に他人の Zenn トレンド記事を取り込む問題を修正 |
+| #78 | fix(feeds) | コンテンツ/CI | GitHub ユーザー名を `github.repository_owner` から取得 (`GITHUB_` prefix の secret は登録不可) |
+| #79 | fix(admin) | CF/edge | /admin/login が CF Pages edge で 500 (`No such module "node:fs"`) になる問題を修正 + `scripts/check-edge-bundle.mjs` を test job に追加 |
+| #80 | test(e2e) | テスト | journal card テストを専用 feeds fixture に分離 (#77 で data/feeds.json が空になり失敗) |
+| #82 | test(feeds) | テスト/コンテンツ | feeds スクリプトのテスト補完 + 「0 件」と「取得失敗」のログを区別 |
+
+### Dependabot 仕分け + 後片付け (2026-10-22, 9 PR)
+
+> Dependabot 初回 PR を仕分け。CLOSED: **#73** (eslint-plugin-react-hooks 7 — CI fail のため major ignore) / **#74** (jotai 3 — 未使用のため #85 で削除) / **#75** (@types/node 26 — Node 24 に合わせ major ignore)。
+
+| # | PR | 担当領域 | 説明 |
+|---|---|---|---|
+| #68 | chore(ci) | Dependabot | Bump actions/checkout from 4 to 7 |
+| #69 | chore(ci) | Dependabot | Bump actions/setup-node from 4 to 7 |
+| #70 | chore(ci) | Dependabot | Bump cloudflare/wrangler-action from 3 to 4 |
+| #71 | chore(ci) | Dependabot | Bump actions/upload-artifact from 4 to 7 |
+| #72 | chore(deps) | Dependabot | npm-minor-patch group (20 updates) |
+| #76 | chore(deps-dev) | Dependabot | Bump emoji-regex from 10.4.0 to 11.0.0 |
+| #83 | fix(seo) | SEO | 全公開ページに canonical URL を出力 |
+| #84 | chore | CF/CI | next.config の不要 `node:fs` externals 整理 + preview.yml のハードニング |
+| #85 | chore(deps) | 依存 | 未使用 jotai を削除 + Dependabot の ignore 追加 (@types/node / eslint-plugin-react-hooks major) |
+
 ## 進行中 PR
 
-なし (2026-07-19 受託営業ツール化 wave 完了時点)。**次の一手はオーナー確認後の develop → main リリース** (本番は 2026-06-20 ビルドのまま: /contact 404・作品 0 件表示・旧メタが継続中。オーナーの確認が済むまでデプロイしない指示あり)。
+なし (2026-10-22 時点)。本番 (main) は #81 まで反映済。**#82-#85 は develop のみで次回 release 待ち** (release は merge commit で)。
 
-## CF Pages Epic (コード側 ✅ 完了 / CF dashboard 設定待ち)
+## CF Pages Epic ✅ 完了 (2026-10-22)
+
+> CF dashboard の **Production Secrets 登録済み**、本番 `https://w3st.net/admin/login` が **200** を返すことを確認済み。Preview 環境の Secrets は未登録 (既知の問題参照)。
 
 ### Phase 1 — 公開ルート edge/static 化 ✅ 完了
 
@@ -135,7 +185,7 @@
 |---|---|---|
 | #28 | ✅ merged (2026-06-20) | 公開ページの `runtime='nodejs'` 撤廃。静的化可能なルート (home/profile/skill/production/[id]/en) は CF Pages 静的アセットとして配信。articles/journal は force-static 化。OG image は edge 化済。 |
 
-### Phase 2 — admin/api/auth edge 化 ✅ 完了 (2a-2d)
+### Phase 2 — admin/api/auth edge 化 ✅ 完了 (2a-2e)
 
 Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは **計 15** (admin pages 9 + api/admin 5 + api/auth 1):
 - **admin pages**: 9 (`src/app/admin/layout.tsx` + `/admin`, `/admin/home`, `/admin/skill`, `/admin/profile`, `/admin/productions`, `/admin/productions/new`, `/admin/productions/[id]`, `/admin/login`)
@@ -146,12 +196,15 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 |---|---|---|---|
 | 2a | `refactor/repositories-barrel-lazy` | ✅ merged (#30, 2026-06-21) | `src/lib/repositories/index.ts` を driver 別 barrel に分割し json driver を lazy import 化。`json` 側 module の `node:fs` 依存を edge bundle から逃がす。Phase 2b/2c の前提。 |
 | 2b | `perf/cf-edge-auth` | ✅ merged (#31, 2026-06-21) | `api/auth/[...nextauth]` を `runtime='edge'` 化。NextAuth は JWT only / GitHub driver 強制で edge 互換確認済。 |
-| 2c | `perf/cf-edge-admin-pages` | ✅ merged (#32, 2026-06-21) | `src/app/admin/**` の 9 ファイル (`layout.tsx` 含む 8 page + layout) + Server Actions 4 + `api/admin/*` 5 を edge 化。next.config.mjs に edge layer 用の `node:fs` / `node:path` externals fallback を追加。 |
-| 2d | `fix/repositories-edge-runtime-guard` ほか | ✅ merged (#34, #33, #35, #37) | CF Pages 本番で `REPOSITORY_DRIVER=github` を強制 (json driver は edge で動かないため) + fail-fast guard (#34) と回帰テスト (#37)。`docs/CLOUDFLARE_PAGES_SETUP.md` に Phase 2 完了状態と env 設定を反映 (#33)。残タスクは **CF dashboard での secrets 設定のみ** (コード側の作業なし)。 |
+| 2c | `perf/cf-edge-admin-pages` | ✅ merged (#32, 2026-06-21) | `src/app/admin/**` の 9 ファイル (`layout.tsx` 含む 8 page + layout) + Server Actions 4 + `api/admin/*` 5 を edge 化。next.config.mjs に edge layer 用の `node:fs` / `node:path` externals fallback を追加 (※ この externals は **#84 で削除済み**。#79 で json driver を `NEXT_RUNTIME` 定数分岐により edge bundle から除外したため不要)。 |
+| 2d | `fix/repositories-edge-runtime-guard` ほか | ✅ merged (#34, #33, #35, #37) | CF Pages 本番で `REPOSITORY_DRIVER=github` を強制 (json driver は edge で動かないため) + fail-fast guard (#34) と回帰テスト (#37)。`docs/CLOUDFLARE_PAGES_SETUP.md` に Phase 2 完了状態と env 設定を反映 (#33)。CF dashboard の Production Secrets は登録済み。 |
+| 2e | `fix/admin-login-edge-node-fs` / `chore/edge-config-preview-hardening` | ✅ merged (#79, #84) | 本番 /admin/login が workerd で `No such module "node:fs"` により 500 になっていた問題を修正 (#79: json driver を `NEXT_RUNTIME !== 'edge'` 定数分岐で edge bundle から除外)。edge bundle に `node:fs` が残っていないかを `scripts/check-edge-bundle.mjs` で CI (test job) 検査。不要になった `node:fs` externals を next.config から削除 (#84)。 |
 
 ## 既知の問題 (Known Issues)
 
-- ~~**Vercel preview deploy が systematically 失敗** (PR #28 / 2026-06-20 以降)~~ → **解消 (Vercel ホスティング廃止)**。本番は Cloudflare Pages に一本化済。GitHub 側で Vercel の GitHub App 連携を解除すれば PR の `Vercel` / `Vercel Preview Comments` check も消える (オーナー作業)。
+- **Preview 環境の /admin/login が 500**: CF Pages の Preview 環境に Secrets が未登録のため。本番 (Production) は登録済みで 200。登録するかはオーナー検討中
+- **`@cloudflare/next-on-pages` の peer 外**: peer は `next <=15.5.2` / `vercel <=47.0.4` だが next は `^15.5.28`。next-on-pages 自体が非推奨のため OpenNext (`@opennextjs/cloudflare`) への移行を検討
+- **develop に branch protection が無い**: required check (`test`) 完了前に merge され得る
 
 ## Follow-up Issues (大規模対応 / 別 PR で実施)
 
@@ -160,6 +213,15 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 | 低 | コンテンツ | caseStudy の minor: article.role と caseStudy.role の二重持ち hint、image なし時 Article→CreativeWork フォールバック、Tategaki モバイル grid 調整 (MetricsEditor/LinksEditor の key={i} → 安定 id は #41 で解決済) |
 | 低 | SEO | Article rich result の image 必須に対する Editor hint |
 | 低 | skills | `/resume-work` ほか各 skill の実運用フィードバック反映 (名前・description の調整) |
+| 中 | CF/デプロイ | next-on-pages (非推奨・peer 外) → OpenNext 移行の検討 |
+| 中 | CF/デプロイ | Preview 環境の Secrets 登録 (Preview の /admin/login 500 解消。オーナー判断) |
+| 中 | プロセス | develop に branch protection (required check = `test`) を設定 |
+| 中 | SEO | sitemap に /articles, /articles/[slug], /journal, /en が無い。hreflang ja が `/` を指すが canonical は `/home` で不整合 |
+| 低 | SEO | 既定 OG 画像 URL の hash が消え cache-busting が効かない (#83 で判明) |
+| 低 | 依存 | eslint-plugin-react-hooks v7 移行 (flat config / React Compiler 系ルール。#73 は CI fail で CLOSED、major ignore 中) |
+| 低 | コンテンツ | feeds: Zenn の非 RSS 200 応答を失敗扱いにする (#82 レビュー nit) |
+| 低 | CI | `scripts/check-edge-bundle.mjs` のヘッダコメントが #84 後の実態 (externals 削除済) と食い違う |
+| 低 | 依存 | yarn audit 残: braces / extract-zip / sprintf-js (修正版なし) |
 
 ### 完了済 (履歴)
 
@@ -174,6 +236,14 @@ Phase 1 完了時点で `yarn build:cf` が依然 fail していたルートは 
 - e2e smoke の /profile /skill 見出し期待値の陳腐化 (系統1) → **#43** で解決
 - primary 前景の color-contrast AA 割れ (系統2, 全公開ページ) → **#44** で解決 (`--primary-strong`)
 - production id:3 の 404 画像 (系統3) → **#45** で ImagePlaceholder fallback 化
+- 本番 deploy の恒常 fail (`NEXT_PUBLIC_SITE_URL` 未配線 / deploy 先プロジェクト名誤り) → **#56** / **#59** で解決
+- yarn audit の脆弱性 (next-auth / esbuild ほか) → **#60** / **#62** で解決 (残りは修正版なしの 3 件)
+- Vercel preview deploy の systematically 失敗 → **#65** で Vercel ホスティング廃止により解消
+- CF Pages Git 連携ビルドの失敗 → デプロイを GitHub Actions に一本化 (**#64** / **#67**) し、Git 連携ビルドを Production / Preview とも OFF にして解消
+- 本番 /admin/login 500 (`No such module "node:fs"`) → **#79** で解決 + CF Production Secrets 登録で 200 確認
+- feeds に他人の Zenn トレンド記事が混入 → **#77** / **#78** で解決
+- 公開ページの canonical URL 欠落 → **#83** で解決
+- 未使用依存 jotai → **#85** で削除
 
 ## 開発フロー (各 PR 共通)
 
@@ -215,6 +285,6 @@ gh pr merge <num> --auto --squash --delete-branch
 2. **別エージェントレビュー** (BLOCKER/MAJOR ≥1 件で REQUEST_CHANGES)。単一エージェント環境では [.claude/patterns/self-critique/SKILL.md](../.claude/patterns/self-critique/SKILL.md)
 3. **CI green + LGTM + non-CONFLICTING で merge** (3 条件)
 4. **conflict は PM (会話のメイン loop) が手動解消**: 別 worktree で `git merge origin/develop` → fix → push
-5. **CF Pages CI 失敗は無視**: `test` が pass なら可 (Vercel は廃止済。PR の `Cloudflare Pages` check は Git 連携ビルドの残骸)
+5. **preview / e2e / lhci の失敗は merge を阻まない**: `test` が pass なら可 (Vercel は廃止済。CF Pages の Git 連携ビルドは OFF、Preview は `preview.yml`)
 6. **トークン残量 90% で停止**: 停止サマリ + 再開時の合言葉を残す
 7. **node_modules を絶対に commit しない**: `git add -A` の前に `git status --short` で確認、`my-portfolio/node_modules/` のような stray path が出ていたら掃除してから add
