@@ -26,7 +26,7 @@
     "@mui/material": "^6.2.0",
     "@rollup/plugin-inject": "^5.0.5",
     "framer-motion": "^11.0.0",
-    "jotai": "^2.0.0",
+    "jotai": "^3.0.1",
     "next": "^15.5.28",
     "next-auth": "^5.0.0-beta.32",
     "react": "^19.0.0",
