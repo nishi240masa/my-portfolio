@@ -19,7 +19,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: '.nvmrc'
+          check-latest: true
           cache: 'yarn'
 
       - name: Install dependencies
@@ -34,6 +35,6 @@ jobs:
       - name: Build application
         env:
           # jsonld.ts の resolveSiteUrl() が production build で throw するため、
-          # CI でも canonical URL を渡す。本番 deploy では Vercel/Cloudflare 側の env で上書き
-          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://my-portfolio-kohl-one-59.vercel.app' }}
+          # CI でも canonical URL を渡す。fallback は本番 canonical (w3st.net。deploy.yml と統一)
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
         run: yarn build

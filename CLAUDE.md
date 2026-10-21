@@ -1,12 +1,12 @@
 # CLAUDE.md
 
-Next.js 15 (App Router) 製ポートフォリオサイト。Vercel (本番) + Cloudflare Pages (edge 検証) にデプロイ。
+Next.js 15 (App Router) 製ポートフォリオサイト。本番は **Cloudflare Pages** (`https://w3st.net`, project `west-portfolio`)。main への push で `.github/workflows/deploy.yml` が `yarn build:cf` → `wrangler pages deploy` する (CF Pages の Git 連携ビルドは使わない。Vercel ホスティングは廃止済)。
 
 ## 環境 (最初に必ず)
 
-- **Node >= 20 必須**。デフォルト shell は Node 18 なので、build/dev/test の前に必ず:
+- **Node 24 で作業する** (`.nvmrc` = `24` が SSOT。CI / deploy は `setup-node` の `check-latest: true` で常に 24.x 最新 patch を使う。ローカルは 24.22.1 (2026-10-21 security release) 以上)。`package.json` の `engines` は `>=22.12.0` (vercel@47.0.4 同梱の @vercel/build-utils が `>=24` を拒否し `build:cf` が落ちるため。下限は wrangler 4 (>=22) と commander 15 (>=22.12) の制約)。nodebrew の Node 24.22.1 以上を PATH に通してから build/dev/test する:
   ```bash
-  export PATH="$HOME/.nodebrew/current/bin:$PATH"   # node -v → v20.x を確認
+  export PATH="$HOME/.nodebrew/current/bin:$PATH"   # node -v → v24.22.1 以上を確認
   ```
 - パッケージマネージャは **yarn 1.22** (npm / pnpm 禁止。`package-lock.json` は gitignore 済)
 - **`next dev` 起動中に `next build` を走らせない** (同じ `.next` を壊し dev が 500 になる)。dev を止めるか `rm -rf .next`
@@ -18,7 +18,7 @@ yarn dev          # 開発サーバ
 yarn lint         # eslint (src のみ)
 yarn test         # jest (--passWithNoTests 可)
 yarn build        # next build
-yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
+yarn build:cf     # Cloudflare Pages 向け (next-on-pages)。内部で `vercel build` を使うため devDep `vercel@47.0.4` は削除しない (ホスティングとしての Vercel は廃止済)
 ```
 
 ## Git / PR フロー
@@ -26,7 +26,7 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 - ベースブランチは **develop**。PR は `gh pr create --base develop`
 - コミットは **日本語 conventional commit** (`feat(seo): ...` 等)。`git -c commit.gpgsign=false commit` で署名スキップ
 - **auto-merge 有効**: `gh pr merge <num> --auto --squash --delete-branch` で CI green 待ちの自動マージ
-- required check は実質 `test` のみ。**CF Pages / e2e / lhci の失敗は merge を阻まない**
+- required check は実質 `test` のみ。**e2e / lhci / Cloudflare Pages (Git 連携ビルドの残骸。dashboard で OFF にすれば消える) の失敗は merge を阻まない**
 - 並列作業は worktree: `bash .claude/scripts/setup-worktree.sh <branch>` (`$REPO/../portfolio-wt/<slug>` に作成、node_modules は symlink 共有)
 - 1 PR = 1 ticket (`.claude/tickets/<branch-slug>.md`)。仕様は会話 context でなく ticket に書く
 

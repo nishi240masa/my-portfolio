@@ -14,7 +14,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: '.nvmrc'
+          check-latest: true
           cache: 'yarn'
 
       - name: Install dependencies
@@ -27,7 +28,7 @@ jobs:
         # webServer の `yarn build` は production build のため jsonld.ts が
         # NEXT_PUBLIC_SITE_URL を要求する。test.yml と同じ式で配線する。
         env:
-          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://my-portfolio-kohl-one-59.vercel.app' }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
         run: npx playwright test
 
       - name: Upload Playwright report

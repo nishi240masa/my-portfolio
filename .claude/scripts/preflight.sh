@@ -54,21 +54,35 @@ print_section "Environment"
 if command -v node >/dev/null 2>&1; then
   NODE_V=$(node -v 2>/dev/null || echo "unknown")
   NODE_MAJOR=$(echo "$NODE_V" | sed -E 's/^v([0-9]+).*/\1/')
+  NODE_MINOR=$(echo "$NODE_V" | sed -E 's/^v[0-9]+\.([0-9]+).*/\1/')
+  NODE_PATCH=$(echo "$NODE_V" | sed -E 's/^v[0-9]+\.[0-9]+\.([0-9]+).*/\1/')
   print_kv "node" "$NODE_V"
-  # NODE_MAJOR が空 or 非数字を含む場合は不正扱い
-  case "$NODE_MAJOR" in
-    ''|*[!0-9]*) NODE_OK=no ;;
-    *) if [ "$NODE_MAJOR" -ge 20 ]; then NODE_OK=yes; else NODE_OK=no; fi ;;
+  # 推奨 = 24.22.1 以上 (2026-10-21 security release)。.nvmrc は 24 (CI は check-latest で最新 patch)
+  # 最低 = package.json engines (>=22.12.0)
+  # NODE_MAJOR / NODE_MINOR / NODE_PATCH が空 or 非数字を含む場合は不正扱い
+  case "$NODE_MAJOR.$NODE_MINOR.$NODE_PATCH" in
+    .*|*..*|*.|*[!0-9.]*) NODE_OK=no ;;
+    *)
+      if [ "$NODE_MAJOR" -gt 24 ] \
+        || { [ "$NODE_MAJOR" -eq 24 ] && [ "$NODE_MINOR" -gt 22 ]; } \
+        || { [ "$NODE_MAJOR" -eq 24 ] && [ "$NODE_MINOR" -eq 22 ] && [ "$NODE_PATCH" -ge 1 ]; }; then NODE_OK=yes
+      elif [ "$NODE_MAJOR" -eq 24 ]; then NODE_OK=unpatched
+      elif [ "$NODE_MAJOR" -gt 22 ] || { [ "$NODE_MAJOR" -eq 22 ] && [ "$NODE_MINOR" -ge 12 ]; }; then NODE_OK=min
+      else NODE_OK=no; fi ;;
   esac
   if [ "$NODE_OK" = "yes" ]; then
-    print_ok "node >= 20"
+    print_ok "node >= 24.22.1 (.nvmrc は 24 / CI は check-latest で最新 patch)"
+  elif [ "$NODE_OK" = "unpatched" ]; then
+    print_warn "node 24 だが < 24.22.1 (2026-10-21 security fix 未適用。.nvmrc は 24 (CI は check-latest で最新 patch))"
+  elif [ "$NODE_OK" = "min" ]; then
+    print_warn "node >= 22.12 (engines は満たすが推奨は 24.22.1 以上。.nvmrc は 24 (CI は check-latest で最新 patch))"
   else
-    print_err "node < 20 (この repo は >= 20 が必要)"
-    print_notice "PATH に Node 20+ を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
+    print_err "node < 22.12 (この repo は engines >=22.12.0、推奨は Node 24.22.1)"
+    print_notice "PATH に Node 24.22.1 以上を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
   fi
 else
   print_err "node not found"
-  print_notice "PATH に Node 20+ を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
+  print_notice "PATH に Node 24.22.1 以上を入れて再実行してください: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\""
 fi
 
 # yarn
@@ -219,7 +233,7 @@ fi
 print_section "Notices"
 
 print_notice "CF Pages CI は永続的に失敗します。test=pass のみ確認すれば merge 可能"
-print_notice "Node が 18 系なら: PATH に Node 20+ を入れて再実行 (例: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\")"
+print_notice "Node が 24.22.1 未満なら: PATH に Node 24.22.1 以上を入れて再実行 (例: export PATH=\"\$HOME/.nodebrew/current/bin:\$PATH\")"
 print_notice "このスクリプトは READ-ONLY です。最新の origin を見たい場合は事前に: git fetch origin develop --prune"
 
 echo ""

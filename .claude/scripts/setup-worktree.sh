@@ -105,7 +105,7 @@ fi
 
 cat <<HINT
 
-  # 実装後の流れ (Node 20+ が PATH にある前提):
+  # 実装後の流れ (Node 24 が PATH にある前提):
   yarn lint && yarn test --passWithNoTests && yarn build
   git add -A
   git -c commit.gpgsign=false commit -m "..."

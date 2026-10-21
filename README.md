@@ -29,12 +29,8 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy (Cloudflare Pages)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+本番は **Cloudflare Pages** (`https://w3st.net`, project `west-portfolio`) で配信している。`main` への push で GitHub Actions の [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) が `yarn build:cf` (`@cloudflare/next-on-pages`) → `wrangler pages deploy .vercel/output/static` を実行する。Vercel ホスティングは廃止済 (devDependency の `vercel` は next-on-pages が内部で `vercel build` を使うため残している)。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-## Cloudflare Pages について
-
-本プロジェクトは admin ダッシュボードで `node:fs` を介した JSON ファイル永続化を行う都合上、現在 Cloudflare Pages の Edge Runtime では動作しません。詳細と対処方法は [docs/CLOUDFLARE_PAGES_SETUP.md](docs/CLOUDFLARE_PAGES_SETUP.md) を参照してください。
+全 dynamic route は edge runtime 化済で、本番のデータ層は `REPOSITORY_DRIVER=github` を使う。secrets / 環境変数の設定手順は [docs/CLOUDFLARE_PAGES_SETUP.md](docs/CLOUDFLARE_PAGES_SETUP.md) を参照。
