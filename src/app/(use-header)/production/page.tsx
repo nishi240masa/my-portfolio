@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import ProductionPage from './_components/ProductionPage';
 import { listProductionsSummaryCached } from '@/lib/repositories';
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: '制作物',
   description:
     '西尾 匡生 (west) の制作物・プロダクト一覧。受託開発のご依頼の参考になる制作事例を掲載しています。',
-  alternates: { canonical: '/production' },
+  ...pageMetadata('/production'),
 };
 
 export default async function Page() {

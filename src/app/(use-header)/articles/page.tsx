@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import SectionHeader from '@/app/_components/design/SectionHeader';
 import ArticleList from './_components/ArticleList';
 import { articleSchema } from '@/lib/schemas/article';
@@ -18,7 +19,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: '記事',
   description: '西尾 匡生のオリジナル記事一覧。',
-  alternates: { canonical: '/articles' },
+  ...pageMetadata('/articles'),
 };
 
 export default async function Page() {

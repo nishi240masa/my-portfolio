@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import SkillView from './_components/SkillView';
 import { getSkillsCached } from '@/lib/repositories';
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   title: 'スキル',
   description:
     '西尾 匡生 (west) の保有スキル一覧 - Go / TypeScript を軸に、言語・フレームワーク・ツールを紹介します。',
-  alternates: { canonical: '/skill' },
+  ...pageMetadata('/skill'),
 };
 
 export default async function Page() {
