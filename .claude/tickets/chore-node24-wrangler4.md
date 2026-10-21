@@ -31,6 +31,7 @@
 - `yarn.lock`
 - `.github/workflows/*.yml` の `node-version: '20'` → `'24'` (test / e2e / lhci / deploy ×2 / feeds の全箇所)
 - `CLAUDE.md` の「Node >= 20 必須 / デフォルト shell は Node 18」記述を Node 24 前提に更新
+- `.claude/agents/pr-implementer.md` / `.claude/skills/impl-pr/SKILL.md` / `.claude/skills/wave/SKILL.md` の「Node 20」記述を Node 24 前提に更新 (レビュー指摘で追加)
 - `.claude/tickets/chore-node24-wrangler4.md` (本ファイル)
 - 依存更新で lint/型/build エラーが出た場合に限り最小限の src 修正可 (PR 本文に理由)
 
@@ -72,3 +73,14 @@ PR 本文に audit の before/after と残置 advisory を記載する。
   ローカル (`.nvmrc`) / CI は 24 に統一済。
 - `**/undici` の全域 resolution は miniflare 5 (wrangler 4) が要求する undici 7.29.1 を 6.x に落としてしまうため、
   旧来の対象 (@vercel/blob / @vercel/node / next-on-pages 配下 miniflare 3) に限定した。
+- `**/katex` は `0.18.10` に exact pin。0.18.11 は upstream が deprecated
+  ("Accidentally published with breaking changes. Use 0.19.0 instead.")、0.19.0 は minor bump (0.x のため breaking 扱い) なので回避した。
+  **解除条件**: non-deprecated な 0.18.x 後続版が出る、または rehype-katex が 0.18 系以降 (0.19 含む) を正式サポートした時点で見直す。
+- path 指定の undici resolutions (`**/@vercel/blob/undici` / `**/@vercel/node/undici` / `**/@cloudflare/next-on-pages/miniflare/undici`) は
+  依存ツリーの hoist 位置に依存する。依存更新で miniflare 3 等の配置が変わると脆弱な undici 5.x が再出現しうるため、
+  **依存更新時は必ず `yarn audit` で undici advisory が出ていないか再確認する**。
+
+## follow-up
+
+- wrangler 4.151.3 は `miniflare@5.20261019.1-beta` と (miniflare 経由で) `youch@4.1.0-beta.10` の beta 版を exact pin している。
+  wrangler 側の判断のため本 PR では変えない。wrangler が stable 版 (miniflare / youch の非 beta) を pin した版を出したら追随して上げる。

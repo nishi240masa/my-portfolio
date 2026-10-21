@@ -30,4 +30,4 @@ argument-hint: <ticket ファイル名... (省略時は PROGRESS.md の未着手
 ## 注意
 
 - 同一ファイルを触る ticket 同士は並列に走らせない (DAG 上で直列化する)
-- 各エージェントへの指示には必ず ticket パスを含める (Node 20 PATH / worktree 手順は `pr-implementer` の定義側が持つ。pr-critic に build/test を頼む場合や汎用エージェントを使う場合は従来通り Node 20 PATH 等を注入する)
+- 各エージェントへの指示には必ず ticket パスを含める (Node 24 PATH / worktree 手順は `pr-implementer` の定義側が持つ。pr-critic に build/test を頼む場合や汎用エージェントを使う場合は従来通り Node 24 PATH 等を注入する)

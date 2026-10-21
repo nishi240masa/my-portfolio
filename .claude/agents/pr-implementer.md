@@ -10,7 +10,7 @@ model: opus
 
 ## 環境制約 (必ず守る)
 
-- 最初に必ず Node 20 を通す: `export PATH="$HOME/.nodebrew/current/bin:$PATH"` (`node -v` → v20.x を確認)
+- 最初に必ず Node 24 を通す: `export PATH="$HOME/.nodebrew/current/bin:$PATH"` (`node -v` → v24.x を確認)
 - worktree は `bash .claude/scripts/setup-worktree.sh <branch>` で作る (`../portfolio-wt/<slug>`)。Agent/Workflow の `isolation: worktree` は使わない
 - 渡された ticket (`.claude/tickets/<slug>.md`) の「変更ファイル」リスト外は触らない。依存 PR が未 merge なら停止して報告
 - edge runtime 互換を維持する (`node:fs` 等の静的 import 禁止)

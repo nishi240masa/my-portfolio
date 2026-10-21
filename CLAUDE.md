@@ -4,7 +4,7 @@ Next.js 15 (App Router) 製ポートフォリオサイト。Vercel (本番) + Cl
 
 ## 環境 (最初に必ず)
 
-- **Node >= 24 必須** (`.nvmrc` / `engines` / CI すべて 24)。nodebrew の Node 24 を PATH に通してから build/dev/test する:
+- **Node 24 で作業する** (`.nvmrc` / CI は 24)。`package.json` の `engines` は `>=22.12.0` (vercel@47.0.4 同梱の @vercel/build-utils が `>=24` を拒否し `build:cf` が落ちるため。下限は wrangler 4 (>=22) と commander 15 (>=22.12) の制約)。nodebrew の Node 24 を PATH に通してから build/dev/test する:
   ```bash
   export PATH="$HOME/.nodebrew/current/bin:$PATH"   # node -v → v24.x を確認
   ```
