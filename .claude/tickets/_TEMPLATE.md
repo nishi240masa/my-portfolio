@@ -52,7 +52,7 @@ PR body 雛形:
 
 ## Test plan
 - [ ] yarn lint / yarn test / yarn build
-- [ ] CI green (test, Vercel)
+- [ ] CI green (test)
 - [ ] <feature 固有の動作確認>
 
 🤖 Generated with Claude Code
