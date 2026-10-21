@@ -37,12 +37,12 @@ gh pr list --base develop --json number,title,state,mergeable,mergeStateStatus
 ## 3. 環境チェック
 
 ```bash
-node -v  # >= 20 必須
+node -v  # >= 24.22.1 (.nvmrc SSOT, 2026-10-21 security release)
 which gh && gh auth status  # gh は認証済みか
 git config --get user.email
 ```
 
-Node が 18 系の場合:
+Node が 24.22.1 未満の場合:
 ```bash
 export PATH="/Users/k23087kk/.nodebrew/current/bin:$PATH"
 ```
