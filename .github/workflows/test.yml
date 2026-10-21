@@ -38,3 +38,7 @@ jobs:
           # CI でも canonical URL を渡す。fallback は本番 canonical (w3st.net。deploy.yml と統一)
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
         run: yarn build
+
+      - name: Check edge bundle (no node:fs)
+        # CF Pages (workerd) は node:fs を解決できず、edge function が load 時に 500 になるため
+        run: node scripts/check-edge-bundle.mjs
