@@ -50,3 +50,16 @@ gh pr diff <num>                 # 実装
 | [feat-seo-commission-meta.md](./feat-seo-commission-meta.md) | ✅ merged (#50 + follow-up #53 sitemap) |
 | [feat-services-page.md](./feat-services-page.md) | ✅ merged (#51) |
 | [feat-production-case-study.md](./feat-production-case-study.md) | ✅ merged (#52) |
+| [chore-deps-security-audit.md](./chore-deps-security-audit.md) | ✅ merged (#60) |
+| [chore-node24-wrangler4.md](./chore-node24-wrangler4.md) | ✅ merged (#62) |
+| [chore-pin-node-24-22-1.md](./chore-pin-node-24-22-1.md) | ✅ merged (#63) |
+| [chore-ci-node-latest-deploy-actions.md](./chore-ci-node-latest-deploy-actions.md) | ✅ merged (#64) |
+| [chore-remove-vercel-hosting.md](./chore-remove-vercel-hosting.md) | ✅ merged (#65) |
+| [ci-preview-deploy-actions.md](./ci-preview-deploy-actions.md) | ✅ merged (#67) |
+| [fix-feeds-empty-user.md](./fix-feeds-empty-user.md) | ✅ merged (#77 + follow-up #78) |
+| [fix-admin-login-edge-node-fs.md](./fix-admin-login-edge-node-fs.md) | ✅ merged (#79) |
+| [test-e2e-journal-feeds-fixture.md](./test-e2e-journal-feeds-fixture.md) | ✅ merged (#80) |
+| [test-feeds-log-and-tests.md](./test-feeds-log-and-tests.md) | ✅ merged (#82) |
+| [fix-seo-canonical.md](./fix-seo-canonical.md) | ✅ merged (#83) |
+| [chore-edge-config-preview-hardening.md](./chore-edge-config-preview-hardening.md) | ✅ merged (#84) |
+| [chore-deps-prune-and-dependabot-ignore.md](./chore-deps-prune-and-dependabot-ignore.md) | ✅ merged (#85) |
