@@ -1,0 +1,105 @@
+name: Preview Deploy (Cloudflare Pages)
+
+# PR ごとに CF Pages の Preview デプロイを作り、Preview URL を PR に 1 コメントで通知する。
+# 本番 (Production) は deploy.yml (main push, --branch=main) が担い、本 workflow は干渉しない。
+# CF Pages の Git 連携ビルドは Production / Preview とも OFF (docs/CLOUDFLARE_PAGES_SETUP.md)。
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - develop
+      - main
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  deployments: write
+  pull-requests: write
+
+jobs:
+  preview:
+    # fork PR / Dependabot PR には CLOUDFLARE_* secrets が渡らないため skip。
+    # head が main (= production branch) の PR (main → develop の back-merge 等) は
+    # --branch=main が Production デプロイになってしまうため skip (Production は deploy.yml のみ)
+    if: >-
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      github.actor != 'dependabot[bot]' &&
+      github.head_ref != 'main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          check-latest: true
+          cache: 'yarn'
+
+      - name: Show Node version
+        run: node -v
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build for Cloudflare
+        env:
+          # canonical は本番を指す (preview の重複インデックス回避)。deploy.yml と同じ値
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
+        run: yarn build:cf
+
+      - name: Resolve preview branch name
+        id: branch
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        # head ref を command 引数へ直接展開しない (script injection 対策)。
+        # CF Pages の alias と同じ文字種 (英数 . _ / -) 以外は '-' に置換
+        run: echo "name=$(printf '%s' "${HEAD_REF}" | tr -c 'A-Za-z0-9._/-' '-')" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to Cloudflare Pages (Preview)
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # --branch が production branch (main) 以外なので Preview 環境としてデプロイされる
+          command: pages deploy .vercel/output/static --project-name=west-portfolio --branch=${{ steps.branch.outputs.name }}
+
+      - name: Comment Preview URL on PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          DEPLOYMENT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
+        run: |
+          marker='<!-- cf-pages-preview -->'
+          body="${marker}
+          ### Cloudflare Pages Preview
+
+          | | URL |
+          | --- | --- |
+          | Branch alias | ${ALIAS_URL:-(none)} |
+          | Deployment | ${DEPLOYMENT_URL:-(none)} |
+
+          commit: \`${HEAD_SHA}\` / node: \`$(node -v)\`"
+
+          # 1 PR 1 コメント: marker 付きの bot コメントがあれば更新、無ければ作成
+          comment_id=$(gh api --paginate "repos/${REPO}/issues/${PR_NUMBER}/comments" \
+            --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body | startswith(\"${marker}\")))] | first | .id // empty" \
+            | head -n 1)
+
+          if [ -n "${comment_id}" ]; then
+            gh api --method PATCH "repos/${REPO}/issues/comments/${comment_id}" -f body="${body}" > /dev/null
+            echo "updated comment ${comment_id}"
+          else
+            gh pr comment "${PR_NUMBER}" --repo "${REPO}" --body "${body}"
+            echo "created comment"
+          fi

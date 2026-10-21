@@ -26,7 +26,8 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)。内部で `vercel 
 - ベースブランチは **develop**。PR は `gh pr create --base develop`
 - コミットは **日本語 conventional commit** (`feat(seo): ...` 等)。`git -c commit.gpgsign=false commit` で署名スキップ
 - **auto-merge 有効**: `gh pr merge <num> --auto --squash --delete-branch` で CI green 待ちの自動マージ
-- required check は実質 `test` のみ。**e2e / lhci / Cloudflare Pages (Git 連携ビルドの残骸。dashboard で OFF にすれば消える) の失敗は merge を阻まない**
+- required check は実質 `test` のみ。**e2e / lhci / `Preview Deploy` (`.github/workflows/preview.yml`) の失敗は merge を阻まない**
+- PR を出すと `preview.yml` が CF Pages Preview にデプロイし、Preview URL を PR に 1 コメント (push ごとに更新) で通知する (fork / Dependabot PR は skip)。CF Pages の Git 連携ビルドは Production / Preview とも OFF
 - 並列作業は worktree: `bash .claude/scripts/setup-worktree.sh <branch>` (`$REPO/../portfolio-wt/<slug>` に作成、node_modules は symlink 共有)
 - 1 PR = 1 ticket (`.claude/tickets/<branch-slug>.md`)。仕様は会話 context でなく ticket に書く
 
