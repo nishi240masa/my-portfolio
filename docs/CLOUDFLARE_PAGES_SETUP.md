@@ -40,25 +40,48 @@
 
 > Phase 2c の reviewer 確認 (PR #32) で `yarn build:cf` 出力末尾において **「Edge Function Routes 15 個生成、`The following routes were not configured to run with the Edge Runtime` の list が完全に空」** であることが確認済。これにより CF Pages 上で動作する条件が成立。
 >
-> ただし **本番 CF Pages の PR preview deployment が green になるかは別問題** で、後述の dashboard secrets 設定が揃い、branch protection を通過して deployment が走ったときに反映される見込み。
+> ただし CF Pages 上で動的ルートが動くかは別問題で、後述の dashboard secrets 設定 (Production / Preview) が揃っていることが前提。PR preview は `preview.yml` (後述) が Actions からデプロイする。
 
 ## デプロイ経路 (GitHub Actions に一本化)
 
-本番 (CF Pages) へのデプロイは **GitHub Actions の `.github/workflows/deploy.yml` のみ** で行う。
+CF Pages へのデプロイは **GitHub Actions のみ** で行う (CF Pages の Git 連携ビルドは Production / Preview とも OFF)。
+
+| 契機 | workflow | CF Pages 環境 | `--branch` |
+| --- | --- | --- | --- |
+| PR (base: `develop` / `main`) の opened / synchronize / reopened | `.github/workflows/preview.yml` | **Preview** | PR の head ref (例 `ci/foo` → alias `ci-foo.west-portfolio.pages.dev`) |
+| `main` への push | `.github/workflows/deploy.yml` | **Production** | `main` (production branch を明示) |
 
 > **Vercel ホスティングは廃止済** (2026-10)。本番・preview とも Vercel は使わない。`.vercel/output/static` は next-on-pages の出力 dir 名、devDependency `vercel@47.0.4` は next-on-pages が内部で `vercel build` を呼ぶためのもので、Vercel へのデプロイとは無関係 (削除しない)。
 
+### Production (`deploy.yml`)
+
 - トリガ: `main` への push
-- 流れ: `test` job (lint + test + `yarn build`) → `deploy` job (`yarn build:cf` → `cloudflare/wrangler-action` で `wrangler pages deploy .vercel/output/static --project-name=west-portfolio`)
+- 流れ: `test` job (lint + test + `yarn build`) → `deploy` job (`yarn build:cf` → `cloudflare/wrangler-action` で `wrangler pages deploy .vercel/output/static --project-name=west-portfolio --branch=main`)
 - Node: `.nvmrc` (= `24`) + `actions/setup-node` の `check-latest: true` で常に 24.x 最新 patch (security fix 込み)
 - 本番 canonical URL: **`https://w3st.net`** (`deploy.yml` で `NEXT_PUBLIC_SITE_URL` を build 時に注入。Actions の repository variable `NEXT_PUBLIC_SITE_URL` があればそちらを優先)
+
+### Preview (`preview.yml`)
+
+- トリガ: `develop` / `main` 向け PR の opened / synchronize / reopened (`concurrency: preview-<PR番号>` で同一 PR の古い実行は cancel)
+- 流れ: `yarn build:cf` (`NEXT_PUBLIC_SITE_URL=https://w3st.net` = canonical は本番を指し、preview の重複インデックスを避ける) → `wrangler pages deploy ... --branch=<head ref>` → Preview URL (branch alias / deployment URL) を PR に **1 コメント** で通知 (marker `<!-- cf-pages-preview -->` 付きコメントを push ごとに更新)
+- Node は deploy.yml と同じく `.nvmrc` + `check-latest: true`
+- **fork PR / Dependabot PR は skip** (GitHub が secrets を渡さないため)。job が `skipped` になるのは正常
+- **head が `main` の PR (main → develop の back-merge 等) も skip** (`--branch=main` が Production デプロイになるため。Production は deploy.yml のみ)
+- workflow の `permissions` は `contents: read` / `deployments: write` / `pull-requests: write` のみ
+- 動的ルート (admin / API / auth) を Preview で試すには、CF dashboard の **Preview 環境** にも runtime Secret (`GITHUB_TOKEN` / `ADMIN_EMAILS` / `AUTH_SECRET` / `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET` など、後述) を登録しておく。公開ページ (static asset) だけなら不要
+  - Google OAuth を Preview で使う場合は、OAuth client の承認済みリダイレクト URI に Preview の URL を追加する必要がある
+
+### ロールバック
+
+- Cloudflare dashboard → **Project "west-portfolio" → Deployments** → 戻したい Production deployment の「…」→ **Rollback to this deployment**
+- 恒久対応は `main` に revert commit を push (deploy.yml が再デプロイする)
 
 ### CF Pages の Git 連携 (自動ビルド) は OFF にする
 
 CF Pages の Git 連携ビルドは使わない (二重デプロイになり、かつ build image の Node / env が Actions と食い違って失敗し続けるため)。
 
-- Cloudflare dashboard → **Project "west-portfolio" → Settings → Builds → Branch control** で、Production / Preview の自動デプロイ (automatic deployments) を無効化する
-- PR preview が欲しい場合も Actions 側で用意する方針 (現状 preview deploy は無し)
+- Cloudflare dashboard → **Project "west-portfolio" → Settings → Builds → Branch control** で、Production の自動デプロイ (automatic deployments) を無効化し、**Preview branches: None** にする
+- PR preview は上記 `preview.yml` が担う (Git 連携の Preview ビルドは Preview 環境に `GITHUB_TOKEN` が無いと `/sitemap.xml` の page data 収集で失敗し、build image の Node も `.nvmrc` の最新 patch を担保できないため使わない)
 
 ### 必要な GitHub Secrets (Settings → Secrets and variables → Actions)
 
@@ -129,9 +152,8 @@ CF Pages の Git 連携ビルドは使わない (二重デプロイになり、�
    - `/` `/home` `/production` `/profile` `/skill` `/articles` `/journal` `/contact` が 200 で返ること (これらは static asset 配信)
    - `/admin/login` で Google OAuth に飛び、ログイン後 `/admin/home` が見えること (Edge Function 動作)
    - `/admin/profile` 等で値を編集 → 保存 → 数秒後に `GITHUB_OWNER/GITHUB_REPO` の `GITHUB_BRANCH` に commit が出ること
-4. PR を 1 つ作って Cloudflare Pages の preview deployment の状態を確認する。
-   - これまで赤かった原因 (公開ページ含む全体 edge 化試行で `node:fs` がバンドル) は Phase 2a (json driver lazy import) + Phase 2c (admin/API のみ edge 化) で解消されているはず。
-   - ただし本番 CF Pages 上で green になるには **dashboard secrets 設定の完了 + branch protection 通過** が必要。
+4. PR を 1 つ作り、Actions の `Preview Deploy (Cloudflare Pages)` が green になり、PR に Preview URL コメントが付くことを確認する。
+   - その URL の `/` が 200 を返すこと。動的ルートまで確認する場合は Preview 環境の runtime Secret 登録が前提。
 
 > **NextAuth v5 + edge の既知制約**: `/api/auth/[...nextauth]` は edge runtime 化済 (Phase 2b)。NextAuth v5 は edge 互換が公式 supported だが、jose / CompressionStream 等の polyfill 警告がビルド時に出る場合がある。実害が出たら個別対応 (Phase 2b/2c で `nodejs_compat` flag 必須が判明している)。
 

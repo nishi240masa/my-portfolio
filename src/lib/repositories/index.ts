@@ -68,19 +68,39 @@ function resolveDriver(): string {
 // partial に動いてしまい (一部 API のみ shim、その他は no-op or throw)、
 // 失敗が runtime 中の不定箇所で発生する。本 guard は factory 呼び出し時点で
 // fail-fast に検出し、明確なエラーメッセージで誘導する。
+function jsonDriverNotEdgeCompatError(): Error {
+  return new Error(
+    'REPOSITORY_DRIVER=json (default) is not edge-compatible. ' +
+      'Set REPOSITORY_DRIVER=github with GITHUB_TOKEN/OWNER/REPO/BRANCH env, ' +
+      'or run in node runtime (e.g., yarn dev).',
+  );
+}
+
 function assertEdgeCompat(driver: string): void {
   if (process.env.NEXT_RUNTIME === 'edge' && driver === 'json') {
-    throw new Error(
-      'REPOSITORY_DRIVER=json (default) is not edge-compatible. ' +
-        'Set REPOSITORY_DRIVER=github with GITHUB_TOKEN/OWNER/REPO/BRANCH env, ' +
-        'or run in node runtime (e.g., yarn dev).',
-    );
+    throw jsonDriverNotEdgeCompatError();
   }
 }
 
+// === edge bundle からの json driver 除外 ==================================
+// 各 factory の json 分岐は `if (process.env.NEXT_RUNTIME !== 'edge') { await import(...) }`
+// の形で **リテラルに** 書くこと (ヘルパー関数に括り出さない)。
+//
+// 理由: Next.js は edge compiler で `process.env.NEXT_RUNTIME` を DefinePlugin により
+// 文字列 'edge' に置換する。webpack はこの定数条件の dead branch を parse しないため、
+// json driver (`node:fs` / `node:path` 依存) が edge bundle に一切入らない。
+//
+// これが無いと json driver の lazy chunk も edge function の bundle に同梱され、
+// @cloudflare/next-on-pages が externals の `require("node:fs")` を chunk top-level の
+// static `import * from "node:fs"` に変換する。workerd (compatibility_date 2025-01-20)
+// は node:fs を提供しないため、その chunk を共有する admin 系 function 全体が
+// module load 時に `No such module "node:fs"` で 500 になる (json driver を呼ぶか否かに
+// 関係なく)。node runtime (yarn dev / jest) では従来どおり json driver を dynamic import する。
+
 // === ASYNC factories (edge-compatible) ===================================
-// dynamic import により、呼び出し側の edge bundle に json/github driver の
-// static dep が含まれない (webpack が真の lazy chunk として扱う)。
+// driver 実装は dynamic import で読み込む。ただし edge build では lazy chunk も
+// function bundle に同梱されるため、json driver は上記の NEXT_RUNTIME 定数分岐で
+// edge bundle から除外している。
 
 export async function getHomeRepo(): Promise<SingletonRepository<HomeContent>> {
   const driver = resolveDriver();
@@ -90,8 +110,12 @@ export async function getHomeRepo(): Promise<SingletonRepository<HomeContent>> {
     const m = await import('./github/githubHomeRepository');
     return new m.GitHubHomeRepository();
   }
-  const m = await import('./json/jsonHomeRepository');
-  return new m.JsonHomeRepository();
+  if (process.env.NEXT_RUNTIME !== 'edge') {
+    const m = await import('./json/jsonHomeRepository');
+    return new m.JsonHomeRepository();
+  }
+  // edge + json は assertEdgeCompat で throw 済み (型上の到達不能経路)
+  throw jsonDriverNotEdgeCompatError();
 }
 
 export async function getProfileRepo(): Promise<SingletonRepository<Profile>> {
@@ -102,8 +126,12 @@ export async function getProfileRepo(): Promise<SingletonRepository<Profile>> {
     const m = await import('./github/githubProfileRepository');
     return new m.GitHubProfileRepository();
   }
-  const m = await import('./json/jsonProfileRepository');
-  return new m.JsonProfileRepository();
+  if (process.env.NEXT_RUNTIME !== 'edge') {
+    const m = await import('./json/jsonProfileRepository');
+    return new m.JsonProfileRepository();
+  }
+  // edge + json は assertEdgeCompat で throw 済み (型上の到達不能経路)
+  throw jsonDriverNotEdgeCompatError();
 }
 
 export async function getSkillsRepo(): Promise<SingletonRepository<SkillsContent>> {
@@ -114,8 +142,12 @@ export async function getSkillsRepo(): Promise<SingletonRepository<SkillsContent
     const m = await import('./github/githubSkillsRepository');
     return new m.GitHubSkillsRepository();
   }
-  const m = await import('./json/jsonSkillsRepository');
-  return new m.JsonSkillsRepository();
+  if (process.env.NEXT_RUNTIME !== 'edge') {
+    const m = await import('./json/jsonSkillsRepository');
+    return new m.JsonSkillsRepository();
+  }
+  // edge + json は assertEdgeCompat で throw 済み (型上の到達不能経路)
+  throw jsonDriverNotEdgeCompatError();
 }
 
 export async function getProductionRepo(): Promise<ProductionRepository> {
@@ -126,8 +158,12 @@ export async function getProductionRepo(): Promise<ProductionRepository> {
     const m = await import('./github/githubProductionRepository');
     return new m.GitHubProductionRepository();
   }
-  const m = await import('./json/jsonProductionRepository');
-  return new m.JsonProductionRepository();
+  if (process.env.NEXT_RUNTIME !== 'edge') {
+    const m = await import('./json/jsonProductionRepository');
+    return new m.JsonProductionRepository();
+  }
+  // edge + json は assertEdgeCompat で throw 済み (型上の到達不能経路)
+  throw jsonDriverNotEdgeCompatError();
 }
 
 export async function getArticleRepo() {
@@ -138,8 +174,12 @@ export async function getArticleRepo() {
     const m = await import('./github/githubArticleRepository');
     return new m.GitHubArticleRepository();
   }
-  const m = await import('./json/jsonArticleRepository');
-  return new m.JsonArticleRepository();
+  if (process.env.NEXT_RUNTIME !== 'edge') {
+    const m = await import('./json/jsonArticleRepository');
+    return new m.JsonArticleRepository();
+  }
+  // edge + json は assertEdgeCompat で throw 済み (型上の到達不能経路)
+  throw jsonDriverNotEdgeCompatError();
 }
 
 // === cached wrappers =====================================================

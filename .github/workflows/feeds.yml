@@ -25,7 +25,9 @@ jobs:
         env:
           ZENN_USER: ${{ vars.ZENN_USER || secrets.ZENN_USER }}
           QIITA_USER: ${{ vars.QIITA_USER || secrets.QIITA_USER }}
-          GITHUB_USER: ${{ vars.GITHUB_USER || secrets.GITHUB_USER }}
+          # GitHub は `GITHUB_` で始まる secret / variable 名を禁止しているため、
+          # 既定はリポジトリ owner。別アカウントを出したい場合のみ vars.FEEDS_GITHUB_USER で上書き
+          GITHUB_USER: ${{ vars.FEEDS_GITHUB_USER || github.repository_owner }}
           USER_HANDLE: ${{ vars.USER_HANDLE || secrets.USER_HANDLE }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/fetch-feeds.mjs

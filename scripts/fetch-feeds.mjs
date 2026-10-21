@@ -8,10 +8,12 @@
  *   - GitHub: REST API (https://api.github.com/users/<user>/repos)
  *
  * env:
- *   ZENN_USER       — Zenn のユーザー名 (例: w3st)
+ *   ZENN_USER       — Zenn のユーザー名
  *   QIITA_USER      — Qiita のユーザー名
  *   GITHUB_USER     — GitHub のユーザー名
- *   USER_HANDLE     — 上記が未設定の場合のフォールバック
+ *   USER_HANDLE     — 上記が未設定の場合のフォールバック (明示された場合のみ)
+ *   ※ 未設定 / 空文字 / 空白のみ のサービスは取得をスキップし空配列を書く。
+ *     取得結果も本人 (URL / owner) のものだけに絞り、他人のコンテンツは取り込まない。
  *   GITHUB_TOKEN    — GitHub API のレート制限緩和用 (任意)
  *   FEEDS_OUT_FILE  — 出力先 (デフォルト: data/feeds.json)
  *
@@ -21,17 +23,20 @@
 
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
+import {
+  MAX_ITEMS,
+  resolveUsers,
+  toZennItems,
+  toQiitaItems,
+  toGithubItems,
+  filterOwnedExisting,
+} from './feeds-lib.mjs';
 
-const USER_FALLBACK = process.env.USER_HANDLE ?? 'w3st';
-const ZENN_USER = process.env.ZENN_USER ?? USER_FALLBACK;
-const QIITA_USER = process.env.QIITA_USER ?? USER_FALLBACK;
-const GITHUB_USER = process.env.GITHUB_USER ?? USER_FALLBACK;
+const USERS = resolveUsers(process.env);
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const OUT_FILE = process.env.FEEDS_OUT_FILE
   ? path.resolve(process.env.FEEDS_OUT_FILE)
   : path.join(process.cwd(), 'data', 'feeds.json');
-
-const MAX_ITEMS = 20;
 
 async function safeFetchText(url, init) {
   try {
@@ -58,48 +63,12 @@ async function safeFetchJson(url, init) {
   }
 }
 
-/**
- * 雑な RSS パーサ。XML パーサを引かずに <item>...</item> を切り出して
- * 主要フィールドだけ抽出する。RSS が壊れていれば空配列を返す。
- */
-function parseRssItems(xml) {
-  if (typeof xml !== 'string') return [];
-  const items = [];
-  const itemRe = /<item[\s\S]*?>([\s\S]*?)<\/item>/g;
-  let m;
-  while ((m = itemRe.exec(xml)) !== null && items.length < MAX_ITEMS) {
-    const block = m[1];
-    const pick = (tag) => {
-      const re = new RegExp(`<${tag}[^>]*>([\\s\\S]*?)<\\/${tag}>`);
-      const mm = re.exec(block);
-      if (!mm) return '';
-      const raw = mm[1].trim();
-      const stripped = raw
-        .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1')
-        .replace(/<[^>]+>/g, '')
-        .trim();
-      return stripped;
-    };
-    items.push({
-      title: pick('title'),
-      url: pick('link'),
-      publishedAt: pick('pubDate') || null,
-    });
-  }
-  return items;
-}
-
 async function fetchZenn(user) {
-  const xml = await safeFetchText(`https://zenn.dev/${user}/feed`, {
+  const xml = await safeFetchText(`https://zenn.dev/${encodeURIComponent(user)}/feed`, {
     headers: { 'user-agent': 'portfolio-feeds-bot' },
   });
   if (xml == null) return [];
-  return parseRssItems(xml).map((it) => ({
-    title: it.title,
-    url: it.url,
-    publishedAt: it.publishedAt,
-    source: 'zenn',
-  }));
+  return toZennItems(xml, user);
 }
 
 async function fetchQiita(user) {
@@ -107,14 +76,7 @@ async function fetchQiita(user) {
     `https://qiita.com/api/v2/users/${encodeURIComponent(user)}/items?per_page=${MAX_ITEMS}`,
     { headers: { 'user-agent': 'portfolio-feeds-bot' } },
   );
-  if (!Array.isArray(json)) return [];
-  return json.slice(0, MAX_ITEMS).map((it) => ({
-    title: String(it.title ?? ''),
-    url: String(it.url ?? ''),
-    publishedAt: it.created_at ?? null,
-    source: 'qiita',
-    summary: typeof it.body === 'string' ? it.body.slice(0, 140) : undefined,
-  }));
+  return toQiitaItems(json, user);
 }
 
 async function fetchGithub(user) {
@@ -127,21 +89,7 @@ async function fetchGithub(user) {
     `https://api.github.com/users/${encodeURIComponent(user)}/repos?per_page=${MAX_ITEMS}&sort=updated`,
     { headers },
   );
-  if (!Array.isArray(json)) return [];
-  // 自分のオリジナルリポジトリのみを残す (fork / archived は除外)。
-  // ポートフォリオ目的では、外部の fork や凍結済みの古い置き場を出したくないため。
-  const filtered = json.filter((repo) => repo && repo.fork !== true && repo.archived !== true);
-  return filtered.slice(0, MAX_ITEMS).map((repo) => ({
-    title: String(repo.full_name ?? repo.name ?? ''),
-    url: String(repo.html_url ?? ''),
-    publishedAt: repo.pushed_at ?? null,
-    source: 'github',
-    summary: repo.description != null ? String(repo.description).slice(0, 200) : undefined,
-    meta: {
-      stars: Number(repo.stargazers_count ?? 0),
-      language: repo.language ?? null,
-    },
-  }));
+  return toGithubItems(json, user);
 }
 
 async function loadExisting() {
@@ -153,29 +101,43 @@ async function loadExisting() {
   }
 }
 
-async function main() {
-  console.log(`[fetch-feeds] ZENN_USER=${ZENN_USER} QIITA_USER=${QIITA_USER} GITHUB_USER=${GITHUB_USER}`);
-  const existing = await loadExisting();
-  const [zenn, qiita, github] = await Promise.all([
-    fetchZenn(ZENN_USER),
-    fetchQiita(QIITA_USER),
-    fetchGithub(GITHUB_USER),
-  ]);
+const SERVICES = [
+  { key: 'zenn', env: 'ZENN_USER', fetch: fetchZenn },
+  { key: 'qiita', env: 'QIITA_USER', fetch: fetchQiita },
+  { key: 'github', env: 'GITHUB_USER', fetch: fetchGithub },
+];
 
-  // 失敗したセクションは既存値を残す
-  const next = {
-    zenn: zenn.length > 0 ? zenn : (existing.zenn ?? []),
-    qiita: qiita.length > 0 ? qiita : (existing.qiita ?? []),
-    github: github.length > 0 ? github : (existing.github ?? []),
-    updatedAt: new Date().toISOString(),
-  };
+async function main() {
+  console.log(
+    `[fetch-feeds] ZENN_USER=${USERS.zenn ?? '(unset)'} QIITA_USER=${USERS.qiita ?? '(unset)'} GITHUB_USER=${USERS.github ?? '(unset)'}`,
+  );
+  const existing = await loadExisting();
+
+  const next = { zenn: [], qiita: [], github: [], updatedAt: new Date().toISOString() };
+  const failed = [];
+  await Promise.all(
+    SERVICES.map(async ({ key, env, fetch: fetchItems }) => {
+      const user = USERS[key];
+      if (!user) {
+        // ユーザー名未設定: 取得しない。既存値も引き継がず空配列にする
+        // (他人のコンテンツを絶対に表示しないため)。
+        console.log(`[fetch-feeds] skip ${key}: ${env} not set`);
+        next[key] = [];
+        return;
+      }
+      const items = await fetchItems(user);
+      if (items.length > 0) {
+        next[key] = items;
+        return;
+      }
+      // 失敗 (または 0 件) は既存値を残す。ただし本人の URL のものだけ。
+      failed.push(key);
+      next[key] = filterOwnedExisting(existing[key], key, user);
+    }),
+  );
 
   // どのサービスが今回 0 件で「既存値フォールバック」になったかを stderr に集約サマリ出力。
   // CI ログから一目で「N services failed」を読み取れるようにする。
-  const failed = [];
-  if (zenn.length === 0) failed.push('zenn');
-  if (qiita.length === 0) failed.push('qiita');
-  if (github.length === 0) failed.push('github');
   if (failed.length > 0) {
     console.error(`[fetch-feeds] ${failed.length} services failed: ${failed.join(', ')}`);
   }
