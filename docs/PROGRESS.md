@@ -14,7 +14,7 @@
 
 ## 環境上の固定事項 (必ず守る)
 
-- **Node**: 24 (`.nvmrc` / CI)。`engines` は `>=22.12.0` (環境変数で PATH に Node 24 を入れる。例: `export PATH=~/.nodebrew/current/bin:$PATH`)
+- **Node**: 24.22.1 (`.nvmrc` SSOT, 2026-10-21 security release。CI は `node-version-file: .nvmrc`)。`engines` は `>=22.12.0` (環境変数で PATH に Node 24.22.1 以上を入れる。例: `export PATH=~/.nodebrew/current/bin:$PATH`)
 - **Yarn**: 1.22.x
 - **auto-merge**: **有効化済** (2026-06-20)。`gh pr merge <num> --auto --squash --delete-branch` で CI green を待って自動マージ。直接 merge も可能 (`--auto` を外す)
 - **CI 必須 check**: `test` のみ実質的に required。`e2e` / `lhci` / `Cloudflare Pages` の失敗は merge を阻まない。※ `e2e` / `lhci` は #42 で build に `NEXT_PUBLIC_SITE_URL` を配線し build blocker を解消済 (それ以前は build 失敗で本体未実行だった)
@@ -196,7 +196,7 @@ cat .claude/tickets/<slug>.md
 # 3. 実装 (cd は preflight が出力する path に従う)
 
 # 4. 検証
-export PATH="$HOME/.nodebrew/current/bin:$PATH"  # Node 24 を PATH に
+export PATH="$HOME/.nodebrew/current/bin:$PATH"  # Node 24.22.1 以上を PATH に
 yarn lint && yarn test --passWithNoTests && yarn build
 
 # 5. コミット & PR
