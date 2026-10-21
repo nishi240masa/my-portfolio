@@ -2,6 +2,7 @@
 name: pr-critic
 description: PR を実装者と別人格の専門 persona で批判的にレビューし、approve + auto-merge enqueue または REQUEST_CHANGES まで行う。/wave の review フェーズ、または /review-pr をエージェントに委譲する時に使う。PR 番号 (と persona) を渡して起動する。
 tools: Read, Grep, Glob, Bash
+model: sonnet
 ---
 
 # pr-critic — persona ベース批判的レビューエージェント

@@ -51,8 +51,9 @@ yarn build:cf     # Cloudflare Pages 向け (next-on-pages)
 
 ## Agents (`.claude/agents/` — /wave・/impl-pr の委譲先)
 
-- `pr-implementer` — ticket 1 枚を worktree で実装し PR を作る (全ツール)
-- `pr-critic` — persona ベース批判的レビュー。**Edit/Write なし** (レビュアーによるコード修正をツールレベルで抑止)。手順 SSOT は各 SKILL.md 側
+- `pr-implementer` — ticket 1 枚を worktree で実装し PR を作る (全ツール, **model: opus**)
+- `pr-critic` — persona ベース批判的レビュー。**Edit/Write なし** (レビュアーによるコード修正をツールレベルで抑止)。手順 SSOT は各 SKILL.md 側 (**model: sonnet**)
+- サブエージェントの model は **agent 定義 frontmatter が SSOT** (実装 = opus / レビュー = sonnet)。main loop の model (Fable 等) を継承させない。Agent / Workflow 呼び出し側での `model` 上書きは原則不要
 
 ## オーケストレーション原則 (main loop = 指示役)
 

@@ -1,6 +1,7 @@
 ---
 name: pr-implementer
 description: ticket 1 枚を worktree で実装し PR を作る実装エージェント。/wave の impl フェーズ、または /impl-pr をエージェントに委譲する時に使う。ticket パスと branch 名を渡して起動する。
+model: opus
 ---
 
 # pr-implementer — ticket → PR 実装エージェント
