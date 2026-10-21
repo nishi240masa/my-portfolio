@@ -1,6 +1,175 @@
 {
   "zenn": [],
-  "qiita": [],
-  "github": [],
-  "updatedAt": null
+  "qiita": [
+    {
+      "title": "初心者がnode.js expressでwebAPIを実装してみた。(簡易版)",
+      "url": "https://qiita.com/nissy_m/items/bc4b561a396ae7e0aa1f",
+      "publishedAt": "2023-12-21T23:50:12+09:00",
+      "source": "qiita",
+      "summary": "## 前置\n\n私はプログラミングを始めて半年の初心者である。名前はまだない\nモバイルアプリの勉強をずっとしてきたが、ハッカソンでwebAPIを作ることに\nなったので作ってみた。多分間違っている部分があると思う。\n\n※これは時間がない人向けに簡単にまとめたものです。\n詳しく書いた物"
+    }
+  ],
+  "github": [
+    {
+      "title": "nishi240masa/my-portfolio",
+      "url": "https://github.com/nishi240masa/my-portfolio",
+      "publishedAt": "2026-10-21T19:45:41Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "TypeScript"
+      }
+    },
+    {
+      "title": "nishi240masa/meshi-iko",
+      "url": "https://github.com/nishi240masa/meshi-iko",
+      "publishedAt": "2026-10-17T11:16:46Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "TypeScript"
+      }
+    },
+    {
+      "title": "nishi240masa/nishi240masa",
+      "url": "https://github.com/nishi240masa/nishi240masa",
+      "publishedAt": "2026-02-01T14:25:14Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": null
+      }
+    },
+    {
+      "title": "nishi240masa/rattle-lottery",
+      "url": "https://github.com/nishi240masa/rattle-lottery",
+      "publishedAt": "2025-12-24T11:18:34Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "TypeScript"
+      }
+    },
+    {
+      "title": "nishi240masa/w3st-cms-back",
+      "url": "https://github.com/nishi240masa/w3st-cms-back",
+      "publishedAt": "2025-10-15T05:24:15Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "Go"
+      }
+    },
+    {
+      "title": "nishi240masa/w3st-CMS-SDK",
+      "url": "https://github.com/nishi240masa/w3st-CMS-SDK",
+      "publishedAt": "2025-10-07T01:52:32Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "TypeScript"
+      }
+    },
+    {
+      "title": "nishi240masa/Aicon-assignment",
+      "url": "https://github.com/nishi240masa/Aicon-assignment",
+      "publishedAt": "2025-09-29T07:02:53Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "Go"
+      }
+    },
+    {
+      "title": "nishi240masa/Knowledge-Base-LineBot",
+      "url": "https://github.com/nishi240masa/Knowledge-Base-LineBot",
+      "publishedAt": "2025-06-19T08:26:26Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "Go"
+      }
+    },
+    {
+      "title": "nishi240masa/prj-freeren-back",
+      "url": "https://github.com/nishi240masa/prj-freeren-back",
+      "publishedAt": "2025-02-07T14:58:49Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "Go"
+      }
+    },
+    {
+      "title": "nishi240masa/prj-freeren-front",
+      "url": "https://github.com/nishi240masa/prj-freeren-front",
+      "publishedAt": "2025-02-07T12:46:15Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "TypeScript"
+      }
+    },
+    {
+      "title": "nishi240masa/md2s-back",
+      "url": "https://github.com/nishi240masa/md2s-back",
+      "publishedAt": "2025-02-04T14:39:44Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "Go"
+      }
+    },
+    {
+      "title": "nishi240masa/api-study",
+      "url": "https://github.com/nishi240masa/api-study",
+      "publishedAt": "2024-12-04T07:59:27Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "JavaScript"
+      }
+    },
+    {
+      "title": "nishi240masa/api-study-session",
+      "url": "https://github.com/nishi240masa/api-study-session",
+      "publishedAt": "2024-12-04T07:11:22Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "JavaScript"
+      }
+    },
+    {
+      "title": "nishi240masa/osyaberi-zundamon",
+      "url": "https://github.com/nishi240masa/osyaberi-zundamon",
+      "publishedAt": "2024-12-04T02:01:18Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": null
+      }
+    },
+    {
+      "title": "nishi240masa/react-bulletin-board",
+      "url": "https://github.com/nishi240masa/react-bulletin-board",
+      "publishedAt": "2024-11-16T15:27:53Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "JavaScript"
+      }
+    },
+    {
+      "title": "nishi240masa/front-api-study",
+      "url": "https://github.com/nishi240masa/front-api-study",
+      "publishedAt": "2024-11-16T15:26:18Z",
+      "source": "github",
+      "meta": {
+        "stars": 0,
+        "language": "TypeScript"
+      }
+    }
+  ],
+  "updatedAt": "2026-10-21T19:51:13.550Z"
 }
