@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import SectionHeader from '@/app/_components/design/SectionHeader';
 import { SubSection } from '@/app/_components/design/SectionHeader';
 import { EmptyState } from '@/app/_components/design/States';
@@ -18,7 +19,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: '外部活動',
   description: 'Zenn / Qiita / GitHub 等の外部プラットフォームでの活動スナップショット。',
-  alternates: { canonical: '/journal' },
+  ...pageMetadata('/journal'),
 };
 
 function loadFeeds(): Feeds {

@@ -6,6 +6,7 @@ import Script from 'next/script';
 import ClientLayout from './_components/ClientLayout';
 import { getProfileCached } from '@/lib/repositories';
 import { personJsonLd, serializeJsonLd } from '@/lib/jsonld';
+import { BASE_OPEN_GRAPH, HREFLANG_LANGUAGES } from '@/lib/seo';
 
 const hinaMincho = Hina_Mincho({
   weight: '400',
@@ -32,7 +33,6 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.com';
-const SITE_NAME = 'west · Portfolio';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -42,13 +42,7 @@ export const metadata: Metadata = {
   },
   description:
     'Go / TypeScript を軸に開発する情報系学生エンジニア・西尾匡生 (west) のポートフォリオ。LP コーディング、GAS・Python による業務自動化、スクレイピング、Chrome 拡張、既存サイトの改修・バグ修正などの受託開発を請け負っています。',
-  alternates: {
-    languages: {
-      ja: '/',
-      en: '/en',
-      'x-default': '/',
-    },
-  },
+  alternates: { languages: HREFLANG_LANGUAGES },
   icons: {
     icon: [
       { url: '/favicon.ico' },
@@ -59,11 +53,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   // og:image / twitter:image は file convention の src/app/opengraph-image.tsx が
   // 自動配線するため images は指定しない (実体のない /og-default.png への参照を撤去)。
-  openGraph: {
-    type: 'website',
-    siteName: SITE_NAME,
-    locale: 'ja_JP',
-  },
+  openGraph: { ...BASE_OPEN_GRAPH },
   twitter: {
     card: 'summary_large_image',
     site: '@westM27',

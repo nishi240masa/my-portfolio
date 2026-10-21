@@ -7,6 +7,7 @@ import {
   listProductionsSummaryCached,
 } from '@/lib/repositories';
 import { creativeWorkJsonLd, serializeJsonLd } from '@/lib/jsonld';
+import { canonicalPath, pageMetadata } from '@/lib/seo';
 import MarkdownContent from './MarkdownContent';
 import ProductionDetail from './ProductionDetail';
 
@@ -28,7 +29,7 @@ export async function generateStaticParams() {
 // 設定済。Next.js は file-based opengraph-image を auto-discover し、og:image / twitter:image
 // 両方を generateImageMetadata の alt 付きで埋める。よってここでは images を明示しない
 // (明示するとハッシュ付きの実 route と URL が不一致になり 404 / SEO 破綻)。
-// title / description / canonical / og:type='article' / twitter:card のみ動的化する。
+// title / description / canonical / og:url / og:type='article' / twitter:card のみ動的化する。
 export async function generateMetadata({
   params,
 }: {
@@ -39,18 +40,21 @@ export async function generateMetadata({
   if (article == null) {
     return {
       title: '作品が見つかりません',
-      alternates: { canonical: `/production/${id}` },
+      alternates: { canonical: canonicalPath(`/production/${id}`) },
     };
   }
   return {
     title: article.title,
     description: article.description,
-    alternates: { canonical: `/production/${article.id}` },
-    openGraph: {
-      title: article.title,
-      description: article.description,
-      type: 'article',
-    },
+    // 同 segment の opengraph-image.tsx を og:image に使うため既定画像は付けない
+    ...pageMetadata(`/production/${article.id}`, {
+      defaultOgImage: false,
+      openGraph: {
+        title: article.title,
+        description: article.description,
+        type: 'article',
+      },
+    }),
     twitter: {
       card: 'summary_large_image',
       title: article.title,
