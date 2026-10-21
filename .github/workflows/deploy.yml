@@ -32,7 +32,7 @@ jobs:
       - name: Build application
         env:
           # jsonld.ts の resolveSiteUrl() が production build で throw するため必須。
-          # 本番 canonical は w3st.net (test.yml の Vercel フォールバックは使わない)
+          # 本番 canonical は w3st.net (test.yml / e2e.yml / lhci.yml の fallback も同じ値)
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL || 'https://w3st.net' }}
         run: yarn build
 

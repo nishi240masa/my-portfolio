@@ -27,6 +27,7 @@ Vercel プロジェクトの削除と GitHub の Vercel app 連携解除はオ�
 
 ## 変更ファイル (これ以外は触らない)
 
+- `.github/workflows/deploy.yml`: コメントのみ (「test.yml の Vercel フォールバック」の記述を実態に)。ロジック変更なし
 - `.github/workflows/test.yml` / `e2e.yml` / `lhci.yml`: `NEXT_PUBLIC_SITE_URL` の fallback
   `https://my-portfolio-kohl-one-59.vercel.app` → `https://w3st.net` (deploy.yml と統一)
 - `CLAUDE.md`: 冒頭「Vercel (本番) + Cloudflare Pages (edge 検証)」→ 本番 = Cloudflare Pages (w3st.net, deploy.yml 経由)。
