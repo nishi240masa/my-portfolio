@@ -15,6 +15,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
+          check-latest: true
           cache: 'yarn'
 
       - name: Install dependencies

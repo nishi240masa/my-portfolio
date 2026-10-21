@@ -1,0 +1,63 @@
+# Dependabot version updates
+# - PR は develop 向け (main へは release PR 経由)
+# - noise 抑制: minor/patch は ecosystem ごとに 1 PR に group 化、open PR 数も絞る
+# - フレームワーク (Next / React / MUI / next-auth) の major は別 ticket で手動判断するため ignore
+# - security updates (Dependabot alerts 起点) は本設定の group / ignore とは別に個別 PR で届く
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'develop'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Tokyo'
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: 'chore(ci)'
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+
+  - package-ecosystem: 'npm' # yarn v1 (yarn.lock) もこの ecosystem で扱われる
+    directory: '/'
+    target-branch: 'develop'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'Asia/Tokyo'
+    open-pull-requests-limit: 5
+    versioning-strategy: 'auto'
+    commit-message:
+      prefix: 'chore(deps)'
+      prefix-development: 'chore(deps-dev)'
+    groups:
+      npm-minor-patch:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
+    ignore:
+      - dependency-name: 'next'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'eslint-config-next'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'react-dom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/react-dom'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@mui/*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'next-auth'
+        update-types: ['version-update:semver-major']

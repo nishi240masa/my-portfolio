@@ -42,24 +42,50 @@
 >
 > ただし **本番 CF Pages の PR preview deployment が green になるかは別問題** で、後述の dashboard secrets 設定が揃い、branch protection を通過して deployment が走ったときに反映される見込み。
 
+## デプロイ経路 (GitHub Actions に一本化)
+
+本番 (CF Pages) へのデプロイは **GitHub Actions の `.github/workflows/deploy.yml` のみ** で行う。
+
+- トリガ: `main` への push
+- 流れ: `test` job (lint + test + `yarn build`) → `deploy` job (`yarn build:cf` → `cloudflare/wrangler-action` で `wrangler pages deploy .vercel/output/static --project-name=west-portfolio`)
+- Node: `.nvmrc` (= `24`) + `actions/setup-node` の `check-latest: true` で常に 24.x 最新 patch (security fix 込み)
+- 本番 canonical URL: **`https://w3st.net`** (`deploy.yml` で `NEXT_PUBLIC_SITE_URL` を build 時に注入。Actions の repository variable `NEXT_PUBLIC_SITE_URL` があればそちらを優先)
+
+### CF Pages の Git 連携 (自動ビルド) は OFF にする
+
+CF Pages の Git 連携ビルドは使わない (二重デプロイになり、かつ build image の Node / env が Actions と食い違って失敗し続けるため)。
+
+- Cloudflare dashboard → **Project "west-portfolio" → Settings → Builds → Branch control** で、Production / Preview の自動デプロイ (automatic deployments) を無効化する
+- PR preview が欲しい場合も Actions 側で用意する方針 (現状 preview deploy は無し)
+
+### 必要な GitHub Secrets (Settings → Secrets and variables → Actions)
+
+| Secret | 値 | 備考 |
+| --- | --- | --- |
+| `CLOUDFLARE_API_TOKEN` | CF API Token | **権限は Account / Cloudflare Pages / Edit のみ** (My Profile → API Tokens → Create Custom Token)。Zone 権限等は付けない |
+| `CLOUDFLARE_ACCOUNT_ID` | CF Account ID | dashboard 右サイドバー / Workers & Pages の Overview に表示 |
+
 ## 必要な Cloudflare 環境変数 (Settings → Environment variables)
 
 Cloudflare Pages の dashboard で
 **Project "west-portfolio" → Settings → Environment variables** に登録する。
 **Production / Preview 両方に同じ値を入れる** (Preview を別 env にしたい場合は差分のみ調整)。
 
-> **重要**: Git-connected な Cloudflare Pages プロジェクトでは、ランタイム env としては **CF dashboard の Environment variables が SSOT**。`wrangler.toml` の `[vars]` は wrangler ベースの deploy / ローカル `wrangler pages dev` 用の補助的なもので、本番ランタイムでは dashboard 側の値が優先される。`wrangler.toml` の `[vars]` は「dashboard 設定漏れ時の保険」程度に位置付ける。
+> デプロイを Actions (`wrangler pages deploy`) に一本化しても、以下の **runtime 環境変数** (`REPOSITORY_DRIVER` / `GITHUB_*` / `AUTH_*` / `ADMIN_EMAILS` / `NEXT_PUBLIC_SITE_URL`) は Edge Function (admin / API / auth) の実行時に参照されるため、**引き続き CF dashboard への登録が必要**。build 時の値は Actions 側で注入するが、runtime の値は dashboard が供給する。
+
+> **重要 (wrangler.toml と dashboard の関係)**: `wrangler.toml` に `pages_build_output_dir` があるため、`wrangler pages deploy` 経由のデプロイでは **wrangler.toml が設定の SSOT** になる。CF の仕様上、この場合 dashboard の **plain text** 環境変数は `wrangler.toml` の `[vars]` で上書き / dashboard 上で編集不可になり得る (CF Pages の "Wrangler configuration file" 仕様)。一方 **Encrypt (secret) 指定の変数は wrangler.toml の影響を受けず dashboard の値が使われる**。そのため、`[vars]` に書かない runtime 値 (`GITHUB_OWNER` / `GITHUB_REPO` / `GITHUB_BRANCH` / `NEXT_PUBLIC_SITE_URL` 等) も確実に効かせるなら **Encrypt で登録するのが安全**。デプロイ後に Functions のログ / `/admin` の保存動作で値が届いていることを確認すること。
 
 ### Plain text (非 secret)
 
 | 変数 | 値 (例) | 用途 |
 | --- | --- | --- |
-| `REPOSITORY_DRIVER` | `github` | **本番では必ず `github`**。`json` だと `node:fs` 起動で 500 (Phase 2d-1 の guard で明示的に throw)。`wrangler.toml` の `[vars]` で default は `github` にしているが、Git-connected Pages では dashboard 設定が SSOT のため dashboard 上でも明示しておくこと。 |
+| `REPOSITORY_DRIVER` | `github` | **本番では必ず `github`**。`json` だと `node:fs` 起動で 500 (Phase 2d-1 の guard で明示的に throw)。`wrangler.toml` の `[vars]` で `github` を指定済 (wrangler deploy 時はこれが効く)。dashboard 上にも明示しておくと設定ファイル無しで deploy した場合の保険になる。 |
 | `GITHUB_OWNER` | `nishi240masa` | コミット先リポジトリ owner |
 | `GITHUB_REPO` | `my-portfolio` | コミット先リポジトリ名 |
 | `GITHUB_BRANCH` | `develop` (または `main`) | admin から書き込まれるコンテンツのコミット先ブランチ |
-| `NEXT_PUBLIC_SITE_URL` | `https://west-portfolio.pages.dev` | canonical URL (metadataBase / robots / sitemap で使用) |
-| `NODE_VERSION` | `20` | **CF dashboard の build-time env**。`.vercel/output/static` を生成する build job 用 Node.js のバージョン指定で、ランタイムには関係しない (CF Pages の build container 設定)。`.env.example` には登場しないことに注意。 |
+| `NEXT_PUBLIC_SITE_URL` | `https://w3st.net` | canonical URL (metadataBase / robots / sitemap で使用) |
+
+> **`NODE_VERSION` は dashboard に登録しない**。CF の build image では `NODE_VERSION` が `.nvmrc` より優先されるため、登録すると `.nvmrc` (SSOT) と食い違う。そもそも build は Actions 側で行い、Git 連携ビルドは OFF にする (上記)。既に登録済みなら削除する。
 
 ### Encrypt (secret)
 
@@ -74,6 +100,8 @@ Cloudflare Pages の dashboard で
 > **重要**: `GITHUB_TOKEN` などの secret は `wrangler.toml` の `[vars]` には **絶対に書かない**。`wrangler.toml` は public リポジトリにコミットされるため漏洩する。dashboard の Environment variables (Encrypt 指定) のみで管理する。
 
 ## Cloudflare dashboard 側で確認すべきビルド設定
+
+> Git 連携の自動ビルドは OFF にするため、以下は参考値 (Actions の `deploy.yml` と同条件)。
 
 | 項目 | 値 |
 | --- | --- |

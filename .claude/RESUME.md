@@ -37,7 +37,7 @@ gh pr list --base develop --json number,title,state,mergeable,mergeStateStatus
 ## 3. 環境チェック
 
 ```bash
-node -v  # >= 24.22.1 (.nvmrc SSOT, 2026-10-21 security release)
+node -v  # >= 24.22.1 (.nvmrc = 24 が SSOT。CI は check-latest で 24.x 最新 patch)
 which gh && gh auth status  # gh は認証済みか
 git config --get user.email
 ```
